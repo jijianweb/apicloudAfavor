@@ -1,0 +1,144 @@
+{
+	"citys": [{
+		"id": 1,
+		"city": "Seattle"
+	}, {
+		"id": 2,
+		"city": "Spokane"
+	}, {
+		"id": 3,
+		"city": "Tacoma"
+	}, {
+		"id": 4,
+		"city": "Vancouver"
+	}, {
+		"id": 5,
+		"city": "Bellevue"
+	}, {
+		"id": 6,
+		"city": "Portland"
+	}, {
+		"id": 7,
+		"city": "Salem"
+	}, {
+		"id": 8,
+		"city": "Eugene"
+	}, {
+		"id": 9,
+		"city": "Los Angeles"
+	}, {
+		"id": 10,
+		"city": "San Diego"
+	}, {
+		"id": 11,
+		"city": "San Jose"
+	}, {
+		"id": 12,
+		"city": "San Francisco"
+	}, {
+		"id": 13,
+		"city": "Long Beach"
+	}, {
+		"id": 14,
+		"city": "Fresno"
+	}, {
+		"id": 15,
+		"city": "Sacramento"
+	}, {
+		"id": 16,
+		"city": "Oakland"
+	}, {
+		"id": 17,
+		"city": "Santa Ana"
+	}, {
+		"id": 18,
+		"city": "Anaheim"
+	}, {
+		"id": 19,
+		"city": "Bakersfield"
+	}, {
+		"id": 20,
+		"city": "Riverside"
+	}, {
+		"id": 21,
+		"city": "Stockton"
+	}, {
+		"id": 22,
+		"city": "Chula Vista"
+	}, {
+		"id": 23,
+		"city": "Modesto"
+	}, {
+		"id": 24,
+		"city": "Fremont"
+	}, {
+		"id": 25,
+		"city": "Glendale"
+	}, {
+		"id": 26,
+		"city": "San Bernardino"
+	}, {
+		"id": 27,
+		"city": "Huntington Beach"
+	}, {
+		"id": 28,
+		"city": "Irvine"
+	}, {
+		"id": 29,
+		"city": "Oxnard"
+	}, {
+		"id": 30,
+		"city": "Moreno Valley"
+	}, {
+		"id": 31,
+		"city": "Ontario"
+	}, {
+		"id": 32,
+		"city": "Rancho Cucamonga"
+	}, {
+		"id": 33,
+		"city": "Fontana"
+	}, {
+		"id": 34,
+		"city": "Santa Clarita"
+	}, {
+		"id": 35,
+		"city": "Garden Grove"
+	}, {
+		"id": 36,
+		"city": "Oceanside"
+	}, {
+		"id": 37,
+		"city": "Pomona"
+	}, {
+		"id": 38,
+		"city": "Santa Rosa"
+	}, {
+		"id": 39,
+		"city": "Corona"
+	}, {
+		"id": 40,
+		"city": "Salinas"
+	}, {
+		"id": 41,
+		"city": "Pasadena"
+	}, {
+		"id": 42,
+		"city": "Torrance"
+	}, {
+		"id": 43,
+		"city": "Lancaster"
+	}, {
+		"id": 44,
+		"city": "Hayward"
+	}, {
+		"id": 45,
+		"city": "Palmdale"
+	}, {
+		"id": 46,
+		"city": "Orange"
+	}, {
+		"id": 47,
+		"city": "Escondido"
+	}]
+}

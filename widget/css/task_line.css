@@ -1,0 +1,127 @@
+/*
+ * 2017-11-7
+ * 增加帮助者列表样式
+ */
+.swiper-wrapper .swiper-slide{
+
+}
+.swiper-page{
+	padding: 20px 0 23px;
+}
+.swiper-page .swiper-row:first-child{
+	margin-bottom: 20px;
+}
+.swiper-row-line{
+	position: relative;
+}
+.swiper-cell{
+	/*background-color: red;*/
+}
+.swiper-star,
+.swiper-avatar,
+.swiper-avatar ._l{
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.swiper-nickname,
+.swiper-score{
+	text-align: center;
+}
+.swiper-avatar{
+	background-color: #33BAB0;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.swiper-nickname,
+.swiper-score{
+	font-size: 12px;
+}
+.swiper-nickname{
+	color: #414545;
+	padding: 3px 0 0;
+}
+.swiper-star-list .swiper-star:not(:last-child){
+	margin-right: 2px;
+}
+.swiper-star{
+	width: 12px;
+	height: 12px;
+	margin: 3px 0;
+	background-image: url(../image/star.png);
+}
+.swiper-score{
+	margin-bottom: 6px;
+}
+.swiper-accept-btn{
+	line-height: 26px;
+	font-size: 12px;
+	background-color: #33BAB0;
+	color: #fff;
+	padding: 3px 15px;
+	border-radius: 25px;
+	
+}
+.swiper-accept-btn span{
+	color: #fff;
+}
+.swiper-accept-btn.cancel{
+	background-color: #EFCE4A;
+	padding-right: 3px;
+}
+.swiper-accept-btn[disabled]{
+	background-color: #81A9A5;
+}
+.swiper-accept-btn.cancel::after{
+	content: 'c';
+	color: transparent;
+	height: 100%;
+	display: inline-block;
+	width: 26px;
+	background: url(../image/zu-2.png) no-repeat center / cover;
+	border-radius: 25px;
+	margin-left: 3px;
+}
+.swiper-line{
+	border: 1px solid #33BAB0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 25px;
+	z-index: 1;
+}
+.swiper-avatar.line{
+	overflow: hidden;
+	border: 2px solid transparent;
+	border-radius: 50%;
+}
+.swiper-avatar ._l{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.swiper-cell{
+	position: relative;
+	z-index: 2;
+}
+
+.swiper-score.zero{
+	height: 32px;
+	line-height: 32px;
+}
+
+#ongoing-by{
+	padding: 10px 11px;
+}
+
+#ongoing-by .page{
+	padding: 5px 10px;
+	background-color: #ECF9F7;
+}
+
+#ongoing-by .swiper-row{
+	margin: 10px 0;
+}

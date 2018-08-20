@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>收入列表-收入-收入详细</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			.favor {
+				padding: 21px 0 7px 0;
+				font-size: 15px;
+			}
+			
+			.money {
+				font-size: 48px;
+				color: #EDCF4F;
+				padding-bottom: 18px;
+			}
+			
+			.date {
+				background-color: #EAEBEF;
+				color: #ADB1B4;
+				font-size: 15px;
+				padding: 2px 0;
+			}
+			
+			.list {
+				border-bottom: 1px solid #ECECEC;
+			}
+			
+			.info {
+				margin: 11px 10px 11px 10px;
+				padding: 10px 8px;
+				background-color: #F3F3F5;
+				border-radius: 10px;
+			}
+			
+			.head-portrait {
+				width: 72px;
+				height: 68px;
+				border-radius: 50%;
+				background-color:#B4B8BB;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				margin-right: 8px;
+			}
+			
+			.name {
+				margin-bottom: 5px;
+				font-size: 16px;
+				overflow: hidden;
+				display:-webkit-box!important;
+				text-overflow:ellipsis; 
+				word-break:break-all; 
+				-webkit-box-orient:vertical; 
+				-webkit-line-clamp:2;
+			}
+			
+			.icon {
+				height: 12px;
+				width: 12px;
+				background-image: url(../../image/inbox/favor-location-icon.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+				margin-right: 5px;
+			}
+			
+			.online,
+			.text {
+				font-size: 9px;
+				white-space: nowrap;
+				overflow: hidden;
+				color: #ABAFB1;
+			}
+			
+			.text-1 {
+				font-size: 9px;
+				white-space: nowrap;
+				overflow: hidden;
+				color: #ABAFB1;
+			}
+			
+			.designation {
+				color: #7ACAC3;
+			}
+			
+			.cash {
+				font-size: 22px;
+				color: #37BDB1;
+			}
+			
+			.message {
+				padding: 15px 10px 5px 10px;
+				font-size: 14px;
+			}
+			
+			.earnings {
+				color: #9CA2A6;
+				padding: 0 0 15px 0;
+				font-size: 14px;
+			}
+			
+			.price,
+			.fee {
+				padding: 0 0 15px 20px;
+				font-size: 14px;
+			}
+			
+			.num {
+				padding: 0 15px 15px 0;
+				font-size: 14px;
+			}
+			
+			.total {
+				padding: 10px 25px 15px 15px;
+				font-weight: bold;
+				font-size: 14px;
+			}
+			
+			.header {
+				text-align: center;
+			}
+			
+			.n {
+				margin-bottom: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="hidden">
+					<div id="header" class="header">
+						<div class="favor">This Favor</div>
+						<div class="money">$60.00</div>
+						<div class="date">Friday,May 10, 2017</div>
+					</div>
+					<div class="list">
+						<div class="info flex-box">
+							<div class="">
+								 <div class="head-portrait"></div>
+							</div>
+							<div class="flex-box-v flex-1">
+								<div class="name flex-1">Assemble IKEsssssssssssssssssssssssssssssssssssssssssssssssssA and remove cardboard.</div>
+								<div class="flex-box flex-v-ce">
+									<div class="icon"></div>
+									<div class="online">41 Forrow </div>
+								</div>
+								<div class="text">Completed by - <span class="designation">Me adsdasd</span></div>
+							</div>
+							<div class="flex-box-v text-center">
+								<div class="cash flex-1">$50</div>
+								<div class="text-1">Mar 10 2017</div>
+							</div>
+						</div>
+					</div>
+					<div class="list">
+						<div class="message flex-box-v">
+							<div class="earnings">Favor Earnings</div>
+							<div class=" flex-box flex-v-ce">
+								<div class="price flex-1">Price</div>
+								<div class="num">$60</div>
+							</div>
+							<div class="flex-box flex-v-ce">
+								<div class="fee flex-1">Afvor Fee (15%)</div>
+								<div class="num">-$5.00</div>
+							</div>
+						</div>
+					</div>
+					<div class="list" style="border-bottom: none;">
+						<div class="total flex-box flex-v-ce">
+							<div class="total flex-1">Total Expenditure</div>
+							<div>$60.00</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">	
+		<div class="">
+			<div id="header" class="header">
+				<div class="favor" lan="ThisFavor">This Favor</div>
+				<div class="money">{{=it.default_currency == 'cad' ? 'C$' : '$'}}{{=Math.abs(it.realtotal)}}</div>
+				<div class="date">{{=dateTitle}}</div>
+			</div>
+			<div class="list">
+				<div class="info flex-box">
+					<div class=""><div class="head-portrait" style="background-image:url({{=Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div></div>
+					<div class="flex-box-v flex-1">
+						<div class="name flex-1">{{=it.title}}</div>
+						<div class="flex-box flex-v-ce">
+							<div class="icon"></div>
+							<div class="online">
+								 {{? it.favortype ==1}}
+								   {{=it.location}}
+								 {{?? it.favortype ==2}}
+								    {{= LANGUAGE[$api.getStorage('lan')]['online'] }}
+								 {{?}}
+						    </div>
+						</div>
+						<div class="text">
+							{{= LANGUAGE[$api.getStorage('lan')]['Completed_by'] }}
+							- <span class="designation">
+									{{= LANGUAGE[$api.getStorage('lan')]['Me'] }}
+								</span>
+						</div>
+					</div>
+					<div class="flex-box-v text-center">
+						<div class="cash flex-1">{{=it.default_currency == 'cad' ? 'C$' : '$'}}{{=it.favormoney}}</div>
+						<div class="text-1">{{=dateTime}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="list">
+				<div class="message flex-box-v">
+					<div class="earnings" lan="FavorEarnings">Favor Earnings</div>
+					<div class=" flex-box flex-v-ce">
+						<div class="price flex-1" lan="Price">Price</div>
+						<div class="num">${{=it.total}} {{=it.default_currency == 'cad' ? 'CAD' : 'USD'}}</div>
+					</div>
+					<div class="flex-box flex-v-ce">
+						<div class="fee flex-1">
+							{{= LANGUAGE[$api.getStorage('lan')]['AfavorFee'] }} ({{=it.free}}%)
+						</div>
+						<div class="num">-${{=it.freeprice}} {{=it.default_currency == 'cad' ? 'CAD' : 'USD'}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="list" style="border-bottom: none;">
+				<div class="total flex-box flex-v-ce">
+					<div class="total flex-1" lan="TotalIncome">Total Income</div>
+					<div>${{=it.realtotal}} {{=it.default_currency == 'cad' ? 'CAD' : 'USD'}}</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var revenueid = "";
+		apiready = function() {
+			init();
+		}
+        var dateTitle='',
+            dateTime='';
+		function init() {
+			//var d = new Date(1504195200000)
+			revenueid =api.pageParam.revenueid;
+			ajax.get({
+				ctrl: 'more',
+				fn: 'revenueDetail',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						revenueid: revenueid
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					
+					var t_obj = new Date(ct.createdtime.replace(/-/g, '/'));
+					var t = t_obj.toString().split(' ', 4);
+					    dateTime= t[1] + ' ' + t[2] + ' ' + t[3];
+					var _day=['Mon','Tue','Wed ','Thu','Fri','Sat','Sun'],
+						_day2=['Monday','Tuesday','Thursday','Thursday','Friday','Saturday','Sunday'],
+						_month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+						_month2=['January','February','March','April','May','June','July','August','September','October','November','December'];
+					//拼接日期的字符串
+					for(var k=0;k<_day.length;k++){
+						if(t[0]==_day[k]){
+							t[0]=_day2[k];
+						}
+					}
+					for(var j=0;j<_month.length;j++){
+						if(t[1]==_month[j]){
+							t[1]=_month2[j];
+						}
+					}
+					t_string = t[0] + ', ' + t[1] + ' ' + t[2] + ', ' + t[3];
+					dateTitle=t_string;
+					T.html('#main', 'main', ct);
+					L.init();
+				}
+
+			})
+		}
+	</script>
+</html>

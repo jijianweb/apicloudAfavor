@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>编辑信用卡的win</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css"/>
+		<style type="text/css">
+			.update {
+				position: absolute;
+				right: 0px;
+				color: white;
+				font-size: 14px;
+				width: 58px;
+				padding-right: 18px;
+				background-image: url(../../../image/more/EDIT.png);
+				background-size: 18px 18px;
+				height: 47px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title" style="color: #FFFFFF;"></span>
+					<span class="update" onclick='click_compile_credit()' tapmode></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+	    function click_compile_credit(){
+    var pid = api.pageParam.frameParam.pid;
+		api.openWin({
+			name: 'credit_win',
+			url: api.wgtRootDir + '/html/window/win_back.html',
+			pageParam: {
+				frameName: 'credit_details',
+				frameUrl: api.wgtRootDir + '/html/more/credit_details.html',
+				frameParam: {
+					pid:pid
+				},	
+				headerTitle: LANGUAGE[$api.getStorage('lan')]['CreditCard']
+			},
+			slidBackEnabled:false,
+			reload: true,
+		});
+	    }
+
+
+		function close_win(winname) {
+			api.closeWin();
+		}
+
+		apiready = function() {
+			var header = $api.dom('#header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+	</script>
+
+</html>

@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>工作验证</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			.list {
+				color: #d3d5d7;
+			}
+			.tips {
+				padding: 26px 30px 30px 30px;
+				font-size: 14px;
+				line-height: 20px;
+				color: #474747;
+			}
+			.icon {
+				width: 17px;
+				height: 17px;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.no_icon {
+				background-image: url(../../image/post/round-done-button2.png);
+			}
+			.list .item {
+				border-top: 1px solid #e0e2e3;
+				padding: 11px 17px;
+			}
+			.list .item:last-child {
+				border-bottom: 1px solid #E0E2E3;
+			}
+			.item .name {
+				padding-left: 7px;
+				font-size: 14px;
+				color: #d3d5d7;
+			}
+			.right_icon {
+				background-image: url(../../image/verify/grey.png);
+				width: 8px;
+				height: 12px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			.item.active .name {
+				color: #474747;
+			}
+			.item.active .icon {
+				background-image: url(../../image/verify/round-done-button-1.png);
+			}
+			#footer {
+				position: absolute;
+				bottom: 16px;
+				width: 100%;
+				padding: 0 18px;
+			}
+			#footer>div {
+				background-color: #33BAB0;
+				color: #fff;
+				border-radius: 50px;
+				text-align: center;
+			}
+			.item input::-webkit-input-placeholder{
+	            color: #d3d5d7;
+	        }
+	        .item input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+	            color: #d3d5d7;
+	        }
+	        .item input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
+	            color: #d3d5d7;
+	        }
+	        .item input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
+	            color: #d3d5d7;
+	        }
+			.item input.date-picker {
+			    position: absolute;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			    top: 0;
+			    opacity: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="tips text-center" lan="If_this_is_your_first_time_to_be_a_helper_in_this_app_please_provide_the_required_documents_below">
+					If this is your first time to be a helper in this app, please provide the required documents below.
+				</div>
+				<div class="list">
+					<div class="item flex-box flex-h-ce" data-type="1" data-key="" data-imgurl="" onclick="openVerifyFrame(this, 'profile','file_photo')" tapmode>
+						<div class="icon no_icon"></div>
+						<div class="flex-1 name" lan="ProfilePhoto">Profile Photo</div>
+						<div class="right_icon"></div>
+					</div>
+					<div class="item flex-box flex-h-ce" style="height: 20px;"></div>
+					<div class="item flex-box flex-h-ce" data-type="2" data-key="" data-imgurl="" onclick="openVerifyFrame(this, 'work','work_photo')" tapmode>
+						<div class="icon no_icon"></div>
+						<div class="flex-1 name" lan="Proof_of_Work_Eligbility">Proof of Work Eligbility</div>
+						<div class="right_icon"></div>
+					</div>
+					<div class="item flex-box flex-h-ce" style="height: 20px;"></div>
+					<div class="item flex-box flex-h-ce" data-type="3" data-key="" data-imgurl="" onclick="openVerifyFrame(this, 'photo_id','photo_id')" tapmode>
+						<div class="icon no_icon"></div>
+						<div class="flex-1 name" lan="PhotoID">Photo ID</div>
+						<div class="right_icon"></div>
+					</div>
+                    <div class="item flex-box flex-h-ce" style="height: 20px;"></div>
+					<div class="item flex-box flex-h-ce" data-type="4" data-key="" style="position: relative; z-index: 5;">
+						<div class="icon no_icon"></div>
+						<div class="flex-1 name">Date of Birth</div>
+						<input class="date-picker" type="Date" placeholder="Date of Birth"/>
+						<div class="right_icon"></div>
+					</div>
+                    <div class="item flex-box flex-h-ce" style="height: 20px;"></div>
+					<div class="item flex-box flex-h-ce" data-type="5" data-key="">
+						<div class="icon no_icon"></div>
+						<input class="flex-1 name from-ip" placeholder="Mobile Number" type="number"/>
+						<div class="right_icon"></div>
+					</div>
+                    <div class="item flex-box flex-h-ce" style="height: 20px;"></div>
+					<div class="item flex-box flex-h-ce" data-type="6" data-key="" onclick="openVerifyFrame(this, 'Address','address_edit')" tapmode>
+						<div class="icon no_icon"></div>
+                        <div class="flex-1 name">Your Address</div>
+						<!-- <input class="flex-1 name from-ip" placeholder="" type="text"/> -->
+						<div class="right_icon"></div>
+					</div>
+                    <div class="item flex-box flex-h-ce" style="height: 20px;"></div>
+					<div class="item flex-box flex-h-ce" data-type="7" data-key="">
+						<div class="icon no_icon"></div>
+						<input class="flex-1 name from-ip" placeholder="Provide a Debilt Account" type="number"/>
+						<div class="right_icon"></div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="btn-afavor-1" onclick="checkWork()" tapmode>SAVE</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/javascript">
+		function openVerifyFrame(_this, name, furl) {
+			var _img = $api.attr(_this, 'data-imgurl');
+			Tool.openWin({
+				winName: name,
+				winUrl: 　api.wgtRootDir + '/html/window/win.html',
+				frameName: name,
+				title: $api.text(_this),
+				frameUrl: api.wgtRootDir + '/html/verify/' + furl + '.html',
+				frameParam: {
+					imagePath: _img
+				}
+			})
+		}
+
+		function checkBtn(){
+			var num = 0;
+			for(var i=1; i<8; i++){
+				$api.hasCls($api.dom('[data-type="'+i+'"]'), 'active') && num++;
+			}
+			num == 7 && $api.text($api.dom('.btn-afavor-1'), 'SUBMIT');
+			num != 7 && $api.text($api.dom('.btn-afavor-1'), 'SAVE');
+		}
+
+		function checkWork() {
+			var avatar = $api.attr($api.dom('[data-type="1"]'), 'data-key'),
+				workpic = $api.attr($api.dom('[data-type="2"]'), 'data-key'),
+				photoid = $api.attr($api.dom('[data-type="3"]'), 'data-key'),
+				birth = $api.attr($api.dom('[data-type="4"]'), 'data-key'),
+				mobile = $api.attr($api.dom('[data-type="5"]'), 'data-key'),
+				address = $api.attr($api.dom('[data-type="6"]'), 'data-key'),
+				account = $api.attr($api.dom('[data-type="7"]'), 'data-key');
+			if(!avatar || !workpic || !photoid || !birth || !mobile || !address || !account) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			// if(!workpic) {
+			// 	Tool.toast('Please complete all information.');
+			// 	return;
+			// }
+			// if(!photoid) {
+			// 	Tool.toast('Please complete all information.');
+			// 	return;
+			// }
+			ajax.get({
+				ctrl: 'favor',
+				fn: 'checkWork',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						avatar: avatar,
+						workpic: workpic,
+						photoid: photoid,
+						birth: birth,
+						mobile: mobile,
+						address: address,
+						account: account
+					}
+				},
+				hideLoading: true,
+				showError: true,
+				success: function(ct) {
+					//					api.openFrame({
+					//						name: 'is_success',
+					//						url: api.wgtRootDir + '/html/verify/thank_you.html',
+					//					});
+					api.openFrame({
+						name: 'thank_you2',
+						url: api.wgtRootDir + '/html/verify/thank_you.html',
+					});
+				}
+			});
+
+		}
+
+		apiready = function() {
+			L.init();
+			api.addEventListener({
+				name: 'file_upload'
+			}, function(ret) {
+				if(ret && ret.value) {
+					var value = ret.value;
+					if(value._key && value._type) {
+						$api.addCls($api.dom('[data-type="' + value._type + '"]'), 'active');
+						$api.attr($api.dom('[data-type="' + value._type + '"]'), "data-key", value._key);
+						$api.attr($api.dom('[data-type="' + value._type + '"]'), "data-imgurl", value.imagePath);
+						setTimeout(function() {
+							api.closeToWin({
+								name: api.winName
+							});
+						}, 300)
+					}
+				}
+			})
+
+            api.addEventListener({
+                name: 'helper_address'
+            }, function(data){
+                if(data && data.value && data.value.address){
+                    $api.addCls($api.dom('[data-type="6"]'), 'active');
+                    $api.attr($api.dom('[data-type="6"]'), 'data-key', 1);
+                    setTimeout(function(){
+                        api.closeToWin({
+                            name: api.winName
+                        });
+                    }, 300);
+                }
+            });
+
+			document.querySelector('.date-picker').onchange = function(){
+				var val = this.value;
+				if(val){
+					this.previousElementSibling.innerText = val;
+					$api.addCls($api.dom('[data-type="4"]'), 'active');
+				}else{
+					this.previousElementSibling.innerText = 'Date of Birth';
+					$api.removeCls($api.dom('[data-type="4"]'), 'active');
+				}
+				$api.attr($api.dom('[data-type="4"]'), "data-key", val);
+			}
+
+			document.querySelectorAll('.from-ip').forEach(function(v){
+				v.onblur = function(){
+					var t = this.parentNode.attributes['data-type'].value;
+					if(this.value){
+						$api.addCls($api.dom('[data-type="'+t+'"]'), 'active');
+					}else{
+						$api.removeCls($api.dom('[data-type="'+t+'"]'), 'active');
+					}
+					$api.attr($api.dom('[data-type="'+t+'"]'), "data-key", this.val);
+				}
+			});
+
+			setInterval(function(){
+				checkBtn();
+			}, 500);
+		}
+	</script>
+
+</html>

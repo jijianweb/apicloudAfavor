@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-任务详情-评论列表</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.img {
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: cover;
+					width: 55px;
+					height: 55px;
+					border-radius: 50%;
+					background-color: #CFDBD9;
+			}
+
+			.comment {
+				font-size: 14px;
+				padding:0 10px;
+				text-overflow: ellipsis;
+				word-break: break-word;
+				word-wrap:break-word;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				/*margin-top: -20px;*/
+			}
+
+			.comments {
+				border-bottom: 1px solid #E9E9E9;
+				padding:10px 10px 10px 15px;
+			}
+
+			.text {
+				font-size: 12px;
+				color: #CCCCCC;
+			}
+
+			.name {
+				font-size: 12px;
+				color: #83D3D0;
+				text-align: center;
+				width: 70px;
+			}
+			.foot {
+				background-color:#EAEBED;
+				width: 100%;
+				padding: 10px 0;
+				position: fixed;
+				bottom: 0px;
+			}
+			.check-emoji{
+					background-image: url(../../res/chatBox/face2.png);
+			}
+			.check-emoji,
+			.emoji {
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-color: white;
+				background-size: cover;
+			}
+			.emoji {
+				background-image: url(../../res/chatBox/face1.png);
+			}
+			.check-more{
+				background-image: url(../../res/chatBox/add2.png);
+			}
+			.check-more,
+			.more {
+				width: 25px;
+				height: 25px;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				margin-left: 8px;
+			}
+			.more{
+				background-image: url(../../res/chatBox/add1.png);
+			}
+
+			input[type="text"] {
+				border: 1px solid #DCDCDC;
+				background-color: white;
+				width: 100%;
+				height:30px;
+			}
+			.expression{
+				width: 25px;
+				height: 25px;
+			}
+			.img-reply{
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				width:30px;
+				height:30px;
+				border-radius: 50%;
+				background-color: #CFDBD9;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id="" class="comments hidden">
+					<div class="flex-box">
+						<div class=" flex-box-v flex-center-center text-overflow" style="width:60px;">
+							<div class="img  " style="background-image: url(../../image/inbox/photo-3.png);"></div>
+							<div class="name text-overflow" style="width: 60px">
+								Lucas FfghdhhLucas Ffghdhh
+							</div>
+						</div>
+						<div class="comment flex-1">
+							<div>
+								jfkasjflkvmokdvoindsvmd;lvnmjvodsmvo;jvodsmv;mvosd;mv;fjvod vomdvdjvmvfkasjflkvmokdvoindsvmd;lvnmjvodsmvo;jvodsmv;mvosd;mv;fjvod vomdvdjvmvfkasjflkvmokdvoindsvmd;lvnmjvodsmvo;jvodsmv;mvosd;mv;fjvod vomdvdjvmvfkasjflkvmokdvoindsvmd;lvnmjvodsmvo;jvodsmv;mvosd;mv;fjvod vomdvdjvmv
+							</div>
+						</div>
+						<div class=" flex-box-v">
+							<div class="flex-1 text  text-right">40s</div>
+							<div class="text  text-right" onclick="reply()" tapmode="">Reply</div>
+						</div>
+					</div>
+					<!--回复的列表-->
+					 <div class="flex-box flex-h-ce margin-top10">
+					 	<!--回复人的头像-->
+					 	<div class="" style="margin-left:69px;">
+					 		<div class="img-reply"></div>
+					 	</div>
+					 	<div class="comment flex-1" style="font-size: 12px;">
+					 		I think so......裕
+					 	</div>
+					 	<div class="text text-right" style="font-size: 12px;">50s</div>
+					 </div>
+					 <div class="flex-box  margin-top10">
+					 	<!--回复人的头像-->
+					 	<div class="" style="margin-left:69px;">
+					 		<div class="img-reply"></div>
+					 	</div>
+					 	<div class="comment flex-1" style="margin-top:5px;">
+					 		I think so......裕I think so......裕I think so......裕I think so......裕
+					 		I think so......裕I think so......裕I think so......裕I think so......裕
+					 		I think so......裕I think so......裕I think so......裕I think so......裕
+					 		I think so......裕I think so......裕I think so......裕I think so......裕
+					 		I think so......裕I think so......裕I think so......裕I think so......裕
+					 		I think so......裕I think so......裕I think so......裕I think so......裕
+					 	</div>
+					 	<div class="text text-right">50s</div>
+					 </div>
+					<!--end回复-->
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript " src="../../script/api.js "></script>
+	<script type="text/javascript " src="../../script/doT.min.js "></script>
+	<script type="text/javascript " src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js" ></script>
+	<script type="text/javascript" src="../../res/chatBox/emotion_url.js" ></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		{{? it instanceof Array && it.length != 0}}
+			{{~ it:value:index}}
+				<div id="comments-{{=value.id}}" class="comments" >
+					
+					<div class="flex-box">
+						<div class=" flex-box-v flex-center-center" style="width:60px;">
+							<div class="img " style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}})" tapmode=""  onclick="openPersonalDetail('{{=value.firstname}}','{{=value.lastname}}',{{=value.memberid}})"></div>
+							<div class=" name text-overflow">{{=value.firstname}} {{=value.lastname }}</div>
+						</div>
+						<div class="comment flex-1 flex-box flex-h-ce" onclick="reply(this,'{{= value.id}}','{{=value.firstname}} {{=value.lastname}}')" tapmode="">
+							<div>
+								{{=UIChatBox.transToEmotionUrl('../..',value.content)}}
+							</div>
+						</div>
+						<div class=" flex-box-v">
+							<div class="flex-1 text  text-right">{{=D.favors(value.createdtime)}}</div>
+							<div lan="Reply" class="text reply text-right" id="reply{{= value.id}}" onclick="reply(this,'{{= value.id}}','{{=value.firstname}} {{=value.lastname}}')" tapmode="">Reply</div>
+						</div>
+					</div>
+
+					<!--回复的列表-->
+					{{? value.reply instanceof Array && value.reply.length!=0}}
+						{{~ value.reply:vr:indexs}}
+							 <div class="flex-box  margin-top10 font-size12 replyCommon" id="replys-{{=vr.id}}">
+							 	<!--回复人的头像-->
+							 	<div class="" style="margin-left:69px;">
+							 		<div class="img-reply"  onclick="openPersonalDetail('{{=vr.firstname}}','{{=vr.lastname}}',{{=vr.memberid}})" tapmode=""   style="background-image: url({{=Tool.imageCompressByQiNiu(vr.avatar,0,200,200)}});"></div>
+							 	</div>
+							 	<div class="comment flex-1" style="font-size: 12px;margin-top:5px;">
+							 		<span style="color:#33BAB0;">{{=vr.firstname}} {{=vr.lastname}}:</span>
+							 		{{=UIChatBox.transToEmotionUrl('../..',vr.content)}}
+							 	</div>
+							 	<div class="text text-right" style="font-size: 12px;">{{=D.favors(vr.createdtime)}}</div>
+							 </div>
+						 {{~}}
+					{{?}}<!--end回复-->
+				</div>
+			{{~}}
+		{{??}}
+		<div class="null flex-box">
+			<div class="flex-1" lan="youHaveNoReceivedAnyCommentsYet">
+				You haven't received any comments yet.
+			</div>
+		</div>
+		{{?}}
+	</script>
+	<script type="text/template" template="comments">
+		<div class="comments" >
+			<div class="flex-box">
+				<div class=" flex-box-v flex-center-center" style="width:60px;">
+					<div class="img " style="background-image: url({{=Tool.imageCompressByQiNiu(it.avatar,0,200,200)}})" tapmode=""  onclick="openPersonalDetail('{{=it.firstname}}','{{=it.lastname}}',{{=it.memberid}})"></div>
+					<div class=" name text-overflow">{{=it.firstname}} {{=it.lastname }}</div>
+				</div>
+				<div class="comment flex-1 flex-box flex-h-ce">
+					<div>
+						{{=UIChatBox.transToEmotionUrl('../..',it.content)}}
+					</div>
+				</div>
+				<div class=" flex-box-v">
+					<div class="flex-1 text  text-right">{{=D.favors(it.createdtime)}}</div>
+					<div lan="Reply" class="text reply text-right" id="reply{{= it.id}}" onclick="reply(this,'{{= it.memberid}}','{{=it.firstname}} {{=it.lastname}}')" tapmode="">Reply</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" template="replyCommon">
+		<div class="flex-box  margin-top10 font-size12 replyCommon">
+		 	<!--回复人的头像-->
+		 	<div class="" style="margin-left:69px;">
+		 		<div class="img-reply"  onclick="openPersonalDetail('{{=it.firstname}}','{{=it.lastname}}',{{=it.memberid}})" tapmode=""   style="background-image: url({{=Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div>
+		 	</div>
+		 	<div class="comment flex-1" style="font-size: 12px;margin-top:5px;">
+		 		<span style="color:#33BAB0;">{{=it.firstname}} {{=it.lastname}}:</span>
+		 		{{=UIChatBox.transToEmotionUrl('../..',it.content)}}
+		 	</div>
+		 	<div class="text text-right" style="font-size: 12px;">{{=D.favors(it.createdtime)}}</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var favorid = "";
+		var commentid = '',
+		    replyid='';
+		apiready = function() {
+			var content = $api.val($api.domAll('#content'));
+			favorid = api.pageParam.favorid;
+			inputBlur();
+			init();
+			//下拉刷新
+			Refresh.init({
+				container: '#main',
+				ctrl: 'Favor',
+				fn: 'getComments',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					favorid: favorid
+				},
+				field: 'list',
+				template: 'main',
+				hideLoading: true,
+				success: function(list) {
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'Favor',
+				fn: 'getComments',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					favorid: favorid
+				},
+				showError: true,
+				field: 'list',
+				template: 'main',
+				success: function() {}
+			});
+			//关闭键盘
+			touch.on('#main', 'touchstart swipeing', function(event) {
+				api.sendEvent({
+					name: 'closeKey'
+				});
+			});
+			api.addEventListener({
+				name: 'sendComment'
+			}, function(ret) {
+//			alert(JSON.stringify(ret,null,2)+'，ret')
+				addComment(ret.value.content, ret.value.photo);
+				var createdtime=new Date().getTime();
+				if(ret && ret.value && ret.value.content) {
+					var _dom = $('#comlist' + ret.value.content + ' .comments div');
+					var _domcommon={
+						content:ret.value.content,
+					    avatar: ret.value.avatar,
+					    memberid:ret.value.id,
+					    firstname:ret.value.firstname,
+					    lastname:ret.value.lastname,
+					    createdtime:createdtime
+					}
+					var cdom = $api.dom('#comments-' + commentid);
+					
+					console.log('模板数据:---------' + JSON.stringify(_domcommon, null, 2));
+					if(ret.value.typecommont==2){
+						T.append('#comments-' + commentid, 'replyCommon', _domcommon);
+					}else{
+						T.prepend('#main', 'comments', _domcommon);
+					}
+					window.scrollTo(0, 0);
+				}
+			});
+		}
+
+	  function inputBar_move(){
+	  	if(commentid){
+	  		//回复别人评论，滚动到对应评论的位置
+	  		var commentDom = $api.dom('#comments-' + commentid),
+	  				pos = $api.offset(commentDom);
+	  		setTimeout(function(){
+	  			window.scrollTo(0, pos.t);
+	  		}, 0);
+	  	}
+	  }
+
+		function scrollToBottom() {
+			setTimeout(function() {
+				window.scrollTo(0, $api.dom('body').scrollHeight)
+			}, 100);
+		}
+	    //发送评论 type=2 ? commentid:''
+		function addComment(content,photo) {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'addComment',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						type: commentid == '' ? 1 : 2,
+						commentid: commentid,
+						content: content,
+						photo: photo.length > 0 ? photo : ''
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					var replyDoms = $api.domAll('.comments .reply');
+					[].forEach.call(replyDoms, function(dom, index){
+						$api.text(dom, 'Reply');
+					});					
+					commentid = '';
+					replyid=''
+					//刷新任务详情列表
+				}
+			});
+		}
+		function reply(_this, cid, name) {
+			var itemDom = $api.closest(_this, '.comments'),
+				_dom = $api.dom(itemDom, '.reply'),
+				replyDoms = $api.domAll('.comments .reply');
+			
+			[].forEach.call(replyDoms, function(dom, index){
+				if(dom != _this){
+					$api.text(dom, 'Reply');
+				}
+			});
+			
+			if($api.text(_this) == 'Cancel'){
+				commentid = '';
+				$api.text(_this, 'Reply');
+			}else{
+				commentid = cid;
+				$api.text(_dom, 'Cancel');
+			}
+			
+//			if($api.text(_this) == 'Reply') {
+//				if(commentid != '') {
+//					$api.text($api.dom('#reply' + commentid), 'Reply');
+//				}
+//				commentid = cid;
+//				$api.text($api.dom('#reply' + commentid), 'Cancel');
+//			} else {
+//				commentid = '';
+//				$api.text($api.dom('#reply' + cid), 'Reply');
+//			}
+			
+			inputBar_move();
+			api.sendEvent({
+				name: 'setReply_taskCommentList',
+				extra: {
+					commentid: commentid,
+					name: name
+				}
+			})
+		}
+	    function scrollToBottom() {
+			setTimeout(function() {
+				window.scrollTo(0, $api.dom('body').scrollHeight)
+			}, 100);
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'getComments',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					T.html('#main', 'main', ct.list);
+					L.init();
+				}
+			})
+		}
+
+		 //打开发布者或这帮者的个人详情
+		function openPersonalDetail(firstname, lastname, memberid){
+		    Tool.openWin({
+				winName: 'task_comment',
+				title: firstname + " " + lastname,
+				winUrl: api.wgtRootDir + '/html/window/win_back.html',
+				frameName: 'personage_help',
+				frameParam: {
+					otherid: memberid
+				},
+				frameUrl: api.wgtRootDir + '/html/more/'+(memberid==$api.getStorage(CONFIG.KEY.MEMBER_ID) ? 'personal_page' :'personage_help')+'.html'
+			})
+		}
+	</script>
+</html>

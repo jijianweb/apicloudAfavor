@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>win-有返回键的</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css" />
+
+		<style type="text/css">
+			.close {
+				display: inline-block;
+				position: absolute;
+				top: 4px;
+				left: 0;
+				width: 50px;
+				height: 40px;
+				font-size: 26px;
+				background: url(../../../image/back.png) no-repeat center;
+				background-size: 9px 16px;
+			}
+			
+			.head {
+				position: relative;
+				top: 0;
+				left: 0;
+				height: 48px;
+				background-color: #33BAB0;
+				width: 100%;
+				color: #fff;
+				z-index: 1;
+				font-size: 15px;
+			}
+			
+			.search {
+				width: 60%;
+				height: 35px;
+				border-bottom: 2px solid #FFFFFF;
+				margin: 0 auto;
+				margin-left: 15%;
+				line-height: 42px;
+			}
+			
+			.img {
+				height: 20px;
+				border-right: 1px solid #FFFFFF;
+				padding-right: 7px;
+				margin-top: 8px;
+			}
+			
+			.can {
+				position: absolute;
+				right: 10px;
+				top: 0px;
+				height: 40px;
+				line-height: 40px;
+				color: #FFFFFF;
+			}
+			
+			#header {
+				background-color: #33BAB0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="head" style="">
+					<span class="close" onclick="close_win()" tapmode=""></span>
+					<div class="search flex-box">
+						<div><img src="../../../image/more/search--grey.png" class="img"></div>
+						<div><input type="text"></input>
+						</div>
+					</div>
+					<div class="can">Canada</div>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+		function close_win(winname) {
+			switch(api.pageParam.frameName) {
+				case 'black_list':
+					api.sendEvent({
+						name: 'unblack'
+					});
+					break;
+				case 'live_tips_list':
+					api.sendEvent({
+						name: 'unreminds'
+					});
+					break;
+				case 'gagList':
+					api.sendEvent({
+						name: 'ungag'
+					});
+					break;
+				default:
+					api.closeWin();
+					return;
+			}
+		}
+
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+	</script>
+
+</html>

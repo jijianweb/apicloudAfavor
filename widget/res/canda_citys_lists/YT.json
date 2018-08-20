@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "497",
+		"city": "Whitehorse",
+		"fr": "Whitehorse",
+		"parentid": "496",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

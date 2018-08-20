@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/ct.css"/>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-zhu">
+				<button class="btn btn-info btn-lg" onclick="change()" tapmode>
+					表情转换
+				</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript">
+		function change(){
+			api.readFile({
+				path: 'widget://res/chatBox/emotion.json'
+			}, function(ret, err) {
+				if(ret.status) {
+					var emotionArray = JSON.parse(ret.data),
+						emotion = {};
+
+					for(var idx in emotionArray) {
+						var emotionItem = emotionArray[idx];
+
+						var emotionText = emotionItem["text"];
+						var emotionUrl = "/res/chatBox/emotion/" + emotionItem["name"] + ".png";
+
+						emotion[emotionText] = emotionUrl;
+					}
+
+					console.log(JSON.stringify(emotion, null, 2))
+
+				}
+			});			
+		}
+		apiready = function(){
+			
+		}
+	</script>
+</html>

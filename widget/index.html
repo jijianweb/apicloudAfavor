@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,initial-scale=1.0,width=device-width" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>Hello APP</title>
+		<link rel="stylesheet" type="text/css" href="./css/api.css" />
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+			}
+
+			#wrap {
+				height: 100%;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-flex-flow: column;
+			}
+
+			#header {
+				text-align: center;
+				background-color: #81a9c3;
+				color: #fff;
+				width: 100%;
+			}
+
+			#header h1 {
+				font-size: 20px;
+				height: 44px;
+				line-height: 44px;
+				margin: 0em;
+				color: #fff;
+			}
+
+			#main {
+				-webkit-box-flex: 1;
+				-webkit-flex: 1;
+			}
+
+			#footer {
+				height: 30px;
+				line-height: 30px;
+				background-color: #81a9c3;
+				width: 100%;
+				text-align: center;
+			}
+
+			#footer h5 {
+				color: white;
+			}
+
+			.con {
+				font-size: 28px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+
+	</body>
+	<script type="text/javascript" src="./script/api.js"></script>
+	<script type="text/javascript" src="script/common.js"></script>
+	<script type="text/javascript">
+		//服务器运行中
+		function getServiceStatusSucc() {
+			if($api.getStorage(CONFIG.KEY.APP_VERSION) != api.appVersion) {//
+				$api.setStorage(CONFIG.KEY.APP_VERSION, api.appVersion);
+//				$api.rmStorage(CONFIG.KEY.FIRST_OPEN);//是否第一次打开app
+				$api.rmStorage(CONFIG.KEY.FIRST_OPEN_ROOKIE);//是否第一次打开新人宝典
+			}
+
+			//静默更新
+			Tool.smartUpdateFinish();
+			//设置退出机制
+			Tool.exitApp();
+
+			init();
+		}
+
+		//获取用户语言设定、币种设定、系统未读消息
+		function getSetting(){
+			ajax.get({
+				ctrl: 'more',
+				fn: 'index',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					$api.setStorage(CONFIG.KEY.LANGUAGE, ct.language);
+					$api.setStorage('systemUnreadCount', ct.notice);
+					if(ct.currency == 'usd'){
+						$api.setStorage(CONFIG.KEY.CURRENCY, 2);
+					}else{
+						$api.setStorage(CONFIG.KEY.CURRENCY, 1);
+					}
+//
+					if(ct.language == 1){
+						$api.setStorage('lan', 'english');
+					}else{
+						$api.setStorage('lan', 'french');
+					}
+
+				}
+			});
+		}
+
+		//初始化
+		function init() {
+//		    $api.rmStorage(CONFIG.KEY.MEMBER_ID)
+			if($api.getStorage(CONFIG.KEY.MEMBER_ID) && $api.getStorage(CONFIG.KEY.TOKEN)){
+				Tool.initApp();
+				getSetting();
+//				window.setTimeout(openLogin, 300);
+			}else{
+				openLogin();
+			}
+		}
+		function openLogin() {
+//			Debug.alt(11)
+			api.openFrame({
+			    name: 'login',
+			    url: api.wgtRootDir + '/html/login.html',
+//				url: api.wgtRootDir + '/test/google_plus.html',
+			    bounces : false
+			});
+		}
+		apiready = function() {
+			var LogMoudle = api.require('logCrash');
+			LogMoudle.listenCrash();
+			var lan = $api.getStorage('lan');
+
+			$api.rmStorage('isOpenTalkWithPage');
+			if(!lan){
+				$api.setStorage('lan', 'english');
+				$api.setStorage('language', '1');
+			}
+
+			//去除城市信息
+			$api.rmStorage('currentLocationInfo');
+
+			api.addEventListener({
+			    name:'appintent'
+			},function(ret, err){
+			  var appParam = ret.appParam;
+
+			 if(!appParam || !appParam.fid){
+			 	return;
+			 }
+
+			  //判断用户是否已登录
+				if($api.getStorage(CONFIG.KEY.MEMBER_ID) && $api.getStorage(CONFIG.KEY.TOKEN)){
+					//用户已登录
+					api.openWin({
+						name: 'task_detail',
+						url: api.wgtRootDir + '/html/window/share.html',
+						pageParam: {
+				    	frameName: 'my_task_detail',
+							frameUrl: api.wgtRootDir + '/html/my_favors/my_task_detail.html',
+							frameParam: {
+								favorid: appParam.fid
+							},
+							headerTitle: 'Favor Details',
+						},
+						reload: true
+				  });
+				}
+			});
+
+			//获取当前坐标
+			var GoogleMap = api.require('googleMap');
+			GoogleMap.getLocation({
+				autoStop: true
+			}, function(ret){
+				console.log('app入口获取用户位置信息:----' + JSON.stringify(ret));
+				if(ret.status){
+				  $api.setStorage(CONFIG.KEY.LON, ret.lon);
+		    	  $api.setStorage(CONFIG.KEY.LAT, ret.lat);
+				}
+			});
+			//打开数据库
+			DB.init({
+				success: function() {
+					init();
+					return;
+					if(api.connectionType != 'none') { //判断当前网络连接类型，如 2g、3g、4g、wifi 等，字符串类型
+						//检测服务器状态
+						//lock 1是开启2是关闭
+						ajax.get({
+							ctrl: 'common',
+							fn: 'maintain',
+							hideLoading: true,
+							showError: true,
+							success: function(ct) {
+								if(ct.status == '1') {
+									//服务器处于维修状态
+									api.alert({
+										title: '温馨提示',
+										msg: ct.maintain
+									},function(ret, err) {
+										api.closeWidget({
+											silent: true
+										});
+									});
+								}else {
+									getServiceStatusSucc();
+								}
+							}
+						});
+					}
+				}
+			});
+
+
+			//      $api.fixStatusBar(header);
+			//      //var headerH = $api.offset(header).h;
+			//		//footer高度为css样式中声明的30px
+			//		var footerH = 30;
+			//		//frame的高度为当前window高度减去header和footer的高度
+			//		var frameH = api.winHeight - headerH - footerH;
+//			console.log($api.getStorage(CONFIG.KEY.FIRST_OPEN))
+
+		}
+	</script>
+
+</html>

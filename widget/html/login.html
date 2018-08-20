@@ -1,0 +1,1018 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+	<meta name="format-detection" content="telephone=no">
+	<title>登录</title>
+	<link rel="stylesheet" type="text/css" href="../css/ct.css" />
+	<link rel="stylesheet" type="text/css" href="../css/api.css" />
+	<style type="text/css">
+		html,
+		body,
+		#header {
+			background-color: #33bab0;
+		}
+
+		body {
+			height: 100%;
+			width: 100%;
+		}
+
+		#header {}
+
+		.logo-box {
+			width: 100%;
+			padding-top: 50px;
+		}
+
+		#main {}
+
+		.logo {
+			height: 150px;
+			width: auto;
+		}
+
+		.item:nth-child(1) {
+			margin-top: 20px;
+			padding: 0 18px;
+		}
+
+		.item {
+			padding: 0 18px;
+			margin-top: 10px;
+		}
+
+		.item input {
+			color: #989898;
+			width: 100%;
+			font-size: 15px;
+			padding: 15px 0;
+		}
+
+		.pa-input {
+			width: 100%;
+			border-bottom: 1px solid #D0E1FD;
+			padding: 0 14px;
+		}
+
+		.email {
+			/*height: 15px;*/
+			width: 24px;
+			/*background-image: url(../image/email.png);*/
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			margin-right: 13px;
+		}
+
+		.clock {
+			height: 22px;
+			width: 18px;
+			/*background-image: url(../image/clock.png);*/
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			margin-right: 17px;
+		}
+
+		.login-btn {
+			padding: 14px 25px 0 25px;
+		}
+
+		.sign-in,
+		.sign {
+			background-color: #77C8C2;
+			padding: 12px 35px;
+			border-radius: 10px;
+			color: #FFFFFF;
+		}
+
+		.text:-ms-input-placeholder,
+		.text-1:-ms-input-placeholder {
+			color: #D0F2F1;
+		}
+
+		.text::-webkit-input-placeholder,
+		.text-1::-webkit-input-placeholder {
+			color: #D0F2F1;
+		}
+
+		.tab {
+			padding-top: 20px;
+		}
+
+		.tab>div {
+			width: 100%;
+			position: relative;
+		}
+
+		.login {
+			font-size: 20px;
+		}
+
+		.login,
+		.register {
+			color: #D0F2F1;
+		}
+
+		.down,
+		.sort-down {
+			width: 12px;
+			margin-left: -7px;
+			position: absolute;
+			left: 50%;
+			bottom: -5px;
+		}
+
+		.sort-down {
+			margin-left: -5px;
+			display: none;
+		}
+
+		/*.ct,
+			.ct1 {
+				height: 390px;
+			}*/
+
+		.copyright {
+			font-size: 11px;
+			text-align: center;
+			color: #fff;
+			position: relative;
+			/*top: 0;*/
+			width: 100%;
+		}
+
+		.forget-password {
+			margin: 6px 20px;
+			color: #FFFFFF;
+			font-size: 12px;
+		}
+
+		.contact {
+			padding-top: 15px;
+		}
+
+		.wordWrap,
+		.wordWrap-1 {
+			margin: 21px 0px 14px 0px;
+			text-align: center;
+			color: #fff;
+			font-size: 12px;
+			position: relative;
+			/*padding-top: 10px;*/
+		}
+
+		.wordWrap-1 {
+			margin-top: 0px;
+		}
+
+		.wordWrap::before,
+		.wordWrap-1::before {
+			content: '';
+			width: 20%;
+			height: 1px;
+			background-color: #fff;
+			position: relative;
+			display: inline-block;
+			left: -5px;
+			top: -4px;
+			/*padding-left: 10px;*/
+		}
+
+		.wordWrap::after,
+		.wordWrap-1::after {
+			content: '';
+			width: 20%;
+			height: 1px;
+			background-color: #fff;
+			position: relative;
+			display: inline-block;
+			right: -5px;
+			top: -4px;
+			/*padding-right: 10px;*/
+		}
+
+
+
+		.facebook {
+			height: 50px;
+			width: 50px;
+			background-image: url(../image/facebook-logo-in-circular-button-outlined-social-symbol.png);
+			background-position: center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			margin-right: 14px;
+		}
+
+		.goole {
+			height: 50px;
+			width: 50px;
+			background-image: url(../image/google-plus-circular-button.png);
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.eye {
+			height: 16px;
+			width: 28px;
+			background-image: url(../image/close1.png);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.show {
+			height: 16px;
+			width: 28px;
+			background-image: url(../image/open.png);
+			background-repeat: no-repeat;
+		}
+
+		.eye,
+		.show {
+			margin-right: 10px;
+			background-size: 20px;
+			background-position: right center;
+		}
+
+		.re {
+			display: none;
+		}
+
+		.block {
+			display: block;
+		}
+
+		.icon {
+			/*padding-bottom: 30px;*/
+		}
+
+		input[type=text],
+		input[type=password] {
+			color: #D0F2F1;
+		}
+
+		#footer {
+			/*position: absolute;*/
+			padding-bottom: 10px;
+			bottom: 10px;
+			width: 100%;
+		}
+
+		@media (max-height:604px) and (max-width:360px) {
+			/*华为H60-L01 有底部虚拟导航栏*/
+			.contact {
+				padding-top: 5px;
+			}
+			.wordWrap {
+				margin: 10px 0px 7px;
+			}
+			.logo-box {
+				padding-top: 25px;
+			}
+		}
+
+		@media (max-height:592px) and (max-width:360px) {
+			/*华为 荣耀 5x 有底部虚拟导航栏*/
+			.contact {
+				padding-top: 5px;
+			}
+			.wordWrap {
+				margin: 10px 0px 7px;
+			}
+			.logo-box {
+				padding-top: 25px;
+			}
+		}
+
+		@media (device-height:640px) and (device-width:360px) {
+			/*华为 荣耀 5x 无底部虚拟导航栏*/
+		}
+	</style>
+</head>
+
+<body>
+	<div id="wrap">
+		<div class="header" style="height: 20px; min-height: 20px;"></div>
+		<div id="main" class="">
+			<div class="logo-box flex-box flex-center-center">
+				<img class="logo" src="../image/white-logo.png" alt="Logo" />
+			</div>
+			<div class="tab flex-box flex-h-zhu  text-center">
+				<div class="flex-box-v" onclick="change()" tapmode="">
+					<div class="login" lan="LOGIN">LOGIN</div>
+					<div><img src="../image/sort-down.png" class="down" /></div>
+				</div>
+				<div class="flex-box-v" onclick="check()" tapmode="">
+					<div class="register" lan="SIGN_UP">SIGN UP</div>
+					<div><img src="../image/sort-down.png" class="sort-down" /></div>
+				</div>
+			</div>
+			<div class="ct">
+				<div class="item flex-box flex-h-ce">
+					<div class="pa-input flex-box flex-v-ce">
+						<div class="email"><img src="../image/email.png" /></div>
+						<input type="text" lan="Email" class="text" value="" name="tel" placeholder="Email" />
+					</div>
+				</div>
+				<div class="item flex-box flex-h-ce">
+					<div class="pa-input flex-box flex-v-ce">
+						<div class="clock"><img src="../image/clock.png" /></div>
+						<input type="password" lan="Password" class="flex-1 text tel" id="box" value="" name="pwd" placeholder="Password" oninput="onChange(this,1)" tapmode="" />
+						<input type="text" lan="Password" class="text-1 flex-1 re pwd" name="pwd" value="" placeholder="Password" oninput="onChange(this,2)" tapmode="" />
+						<div class="eye" tapmode="" onclick="show()"></div>
+						<div class="show re" tapmode="" onclick="hi()"></div>
+
+					</div>
+				</div>
+				<div class="login-btn text-center">
+					<div class="sign-in" lan="SIGN_IN" tapmode="" onclick="login()">SIGN IN</div>
+				</div>
+				<div class="forget-password text-right forgot" lan="ForgotPassword" tapmode="" onclick="forget_password()">Forgot Password?</div>
+				<!--<div class="right"></div>-->
+				<!--<div class="wordWrap flex-1" lan="LoginWith">Login With</div>-->
+				<!--<div class="left"></div>-->
+			</div>
+
+			<div class="ct1 re">
+				<div class="item flex-box flex-h-ce">
+					<div class="pa-input flex-box flex-v-ce">
+						<div class="email"><img src="../image/email.png" /></div>
+						<input type="text" lan="Email" class="text" name="email" placeholder="Email" />
+					</div>
+				</div>
+				<div class="item flex-box flex-h-ce">
+					<div class="pa-input flex-box flex-v-ce">
+						<div class="clock"><img src="../image/clock.png" /></div>
+						<input type="password" lan="Password" class="text flex-1" name="password" placeholder="Password" />
+					</div>
+				</div>
+				<div class="item flex-box flex-h-ce">
+					<div class="pa-input flex-box flex-v-ce">
+						<div class="clock"><img src="../image/clock.png" /></div>
+						<input type="password" lan="ReEnterPassword" class="text flex-1" name="password1" placeholder="Re-enter Password" />
+					</div>
+				</div>
+				<div class="login-btn text-center">
+					<div class="sign" lan="SIGN_UP" tapmode="" onclick="openTheme()">SIGN UP</div>
+				</div>
+				<div class="c_right"></div>
+			</div>
+			<div class="contact">
+				<div class="wordWrap flex-1" lan="LoginWith">Login With</div>
+				<div class="wordWrap-1 re" lan="SignupWith">Sign up With</div>
+				<div class="icon flex-box flex-center-center">
+					<!-- facebook登陆 -->
+					<!-- <div class="facebook" tapmode="" onclick="facebook_login()"></div> -->
+					<!-- Google 登陆 -->
+					<div class="goole" tapmode="" onclick="google_login()"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="footer">
+			<div class="copyright" lan="loginPolicy">
+				By clicking Sign up you agree to our <span onclick="openProtocol(1)" tapmode>Terms of Conditions</span> and <span onclick="openProtocol(2)" tapmode>Privacy Policy</span>.
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript" src="../script/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="../script/crypto-js.js"></script>
+<script type="text/javascript" src="../script/sweetalert.min.js"></script>
+<script type="text/javascript" src="../res/language.js"></script>
+<script type="text/template" template="wrap">
+	<div class="header" style="height: 20px; min-height: 20px;"></div>
+	<div id="main" class="">
+		<div class="logo-box flex-box flex-center-center" style=" {{? api.screenWidth == 640 && api.screenHeight == 1136 }} padding-top: 20px; {{?? api.screenWidth == 1242 && api.screenHeight == 2208 }} padding-top: 86px; {{?}} ">
+			<img class="logo" style=" {{? api.screenWidth == 640 && api.screenHeight == 1136 }} height: 110px; {{?? api.screenWidth == 1242 && api.screenHeight == 2208 }} height: 160px; {{?}} " src="../image/white-logo.png" alt="Logo" />
+		</div>
+		<div class="tab flex-box flex-h-zhu  text-center" style=" {{? api.screenWidth == 1242 && api.screenHeight == 2208 }} padding-top: 30px; {{?}} ">
+			<div class="flex-box-v" onclick="change()" tapmode="">
+				<div class="login" lan="LOGIN">LOGIN</div>
+				<div><img src="../image/sort-down.png" class="down" /></div>
+			</div>
+			<div class="flex-box-v" onclick="check()" tapmode="">
+				<div class="register" lan="SIGN_UP">SIGN UP</div>
+				<div><img src="../image/sort-down.png" class="sort-down" /></div>
+			</div>
+		</div>
+		<div class="ct">
+			<div class="item flex-box flex-h-ce">
+				<div class="pa-input flex-box flex-v-ce">
+					<div class="email"><img src="../image/email.png" /></div>
+					<input type="text" lan="Email" class="text" value="" name="tel" placeholder="Email" />
+				</div>
+			</div>
+			<div class="item flex-box flex-h-ce">
+				<div class="pa-input flex-box flex-v-ce">
+					<div class="clock"><img src="../image/clock.png" /></div>
+					<input type="password" lan="Password" class="flex-1 text tel" id="box" value="" name="pwd" placeholder="Password" oninput="onChange(this,1)" tapmode="" />
+					<input type="text" lan="Password" class="text-1 flex-1 re pwd" name="pwd" value="" placeholder="Password" oninput="onChange(this,2)" tapmode="" />
+					<div class="eye" tapmode="" onclick="show()"></div>
+					<div class="show re" tapmode="" onclick="hi()"></div>
+
+				</div>
+			</div>
+			<div class="login-btn text-center">
+				<div class="sign-in" lan="SIGN_IN" tapmode="" onclick="login()">SIGN IN</div>
+			</div>
+			<div class="forget-password text-right forgot" lan="ForgotPassword" tapmode="" onclick="forget_password()">Forgot Password?</div>
+		</div>
+
+		<div class="ct1 re">
+			<div class="item flex-box flex-h-ce">
+				<div class="pa-input flex-box flex-v-ce">
+					<div class="email"><img src="../image/email.png" /></div>
+					<input type="text" lan="Email" class="text" name="email" placeholder="Email" />
+				</div>
+			</div>
+			<div class="item flex-box flex-h-ce">
+				<div class="pa-input flex-box flex-v-ce">
+					<div class="clock"><img src="../image/clock.png" /></div>
+					<input type="password" lan="Password" class="text flex-1" name="password" placeholder="Password" />
+				</div>
+			</div>
+			<div class="item flex-box flex-h-ce">
+				<div class="pa-input flex-box flex-v-ce">
+					<div class="clock"><img src="../image/clock.png" /></div>
+					<input type="password" lan="ReEnterPassword" class="text flex-1" name="password1" placeholder="Re-enter Password" />
+				</div>
+			</div>
+			<div class="login-btn text-center">
+				<div class="sign" lan="SIGN_UP" tapmode="" onclick="openTheme()">SIGN UP</div>
+			</div>
+			<div class="c_right"></div>
+
+		</div>
+		<div class="contact">
+			<div class="wordWrap flex-1" lan="LoginWith" style=" {{? api.screenWidth == 640 && api.screenHeight == 1136 }} margin-top: 0px; {{?? api.screenWidth == 1242 && api.screenHeight == 2208 }} margin-top: 38px; {{?}} ">Login With</div>
+			<div class="wordWrap-1 re" lan="SignupWith" style=" {{? api.screenWidth == 1242 && api.screenHeight == 2208 }} margin-top: 10px; {{?}} ">Sign up With</div>
+			<div class="icon flex-box flex-center-center">
+				<div class="facebook" tapmode="" onclick="facebook_login()"></div>
+				<div class="goole" tapmode="" onclick="google_login()"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer" style=" {{? api.screenWidth == 1242 && api.screenHeight == 2208 }} bottom: 8px; {{?}} ">
+		<div class="copyright" style=" {{? api.screenWidth == 640 && api.screenHeight == 1136 }} font-size: 9px; {{?}} ">
+			By clicking Sign up you agree to our <span onclick="openProtocol(1)">Terms of Conditions</span> and <span onclick="openProtocol(2)">Privacy Policy</span>.
+		</div>
+	</div>
+</script>
+<script type="text/javascript">
+	//获取输入的密码
+	function onChange(_this, type) {
+		var value = $api.val(_this);
+		if (type == 1) {
+			$api.val($api.dom('.text-1'), value);
+		} else {
+			$api.val($api.dom('#box'), value);
+		}
+	}
+
+	apiready = function() {
+		//			Debug.alt(api.winHeight);
+		//			var header = $api.byId('header');
+		//			$api.fixStatusBar(header);
+		// $api.rmStorage(CONFIG.KEY.USER_NAME);
+
+		var initBodyHeight = document.body.clientHeight; //页面可视高度
+
+		T.html('#wrap', 'wrap');
+
+		L.init();
+		//          $api.setStorage(CONFIG.KEY.FIRSTNAMEANDLASTNAME,ct.username);
+		if ($api.getStorage(CONFIG.KEY.USER_NAME)) {
+			$api.val($api.dom('[name=tel]'), $api.getStorage(CONFIG.KEY.USER_NAME));
+		}
+
+		//			console.log(CryptoJS.MD5($api.trimAll($api.val($api.dom('[name=pwd]')))).toString(CryptoJS.enc.Hex));
+
+		window.onresize = function() {
+			//				Tool.toast(api.frameWidth + ':' + api.frameHeight + '/' + api.screenWidth + ':' + api.screenHeight);
+			var footer = $api.dom("#footer");
+			//				Tool.toast(api.frameHeight + '<=' + (initBodyHeight - 48))
+			if (api.frameHeight <= initBodyHeight - 48) {
+				$api.addCls(footer, 'hidden');
+			} else {
+				//					Tool.toast('显示')
+				$api.removeCls(footer, 'hidden');
+			}
+		}
+
+		// document.querySelector('.protocol-term').onClick = function(){
+		// 	openProtocol(1);
+		// }
+
+	}
+
+	//切换至注册
+	function check() {
+		$api.addCls($api.dom(".sort-down"), 'block');
+		$api.addCls($api.dom(".ct1"), 'block');
+		$api.addCls($api.dom(".wordWrap-1"), 'block');
+		$api.addCls($api.dom(".down"), 're');
+		$api.addCls($api.dom(".ct"), 're');
+		$api.addCls($api.dom(".wordWrap"), 're');
+		$api.css($api.dom('.register'), 'font-size:20px');
+		$api.css($api.dom('.login'), 'font-size:16px');
+	}
+
+	//切换至登录
+	function change() {
+		$api.removeCls($api.dom(".sort-down"), 'block');
+		$api.removeCls($api.dom(".ct1"), 'block');
+		$api.removeCls($api.dom(".wordWrap-1"), 'block');
+		$api.removeCls($api.dom(".down"), 're');
+		$api.removeCls($api.dom(".ct"), 're');
+		$api.removeCls($api.dom(".wordWrap"), 're');
+		$api.css($api.dom('.register'), 'font-size:16px');
+		$api.css($api.dom('.login'), 'font-size:20px');
+	}
+
+	//隐藏密码
+	function hi() {
+		$api.removeCls($api.dom(".show"), 'block');
+		$api.removeCls($api.dom(".eye"), 're');
+		$api.removeCls($api.dom('#box'), 're');
+		$api.removeCls($api.dom('.text-1'), 'block');
+	}
+
+	//显示密码
+	function show() {
+		$api.addCls($api.dom(".show"), 'block');
+		$api.addCls($api.dom(".eye"), 're');
+		$api.addCls($api.dom('#box'), 're');
+		$api.addCls($api.dom('.text-1'), 'block');
+	}
+
+	//获取用户语言设定、币种设定、系统未读消息
+	function getSetting(cb) {
+		ajax.get({
+			ctrl: 'more',
+			fn: 'index',
+			data: {
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN)
+				}
+			},
+			hideLoading: true,
+			success: function(ct) {
+				$api.setStorage(CONFIG.KEY.LANGUAGE, ct.language);
+				$api.setStorage('systemUnreadCount', ct.notice);
+				if (ct.currency == 'usd') {
+					//美元
+					$api.setStorage(CONFIG.KEY.CURRENCY, 2);
+				} else {
+					//加币
+					$api.setStorage(CONFIG.KEY.CURRENCY, 1);
+				}
+				if (ct.language == 1) {
+					$api.setStorage('lan', 'english');
+				} else {
+					$api.setStorage('lan', 'french');
+				}
+				cb();
+				setTimeout(function() {
+					L.init();
+				}, 2000);
+			}
+		});
+	}
+
+	function openProtocol(type){
+		// Tool.toast(api.wgtRootDir + '/html/window/reset_password.html');
+		Tool.openWin({
+			winName: 'protocol',
+			winUrl: api.wgtRootDir + '/html/window/reset_password.html',
+			frameName: parseInt(type) == 1 ? 'Terms & Conditions' : 'Privacy Policy',
+			frameUrl: api.wgtRootDir + '/html/more/' + (parseInt(type) == 1 ? 'terms_conditions.html' : 'privacy_policy.html')
+		});
+		// if(parseInt(type) == 1){
+		// 	api.openWin({
+		// 		name: 'Terms & Conditions',
+		// 		url: api.wgtRootDir + '/html/more/terms_conditions.html',
+		// 		// pageParam: {
+		// 		// 	headerTitle: 'Terms & Conditions',
+		// 		// 	bgColor: '#fff',
+		// 		// 	frameName: 'protocol',
+		// 		// 	frameUrl: api.wgtRootDir + '/html/more/term_policy.html'
+		// 		// },
+		// 		bgColor: '#fff',
+		// 		delay: api.systemType == 'android' ? 300 : 0
+		// 	});
+		// }else if(parseInt(type) == 2){
+		// 	api.openWin({
+		// 		name: 'Privacy Policy',
+		// 		url: api.wgtRootDir + '/html/more/privacy_policy.html',
+		// 		// pageParam: {
+		// 		// 	headerTitle: 'Privacy Policy',
+		// 		// 	bgColor: '#fff',
+		// 		// 	frameName: 'protocol',
+		// 		// 	frameUrl: api.wgtRootDir + '/html/more/privacy_policy.html'
+		// 		// },
+		// 		bgColor: '#fff',
+		// 		delay: api.systemType == 'android' ? 300 : 0
+		// 	});
+		// }
+	}
+
+	function logout() {
+		/*
+		 * 退出第三方登录
+		 */
+		var google = api.require('google'),
+			facebook = api.require('facebook');
+
+		//			api.showProgress({
+		//				title: 'logout...',
+		//				text: 'Please wait...'
+		//			});
+
+		google.hasAuth(function(ret, err) {
+			//				alert(JSON.stringify(ret, null, 2))
+			if (ret.status) {
+				//退出Google登录
+				google.signOut();
+			} else {
+				//监测facebook是否登录
+				facebook.getCurrentToken(function(ret) {
+					//			    	alert(JSON.stringify(ret, null, 2))
+					if (ret.isLogin) {
+						//退出facebook登录
+						facebook.logout();
+					}
+				});
+			}
+		});
+	}
+
+	//login
+	function login() {
+		var tel = $api.trimAll($api.val($api.dom('[name=tel]'))),
+			pwd = $api.trimAll($api.val($api.dom('[name=pwd]')));
+		inputBlur(); //将键盘收下来
+		if (!Former.validateEmail(tel)) {
+			Tool.toast("Please enter your account's email address");
+			return;
+		}
+		if (!Former.validatePassword(pwd)) {
+			//				Tool.toast("Please enter your account's password");
+			return;
+		}
+		ajax.get({
+			ctrl: 'Common',
+			fn: 'login',
+			data: {
+				values: {
+					email: tel,
+					password: CryptoJS.MD5(pwd).toString(CryptoJS.enc.Hex),
+				}
+			},
+			showError: true, //是否在出现错误时，输出错误信息
+			showProgress: { //获取数据中，显示的进度提示
+				title: 'login...'
+			},
+			_404: function(msg) {
+				//					Tool.toast("The email address or password you entered is incorrect. Please try again.");
+				Tool.toast(msg);
+			},
+			hideLoading: true,
+			success: function(ct) {
+				$api.setStorage(CONFIG.KEY.MEMBER_ID, ct.id);
+				$api.setStorage(CONFIG.KEY.TOKEN, ct.token);
+				$api.setStorage(CONFIG.KEY.MEMBER_INFO, ct);
+				$api.setStorage(CONFIG.KEY.USER_NAME, tel);
+				$api.setStorage(CONFIG.KEY.FIRSTNAMEANDLASTNAME, ct.username);
+
+				//获取当前用户语言设置
+				getSetting(function() {
+					setTimeout(function() {
+						if (!$api.getStorage(CONFIG.KEY.FIRST_OPEN)) {
+							api.openFrame({
+								name: 'launch',
+								url: api.wgtRootDir + '/html/launch.html',
+								bounces: false
+							});
+						} else {
+							Tool.initApp();
+						}
+					}, 300);
+				});
+			}
+		});
+	}
+
+	//接收验证码
+	function openTheme() {
+		var tel = $api.trimAll($api.val($api.dom('[name=email]'))),
+			pwd = $api.trimAll($api.val($api.dom('[name=password]'))),
+			pwd1 = $api.trimAll($api.val($api.dom('[name=password1]')));
+		inputBlur(); //将键盘收下来
+		if (!Former.validateEmail(tel)) {
+			Tool.toast("Please enter your account's email address");
+			return;
+		}
+		if (!Former.validatePassword(pwd)) {
+			//				Tool.toast("Please enter your account's password");
+			return;
+		}
+		if (!Former.validatePassword(pwd1)) {
+			//				Tool.toast("Please enter your account's password");
+			return;
+		}
+		if (pwd != pwd1) {
+			Tool.toast('Passwords do not match');
+			return;
+		}
+		ajax.get({
+			ctrl: 'Common',
+			fn: 'temporaryReg',
+			data: {
+				values: {
+					email: tel,
+					password: CryptoJS.MD5(pwd).toString(CryptoJS.enc.Hex),
+					password1: CryptoJS.MD5(pwd1).toString(CryptoJS.enc.Hex)
+				}
+			},
+			showError: true, //是否在出现错误时，输出错误信息
+			showProgress: true,
+			hideLoading: true,
+			success: function(ct) {
+				api.openWin({
+					name: 'confirm-email',
+					url: api.wgtRootDir + '/html/window/win_back.html',
+					pageParam: {
+						headerTitle: 'Confirm Email',
+						frameParam: {
+							email: tel,
+							cid: ct.id,
+							password: CryptoJS.MD5(pwd).toString(CryptoJS.enc.Hex)
+						},
+						frameName: 'confirm-email',
+						bgColor: '#33bab0',
+						frameUrl: api.wgtRootDir + '/html/confirm-email.html'
+					},
+					delay: api.systemType == 'android' ? 300 : 0
+				})
+			}
+		});
+
+	}
+
+	//忘记密码
+	function forget_password() {
+		api.openWin({
+			name: 'forget_password',
+			url: api.wgtRootDir + '/html/window/win_back.html',
+			pageParam: {
+				headerTitle: 'Reset Password',
+				frameName: 'forget_password',
+				frameUrl: api.wgtRootDir + '/html/forget_password.html',
+			},
+
+			delay: api.systemType == 'android' ? 300 : 0
+		})
+	}
+
+	var param = {};
+	//Facebook授权
+	function facebook_login() {
+		var facebook = api.require('facebook');
+		facebook.login({
+			appId: '624012144614608'
+		}, function(ret, err) {
+			if (ret.status) {
+				console.log('login: ' + JSON.stringify(ret, null, 2))
+				facebook.getUserInfo(function(ret, err) {
+					param = ret;
+					if (ret.status) {
+						console.log('getUserInfo: ' + JSON.stringify(ret, null, 2))
+
+						facebookLogin(param);
+
+					} else {
+						console.log(JSON.stringify(err))
+					}
+				});
+			} else {
+				console.log(JSON.stringify(err, null, 2))
+			}
+		});
+	}
+
+	//Facebook登录
+	function facebookLogin(param) {
+		var _dom = $api.dom('.ct');
+
+		ajax.get({
+			ctrl: 'Common',
+			fn: 'threeSign',
+			data: {
+				values: {
+					type: 1,
+					threeid: api.systemType == 'ios' ? param.result.id : param.result.id
+				}
+			},
+			showError: true, //是否在出现错误时，输出错误信息
+			showProgress: {},
+			hideLoading: true,
+			success: function(ct) {
+				//判断 LOGIN / SIGN UP 两种情况
+				if ($api.hasCls(_dom, 're')) {
+					// SIGN UP
+					Tool.toast('This Facebook account has been registered.');
+					return;
+				} else {
+					// LOGIN
+					$api.setStorage(CONFIG.KEY.MEMBER_ID, ct.id);
+					$api.setStorage(CONFIG.KEY.TOKEN, ct.token);
+					$api.setStorage(CONFIG.KEY.MEMBER_INFO, ct);
+					$api.setStorage('logints', new Date().getTime());
+					if (!$api.getStorage(CONFIG.KEY.FIRST_OPEN)) {
+						api.openFrame({
+							name: 'launch',
+							url: api.wgtRootDir + '/html/launch.html',
+							bounces: false
+						})
+					} else {
+						setTimeout(function() {
+							Tool.initApp();
+						}, 300)
+					}
+				}
+			},
+			_404: function() {
+				//该facebook 邮箱没有被注册
+
+				//判断 LOGIN / SIGN UP 两种情况
+
+				if ($api.hasCls(_dom, 're')) {
+					// SIGN UP
+					api.openWin({
+						name: 'register',
+						url: api.wgtRootDir + '/html/window/win_back.html',
+						pageParam: {
+							headerTitle: 'Create Profile',
+							frameParam: {
+								threeid: param.result.id,
+								email: param.result.email,
+								avatar: param.result.picture.data.url,
+								firstname: param.result.first_name,
+								lastname: param.result.last_name,
+								//								birthday: param.result.birthday,
+								type: 1
+							},
+							delay: api.systemType == 'android' ? 300 : 0,
+							frameName: 'register',
+							frameUrl: api.wgtRootDir + '/html/register.html'
+						}
+					});
+				} else {
+					Tool.toast('This Facebook account has not been registered.');
+					logout();
+					return;
+				}
+			}
+		});
+	}
+	//google登录
+	function google_login() {
+		var google = api.require('google'),
+			_dom = $api.dom('.ct');
+
+		google.signIn(function(ret, err) {
+			if (ret && ret.eventType == 'didSignIn') {
+				console.log('google授权成功:----------' + JSON.stringify(ret, null, 2))
+				param = ret;
+				//					Debug.alt(param.userInfo.userID)
+				ajax.get({
+					ctrl: 'Common',
+					fn: 'threeSign',
+					data: {
+						values: {
+							type: 2,
+							threeid: param.userInfo.userID
+						}
+					},
+					showError: true, //是否在出现错误时，输出错误信息
+					showProgress: {},
+					hideLoading: true,
+					success: function(ct) {
+						//判断 LOGIN / SIGN UP 两种情况
+						if ($api.hasCls(_dom, 're')) {
+							// SIGN UP
+							Tool.toast('This Google account has been registered.');
+							return;
+						} else {
+							$api.setStorage(CONFIG.KEY.MEMBER_ID, ct.id);
+							$api.setStorage(CONFIG.KEY.TOKEN, ct.token);
+							$api.setStorage(CONFIG.KEY.MEMBER_INFO, ct);
+							$api.setStorage('logints', new Date().getTime());
+							if (!$api.getStorage(CONFIG.KEY.FIRST_OPEN) || isNewGoogleVisitor(param.userInfo.userID)) {
+								openLaunch();
+							} else {
+								setTimeout(function() {
+									Tool.initApp();
+								}, 300)
+							}
+						}
+					},
+					_404: function() {
+						//该facebook 邮箱没有被注册
+
+						//判断 LOGIN / SIGN UP 两种情况
+
+						if ($api.hasCls(_dom, 're')) {
+							// SIGN UP
+							api.openWin({
+								name: 'register',
+								url: api.wgtRootDir + '/html/window/win_back.html',
+								pageParam: {
+									headerTitle: 'Create Profile',
+									frameParam: {
+										threeid: param.userInfo.userID,
+										email: param.userInfo.profile.email,
+										firstname: param.userInfo.profile.givenName,
+										lastname: param.userInfo.profile.familyName,
+										type: 2
+									},
+									delay: api.systemType == 'android' ? 300 : 0,
+									frameName: 'register',
+									frameUrl: api.wgtRootDir + '/html/register.html'
+								},
+								slidBackEnabled: false
+							});
+						} else {
+							Tool.toast('This Google account has not been registered.');
+							logout();
+							return;
+						}
+					}
+				});
+			}
+		});
+	}
+
+	function isNewGoogleVisitor(userID) {
+		/*
+		 * 检查google账号是否在本机登录过，没有在调整的启动页
+		 */
+
+		var visitor = $api.getStorage('googleVisitor');
+		if (!visitor) {
+			visitor = [];
+		}
+
+		if ($.inArray(userID, visitor) > -1) {
+			return false;
+		}
+
+		visitor.push(userID);
+		$api.setStorage('googleVisitor', visitor);
+		return true;
+	}
+
+	function openLaunch() {
+		api.openFrame({
+			name: 'launch',
+			url: api.wgtRootDir + '/html/launch.html',
+			bounces: false
+		});
+	}
+
+	var initBodyHeight = document.body.clientHeight; //页面可视高度
+	//			console.log(initBodyHeight)
+	var keyBoardStatus = false; //键盘是否打开
+	function getKeyBoardStatus() {
+		setTimeout(function() {
+			if (initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+				keyBoardStatus = true;
+				$api.addCls($api.dom('#footer'), 'hidden');
+				getKeyBoardStatus();
+				return false;
+			}
+			if (initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+				keyBoardStatus = false;
+				$api.removeCls($api.dom('#footer'), 'hidden');
+				getKeyBoardStatus();
+				return false;
+			}
+			getKeyBoardStatus();
+		}, 100);
+	}
+	//		$(function() {
+	//			getKeyBoardStatus();
+	//		});
+</script>
+
+</html>

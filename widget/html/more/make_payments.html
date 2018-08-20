@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>信用卡支付方式</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			#main{
+				border-top: 1px solid #ddd;
+			}
+			.list-view{
+				line-height: 44px;
+				height: 44px;
+				padding: 0 0px 0 10px;
+				border-bottom: 1px solid #ddd;
+			}
+			.icon-pal,
+			.icon-plus,
+			.icon-card,
+			.icon-forward{
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 40px;
+			}
+			.icon-card{
+				background-image: url(../../image/post/card-1.png);
+				background-size: auto 14px;
+			}
+			.icon-plus{
+				background-image: url(../../image/post/add.png);
+				background-size: 18px;
+			}
+			.icon-pal{
+				background-image: url(../../image/post/paypal.png);
+				background-size: 18px;
+			
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list-view flex-box hidden" onclick="openCreditDetails()" tapmode>
+					<div class="icon-card"></div>
+					<div class="flex-1">xxxx xxxx xxxx 0908</div>
+					<div class="icon icon-forward"></div>
+				</div>
+				<div class="list-view flex-box hidden" onclick="addCreditCard()" tapmode>
+					<div class="icon-plus"></div>
+					<div class="flex-1" style="font-size: 14px;">Add New Credit Card</div>
+					<div class="icon icon-forward"></div>
+				</div>
+				<div class="list-view flex-box margin-top55 hidden" style="border-top: 1px solid #ddd;" onclick="addCreditCard()" tapmode>
+					<div class="icon-pal"></div>
+					<div class="flex-1" style="font-size: 14px;">Add PayPal Account</div>
+					<div class="icon icon-forward"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/area.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		{{? it instanceof Array && it.length!=0}}
+		  {{~ it:value:index}}
+		   <div class="list-view flex-box" onclick="openCreditDetails({{=value.id}})" tapmode>
+					<div class="icon-card"></div>
+					<div class="flex-1">{{=value.number}}</div>
+					<div class="icon icon-forward"></div>
+		   </div>
+		   {{~}}
+		{{?}}
+		<div class="list-view flex-box" onclick="addCreditCard()" tapmode>
+					<div class="icon-plus"></div>
+					<div class="flex-1" style="font-size: 14px;" lan="AddNewCreditCard">Add New Credit Card</div>
+					<div class="icon icon-forward"></div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+            init();
+          
+		}
+        function init(){
+        	  //下拉刷新
+			Refresh.init({
+				ctrl: 'more',
+				fn: 'getPayments',
+				values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1
+				},
+				template: 'main',
+				success: function(ct) {
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+					ctrl: 'more',
+					fn: 'getPayments',
+					values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							type: 1
+					},
+					showError: true,
+				}, function(ct) {
+			})
+        	ajax.get({
+				ctrl: 'more',
+				fn: 'getPayments',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1
+					}
+				},
+				success: function(ct) {
+		            T.html('#main', 'main', ct);
+		            L.init();
+				}
+
+			})
+        }
+        //添加信用卡
+		function addCreditCard() {
+			Tool.openWin({
+				winName: 'addEditCreditCard',
+				winUrl: api.wgtRootDir + '/html/window/pay_picture.html',
+				title: LANGUAGE[$api.getStorage('lan')]['CreditCard'],
+				frameName: 'add_credit',
+				frameUrl: api.wgtRootDir + '/html/more/add_credit.html'
+			});	
+		}
+        //打开卡的详情
+		function openCreditDetails(id) {
+			Tool.openWin({
+				winName: 'credit_win',
+				winUrl: api.wgtRootDir + '/html/window/more/credit_win.html',
+				frameName: 'add_edit_credit_card',
+				frameParam: {
+					pid:id
+				},
+				title: LANGUAGE[$api.getStorage('lan')]['CreditCard'],
+				frameUrl: api.wgtRootDir + '/html/more/compile_credit.html'
+			});	
+		}
+		//添加PayPal支付
+		function addPayPal(){
+			api.openWin({
+				name: 'win_back',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					frameName: 'stripe',
+					frameUrl: api.wgtRootDir + '/test/stripe.html',
+					frameParam: {
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['CreditCard'],
+				},
+				reload: true,
+				slidBackEnabled: false,
+			});
+		}
+	</script>
+
+</html>

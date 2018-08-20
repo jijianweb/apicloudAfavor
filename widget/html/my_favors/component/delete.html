@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>编辑-删除任务</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body,
+			#main {
+				filter: alpha(opacity=0.4);
+				background-color: rgba(193, 193, 193, 0.4);
+				text-shadow: 1px 1px 1px #F0F0F0;
+			}
+			
+			#main {
+				padding: 0 18px;
+			}
+			
+			.bg {
+				position: absolute;
+				background-color: rgba(193, 193, 193, 0.4;
+				);
+				width: 100%;
+				height: 100%;
+			}
+			
+			.al {
+				background-color: white;
+			}
+			
+			.yes {
+				color: #31BAB0;
+				padding: 15px 20px 15px 14px;
+				border-left: 1px solid #D7D7D7;
+			}
+			
+			.unber {
+				border-top: 1px solid #D7D7D7;
+			}
+			
+			.no {
+				padding: 15px 15px 15px 0px;
+			}
+			
+			.up {
+				padding: 25px 5px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="bg">
+				<div class="cover filter_bg"></div>
+			</div>
+			<div id="main" class="flex-box-v flex-h-ce flex-h-zhu">
+				<div class="al">
+					<div class="up">
+						<div lan="The_deleted_task_cannot_be_resumed">The deleted task cannot be resumed.</div>
+					</div>
+					<div class="flex-box unber">
+						<div class="flex-1 text-center margin-left10 no" lan="No" onclick="removeTask(1)" tapmode>No</div>
+						<div lan="Yes" class="flex-1 yes text-center" onclick="removeTask(2)" tapmode>Yes</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			L.init();
+		}
+
+		function removeTask(type) {
+			if(type == 1) {
+				api.closeFrame({
+					name: 'delete'
+				});
+			} else if(type == 2) {
+				var favorid = api.pageParam.favorid,
+				resend=api.pageParam.resend;
+				if(resend==1){
+					Tool.toast("Delete successfully");
+					setTimeout(function(){
+						api.closeToWin({
+							name: 'Init'
+						});
+					},300)
+					return;
+				}
+				ajax.get({
+						ctrl: 'Favor',
+						fn: 'delFavor',
+						data: {
+							values: {
+								id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+								token: $api.getStorage(CONFIG.KEY.TOKEN),
+								favorid: favorid
+							}
+						},
+						showError: true,
+						showProgress: true,
+						hideLoading: true,
+						success: function() {
+							Tool.toast("Delete successfully");
+							api.execScript({
+							    name:'Init',
+							    frameName:'my_promulgator',
+							    script:'init()'
+						    });
+						    api.execScript({
+								name: 'Init',
+								frameName: 'more',
+								script: 'init()'
+							});
+							setTimeout(function(){
+								api.closeToWin({
+									name: 'Init'
+								});
+							},300)
+						}
+					});
+				}
+			}
+	</script>
+
+</html>

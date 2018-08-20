@@ -1,0 +1,28 @@
+{
+	"citys": [{
+		"id": 1,
+		"city": "Seattle",
+		"fr": "Seattle",
+		"tag": "seattle"
+	}, {
+		"id": 2,
+		"city": "Spokane",
+		"fr": "Spokane",
+		"tag": "spokane"
+	}, {
+		"id": 3,
+		"city": "Tacoma",
+		"fr": "Tacoma",
+		"tag": "tacoma"
+	}, {
+		"id": 4,
+		"city": "Vancouver",
+		"fr": "Vancouver",
+		"tag": "vancouver"
+	}, {
+		"id": 5,
+		"city": "Bellevue",
+		"fr": "Bellevue",
+		"tag": "bellevue"
+	}]
+}

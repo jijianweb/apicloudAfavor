@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-进行中的任务-发布者-评价 </title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main {
+				padding: 20px 15px;
+			}
+			
+			.evl {
+				padding: 0px 27px;
+			}
+			
+			.l1 {
+				margin-top: 10px;
+			}
+			
+			.title {
+				text-align: center;
+				color: #A9ADB0;
+				padding-bottom:8px;
+			}
+			
+			.area {
+				border: 1px solid #D3D4D5;
+				background-color: #F3F3F3;
+				border-radius: 8px;
+				width: 100%;
+				padding: 15px;
+				margin-top: 22px;
+			}
+			
+			textarea{
+				outline: none;
+				resize: none;
+				width: 100%;
+			}
+			
+			.star {
+				background-image: url(../../image/post/wujiaoxig.png);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			
+			[data-score='5'] .star-1,
+			[data-score='5'] .star-2,
+			[data-score='5'] .star-3,
+			[data-score='5'] .star-4,
+			[data-score='5'] .star-5,
+			[data-score='4'] .star-1,
+			[data-score='4'] .star-2,
+			[data-score='4'] .star-3,
+			[data-score='4'] .star-4,
+			[data-score='3'] .star-1,
+			[data-score='3'] .star-2,
+			[data-score='3'] .star-3,
+			[data-score='2'] .star-1,
+			[data-score='2'] .star-2,
+			[data-score='1'] .star-1 {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+			
+			[data-pun='5'] .star-p1,
+			[data-pun='5'] .star-p2,
+			[data-pun='5'] .star-p3,
+			[data-pun='5'] .star-p4,
+			[data-pun='5'] .star-p5,
+			[data-pun='4'] .star-p1,
+			[data-pun='4'] .star-p2,
+			[data-pun='4'] .star-p3,
+			[data-pun='4'] .star-p4,
+			[data-pun='3'] .star-p1,
+			[data-pun='3'] .star-p2,
+			[data-pun='3'] .star-p3,
+			[data-pun='2'] .star-p1,
+			[data-pun='2'] .star-p2,
+			[data-pun='1'] .star-p1 {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+			
+			[data-ability='5'] .star-a1,
+			[data-ability='5'] .star-a2,
+			[data-ability='5'] .star-a3,
+			[data-ability='5'] .star-a4,
+			[data-ability='5'] .star-a5,
+			[data-ability='4'] .star-a1,
+			[data-ability='4'] .star-a2,
+			[data-ability='4'] .star-a3,
+			[data-ability='4'] .star-a4,
+			[data-ability='3'] .star-a1,
+			[data-ability='3'] .star-a2,
+			[data-ability='3'] .star-a3,
+			[data-ability='2'] .star-a1,
+			[data-ability='2'] .star-a2,
+			[data-ability='1'] .star-a1 {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+			
+			.foot{
+            	padding:0px 18px 0px;
+            	width:100%;
+            }
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+				bottom: 16px;
+			}
+			/*华为按钮调整*/
+			@media (max-height:400px){
+				.sub{
+					display: none;
+				}
+			}
+			
+			.swipe {
+			  overflow: hidden;
+			  visibility: hidden;
+			  position: relative;
+			}
+			.swipe-wrap {
+			  overflow: hidden;
+			  position: relative;
+			}
+			.swipe-wrap > div {
+			  float:left;
+			  width:100%;
+			  position: relative;
+			}		
+			.helper{
+				position: relative;
+			}	
+			.helper .avatar{
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				border: 1px solid #ddd;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			.helper .nickname{
+				line-height: 1;
+				margin: 10px 0 5px;
+			}
+			.btn-afavor-area{
+				height: 145px;
+			}
+			.tips{
+				margin-top: 10px;
+				color: #aaa;
+				font-size: 14px;
+			}
+			.same-as-above{
+				font-size: 12px;
+				position: absolute;
+				right: 0px;
+				top: 20px;
+				background-color: #32BBB1;
+				color: #fff;
+				padding: 5px 14px;
+				border-radius: 25px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id='slider' class='swipe'>
+				  <div class='swipe-wrap'>
+				    <div class="page hidden">
+				    	<div class="helper flex-box-v flex-v-ce">
+				    		<div class="avatar"></div>
+				    		<div class="same-as-above">Same as above</div>
+				    		<div class="nickname">zhihua lu</div>
+				    	</div>
+						<div class="evl">
+							<div class="l1">
+								<div lan="WorkPerformance" class="title">Work Performance</div>
+								<div class="flex-box margin-bottom10 flex-center-center" data-score=''>
+									<div class="star star-1 btn-afavor-star" onclick="judge(1)" tapmode></div>
+									<div class="star star-2 btn-afavor-star" onclick="judge(2)" tapmode></div>
+									<div class="star star-3 btn-afavor-star" onclick="judge(3)" tapmode></div>
+									<div class="star star-4 btn-afavor-star" onclick="judge(4)" tapmode></div>
+									<div class="star star-5 btn-afavor-star" onclick="judge(5)" tapmode></div>
+								</div>
+							</div>
+							<div class="l1">
+								<div lan="ServiceAttitude" class="title">Service Attitude</div>
+								<div class="flex-box margin-bottom10 flex-center-center" data-pun=''>
+									<div class="star star-p1 btn-afavor-star" onclick="punctuality(1)" tapmode></div>
+									<div class="star star-p2 btn-afavor-star" onclick="punctuality(2)" tapmode></div>
+									<div class="star star-p3 btn-afavor-star" onclick="punctuality(3)" tapmode></div>
+									<div class="star star-p4 btn-afavor-star" onclick="punctuality(4)" tapmode></div>
+									<div class="star star-p5 btn-afavor-star" onclick="punctuality(5)" tapmode></div>
+								</div>
+							</div>
+							<div class="l1">
+								<div lan="WouldRecommend" class="title">Would Recommend</div>
+								<div class="flex-box margin-bottom10 flex-center-center" data-ability="">
+									<div class="star star-a1 btn-afavor-star" onclick="ability(1)" tapmode></div>
+									<div class="star star-a2 btn-afavor-star" onclick="ability(2)" tapmode></div>
+									<div class="star star-a3 btn-afavor-star" onclick="ability(3)" tapmode></div>
+									<div class="star star-a4 btn-afavor-star" onclick="ability(4)" tapmode></div>
+									<div class="star star-a5 btn-afavor-star" onclick="ability(5)" tapmode></div>
+								</div>
+							</div>
+						</div>
+						<!--点击弹出键盘输入评价。-->
+						<div class="area flex-center-center btn-afavor-area">
+							<textarea lan="Leave_A_Comment" type="text" id="comment" placeholder="Leave a comment... " rows="7" name="context"></textarea>
+						</div>
+						<div class="tips text-center">Slide down to the next helper.</div>
+				    </div>
+				    <div class="page hidden">
+						<div class="evl">
+							<div class="l1">
+								<div lan="WorkPerformance" class="title">Work Performance</div>
+								<div class="flex-box margin-bottom10 flex-center-center" data-score=''>
+									<div class="star star-1 btn-afavor-star" onclick="judge(1)" tapmode></div>
+									<div class="star star-2 btn-afavor-star" onclick="judge(2)" tapmode></div>
+									<div class="star star-3 btn-afavor-star" onclick="judge(3)" tapmode></div>
+									<div class="star star-4 btn-afavor-star" onclick="judge(4)" tapmode></div>
+									<div class="star star-5 btn-afavor-star" onclick="judge(5)" tapmode></div>
+								</div>
+							</div>
+							<div class="l1">
+								<div lan="ServiceAttitude" class="title">Service Attitude</div>
+								<div class="flex-box margin-bottom10 flex-center-center" data-pun=''>
+									<div class="star star-p1 btn-afavor-star" onclick="punctuality(1)" tapmode></div>
+									<div class="star star-p2 btn-afavor-star" onclick="punctuality(2)" tapmode></div>
+									<div class="star star-p3 btn-afavor-star" onclick="punctuality(3)" tapmode></div>
+									<div class="star star-p4 btn-afavor-star" onclick="punctuality(4)" tapmode></div>
+									<div class="star star-p5 btn-afavor-star" onclick="punctuality(5)" tapmode></div>
+								</div>
+							</div>
+							<div class="l1">
+								<div lan="WouldRecommend" class="title">Would Recommend</div>
+								<div class="flex-box margin-bottom10 flex-center-center" data-ability="">
+									<div class="star star-a1 btn-afavor-star" onclick="ability(1)" tapmode></div>
+									<div class="star star-a2 btn-afavor-star" onclick="ability(2)" tapmode></div>
+									<div class="star star-a3 btn-afavor-star" onclick="ability(3)" tapmode></div>
+									<div class="star star-a4 btn-afavor-star" onclick="ability(4)" tapmode></div>
+									<div class="star star-a5 btn-afavor-star" onclick="ability(5)" tapmode></div>
+								</div>
+							</div>
+						</div>
+						<!--点击弹出键盘输入评价。-->
+						<div class="area flex-center-center btn-afavor-area">
+							<textarea lan="Leave_A_Comment" type="text" id="comment" placeholder="Leave a comment... " rows="6" name="context"></textarea>
+						</div>    	
+				    </div>
+				  </div>
+				</div>
+			</div>
+		    <div class="foot" id="footer">
+		    	<div class="sub btn-afavor-1" onclick="sub()" tapmode="">SUBMIT</div>
+		    </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript" src="../../script/swipe.js" ></script>
+	<script type="text/template" template="swipe-page">
+		{{~it :value:index}}
+		    <div class="page">
+		    	<div class="helper flex-box-v flex-v-ce">
+		    		<div class="avatar" style="background-image: url({{= Tool.imageCompressByQiNiu(value.avatar, 0, 200, 200) }});"></div>
+		    		{{? index > 0 }}
+		    			<div class="same-as-above hidden" onclick="SameAsAbove({{= index }})" tapmode="">Same as above</div>
+		    		{{?}}
+		    		<div class="nickname">{{= value.firstname }} {{= value.lastname }}</div>
+		    	</div>
+				<div class="evl">
+					<div class="l1">
+						<div lan="WorkPerformance" class="title">Work Performance</div>
+						<div class="flex-box margin-bottom10 flex-center-center" data-score=''>
+							<div class="star star-1 btn-afavor-star" onclick="judge(1, {{= index }})" tapmode></div>
+							<div class="star star-2 btn-afavor-star" onclick="judge(2, {{= index }})" tapmode></div>
+							<div class="star star-3 btn-afavor-star" onclick="judge(3, {{= index }})" tapmode></div>
+							<div class="star star-4 btn-afavor-star" onclick="judge(4, {{= index }})" tapmode></div>
+							<div class="star star-5 btn-afavor-star" onclick="judge(5, {{= index }})" tapmode></div>
+						</div>
+					</div>
+					<div class="l1">
+						<div lan="ServiceAttitude" class="title">Service Attitude</div>
+						<div class="flex-box margin-bottom10 flex-center-center" data-pun=''>
+							<div class="star star-p1 btn-afavor-star" onclick="punctuality(1, {{= index }})" tapmode></div>
+							<div class="star star-p2 btn-afavor-star" onclick="punctuality(2, {{= index }})" tapmode></div>
+							<div class="star star-p3 btn-afavor-star" onclick="punctuality(3, {{= index }})" tapmode></div>
+							<div class="star star-p4 btn-afavor-star" onclick="punctuality(4, {{= index }})" tapmode></div>
+							<div class="star star-p5 btn-afavor-star" onclick="punctuality(5, {{= index }})" tapmode></div>
+						</div>
+					</div>
+					<div class="l1">
+						<div lan="WouldRecommend" class="title">Would Recommend</div>
+						<div class="flex-box margin-bottom10 flex-center-center" data-ability="">
+							<div class="star star-a1 btn-afavor-star" onclick="ability(1, {{= index }})" tapmode></div>
+							<div class="star star-a2 btn-afavor-star" onclick="ability(2, {{= index }})" tapmode></div>
+							<div class="star star-a3 btn-afavor-star" onclick="ability(3, {{= index }})" tapmode></div>
+							<div class="star star-a4 btn-afavor-star" onclick="ability(4, {{= index }})" tapmode></div>
+							<div class="star star-a5 btn-afavor-star" onclick="ability(5, {{= index }})" tapmode></div>
+						</div>
+					</div>
+				</div>
+				<!--点击弹出键盘输入评价。-->
+				<div class="area flex-center-center btn-afavor-area">
+					<textarea lan="Leave_A_Comment" type="text" class="comment" onchange="messageOnChange(this, {{= index }})" placeholder="Leave a comment... " rows="8" name="context"></textarea>
+				</div>
+				
+				{{? index < it.length - 1 }}
+					<div class="tips text-center">Slide down to the next helper.</div>
+				{{?}}
+		    </div>
+		{{~}}		    
+	</script>
+	<script type="text/javascript">
+		initSwipe();
+		
+		var favorid = "";
+		var isself1 = "";
+		var memberid="",
+			taskDetail = $api.getStorage('info'), //任务详情数据
+			helpers = [],	//被评价的帮助者
+		    isdue="";
+		apiready = function() {
+			L.init();			
+			favorid = api.pageParam.favorid;
+			isself1 = api.pageParam.isself1;
+//			memberid =api.pageParam.memberid;
+			//是否是过期
+			isdue=api.pageParam.isdue;
+			
+			getHelpers();
+		}
+		
+		function SameAsAbove(helperIndex){
+			/*
+			 * 拷贝上一个帮助者的评价结果
+			 */
+			
+			var helper = helpers[helperIndex - 1],	//上一个帮助者的评价数据
+				_dom,
+				pageDom = $api.dom('.swipe-wrap .page:nth-child(' + (helperIndex+1) + ')');
+			
+			helpers[helperIndex].workPerformance = helper.workPerformance;
+			helpers[helperIndex].serviceAttitude = helper.serviceAttitude;
+			helpers[helperIndex].wouldRecommend = helper.wouldRecommend;
+			helpers[helperIndex].message = helper.message;
+//			console.log(JSON.stringify(helpers))
+			//渲染视图
+			$api.attr($api.dom(pageDom, '[data-score]'), 'data-score', helper.workPerformance);
+			$api.attr($api.dom(pageDom, '[data-pun]'), 'data-pun', helper.serviceAttitude);
+			$api.attr($api.dom(pageDom, '[data-ability]'), 'data-ability', helper.wouldRecommend);
+			$api.val($api.dom(pageDom, 'textarea'), helper.message);
+		}
+		
+		function initSwipe(){
+			window.helperSwipe = Swipe(document.getElementById('slider'), {
+			  speed: 400,
+			  continuous: true,
+			  stopPropagation: false,
+			  callback: function(index, elem) {
+			  	var helper,
+			  		helperIndex,
+			  		_dom;
+			  	
+			  	$('textarea').blur();
+			  	
+			  	if(index == 0){
+			  		return;
+			  	}
+			  	helperIndex = index - 1;
+			  	helper = helpers[helperIndex];
+			  	_dom = $api.dom('.swipe-wrap .page:nth-child(' + (index+1) + ') .same-as-above');
+			  	if(!helper.workPerformance || !helper.serviceAttitude || !helper.wouldRecommend || !helper.message){
+			  		$api.addCls(_dom, 'hidden');
+			  	}else{
+			  		$api.removeCls(_dom, 'hidden');
+			  	}
+			  },
+			  transitionEnd: function(index, elem) {}
+			});			
+		}
+		
+		function messageOnChange(_this, helperIndex){
+			var message = $api.val(_this);
+			helpers[helperIndex].message = message;
+		}
+		
+		function judge(score, helperIndex) {
+			//Work Performance
+			helpers[helperIndex].workPerformance = score;
+			$api.attr($api.dom('.swipe-wrap .page:nth-child(' + (helperIndex+1) + ') [data-score]'), 'data-score', score);
+		}
+
+		function punctuality(pun, helperIndex) {
+			//Service Attitude
+			helpers[helperIndex].serviceAttitude = pun;
+			$api.attr($api.dom('.swipe-wrap .page:nth-child(' + (helperIndex+1) + ') [data-pun]'), 'data-pun', pun);
+		}
+
+		function ability(ability, helperIndex) {
+			//Would Recommend
+			helpers[helperIndex].wouldRecommend = ability;
+			$api.attr($api.dom('.swipe-wrap .page:nth-child(' + (helperIndex+1) + ') [data-ability]'), 'data-ability', ability);
+		}
+		
+		function getHelpers(){
+			/*
+			 * 从任务详情数据中整理出参与该任务的帮助者
+			 * 并进行数据渲染
+			 */
+			
+			taskDetail.ongoingby.forEach(function(value, index){
+				value.forEach(function(v, i){
+					helpers.push(v);
+				});
+			});
+			
+			T.html('.swipe-wrap', 'swipe-page', helpers);
+			initSwipe();
+		}
+		
+		function addRating(cb){
+			var helperIndex = 0;
+			var single = function(){
+				ajax.get({
+					ctrl: 'Favor',
+					fn: 'addRating',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid:favorid,
+							isself1:isself1,
+							message: helpers[helperIndex].message,
+							quality: helpers[helperIndex].workPerformance,		//Work Performance
+							punctuality: helpers[helperIndex].serviceAttitude,	//Service Attitude
+							ability: helpers[helperIndex].wouldRecommend,	//Would Recommend
+							type: isself1,
+							memberid: helpers[helperIndex].id,
+							isdel: isdue == 1 ? 2 : 1   //isdel是否删除评价,1:正常，2:删除
+						}
+					},
+					_404: function(){
+						//不能重复评价
+						Tool.toast('rate fail');
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function() {
+						if(helperIndex < helpers.length - 1){
+							helperIndex += 1;
+							single();
+						}else{
+							cb();
+						}
+					}
+						
+				});
+			};
+			
+			single();
+		}
+		
+		function sub() {
+			var _dom,
+				_val;
+			//检查信息是否填写完整
+			var flag = helpers.some(function(value, index){
+				_dom = $api.dom('.swipe-wrap .page:nth-child(' + (index+1) + ') textarea');
+				_val = $api.val(_dom);
+				
+				if(_val){
+					helpers[index].message = _val;
+				}else{
+					helpers[index].message = '';	//评价留言允许为空
+				}
+				
+				if(!value.workPerformance || !value.serviceAttitude || !value.wouldRecommend){
+					return true;
+				}
+			});
+			if(flag){
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			
+//			console.log(JSON.stringify(helpers))
+//			return;
+			
+			addRating(function(){
+				var postdue=api.pageParam.postdue;
+				
+				api.sendEvent({
+					name: 'closeChatEntrance',	//关闭对应的聊天入口
+					extra: {
+						favorId: favorid
+					}
+				});
+				
+				if(isdue==1 && postdue==1){
+					//2018-02-01弃用该逻辑：删除当前任务，后续重新发布该任务
+//					ajax.get({
+//						ctrl: 'Favor',
+//						fn: 'delFavor',
+//						data: {
+//							values: {
+//								id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+//								token: $api.getStorage(CONFIG.KEY.TOKEN),
+//								favorid: favorid
+//							}
+//						},
+//						showError: true,
+//						showProgress: true,
+//						hideLoading: true,
+//						success: function() {
+//							api.execScript({
+//								name: 'Init',
+//								frameName: 'more',
+//								script: 'init()'
+//							});
+//							api.execScript({
+//								name: 'Init',
+//								frameName: 'help_person',
+//								script: 'init()'
+//							});
+//						}
+//					});
+					//后续选择重新发布该任务，或删除该任务
+					api.openFrame({
+						name: 'repost',
+						url: api.wgtRootDir + '/html/my_favors/component/repost.html',
+						bgColor: 'transparent',
+						bounces: false,
+						pageParam: {
+						    favorid:favorid
+						},
+						softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+					});
+				}else{
+					Tool.toast('Evaluate successful');
+					api.execScript({
+					    name:'task_detail',
+					    frameName:'my_task_detail',
+					    script:'init()'
+					});
+					setTimeout(function(){
+						api.closeToWin({
+							name: 'Init'
+						});
+					},400);
+						
+				}				
+			});
+		}
+	</script>
+
+</html>

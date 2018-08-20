@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "110",
+		"city": "Albuquerque",
+		"fr": "Albuquerque",
+		"parentid": "109",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<security> 
+  <item name="paypal_productionID" value="AbsfacjN82jF7adk1XN8-QhpwgEO-mFtjwXlqKUE2nRT8xSpA_T6F405UQnonKrOegcpH3l0vyduBf-6"/>  
+  <item name="paypal_sandboxID" value="ARHb6lLGkigZIjIa4LreRMTnmyhvDpmk17876JhTgbM7VLygajW2_g04Jun7LMtql92Ut-drPUUMluXA"/>
+</security> 

@@ -1,0 +1,139 @@
+{
+	"citys": [{
+		"id": "479",
+		"city": "Estevan",
+		"fr": "Estevan",
+		"parentid": "478",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "480",
+		"city": "Flin Flon",
+		"fr": "Flin Flon",
+		"parentid": "478",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "481",
+		"city": "Humboldt",
+		"fr": "Humboldt",
+		"parentid": "478",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "482",
+		"city": "Lloydminster",
+		"fr": "Lloydminster",
+		"parentid": "478",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "483",
+		"city": "Martensville",
+		"fr": "Martensville",
+		"parentid": "478",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "484",
+		"city": "Meadow Lake",
+		"fr": "Meadow Lake",
+		"parentid": "478",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "485",
+		"city": "Melfort",
+		"fr": "Melfort",
+		"parentid": "478",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "486",
+		"city": "Melville",
+		"fr": "Melville",
+		"parentid": "478",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "487",
+		"city": "Moose Jaw",
+		"fr": "Moose Jaw",
+		"parentid": "478",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "488",
+		"city": "North Battleford",
+		"fr": "North Battleford",
+		"parentid": "478",
+		"sort": "10",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "489",
+		"city": "Prince Albert",
+		"fr": "Prince Albert",
+		"parentid": "478",
+		"sort": "11",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "490",
+		"city": "Regina",
+		"fr": "Regina",
+		"parentid": "478",
+		"sort": "12",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "491",
+		"city": "Saskatoon",
+		"fr": "Saskatoon",
+		"parentid": "478",
+		"sort": "13",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "492",
+		"city": "Swift Current",
+		"fr": "Swift Current",
+		"parentid": "478",
+		"sort": "14",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "493",
+		"city": "Warman",
+		"fr": "Warman",
+		"parentid": "478",
+		"sort": "15",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "494",
+		"city": "Weyburn",
+		"fr": "Weyburn",
+		"parentid": "478",
+		"sort": "16",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "495",
+		"city": "Yorkton",
+		"fr": "Yorkton",
+		"parentid": "478",
+		"sort": "17",
+		"level": "3",
+		"sub": []
+	}]
+}

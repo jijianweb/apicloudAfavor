@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>photo id</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<style type="text/css">
+			.avatar {
+				background-image: url(../../image/verify/3.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				width: 167px;
+				height: 123px;
+			}
+			.tips {
+				padding-top: 28px;
+				color: #474747;
+				font-size: 14px;
+			}
+			.notice {
+				font-size: 14px;
+				padding-top: 19px;
+				line-height: 20px;
+			}
+			#main {
+				padding: 40px 20px 0 20px;
+			}
+			#footer {
+				position: absolute;
+				bottom: 16px;
+				width: 100%;
+				padding: 0 18px;
+			}
+			#footer > div{
+				background-color: #33BAB0;
+				color: #fff;
+				border-radius: 50px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-ce ">
+				<div class="avatar"></div>
+				<div class="tips" lan="Please_provide_a_vaild_photo_ID">
+					Please provide a vaild photo ID.
+				</div>
+				<div lan="Driver's_Licence_Passport_Brith_Certificate_or_Residency_Card" class="notice text-center text-center">
+					(Driver's Licence, Passport, Brith Certificate, or Residency Card)
+				</div>
+			</div>
+			<div id="footer">
+				<div lan="TAKE_PHOTO"  class="btn-afavor-1" onclick="openTakePhoto()" tapmode>TAKE PHOTO</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		//点击转跳为拍照页面
+		function openTakePhoto(){
+			api.openWin({
+				name: 'takePic',
+				url: api.wgtRootDir + '/html/window/verify/black_close_win.html',
+				pageParam:{
+					headerTitle: 'Photo ID',
+					frameName: 'take_pic',
+					frameUrl: api.wgtRootDir + '/html/verify/work_photo_cam.html',
+					frameParam:{
+						type: 3,
+					}
+				},
+				slidBackEnabled: false,
+			})
+		}
+		apiready = function(){
+			L.init();
+		}
+	</script>
+</html>

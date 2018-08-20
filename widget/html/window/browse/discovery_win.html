@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>discoveryWin</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<style type="text/css">
+			.disc {
+				color: #FFFFFF;
+				text-align: center;
+				margin-top: 6px;
+				position: relative;
+				line-height: 38px;
+				height: 48px;
+			}
+			
+			#header {
+				background-color: #33BAB0;
+			}
+			
+			.down {
+				width: 16px;
+				height: 10px;
+				background-size: contain;       
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image:url(../../../image/browse/sort-down.png);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" >
+					<div onclick="api.closeWin()" tapmode>
+						<span class="disc" lan="Discovering">Discovering</span>
+						<span class="down"></span>
+					</div>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			L.init();
+			Tool.openFrame({
+				frameName: api.pageParam.frameName,
+				frameUrl: api.pageParam.frameUrl,
+				frameParam: api.pageParam.frameParam
+			});
+		}
+	</script>
+
+</html>

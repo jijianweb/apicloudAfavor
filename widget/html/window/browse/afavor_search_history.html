@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css" />
+		<link rel="stylesheet" href="../../../css/ct.css" />
+		<style>
+			#header{
+				background-color: #32BBB1;
+			}
+			.icon-back,
+			.icon-search{
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.icon-back{
+				margin-right: 5px;
+				width: 40px;
+				height: 45px;
+				background-image: url(../../../image/back.png);
+				background-size: 10px;
+			}
+			.icon-search{
+				width: 30px;
+				height: 30px;
+				background-position: left center;
+				background-image: url(../../../image/more/search--grey.png);
+				background-size: 20px;
+			}
+			.form-control{
+				line-height: 30px;
+			}
+			input{
+				color: #fff;
+				width: 100%;
+			}
+			::-webkit-input-placeholder{
+				color: #E4E4E4;
+			}
+			#location-msg{
+				color: #fff;
+				font-size: 12px;
+				text-align: center;
+				padding-bottom: 2px;
+				/*height: 17px;*/
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="flex-box flex-h-ce" style="padding-right: 10px;">
+					<div class="icon-back" onclick="api.closeWin()" tapmode=""></div>
+					<div class="flex-1 flex-box" style="border-bottom: 2px solid #fff;">
+						<div class="icon-search"></div>
+						<div class="flex-1">
+							<div class="form-control">
+								<input type="text" readonly="readonly" name="search" id="search" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="location-msg" class="text-overflow">
+					<!--46 Favors near 763 Padbery Ford Suite 214, Canada - 10 km-->
+				</div>
+			</div>
+			<div id="main">
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/jquery-1.9.1.min.js" ></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		
+		function saveHistory(key){
+			/*
+			 * 缓存搜索历史记录
+			 */
+			
+			var afavorSearchHistory = $api.getStorage('afavorSearchHistory'),
+				index;
+			
+			if(!afavorSearchHistory){
+				afavorSearchHistory = [];
+			}
+			
+			index = $.inArray(key, afavorSearchHistory);
+			
+			if(index > -1){
+				afavorSearchHistory.splice(index, 1);
+			}
+			
+			if(key){
+				afavorSearchHistory.unshift(key);
+				if(afavorSearchHistory.length > 15){
+					afavorSearchHistory.pop();
+				}
+				$api.setStorage('afavorSearchHistory', afavorSearchHistory);
+			}
+			
+		}
+		
+		apiready = function() {
+			$api.text($api.dom('#location-msg'), api.pageParam.location || '');
+			
+			var header = $api.dom('#header');
+			$api.fixStatusBar(header);
+			var main = $api.dom('#main'),
+				mainPos = $api.offset(main),
+				inputDom = $api.dom('input'),
+				inputPos = $api.offset(inputDom),
+				UIInput = api.require('UIInput'),
+				headerPos = $api.offset(header);
+			
+			L.init();
+			api.openFrame({
+				name: 'afavor_search',
+				url: api.wgtRootDir + '/html/browse/afavor_search_history.html',
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				}
+			});
+			
+			UIInput.open({
+			    rect: {
+			        x: inputPos.l,
+			        y: inputPos.t,
+			        w: inputPos.w,
+			        h: inputPos.h
+			    },
+			    styles: {
+			    	bgColor: 'rgba(0,0,0,0)',
+			        size: 14,
+			        color: '#fff',
+			        placeholder: {
+			            color: '#E4E4E4'
+			        }
+			    },
+			    autoFocus: true,
+			    placeholder: LANGUAGE[$api.getStorage('lan')]['AllFavors'],	// lan="AllFavors"
+			    keyboardType: 'search',
+			    fixedOn: api.frameName
+			}, function(ret) {
+			    if (ret.eventType == 'search') {
+			    	UIInput.value({
+			    		id: ret.id
+					}, function(ret){
+						api.execScript({
+							name: 'Init',
+							frameName: 'browse_list',
+							script: 'search("' + ret.msg + '")'
+						});		
+						saveHistory(ret.msg);
+						api.closeWin();
+					});
+			    } 
+			});
+		};
+	</script>
+
+</html>

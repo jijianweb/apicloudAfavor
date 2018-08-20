@@ -1,0 +1,83 @@
+{
+	"citys": [{
+		"id": "381",
+		"city": "Brandon",
+		"fr": "Brandon",
+		"parentid": "380",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "382",
+		"city": "Dauphin",
+		"fr": "Dauphin",
+		"parentid": "380",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "383",
+		"city": "Flin Flon",
+		"fr": "Flin Flon",
+		"parentid": "380",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "384",
+		"city": "Morden",
+		"fr": "Morden",
+		"parentid": "380",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "385",
+		"city": "Selkirk",
+		"fr": "Selkirk",
+		"parentid": "380",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "386",
+		"city": "Portage la Prairie",
+		"fr": "Portage la Prairie",
+		"parentid": "380",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "387",
+		"city": "Steinbach",
+		"fr": "Steinbach",
+		"parentid": "380",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "388",
+		"city": "Thompson",
+		"fr": "Thompson",
+		"parentid": "380",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "389",
+		"city": "Winkler",
+		"fr": "Winkler",
+		"parentid": "380",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "390",
+		"city": "Winnipeg",
+		"fr": "Winnipeg",
+		"parentid": "380",
+		"sort": "10",
+		"level": "3",
+		"sub": []
+	}]
+}

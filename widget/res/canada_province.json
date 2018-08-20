@@ -1,0 +1,109 @@
+{
+	"citys": [
+		{
+			"id": "309",
+			"alias": "AB",
+			"city": "Alberta",
+			"fr": "Alberta",
+			"parentid": "2",
+			"sort": "1",
+			"level": "2"
+		}, {
+			"id": "328",
+			"alias": "BC",
+			"city": "British Columbia",
+			"fr": "Colombiue-Britannique",
+			"parentid": "2",
+			"sort": "2",
+			"level": "2"
+		}, {
+			"id": "380",
+			"alias": "MB",
+			"city": "Manitoba",
+			"fr": "Manitoba",
+			"parentid": "2",
+			"sort": "3",
+			"level": "2"
+		}, {
+			"id": "391",
+			"alias": "NB",
+			"city": "New Brunswick",
+			"fr": "Nouveau-Brunswick",
+			"parentid": "2",
+			"sort": "4",
+			"level": "2"
+		}, {
+			"id": "400",
+			"alias": "NL",
+			"city": "Newfoundland and Labrador",
+			"fr": "Terre-Neuve-et-Labrador",
+			"parentid": "2",
+			"sort": "5",
+			"level": "2"
+		}, {
+			"id": "404",
+			"alias": "NT",
+			"city": "Northwest Territories",
+			"fr": "Territoires du Nord-Ouest",
+			"parentid": "2",
+			"sort": "6",
+			"level": "2"
+		}, {
+			"id": "406",
+			"alias": "NS",
+			"city": "Nova Scotia",
+			"fr": "Nova Scotia",
+			"parentid": "2",
+			"sort": "7",
+			"level": "2"
+		}, {
+			"id": "410",
+			"alias": "NU",
+			"city": "Nunavut",
+			"fr": "Nouvelle-Ecosse",
+			"parentid": "2",
+			"sort": "8",
+			"level": "2"
+		}, {
+			"id": "412",
+			"alias": "ON",
+			"city": "Ontario",
+			"fr": "Ontario",
+			"parentid": "2",
+			"sort": "9",
+			"level": "2"
+		}, {
+			"id": "464",
+			"alias": "PE",
+			"city": "Prince Edward Island",
+			"fr": "Île-du-Prince-Édouard",
+			"parentid": "2",
+			"sort": "10",
+			"level": "2"
+		}, {
+			"id": "467",
+			"alias": "QC",
+			"city": "Quebec",
+			"fr": "Québec",
+			"parentid": "2",
+			"sort": "11",
+			"level": "2"
+		}, {
+			"id": "478",
+			"alias": "SK",
+			"city": "Saskatchewan",
+			"fr": "Saskatchewan",
+			"parentid": "2",
+			"sort": "12",
+			"level": "2"
+		}, {
+			"id": "496",
+			"alias": "YT",
+			"city": "Yukon",
+			"fr": "Yukon",
+			"parentid": "2",
+			"sort": "13",
+			"level": "2"
+		}
+	]
+}

@@ -1,0 +1,75 @@
+{
+	"citys": [{
+		"id": "100",
+		"city": "Denver",
+		"fr": "Denver",
+		"parentid": "99",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "101",
+		"city": "Colorado Springs",
+		"fr": "Colorado Springs",
+		"parentid": "99",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "102",
+		"city": "Aurora",
+		"fr": "Aurora",
+		"parentid": "99",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "103",
+		"city": "Lakewood",
+		"fr": "Lakewood",
+		"parentid": "99",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "104",
+		"city": "Fort Collins",
+		"fr": "Fort Collins",
+		"parentid": "99",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "105",
+		"city": "Thornton",
+		"fr": "Thornton",
+		"parentid": "99",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "106",
+		"city": "Westminster",
+		"fr": "Westminster",
+		"parentid": "99",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "107",
+		"city": "Arvada",
+		"fr": "Arvada",
+		"parentid": "99",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "108",
+		"city": "Pueblo",
+		"fr": "Pueblo",
+		"parentid": "99",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}]
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" href="../../css/api.css" />
+	<link rel="stylesheet" href="../../css/ct.css" />
+	<style type="text/css">
+		body,
+		html,
+		#wrap{
+			background-color: transparent;
+		}
+		#main {
+			padding-top: 65px;
+			background-color: rgba(0,0,0,0.3);
+		}
+		.list {
+			padding: 12px 0px 24px;
+			min-height: 145px;
+			min-width: 90%;
+			background-color: #EFF9F8;
+			margin: 10px 8px;
+		}
+
+		.img-frm,
+		.img {
+			width: 55px;
+			height: 55px;
+			background-size: cover;
+			background-color: #83D3D0;
+			border-radius: 50%;
+			border: 1px solid #CFEEEB;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+
+		.info {
+			padding: 5px 2px 15px 2px;
+		}
+
+		.poster {
+			font-size: 13px;
+			text-align: center;
+			padding: 5px 0;
+		}
+
+		.star {
+			width: 14px;
+			height: 14px;
+			background-image: url(../../image/browse/star-2.png);
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+			margin-right: 3px;
+		}
+
+		.name {
+			font-size: 13px;
+			color: #474747;
+		}
+
+		.swich {
+			overflow: hidden;
+		}
+
+		.num {
+			font-size: 12px;
+			margin-right: 3px;
+		}
+	</style>
+
+	<body>
+		<div id="wrap">
+			<div id="main" style="" onclick="closeFrame()" tapmode="">
+				<div class="list hidden">
+					<div class="flex-box l1 ">
+						<div class="flex-1 flex-box-v swich flex-center-center ma">
+							<div class="poster">Poster</div>
+							<div class="img col-3 "></div>
+							<div class="info flex-box-v flex-v-ce">
+								<div class="name">Delivery</div>
+								<div class="point flex-box">
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+								</div>
+								<div class="num">(5.0)</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center ma">
+							<div class="img col-3 "></div>
+							<div class="info flex-box-v flex-v-ce">
+								<div class="name">Delivery</div>
+								<div class="point flex-box">
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+								</div>
+								<div class="num">(5.0)</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center ma">
+							<div class="img col-3 "></div>
+							<div class="info flex-box-v flex-v-ce">
+								<div class="name">Delivery</div>
+								<div class="point flex-box">
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+									<div class="star"></div>
+								</div>
+								<div class="num">(5.0)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/template" template="main">
+		<div class="list" style="min-height: 180px;">
+			<div class="flex-1 col-4 swich flex-box-v flex-center-center ma" tapmode="" onclick="open_myHomePage(event,'{{=it.firstname}}','{{=it.lastname}}')">
+				<div class="poster">Poster</div>
+				<div class="img col-3 " style="background-image: url({{=Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div>
+				<div class="info flex-box-v flex-v-ce">
+					<div class="name">{{= it.firstname}}  {{= it.lastname}}</div>
+					<div class="point flex-box">
+						{{ for(var g=0;g<Math.round(it.favorstar);g++){ }}
+							<div class="star"></div>
+						{{ } }}
+					</div>
+					<div class="num">({{= it.favorstar }})</div>
+				</div>
+			</div>
+			{{? it.ongoingby instanceof Array && it.ongoingby.length != 0}} 
+				{{~ it.ongoingby:value:index}}
+				<div class="flex-1 col-4 swich flex-box-v flex-center-center ma" tapmode="" onclick="open_otherHomePage(event,'{{= value.id}}','{{= value.firstname}}','{{= value.lastname}}')">
+					<div class="img col-3 " style="margin-top:26px;background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+					<div class="info flex-box-v flex-v-ce">
+						<div class="name">{{= value.firstname}} {{= value.lastname}}</div>
+						{{? parseFloat(value.helperstar) > 0 }}
+						<div class="point flex-box">
+							{{ for(var s=0;s<Math.round(value.helperstar);s++){ }}
+								<div class="star"></div>
+							{{ } }}
+						</div>
+						{{?}}
+						<div class="num">({{= value.helperstar}})</div>
+					</div>
+				</div>
+				{{~}} 
+			{{??}}
+				<div>
+					<div class="text-center" style="padding: 80px; color: #AAA">No relevant news~</div>
+				</div>
+			{{?}}
+		</div>
+	</script>
+	<script type="text/javascript">
+		var ct = $api.getStorage('detail')
+		apiready = function() {
+			T.html('#main', 'main', ct instanceof Array ? ct[0] : ct);
+			console.log('任务成员列表：-------' + JSON.stringify(ct))
+		}
+
+		function closeFrame() {
+			api.closeFrame({
+				name: 'detail'
+			});
+		}
+		//进入个人主页
+		function open_myHomePage(event,firstname,lastname){
+			event.stopPropagation()
+			api.openWin({
+				name: 'personal_page',
+				url: api.wgtRootDir + '/html/window/more/personal_page.html',
+				pageParam: {
+					headerTitle: 'Fred Leitz',
+					frameParam: {
+						firstname:firstname,
+                       	lastname:lastname
+					},
+					frameName: 'personal_page',
+					frameUrl: api.wgtRootDir + '/html/more/personal_page.html'
+				}
+			});
+		}
+		//进入帮助者的个人主页
+		function open_otherHomePage(event,id,firstname,lastname){
+//			var id = [];
+//			if(ct.ongoingby.length != 0){
+//				for(var i = 0; i < ct.ongoingby.length; i++){
+//					id.push(ct.ongoingby[i].id);
+//				}
+//			}
+			event.stopPropagation()
+			console.log(JSON.stringify(ct,null,2))
+			api.openWin({
+				name: 'personal_help',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					headerTitle: firstname + " " +lastname,
+					frameParam: {
+					 	otherid: id,
+						firstname:firstname,
+                       	lastname:lastname
+					},
+					frameName: 'personal_help',
+					frameUrl: api.wgtRootDir + '/html/more/personage_help.html'
+				}
+			});
+		}
+	</script>
+
+</html>

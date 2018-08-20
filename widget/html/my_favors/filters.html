@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-已完成的任务-帮助者-筛选</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main,
+			.footer {
+				padding: 20px 18px 16px;
+			}
+			
+			.sel {
+				padding: 0px 15px;
+				height: 44px;
+				line-height: 44px;
+				border: 1px solid #AFB5B8;
+				border-radius: 25px;
+				color: #D3D4D6;
+				width: 100%;
+			}
+			
+			input {
+				height: 40px;
+				line-height: 40px;
+				z-index: 99;
+			}
+			
+			span {
+				padding: 19px 0 9px 22px;
+			}
+			
+			span,
+			.type {
+				color: #828B90;
+				font-size: 16px;
+			}
+			
+			.type {
+				text-align: center;
+				margin-bottom: 15px;
+				margin-top: 50px;
+			}
+			
+			.btn-a {
+				color: #32BBB1;
+				background-color: white;
+			}
+			
+			.btn-c,
+			.btn-a {
+				width: 80px;
+				height: 80px;
+				border: 2px solid #32BBB1;
+				border-radius: 50%;
+				text-align: center;
+				/*line-height: 75px;*/
+				font-size: 16px;
+			}
+			
+			.btn-c {
+				background-color: #32BBB1;
+				color: white;
+			}
+			
+			.square {
+				background-position: center;
+				background-image: url(../../image/post/xiala.png);
+				background-size: 12px 6px;
+				background-repeat: no-repeat;
+				padding-left: 6px;
+				width: 12px;
+				height: 8px;
+			}
+			
+			input[type="date"]::-webkit-calendar-picker-indicator {
+				-webkit-appearance: none !important;
+				margin: 0;
+				width: 0;
+				position: relative;
+				opacity: 0;
+				z-index: 999;
+				display: block;
+			}
+			
+			.apply {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+			}
+			/*华为按钮调整*/
+			@media (max-height:400px){
+				.apply{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div>
+					<span lan="From" style="font-size: 14px;">From</span>
+					<div class="sel flex-box flex-center-center">
+						<input class="flex-1" type="date" id="time1" onchange="onDateChange(this)" tapmode/>
+						<span class="square"></span>
+					</div>
+				</div>
+				<div style="margin-top:-3px;">
+					<span lan="To" style="font-size: 14px;">To</span>
+					<div class="sel flex-box flex-center-center">
+						<input class="flex-1" type="date" id="time2" onchange="onDateChange(this)" tapmode/>
+						<span class="square"></span>
+					</div>
+				</div>
+				<div class="type" lan="FavorType">Favor Type</div>
+				<div class="flex-box flex-center-center" style="">
+					<div class="">
+						<div class="btn-a btn-c flex-box flex-center-center" lan="Both" onclick="check(this,'')" tapmode="">
+							Both
+						</div>
+					</div>
+					<div style="margin-left: 25px;">
+						<div class="btn-a flex-box flex-center-center" lan="Online" onclick="check(this,'2')" tapmode="">Online</div>
+					</div>
+					<div style="margin-left: 25px;">
+						<div class="btn-a flex-box flex-center-center" lan="Offline" onclick="check(this,'1')" tapmode="">Offline</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="footer">
+				<div class="apply btn-afavor-1" lan="APPLY_NOW" onclick="apply()" tapmode="">APPLY NOW</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/javascript" src="../../script/date.js" ></script>
+	<script type="text/javascript">
+		var favortype = "",
+			time1 = "",
+			time2 = "";
+		var initBodyHeight = document.body.clientHeight; //页面可视高度
+		//			console.log(initBodyHeight)
+		var keyBoardStatus = false; //键盘是否打开
+		function getKeyBoardStatus() {
+			setTimeout(function() {
+				if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+					keyBoardStatus = true;
+					$api.addCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+					keyBoardStatus = false;
+					$api.removeCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				getKeyBoardStatus();
+			}, 100);
+		}
+//		$(function() {
+//			getKeyBoardStatus();
+//		});
+		apiready = function() {
+			favortype = api.pageParam.favortype;
+			time1 = api.pageParam.time1;
+			time2 = api.pageParam.time2;
+			setValue();
+			L.init();
+		}
+
+		function setValue() {
+			$api.val($api.dom('#time1'), time1);
+			$api.val($api.dom('#time2'), time2);
+			if(favortype == '') {
+				check(0, '')
+			} else if(favortype == '1') {
+				check(2, '1')
+			} else {
+				check(1, '2')
+			}
+		}
+		
+		function checkDate(_this){
+			/*
+			 * 验证日期，不能选择未来的时间
+			 */
+			var t = $api.val(_this),
+				ts = new Date(t).getTime(),
+				now = new Date(),
+				year = now.getFullYear(),
+				month = D.formatNum(now.getMonth() + 1),
+				date = D.formatNum(now.getDate()),
+				nowTs = new Date(year + '-' + month + '-' + date).getTime(),
+				datetime = D.f2(nowTs, '-');
+
+			if(ts > nowTs){
+				Tool.toast(LANGUAGE[$api.getStorage('lan')]['Date_and_time_error']);
+				$api.val(_this, datetime);
+			}
+		}
+		
+
+		function onDateChange(_this) {
+			checkDate(_this);
+			var dateDoms = $api.domAll('input[type=date]');
+			var t1 = $api.val(dateDoms[0]),
+				t2 = $api.val(dateDoms[1]);
+			
+			var date1 = new Date(t1),
+				date2 = new Date(t2);
+			if(date1.getTime() > date2.getTime()) {
+				time1 = t2;
+				time2 = t1;
+			} else {
+				time1 = t1;
+				time2 = t2;
+			}
+			setValue();
+		}
+
+		function check(_this, atype) {
+			if(typeof _this !== 'object') {
+				_this = $api.domAll('.btn-a')[_this];
+			}
+			if($api.hasCls(_this, 'btn-c')) {
+				return;
+			}
+			$api.removeCls($api.dom('.btn-c'), 'btn-c');
+			$api.addCls(_this, 'btn-c')
+			favortype = atype;
+		}
+
+		function reset() {
+			inputBlur();
+			time1 = '';
+			time2 = '';
+			favortype = '';
+			setValue();
+		}
+
+		function apply() {
+			inputBlur();
+			api.showProgress();
+			api.sendEvent({
+				name: 'completed_reinit',
+				extra: {
+					time1: time1,
+					time2: time2,
+					favortype: favortype
+				}
+			})
+			setTimeout(function() {
+				api.hideProgress();
+				api.closeWin();
+			}, 300);
+		}
+	</script>
+
+</html>

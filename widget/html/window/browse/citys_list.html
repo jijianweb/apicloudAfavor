@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>win-有返回键的</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css" />
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="api.closeWin()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/UICityList.js" ></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		function close_win(){
+			api.closeWin();
+			api.sendEvent({
+				name: 'showCitys'
+			})
+		}
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main),
+				country = winParam.country;
+				
+//			alert(JSON.stringify(api.pageParam));return;
+			$api.html($api.dom(header, '.title'), LANGUAGE[$api.getStorage('lan')]['City']);
+			setTimeout(function(){
+				var filePath = country == '1' ? 'usa_citys_lists' : 'canda_citys_lists',
+					language = $api.getStorage('language'),
+					fileName, targetResource,
+					resource;
+				
+				if(language == 1){
+					//英语
+					fileName = $api.trimAll(winParam[country == 1 ? 'city' : 'alias']);
+					resource = 'widget://res/'+ filePath +'/'+ fileName +'.json';
+				}else{
+					//法文
+					fileName = $api.trimAll(winParam[country == 1 ? 'en' : 'alias']);
+					resource = 'widget://res/'+ filePath +'/'+ fileName +'.json';
+					targetResource = 'fs://UICityList/'+ filePath +'/'+ fileName +'_fr.json';
+					resource = CityList.transToFr(targetResource, resource);
+				}
+				
+				CityList.open({
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: api.frameWidth,
+						h: mainPos.h
+					},
+					resource: resource,
+					placeholder: LANGUAGE[$api.getStorage('lan')]['The_name_of_your_city'],
+					hotTitle: 'Current City',
+//					currentCity: winParam.city,
+					selected: function(cityInfo){
+						api.sendEvent({
+							name: 'changeLocation',
+							extra: {
+								cityInfo: cityInfo,
+								provinceInfo: winParam,
+								countryId: country
+							}
+						});
+						
+						api.closeToWin({
+							name: 'Init'
+						});
+					}
+				});
+			}, 200);			
+		}
+	</script>
+
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<style type="text/css">
+			html,
+			body,
+			#wrap,
+			#main {
+				background-color: transparent;
+			}
+			.list-item {
+				padding: 17px 12px 14px 6px;
+				height: 85px;
+				background-color: #fff;
+				border-radius: 10px;
+			}
+			
+			.title {
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				font-size: 14px;
+				margin-bottom: 3px;
+				margin-top: 4px;
+				margin-right: 10px;
+				min-height: 32px;
+			}
+			
+			.text {
+				font-size: 11px;
+				color: #868686;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				max-width: 130px;
+			}
+						
+			.text1 {
+				font-size: 11px;
+				color: #868686;
+				/*margin-bottom: 10px;*/
+		
+			}
+			.text2 {
+				font-size: 11px;
+				color: #868686;
+				margin-bottom: 6px;
+			}
+			.content {
+				padding: 0 5px 0 10px;
+			}
+			
+			.num {
+				color: #3EBBB2;
+				font-size: 30px;
+				margin-bottom: 2px;
+			}
+			
+			.img-frm,
+			.img {
+				width: 62px;
+				height: 62px;
+				background-color: #83D3D0;
+				border-radius: 50%;
+				border: 1px solid #CFEEEB;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.ic {
+				margin-right: 5px;
+			}
+			span{
+				color: #83D3D0;
+			}
+			.money {
+				text-align: center;
+				min-width: 50px;
+			}
+			.img1{
+				height: 13px;
+				
+			}
+			.love{
+				text-align: right;
+				margin-top: 8px;
+				height: 20px;
+			}
+			.no_collect{
+				background-image: url(../../image/browse/heart-line.png);
+			}
+			.collect{
+				background-image: url(../../image/browse/heart-bold.png);
+			}
+			.coll{
+				width: 27px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: right center;
+				background-size: 16px;
+				position: absolute;
+				margin-right: -3px;
+				right: 20px;
+			}
+			.price_box{
+				text-align: right;
+			}
+			#footer{
+				bottom: 10px;
+				position: absolute;
+				padding: 0 10px;
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body >
+		<div id="wrap" onclick="api.closeFrame()" tapmode>
+			<div id="main">
+			</div>
+			<div id="footer" class="flex-box-v flex-1">
+				<div class="list-item flex-box flex-h-ce hidden" style="border:1px solid #ddd">
+					<div class="img"></div>
+					<div class="content flex-1">
+						<div class="info">
+							<div class="title">Assemblmove</div>
+							<div class="flex-1 flex-box flex-h-ce">
+								<div class="ic"><img src="../../image/browse/yuan-3.png" class="img1"></div>
+								<!--<icon></icon>-->
+								<div class="flex-1 text"></div>
+							</div>
+							<div class="text1">17 Comments ,8 Offers</div>
+						</div>
+					</div>
+					<div class="price_box">
+						<div class="love" onclick="" tapmode>
+							<div class="no_collect img-1 coll">
+							</div>
+						</div>
+						<div class="num flex-1">$21004</div>
+						<div class="text2">3 km away</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript" src="../../script/browse.js" ></script>
+	<script type="text/javascript" src="../../script/area.js" ></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="list-item flex-box flex-h-ce" onclick="openTaskDetail({{= it.id}})" tapmode>
+			<div class="img" style="background-image: url({{=Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div>
+			<div class="content flex-1">
+				<div class="info">
+					<div class="title">{{= it.title}}</div>
+					<div class="flex-1 flex-box flex-h-ce">
+						<div class="ic"><img src="../../image/browse/yuan-3.png" class="img1"></div>
+						<!--<icon></icon>-->
+						<div class="flex-1 text">
+							{{? it.type == 1}}
+								{{=Area.getCityName(it.country,it.province,it.city).city.name || ''}}, 
+				 				{{=Area.getCityName(it.country,it.province,it.city).province.name || ''}}
+							{{??}}
+								{{= LANGUAGE[$api.getStorage('lan')]['online'] }}
+							{{?}}
+						</div>
+					</div>
+					<div class="text1">
+						{{= it.comments}} 
+							{{? parseInt(it.comments) > 1 }}
+								{{= LANGUAGE[$api.getStorage('lan')]['Comments'] }}
+							{{??}}
+								{{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}
+							{{?}}
+						 , 
+						{{= it.offernum }} 
+							{{? parseInt(it.offernum) > 1 }}
+								{{= LANGUAGE[$api.getStorage('lan')]['Offers'] }}
+							{{??}}
+								{{= LANGUAGE[$api.getStorage('lan')]['Offer'] }}
+							{{?}}
+					</div>
+				</div>
+			</div>
+			<div class="price_box">
+				<div class="love" >
+					<div onclick="collect(this, event,{{= it.id}})" tapmode="" class="{{= it.collection == 0 ? 'no_collect' : 'collect'}} img-1 coll">
+					</div>
+				</div>
+				<div class="num flex-1">{{= $api.getStorage(CONFIG.KEY.MEMBER_INFO).currency == 'cad' ? 'C$ ' : '$ '}}{{= it.total}}</div>
+				<div class="text2">{{= formatDistance(it.distance)}} away</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		//点击收藏
+		function collect(_this, event, fid){
+			event.stopPropagation();
+			var fn = '';
+			if($api.hasCls(_this,'no_collect')){
+				fn = 'addCollection';
+				$api.addCls(_this,'collect');
+				$api.removeCls(_this,'no_collect');
+			}else{
+				fn = 'delCollection';
+				$api.addCls(_this,'no_collect');
+				$api.removeCls(_this,'collect');
+			}
+			ajax.get({
+				ctrl: 'Browse',
+				fn: fn,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1,
+						favorid: fid 
+					}
+				},
+				hideLoading: true,
+				showError: true,
+				success: function(ct) {
+					if(fn == 'addCollection'){
+						Tool.toast('Add to Favorites.');
+					}else{
+						Tool.toast('Remove from Favorites.');
+					}
+				}
+			});
+		}
+		apiready = function(){
+			
+//			return;
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'favorDetails',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: api.pageParam.fid
+					}
+				},
+				showError: true,
+				hideLoading: true,
+				success: function(ct) {
+					T.html('#footer', 'main', ct);
+					L.init();
+//					if(typeof callback == 'function') {
+//						callback();
+//					}
+				}
+			});
+		}
+	</script>
+</html>

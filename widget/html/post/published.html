@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			.list{
+				margin-top:31px;
+				padding: 0 10px;
+			}
+			.img-frm,
+			.img {
+				width:76px;
+				height:76px;
+				background-size: 75%;
+				background-color:#33BAB0;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/post/truck.png);
+			}
+
+			.padding {
+				padding: 5px 2px ;
+			}
+
+			.them {
+				font-size: 14px;
+				color: #474747;
+				line-height: 14px;
+				text-align: center;
+				height: 16px;
+				padding-bottom: 4px;
+			}
+
+			.swich {
+				overflow: hidden;
+				padding:0px 0 16px;
+			}
+			@media (max-height:513px) and (max-width:360px){
+				/*华为荣耀 5x /华为6p 无底部导航*/
+				.swich{
+					padding-bottom: 14px;
+				}
+				.img{
+					width:69px;
+					height:69px;
+					background-size: 70%;
+				}
+			}			
+			@media (max-height:477px) and (max-width:360px) {
+				/*华为H60-L01 有底部导航*/
+				#main{
+					/*background-color: red;*/
+				}
+				.list {
+					margin-top: 26px;
+				}
+				.swich{
+					padding-bottom: 4px;
+				}
+				.img{
+					width:69px;
+					height:69px;
+					background-size: 70%;
+				}
+			}
+			@media (max-height:465px) and (max-width:360px) {
+				/*华为荣耀 5x /华为6p 有底部导航*/
+				#main{
+					/*background-color: red;*/
+				}
+				.list {
+					margin-top: 26px;
+				}
+				.swich{
+					padding-bottom: 4px;
+				}
+				.img{
+					width:69px;
+					height:69px;
+					background-size: 70%;
+				}
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="">
+				<div class="list hidden">
+					<div class="flex-box" >
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them ">Delivery</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Repair</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center" onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Painting</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-box ">
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish('{{}')" tapmode="">
+							<div class="img "></div>
+							<div class="padding">
+								<div class="them ">Delivery</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Repair</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center" onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Painting</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-box ">
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish('{{}')" tapmode="">
+							<div class="img "></div>
+							<div class="padding">
+								<div class="them ">Delivery</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Repair</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center" onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Painting</div>
+							</div>
+						</div>
+					</div>
+					<div class="flex-box ">
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish('{{}')" tapmode="">
+							<div class="img "></div>
+							<div class="padding">
+								<div class="them ">Delivery</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center " onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Repair</div>
+							</div>
+						</div>
+						<div class="flex-1 flex-box-v swich flex-center-center" onclick="publish()" tapmode="">
+							<div class="img"></div>
+							<div class="padding">
+								<div class="them">Painting</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="list flex-h-ce flex-v-zhu" style="
+				{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					margin-top: 20px;
+				{{?? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					padding-bottom: 35px;
+				{{?? api.screenWidth == 720 && api.screenHeight == 1280 }}
+					padding-bottom: 16px;
+				{{?}}">
+
+			{{? it instanceof Array && it.length != 0}} {{~ it:value:index}}
+
+			<div class="flex-1  col-4  swich flex-box-v flex-center-center margin-bottom10" style="
+				{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					padding-bottom: 5px;
+				{{?? api.screenWidth == 1080 && api.screenHeight == 1920 }}
+					padding-bottom: 6px;
+				{{?? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					padding-bottom: 22px;
+				{{?? api.screenWidth == 720 && api.screenHeight == 1280 }}
+					padding-bottom: 8px;
+				{{?}}
+				" onclick="publish({{= value.id}},'{{=value.default_currency}}')" tapmode="">
+				<div class="img" style="background-image: url({{=Tool.imageCompressByQiNiu(value.pic,0,100,100)}});
+					{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+						width:66px;height:66px;background-size: 60%;
+					{{?? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+						width:87px;height:87px;background-size: 70%;
+					{{?}}"></div>
+				<div class="padding">
+					<div class="them text-overflow" style="width:{{=(api.frameWidth-36)/3}}px;">{{=value.name}}</div>
+				</div>
+			</div>
+			{{~}} {{??}}
+			<div>
+				<div class="text-center" style="padding: 80px; color: #AAA">No relevant news~</div>
+			</div>
+			{{?}}
+		</div>
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			init();
+			window.onresize = function(){
+//				Tool.toast(api.frameWidth + ':' + api.frameHeight + '/' + api.screenWidth + ':' + api.screenHeight);
+			}
+				
+//			alert(api.screenWidth + ':' + api.screenHeight)
+			//alert(api.frameWidth + ':' + api.frameHeight)
+		}
+
+		function init() {
+			ajax.get({
+				ctrl: 'post',
+				fn: 'getAfavorClass',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				success: function(ct) {
+					T.html('#main', 'main', ct);
+					L.init();
+				}
+			});
+		}
+
+		function publish(classid, default_currency) {
+			api.openWin({
+				name: 'publish',
+				url: api.wgtRootDir + '/html/window/publish.html',
+				pageParam: {
+					frameName: 'first_step',
+					frameUrl: api.wgtRootDir + '/html/post/first_step.html',
+					frameParam: {
+						classid: classid,
+						default_currency: default_currency
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['Make_A_Favor'],
+				},
+				reload: true,
+				slidBackEnabled: false,
+			});
+		}
+	</script>
+
+</html>

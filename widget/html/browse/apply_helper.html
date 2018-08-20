@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>完成注册</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.footer {
+				padding: 0 18px;
+			}
+			
+			.save {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin-bottom: 16px;
+			}
+			
+			#header {
+				margin: 25px 0;
+				font-size: 14px;
+			}
+			
+			.list-view {
+				margin-bottom: 30px;
+			}
+			
+			.list-view>div:first-child {
+				margin-left: 17px;
+				font-size: 14px;
+				color: #828B8F;
+				line-height: 28px;
+			}
+			
+			.list-view div {
+				font-size: 14px;
+			}
+			
+			.list-view>div:nth-child(2) {
+				border: 1px solid #CCCCCC;
+				border-width: 1px 0;
+				line-height: 38px;
+				padding: 0 0px 0 16px;
+			}
+			
+			.icon-nike-circle {
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			
+			.icon-nike-circle {
+				margin-right: 6px;
+				width: 20px;
+				background-size: 16px;
+				background-image: url(../../image/post/round-done-button2.png);
+			}
+			
+			.active .icon-nike-circle {
+				background-image: url(../../image/browse/round-done-button-1.png);
+			}
+			
+			.active .grey {
+				color: #323232;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" lan="Please_fill_in_these_details_before_sending_an_offer" class="text-center">
+				Please fill in these details before sending an offer
+			</div>
+			<div id="main">
+				<!--<div class="list-view">
+					<div>Provide your Date of Birth</div>
+					<div class="flex-box " data-bir="" onclick="selectBirth(this)" tapmode>
+						<div class="icon-nike-circle "></div>
+						<div class="birthday flex-1 grey">Date of Birth</div>
+						<div class="icon-forward"></div>
+					</div>
+				</div>
+
+				<div class="list-view">
+					<div>Enter a mobile number</div>
+					<div class="flex-box mobile" data-mobile="" data-code="" onclick="openMobileVery()" tapmode="">
+						<div class="icon-nike-circle "></div>
+						<div class=" flex-1 grey">Mobile Numbe</div>
+						<div class="icon-forward"></div>
+					</div>
+				</div>
+
+				<div class="list-view">
+					<div>Provide a debit account</div>
+					<div class="flex-box acc" onclick="openDebitAccount()" tapmode="">
+						<div class="icon-nike-circle "></div>
+						<div class="flex-1 grey">Debilt Account</div>
+						<div class="icon-forward"></div>
+					</div>
+				</div>-->
+
+			</div>
+			<div class="footer flex-box-v flex-center-center">
+				<div lan="CONTINUE" class="save btn-afavor-1" onclick="checkWork()" tapmode>CONTINUE</div>
+			</div>
+		</div>
+	</body>
+
+	<script type="text/template" template='main'>
+		<div class="list-view">
+			<div lan="Provide_your_Date_of_Birth">Provide your Date of Birth</div>
+			<div class="flex-box {{=it.birthday && 'active' || ''}}" onclick="selectBirth(this)" tapmode>
+				<div class="icon-nike-circle "></div>
+				<div data-bir="{{=it.birthday}}" class="birthday flex-1 grey">{{=it.birthday || 'Date of Birth'}}</div>
+				<div class="icon-forward"></div>
+			</div>
+		</div>
+
+		<div class="list-view">
+			<div lan="Enter_a_mobile_number">Enter a mobile number</div>
+			<div class="flex-box mobile {{=it.mobile && 'active' || ''}}" data-mobile="{{=it.mobile}}" data-code="" onclick="openMobileVery()" tapmode="">
+				<div class="icon-nike-circle "></div>
+				<div class=" flex-1 grey">{{=it.mobile || LANGUAGE[$api.getStorage('lan')]['MobileNumbe'] }}</div>
+				<div class="icon-forward"></div>
+			</div>
+		</div>
+
+		<div class="list-view">
+			<div lan="Provide_a_debit_account">Provide a debit account</div>
+			<div class="flex-box acc {{=it.debitcard && it.debitcard.accountnumber && 'active' || ''}}" onclick="openDebitAccount()" tapmode="">
+				<div class="icon-nike-circle "></div>
+				<div class="flex-1 grey">{{= it.debitcard && it.debitcard.accountnumber || LANGUAGE[$api.getStorage('lan')]['DebitAccount'] }}</div>
+				<div class="icon-forward"></div>
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+
+	<script type="text/javascript">
+		var _traNum = '',
+			_insNum = '',
+			_accNum = '',
+			issave = 0,
+			favorid ='';
+
+		//保存
+		function checkWork() {
+			favorid = api.pageParam.favorid;
+			var bir = $api.attr($api.dom('.birthday'), 'data-bir'),
+				mob = $api.attr($api.dom('.mobile'), 'data-mobile'),
+				code = $api.attr($api.dom('.mobile'), 'data-code');
+//			console.log(JSON.stringify({
+//				values: {
+//					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+//					token: $api.getStorage(CONFIG.KEY.TOKEN),
+//					birthday: bir,
+//					mobile: mob,
+//					transitnumber: _traNum,
+//					institunumber: _insNum,
+//					accountnumber: _accNum,
+//					issave: issave
+//				}
+//			}))
+			if(!bir) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!mob) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(_traNum == '') {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(_insNum == '') {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(_accNum == '') {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			var checkMessage = {
+				birthday: bir,
+				mobile: mob,
+				accountnumber: code
+			}
+			$api.setStorage('checkMessage', checkMessage);
+			ajax.get({
+				ctrl: 'favor',
+				fn: 'checkReg',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						birthday: bir,
+						mobile: mob,
+						transitnumber: _traNum,
+						institunumber: _insNum,
+						accountnumber: _accNum,
+						issave: issave
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					ajax.get({
+							ctrl: 'Favor',
+							fn: 'makeOffer',
+							data: {
+								values: {
+									id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+									token: $api.getStorage(CONFIG.KEY.TOKEN),
+									favorid: favorid
+								}
+							},
+							showError: true,
+							showProgress: true,
+							hideLoading: true,
+							success: function() {
+								api.execScript({
+									name: 'Init',
+									frameName: 'browse_list',
+									script: 'TaskList()'
+								});
+								api.openFrame({
+									name: 'thank_you2',
+									url: api.wgtRootDir + '/html/thank_you2.html',
+								});
+								setTimeout(function() {
+									api.closeToWin({
+										name: 'Init'
+									})
+								}, 3000);
+							}
+						});
+				}
+			});
+		}
+		apiready = function() {
+			init();
+			api.addEventListener({
+				name: 'phone'
+			}, function(ret) {
+				console.log(JSON.stringify(ret, null, 2))
+				if(ret && ret.value) {
+					var value = ret.value;
+					$api.attr($api.dom('.mobile'), 'data-mobile', value.mobile);
+					$api.attr($api.dom('.mobile'), 'data-code', value.code);
+					$api.addCls($api.dom('.mobile'), 'active');
+					$api.text($api.dom('.mobile .grey'), value.mobile);
+					api.closeToWin({
+						name: 'next_verify'
+					})
+				}
+			});
+			api.addEventListener({
+				name: 'account'
+			}, function(ret) {
+				if(ret && ret.value) {
+					$api.addCls($api.dom('.acc'), 'active');
+					var value = ret.value;
+					_traNum = value.traNum;
+					_insNum = value.insNum;
+					_accNum = value.accNum;
+					issave = value.isSave;
+					$api.text($api.dom('.acc .grey'), _accNum);
+					api.closeWin({
+						name: 'DebitAccount'
+					})
+				}
+			})
+		}
+
+		function init() {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'getReg',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					if(ct.debitcard && ct.debitcard.transitnumber) {
+						_traNum = ct.debitcard.transitnumber;
+						_insNum = ct.debitcard.institunumber;
+						_accNum = ct.debitcard.accountnumber;
+					}
+					T.html('#main', 'main', ct);
+					L.init();
+				}
+			});
+		}
+		// 月份转成英文
+		function switchMonth(month) {
+			var _text = '';
+			switch(month) {
+				case 1:
+					_text = 'January';
+					break;
+				case 2:
+					_text = 'February';
+					break;
+				case 3:
+					_text = 'March';
+					break;
+				case 4:
+					_text = 'April';
+					break;
+				case 5:
+					_text = 'May';
+					break;
+				case 6:
+					_text = 'June';
+					break;
+				case 7:
+					_text = 'July';
+					break;
+				case 8:
+					_text = 'August';
+					break;
+				case 9:
+					_text = 'September';
+					break;
+				case 10:
+					_text = 'October';
+					break;
+				case 11:
+					_text = 'November';
+					break;
+				case 12:
+					_text = 'December';
+					break;
+			}
+			return _text;
+		}
+
+		//点击选择日期
+		function selectBirth(_this) {
+			api.openPicker({
+				type: 'date',
+				title: 'Provide your Date of Birth'
+			}, function(ret, err) {
+				if(ret) {
+					var _date = ret.day + ' ' + switchMonth(ret.month) + ' ' + ret.year;
+					$api.attr($api.dom(_this, '.grey'), "data-bir", ret.year + '-' + ret.month + '-' + ret.day);
+					$api.text($api.dom(_this, '.grey'), _date);
+					$api.addCls(_this, 'active');
+				}
+			});
+		}
+		//打开手机号码输入
+		function openMobileVery() {
+			var mobile = $api.attr($api.dom('.mobile'), 'data-mobile');
+			Tool.openWin({
+				winName: 'MobileVery',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: 'Mobile Verification',
+				frameName: 'mobile_very',
+				frameUrl: api.wgtRootDir + '/html/browse/mobile_very.html',
+				frameParam: {
+					mobile: mobile
+				}
+			});
+		}
+		//打开储蓄卡输入	
+		function openDebitAccount() {
+			Tool.openWin({
+				winName: 'DebitAccount',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: 'Debit Account',
+				frameName: 'debit_account',
+				frameUrl: api.wgtRootDir + '/html/browse/debit_account.html',
+				frameParam: {
+					_traNum: _traNum,
+					_insNum: _insNum,
+					_accNum: _accNum
+				}
+			});
+		}
+	</script>
+
+</html>

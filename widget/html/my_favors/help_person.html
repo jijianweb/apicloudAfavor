@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-进行中的任务-帮助者和发布者</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			body,#wrap,#main{
+				background:#fff;
+			}
+			.list-item {
+				border-bottom: 1px solid #E9E9E9;
+				padding:10px 6px 9px 10px;
+			}
+			
+			.title {
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			    word-break: normal;
+				word-wrap:break-word;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				font-size: 16px;
+				margin-bottom: 5px;
+				min-height: 32px;
+			}
+			
+			.line {
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp:1;
+			}
+			
+			.text {
+				font-size: 12px;
+				color: #868686;
+			}
+			
+			.content {
+				padding: 0 5px 0 10px;
+			}
+			
+			.num {
+				color: #3EBBB2;
+				font-size:30px;
+				/*margin-bottom: 8px;*/
+			}
+			.img {
+				width: 64px;
+				height: 64px;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.ic {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size:cover;
+				width: 11px;
+				height: 15px;
+				background-image: url(../../image/browse/2.png);
+				margin-right: 5px;
+			}
+			
+			span {
+				color: #83D3D0;
+			}
+			
+			.text-name{
+				overflow: hidden;
+			    white-space: nowrap;
+			    text-overflow: ellipsis;
+			    width:90px;
+			}
+			.money {
+				text-align:right;
+			}
+			.margin-top35{
+				margin-top: 35px;
+			}
+			.btn-as {
+				border-radius: 25px;
+				background-color:#F2F2F2;
+			}
+			
+			.not-tilte {
+				color:#B4B8BB;
+			    height: 37px;
+			    line-height: 37px;
+			}
+			
+
+			
+			.btn-tilte {
+				border-radius: 25px;
+				background-color: #32BBB1;
+				color: white;
+			    height: 37px;
+			}
+			
+			.bartop {
+				padding:13px 0px;
+				position:fixed;
+				top:0px;
+				z-index: 999;
+				width: 100%;
+				background:#FFFFFF;
+			}
+			.not-tilte,
+			.btn-tilte {
+				min-width: 123px;
+				width:auto;
+				padding: 0 10px;
+				font-size:14px;
+				text-align: center;
+			}
+			.red {
+				color: red;
+			}
+			span[lan]{
+				color: inherit;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap" class="">
+			<div class="bartop flex-box-v flex-center-center">
+					<div class="flex-box  btn-as">
+						<div lan="AsAPoster" class="not-tilte btn-tilte " onclick="check(this,1)" tapmade>As a Poster</div>
+						<div lan="AsAHelper" class="not-tilte " onclick="check(this,2)" tapmade>As a Helper</div>
+					</div>
+			</div>
+			<div id="main" style="margin-top: 54px;">
+				<div class="list hidden" id="poster">
+					<div class="list-item flex-box flex-h-ce" onclick="openTask()" tapmode="">
+						<div class="img"></div>
+					    <div class="flex-1 content">
+					    	<div class="flex-1 flex-box ">
+								<div class="flex-1">
+									<div class="title">Assemble IKEAsofabed and</div>
+									<div class="flex-1 flex-box flex-h-ce">
+										<div class="ic"></div>
+										<div class="flex-1 text">Online</div>
+									</div>
+								</div>
+								<div class="money">
+									<div class="margin-bottom10" style="color: red;">cancel</div>
+									<div class="num">$ 214</div>
+								</div>
+							</div>
+							<div class="flex-box">
+								<div class="text flex-1 flex-box" style="">
+										<span style="color: inherit;">Ongoing by -</span> 
+										<span class="flex-1 text-name">Roy and MikeRoy and Mike</span>
+								</div>
+								<div class="text red text-right" style="width:100px;">Due-30 May 2017</div>
+							</div>
+					    </div>
+					</div>
+				</div>
+				<div class="list hidden" id="helper">
+					<div class="list-item flex-box flex-h-ce" onclick="openTask()" tapmode>
+						<div class="img"></div>
+						<div class="flex-1 flex-box content">
+							<div class="flex-1">
+								<div class="title">www IKEAsofabed and removeAssemble IKEAsofabed and removeAssemble IKEAsofabed and remove</div>
+								<div class="flex-1 flex-box flex-h-ce">
+									<div class="ic"></div>
+									<!--<icon></icon>-->
+									<div class="flex-1 text">271 Veum circle suite 146 </div>
+								</div>
+								<div class="text flex-box" style="padding-top: 2px;">
+									Ongoing by - <span class="flex-1">Roy and Mike</span>
+								</div>
+							</div>
+							<div class="money">
+								<div class="num">$ 2133334</div>
+								<div class="text">Due-30 May 2017</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/area.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+	{{? values.type==1}} 
+		{{? it instanceof Array && it != 0}} 
+		    {{~ it:value:index}}
+				<div class="list" id="poster" data-value="1">
+					<div class="list-item flex-box flex-h-ce" onclick="openHelpTask({{=value.id}})" tapmode>
+					    <div style="width: 65px; height: 65px;">
+                       	    <div class="img" data-original="{{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}}"></div>
+                        </div>
+						<div class="flex-1 content {{= api.systemType == 'ios' ? 'line-clamp-2' : '' }}">
+							<div class="flex-1 flex-box">
+								<div class="flex-1 {{= api.systemType == 'ios' ? 'line-clamp-2' : '' }}">
+									<div class="title">
+										{{=value.title}} 
+									</div>
+									<div class="flex-1 flex-box flex-h-ce">
+										<div class="ic"></div>
+										<div class="flex-1 text line">
+											{{? value.type==1}}
+												{{=value.location}} 
+												{{=Area.getCityName(value.country,value.province,value.city).city.name}} {{=Area.getCityName(value.country,value.province,value.city).province.name}} 
+											{{??}}
+												<span lan="Online">
+											  		{{= LANGUAGE[$api.getStorage('lan')]['Online'] }}
+											  	</span>	
+											{{?}}
+										</div>
+									</div>
+								</div>
+								<div class="money {{? value.excstatus==0 && value.favorstatus !=6}} flex-box-v flex-h-zhu {{?}}">
+									{{? value.excstatus==1}}
+									<div class="margin-bottom10" style="color: red;" lan="On_hold">On hold</div>
+									{{?? value.favorstatus==6}}
+									<div class="margin-bottom10" style="color: red;" lan="Cancel">Cancel</div>
+									{{?}}
+									<div class="num">{{=default_currency== 'cad' ? 'C$ ' : '$ '}} {{=value.total}}</div>
+								</div>
+							</div>
+							<div class="flex-box" style="">
+								<div class="text flex-1 flex-box " >
+									<span class="" style="color: inherit;" lan="Ongoing_by">
+										{{= LANGUAGE[$api.getStorage('lan')]['Ongoing_by'] }} 
+									</span> 
+									-
+									<span class="text-name ">{{=value.ongongby}}</span>
+								</div>
+								<div  class="text {{? value.isdue==1}}red{{?}} text-right" >
+									<span lan="Due" style="color: inherit;">Due</span> - {{= Tool.toEngDate(value.duedate,'YMD')}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		    {{~}}
+		{{??}}
+		<div class="null flex-box">
+			<div class="flex-1" lan="You_have_no_ongoing_favor">
+				You have no ongoing favor.
+			</div>
+		</div>
+		{{?}} 
+	{{?? values.type==2}} 
+	    {{? it instanceof Array && it!= 0}}
+	        {{~ it:value:index}}
+				<div class="list " id="helper" data-value="2">
+					<div class="list-item flex-box flex-h-ce" onclick="openHelpTask({{=value.id}})" tapmode>
+					    <div style="width: 65px; height: 65px;">
+                       	    <div class="img" data-original="{{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}}"></div>
+                        </div>
+						<div class="flex-1 content {{= api.systemType == 'ios' ? 'line-clamp-2' : '' }}">
+							<div class="flex-1 flex-box">
+								<div class="flex-1 {{= api.systemType == 'ios' ? 'line-clamp-2' : '' }}">
+									<div class="title">
+										{{=value.title}}
+									</div>
+									<div class="flex-1 flex-box flex-h-ce">
+										<div class="ic"></div>
+										<div class="flex-1 text line">
+											{{? value.type==1}} 
+												{{=value.location}}
+												{{=Area.getCityName(value.country,value.province,value.city).city.name}} {{=Area.getCityName(value.country,value.province,value.city).province.name}} 
+											{{??}}
+												<span lan="Online">
+											  		{{= LANGUAGE[$api.getStorage('lan')]['Online'] }}
+											  	</span>	
+											{{?}}
+										</div>
+									</div>
+								</div>
+								<div class="money {{? value.excstatus==0 && value.favorstatus !=6}} flex-box-v flex-h-zhu {{?}}">
+									{{? value.excstatus==1}}
+									<div class="margin-bottom10" style="color: red;" lan="On_hold">On hold</div>
+									{{?? value.favorstatus==6}}
+									<div class="margin-bottom10" style="color: red;" lan="Cancel">Cancel</div>
+									{{?}}
+									<div class="num">{{=default_currency== 'cad' ? 'C$ ' : '$ '}} {{=value.total}}</div>
+								</div>
+							</div>
+							<div class="flex-box" style="">
+								<div class="text flex-1">
+									<span lan="Ongoing_by">
+										{{= LANGUAGE[$api.getStorage('lan')]['Ongoing_by'] }} 
+									</span>
+									-
+									<span style="color: #55C4BC;" lan="Me">{{= LANGUAGE[$api.getStorage('lan')]['Me'] }}</span>
+								</div>
+								<div class="text {{? value.isdue==1}}red{{?}}">
+									<span lan="Due" style="color: inherit;">Due</span> - {{= Tool.toEngDate(value.duedate,'YMD')}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+		    {{~}} 
+		{{??}}
+			<div class="null flex-box">
+				<div class="flex-1" lan="You_have_no_ongoing_favor">
+					You have no ongoing favor.
+				</div>
+			</div>
+		{{?}} 
+	{{?}}
+	</script>
+	<script type="text/javascript">
+		var values = {
+			id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+			token: $api.getStorage(CONFIG.KEY.TOKEN),
+			type: 1
+		}
+		var default_currency = '';
+
+		function check(_this, type) {
+			if($api.hasCls(_this), 'btn-tilte') {
+				$api.removeCls($api.dom('.btn-tilte'), 'btn-tilte');
+				$api.addCls(_this, 'btn-tilte');
+			}
+			values.type = type;
+			init();
+		}
+        apiready = function() {
+        	
+			//下拉刷新
+			Refresh.init({
+				container: '#main',
+				ctrl: 'Favor',
+				fn: 'getOngoing',
+				values: values,
+				template: 'main',
+				field: 'list',
+				success: function() {
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'Favor',
+				fn: 'getOngoing',
+				values: values,
+				showError: true,
+				template: 'main',
+				countSelector: '.list',
+				field: 'list',
+				success: function(page) {
+					$('div.img').slice((page - 1) * 10).lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+			init();
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'getOngoing',
+				data: {
+					values: values
+				},
+				hideLoading: true,
+				success: function(ct) {
+					default_currency = ct.default_currency;
+					T.html('#main', 'main', ct.list);
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+					L.init();
+					api.setFrameAttr({
+						name: api.frameName,
+						bounces: true
+					});
+				}
+			});
+		}
+
+		//打开帮助者的任务详情  
+		function openHelpTask(id) {
+            api.openWin({
+					name: 'task_detail',
+					url: api.wgtRootDir + '/html/window/share_normal.html',
+					pageParam: {
+                        frameName: 'my_task_detail',
+						frameUrl: api.wgtRootDir + '/html/my_favors/my_task_detail.html',
+						frameParam: {
+							favorid: id
+						},
+						headerTitle: 'Favor Details',
+					},
+					reload: true,
+					slidBackEnabled: false,
+			});
+		}
+	</script>
+
+</html>

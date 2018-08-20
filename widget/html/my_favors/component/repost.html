@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>任务过期处理-重新发布-删除</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body,
+			#main {
+				filter: alpha(opacity=0.4);
+				background-color: rgba(193, 193, 193, 0.4);
+			}
+			
+			#main {
+			   padding: 0 17px;
+			}
+			
+			.al {
+				background-color: #FFFFFF;
+				padding:20px 18px 10px;
+				border-radius: 10px;
+				width: 100%;
+			}
+			
+			.yes {
+				color: white;
+				background:#D60C34;
+				text-align: center;
+				border-radius:25px;
+			    margin-top: 10px;
+			    text-shadow:none
+			}
+			
+			
+			.no {
+			    background:#32BBB1;
+			    border-radius:25px;
+				color: #FFFFFF;
+				font-size:16px ;
+				text-align: center;
+				text-shadow:none
+			}
+			.ut{
+				color: #CECECE;
+				font-size: 12px;
+				text-align: center;
+				margin-top: 3px;
+			}
+			.up {
+				padding: 25px 5px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-ce flex-h-zhu">
+				<div class="al">
+					<div class="up">
+						<div>
+							<div lan="Hi">Hi, <span class="name" id="name"></span></div>
+							<span lan="Now_you_have_two_options_to_deal_with_your_favor">
+								Now you have two options <br />
+								to deal with your favor.
+							</span>
+						</div>
+					</div>
+					<div class="flex-box-v unber flex-h-zhu flex-center-center">
+						<div class="no btn-afavor-no" lan="REPOST" onclick="removeTask(1)" tapmode>REPOST</div>
+						<div class="yes btn-afavor-yes" lan="DELETE" onclick="removeTask(2)" tapmode>DELETE</div>
+						<div class="ut" lan="Your_favor_cost_will_be_deposited_to_your_balance">
+							(Your favor cost will be deposited to your balance)
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			var name=$api.getStorage(CONFIG.KEY.FIRSTNAMEANDLASTNAME);
+			$api.text($api.dom('#name'),name);
+		}
+
+		function removeTask(type) {
+				var favorid = api.pageParam.favorid;
+				var resend=1; //是否重新发布
+				if(type == 1) {
+					api.openWin({
+						name: 'delete',
+						url: api.wgtRootDir + '/html/window/delete.html',
+						pageParam: {
+							frameName: 'edit_outline',
+							frameUrl: api.wgtRootDir + '/html/my_favors/edit_outline.html',
+							frameParam: {
+								favorid: favorid,
+								resend:resend
+							},
+							headerTitle: 'Favor Details',
+						},
+						reload: true,
+						slidBackEnabled: false,
+					});
+				} else if(type == 2) {
+					ajax.get({
+						ctrl: 'Favor',
+						fn: 'delFavor',
+						data: {
+							values: {
+								id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+								token: $api.getStorage(CONFIG.KEY.TOKEN),
+								favorid: favorid
+							}
+						},
+						showError: true,
+						showProgress: true,
+						hideLoading: true,
+						success: function() {
+							api.execScript({
+								name: 'Init',
+								frameName: 'more',
+								script: 'init()'
+							});
+							api.execScript({
+								name: 'Init',
+								frameName: 'help_person',
+								script: 'init()'
+							});
+							
+							Tool.toast("Delete successfully");
+								setTimeout(function(){
+									api.closeToWin({
+										name: 'Init'
+								});
+							}, 300);
+						}
+					});
+				}
+			}
+	</script>
+
+</html>

@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "268",
+		"city": "Honolulu",
+		"fr": "Honolulu",
+		"parentid": "267",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

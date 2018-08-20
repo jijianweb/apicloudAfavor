@@ -1,0 +1,743 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布-第一步</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<style type="text/css">
+			#main,
+			#footer {
+				padding: 0px 18px 0px 18px;
+			}
+           
+			.text {
+				padding: 10px 15px;
+				border: 1px solid #C3C9CB;
+				border-radius: 25px;
+				color: #D3D4D6;
+				width: 100%;
+				font-size: 14px;
+			}
+
+			input[type="text"],
+			textarea {
+				width: 100%;
+				font-family: "微软雅黑";
+			}
+
+			.area {
+				border: 1px solid #C3C9CB;
+				background-color: white;
+				border-radius: 8px;
+				height: 162px;
+				width: 100%;
+				padding: 15px;
+			}
+
+			textarea {
+				outline: none;
+				resize: none;
+				font-size: 14px;
+			}
+
+			.star {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/post/wujiaoxig.png);
+			}
+
+			[data-score = '5'] .star-1,
+			[data-score = '5'] .star-2,
+			[data-score = '5'] .star-3,
+			[data-score = '5'] .star-4,
+			[data-score = '5'] .star-5,
+
+			[data-score = '4'] .star-1,
+			[data-score = '4'] .star-2,
+			[data-score = '4'] .star-3,
+			[data-score = '4'] .star-4,
+
+			[data-score = '3'] .star-1,
+			[data-score = '3'] .star-2,
+			[data-score = '3'] .star-3,
+
+			[data-score = '2'] .star-1,
+			[data-score = '2'] .star-2,
+
+			[data-score = '1'] .star-1{
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+
+			.eva {
+				margin-top: 24px;
+				margin-bottom: 40px;
+			}
+
+			.name {
+				margin-top:15px;
+			}
+
+			.title {
+				text-align: center;
+				color: #A9ADB0;
+				font-size: 14px;
+				padding-bottom: 6px;
+			}
+
+			.ph-t {
+				padding-left: 5px;
+			}
+
+			.ph {
+				width: 25px;
+				height: 25px;
+				background-size: 20px 18px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/post/xiangji.png);
+			}
+
+			.picture {
+				padding: 10px 0;
+				border: 1px solid #C3C9CB;
+				border-radius: 25px;
+				color: #D3D4D6;
+				width: 100%;
+				font-size: 14px;
+				margin-top: 15px;
+			}
+			#tnum,
+			#dnum,
+			.ph-t,
+			.sty {
+				color: #B8BBBE;
+				font-size: 14px;
+			}
+
+			.sty {
+				padding: 0 20px 6px 20px;
+			}
+
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin-bottom: 16px;
+			}
+
+			.img-frm,
+			.img {
+				position: relative;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				width: 100%;
+				height: 100%;
+			}
+
+			.photo {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 30px 24px;
+				background-image: url(../../image/more/xiangji.png);
+				width: 40px;
+				height: 40px;
+			}
+
+			.close {
+				z-index: 1;
+				position: absolute;
+				top: -7px;
+				right: -8px;
+				font-size: 15px;
+				border-radius: 50%;
+				background-image: url(../../image/zu-2.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 14px 14px;
+				width: 20px;
+				height: 20px;
+			}
+
+			.pic {
+				position: relative;
+				padding-top: 15px;
+				height: 65px;
+				overflow: hidden;
+			}
+
+			.pic>.pic-box {
+				overflow: hidden;
+			}
+
+			ul li {
+				position: relative;
+				padding-right: 5px;
+			}
+
+			#scroller {
+				position: absolute;
+				z-index: 5;
+				width: 100%;
+				height: 100%;
+				-webkit-transform: translateZ(0);
+				transform: translateZ(0);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-webkit-text-size-adjust: none;
+				text-size-adjust: none;
+			}
+
+			#scroller ul {
+				list-style: none;
+				height: 100%;
+				width: 100%;
+				padding: 0;
+				margin: 0;
+				height: inherit;
+			}
+
+			#scroller li {
+				text-align: center;
+				height: 100%;
+				width: 50px;
+				float: left;
+				font-size: 17px;
+				text-align: center;
+				color: #555;
+				transition: background-color 0.2s ease-in 0s;
+				-webkit-transition: background-color 0.5s ease-in 0s;
+			}
+
+			.add-pic-btn {
+				position: relative;
+				top: -7px;
+				padding: 7px 0;
+				background-color: #fff;
+				z-index: 99;
+			}
+
+			.pl {
+				width: 100%;
+				height: 100%;
+			}
+			@media (max-height:504px) and (max-width:360px){
+				/*
+				 * 魅族pro 5
+				 */
+				.eva{
+					margin-bottom: 20px;
+				}
+				
+			}
+			@media (max-height:456px) and (max-width:360px){
+				/*华为 6p 有底部虚拟导航栏*/
+				.sty{
+					margin-bottom: 3px;
+				}
+				.text{
+					padding: 8px 15px;
+				}
+				.name{
+					margin-top: 6px;
+				}
+				.picture{
+					margin-top: 8px;
+				}
+				.area{
+					padding: 10px;
+				}
+				.eva{
+					margin: 5px 0;
+				}
+				.eva .title{
+					padding: 6px 0;
+				}
+				.btn-afavor-level{
+					width: 27px;
+					height: 27px;
+					margin: 0 3px;
+					background-size: contain; 
+				}
+				.sub{
+					margin-bottom: 10px;
+				}
+			}
+			@media (max-height:400px){
+				.sub{
+					display: none;
+				}
+			}					
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="flex-box name">
+					<div class="flex-1 sty" lan="FavorTitle">Favor Title</div>
+					<div class="sty"><span id="tnum">0</span>/50</div>
+				</div>
+				<div class="text">
+					<input lan="Title_of_favor" type="text" id="title" placeholder="Title of favor" maxlength="50" value="" oninput="num()"/>
+				</div>
+				<div class="flex-box name">
+					<div class="flex-1 sty" lan="FavorDetails">Favor Details</div>
+					<div class="sty"><span id="dnum">0</span>/500</div>
+				</div>
+				<div class="area">
+					<textarea lan="Describe_your_favor" id="detail" rows="8" placeholder="Describe your favor..." maxlength="500" oninput="num()"></textarea>
+				</div>
+				<div class="flex-box pic hidden">
+					<div class="pic-box">
+						<div id="scroller" class="">
+							<ul class="no-ul"></ul>
+						</div>
+					</div>
+					<div class="add-pic-btn " onclick="addPic()">
+						<div class=" pl " imgUrl="" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}">
+							<div class="img-frm">
+								<div class="img">
+									<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+										<div class="photo flex-1 status"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="picture flex-box flex-h-ce flex-center-center" onclick="addPic()" tapmode>
+					<div class="ph"></div>
+					<div class="ph-t" lan="UploadAttachments">Upload Attachments</div>
+				</div>
+
+				<div class="eva">
+					<div class="title" lan="DifficultyLevel">Difficulty Level</div>
+					<div class="flex-box flex-center-center starAll" data-score = ''>
+						<div class="star star-1 i btn-afavor-level" onclick="judge(1)" tapmode=""></div>
+						<div class="star star-2 i btn-afavor-level" onclick="judge(2)" tapmode=""></div>
+						<div class="star star-3 i btn-afavor-level" onclick="judge(3)" tapmode=""></div>
+						<div class="star star-4 i btn-afavor-level" onclick="judge(4)" tapmode=""></div>
+						<div class="star star-5 i btn-afavor-level" onclick="judge(5)" tapmode=""></div>
+					</div>
+				</div>
+				
+			</div>
+			<div id="footer">
+	    		<div class="sub btn-afavor-1" lan="CONTINUE" onclick="publish()" tapmode="">CONTINUE</div>
+	   	 	</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/upload.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../script/iscroll.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="wrap">
+		<div id="main">
+			<div class="flex-box name" style="
+				{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					margin-top: 25px;
+				{{?}}
+				">
+				<div class="flex-1 sty" lan="FavorTitle">Favor Title</div>
+				<div class="sty"><span id="tnum">0</span>/50</div>
+			</div>
+			<div class="text">
+				<input lan="Title_of_favor" type="text" id="title" placeholder="Title of favor" maxlength="50" value="" oninput="num()"/>
+			</div>
+			<div class="flex-box name" style="
+				{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					margin-top: 25px;
+				{{?}}
+				">
+				<div class="flex-1 sty" lan="FavorDetails">Favor Details</div>
+				<div class="sty"><span id="dnum">0</span>/500</div>
+			</div>
+			<div class="area" style="
+				{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					height: 112px;
+				{{?}}
+				">
+				<textarea lan="Describe_your_favor" id="detail"
+					{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+						rows="5"
+					{{??}}
+						rows="8"
+					{{?}}
+					 placeholder="Describe your favor..." maxlength="500" oninput="num()"></textarea>
+			</div>
+			<div class="flex-box pic hidden">
+				<div class="pic-box">
+					<div id="scroller" class="">
+						<ul class="no-ul"></ul>
+					</div>
+				</div>
+				<div class="add-pic-btn " onclick="addPic()">
+					<div class=" pl " imgUrl="" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}">
+						<div class="img-frm">
+							<div class="img">
+								<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+									<div class="photo flex-1 status"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="picture flex-box flex-h-ce flex-center-center" onclick="addPic()" tapmode="" style="
+				{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					margin-top: 25px;
+				{{?}}
+				">
+				<div class="ph"></div>
+				<div class="ph-t" lan="UploadAttachments">Upload Attachments</div>
+			</div>
+
+			<div class="eva" style="
+				{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					margin-bottom: 20px;margin-top: 12px;
+				{{?? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					margin-top: 40px;
+				{{?}}
+				">
+				<div class="title" lan="DifficultyLevel">Difficulty Level</div>
+				<div class="flex-box flex-center-center starAll" data-score = ''>
+					<div class="star star-1 i btn-afavor-level" onclick="judge(1)" tapmode=""></div>
+					<div class="star star-2 i btn-afavor-level" onclick="judge(2)" tapmode=""></div>
+					<div class="star star-3 i btn-afavor-level" onclick="judge(3)" tapmode=""></div>
+					<div class="star star-4 i btn-afavor-level" onclick="judge(4)" tapmode=""></div>
+					<div class="star star-5 i btn-afavor-level" onclick="judge(5)" tapmode=""></div>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+    	<div class="sub btn-afavor-1" lan="CONTINUE" onclick="publish()" tapmode="">CONTINUE</div>
+    </div>
+	</script>
+	<script type="text/template" template="img">
+		<li style="width: {{= parseInt((api.frameWidth - 36) / 5)}}px;height: {{= parseInt((api.frameWidth - 36) / 5)}}px;">
+				<div class="pl" imgUrl="" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}" onclick="openPhotoBrowser(this)" tapmode="">
+					<div class="img-frm">
+					<span class="close" style="" onclick="removePic(event, this)" tapmode></span>
+					<div class="img" style="background-image: url({{= it.url}});">
+						<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+							<div class=" flex-1 status"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</script>
+	<script type="text/javascript">
+		var scroll = '';
+
+		var files = [],
+			isUpload = 'false';
+		var resume = '',
+			achieve = '';
+		var status = '';
+		//点击删除图片
+		function removePic(event, _this) {
+			event.stopPropagation();
+			var picDom = $api.closest(_this, 'li');
+
+			api.confirm({
+				title: '',
+				msg: 'Delete this photo？',
+				buttons: ['No', 'Yes']
+			}, function(ret, err) {
+				if(ret.buttonIndex == 2) {
+					$api.remove(picDom);
+					var liDom = $api.domAll('.no-ul > li').length;
+					if(parseInt(liDom) == 0){
+						$api.addCls($api.dom('.pic'),'hidden');
+						$api.removeCls($api.dom('.picture'),'hidden');
+					}else{
+						$api.removeCls($api.dom('.add-pic-btn'),'hidden');
+					}
+
+					iscrollInit();
+				}
+			});
+		}
+		function renderImg(args) {
+			T.append('.pic .no-ul', 'img', args)
+			iscrollInit();
+			setTimeout(function(){
+				var imgDoms = $api.domAll('.pic-box .pl');
+				if(imgDoms.length==0){
+					scroll.scrollToElement(imgDoms[imgDoms.length], 200);
+				}else{
+                    scroll.scrollToElement(imgDoms[imgDoms.length-1], 200);					
+				}
+			},100);
+		}
+        //upload按钮
+		function addPic() {
+			inputBlur();
+			Tool.actionSheet({
+				title: 'Upload pictures',
+				buttons: ['Camera', 'Choose from album'],
+				success: function(type) {
+					if(type < 3) {
+						if(!/^wifi$/i.test(api.connectionType)) {
+							api.confirm({
+								title: '',
+								msg: 'The current network environment is：' + api.connectionType + 'Will generate data traffic, whether to continue uploading?',
+								buttons: ['No', 'Yes']
+							}, function(ret, err) {
+								if(ret.buttonIndex == 2) {
+									if(type == 1) {
+										getPhone();
+									} else {
+										getalbum();
+									}
+								}
+							})
+						} else {
+							if(type == 1) {
+								getPhone();
+							} else {
+								getalbum();
+							}
+						}
+					}
+				}
+			})
+		}
+		//upload按钮拍照获得一张照片
+        function getPhone(){
+        	var picDom = $api.domAll('.pic-box .pl');
+			if(picDom.length < 9) {
+				Tool.getOnePic({
+					sourceType: 'camera',
+					success: function(ret) {
+						if(ret) {
+							$api.removeCls($api.dom('.pic'), 'hidden');
+						    $api.addCls($api.dom('.picture'), 'hidden')
+							var callbackEvent = 'uploadPic' + new Date().getTime(),
+							args = {
+								url: ret.data,
+								callbackEvent: callbackEvent
+							};
+							files.push(args);
+							renderImg(args);
+							if(isUpload == 'false') {
+								Upload.init({
+									files: files,
+									callbackEvent: 'uploaded'
+								});
+								files = [];
+								isUpload = 'true';
+							}
+						}
+					}
+				});
+			}
+        }
+        //upload按钮从相册获得一张图片
+        function getalbum(){
+        	var ul = $api.dom('.pic-box'),
+				li = $api.domAll(ul, '.pl'),
+				max = '';
+			if(li.length > 0) {
+				max = 9- parseInt(li.length);
+			} else {
+				max = 9;
+			}
+			if(li.length < 9) {
+				Tool.getSomePic({
+					max: max,
+					selectedMaxText: 'Select a maximum of ' + max + ' photos',
+					success: function(ret) {
+						if(ret.eventType=='cancel'){
+//							$api.addCls($api.dom('.pic'), 'hidden');
+//						    $api.removeCls($api.dom('.picture'), 'hidden');
+						    return;
+						}
+						if(!ret || parseInt(ret.list.length) == 0) {
+							return;
+						}else{
+							$api.removeCls($api.dom('.pic'), 'hidden');
+						    $api.addCls($api.dom('.picture'), 'hidden')
+						}
+						for(var i = 0; i < ret.list.length; i++) {
+							var args = {
+								url: ret.list[i].path,
+								callbackEvent: 'uploadPic' + new Date().getTime() + i
+							}
+							files.push(args);
+							renderImg(args);
+						}
+						if(isUpload == 'false') {
+							Upload.init({
+								files: files,
+								callbackEvent: 'uploaded'
+							});
+							files = []; //上传图片后重置图片数组
+							isUpload = 'true';
+						}
+					}
+				});
+			}
+        }
+
+		function iscrollInit() {
+			var menuDom = $api.dom('.pic #scroller'),
+				liDoms = $api.domAll(menuDom, 'li');
+			width = 0;
+
+			for(var i = 0, len = liDoms.length; i < len, g = liDoms[i]; i++) {
+				width += $api.offset(liDoms[i]).w;
+			}
+			width += 1;
+			$api.css($api.dom('.pic #scroller'), 'width:' + width + 'px');
+			if(liDoms.length == 9) {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + $api.offset(liDoms[0]).w * 5 + 'px;');
+				$api.addCls($api.dom('.add-pic-btn'), 'hidden');
+			} else if(liDoms.length > 4) {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + $api.offset(liDoms[0]).w * 4 + 'px;');
+				$api.removeCls($api.dom('.add-pic-btn'), 'hidden');
+			} else {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + width + 'px;');
+				$api.removeCls($api.dom('.add-pic-btn'), 'hidden');
+			}
+			scroll = new IScroll('.pic>.pic-box', {
+				eventPassthrough: true,
+				scrollX: true,
+				scrollY: false,
+				preventDefault: false,
+				mouseWheel: true
+			});
+			$api.dom('.pic>.pic-box').addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+		}
+
+		//评分
+		function judge(score) {
+			$api.attr($api.dom('[data-score]'),'data-score',score)
+			inputBlur();
+		}
+		function openPhotoBrowser(_this){
+		  	//保存图片
+        	var imgs = [],
+        		keys = [];
+			var imgDoms = $api.domAll('.pic-box .pl');
+			for(var i = 0; i < imgDoms.length; i++) {
+				imgs.push('http://osiq15wvv.bkt.gdipper.com/'+$api.attr(imgDoms[i], 'data-key'));
+				keys.push($api.attr(imgDoms[i], 'data-key'));
+			}
+			var key = $api.attr(_this, 'data-key');
+			var index = 0;
+			for(var j = 0; j < keys.length; j++){
+				if(key === keys[j]){
+					index = j;
+					break ;
+				}
+			}
+			console.log(keys);
+			console.log(key);
+			console.log(index)
+            Tool.openPhotoBrowser({
+				images:imgs,
+				activeIndex:index,
+				bgColor: 'rgba(0,0,0, 0.5)',
+				click: function(photoBrowser) {
+					photoBrowser.close();
+				}
+			});
+			console.log(JSON.stringify(imgs,null,2)+'图片组')
+        }
+		function publish() {
+			var title = $api.val($api.dom('#title')),
+				detail = $api.val($api.dom('#detail')),
+				score = $api.attr($api.dom('[data-score]'),'data-score');
+			var ispublic=api.pageParam.ispublic;
+			var memberid=api.pageParam.memberid;
+			var imgs = [];
+			var imgDoms = $api.domAll('.pic-box .pl');
+			for(var i = 0; i < imgDoms.length; i++) {
+				if($api.attr(imgDoms[i], 'data-status') != 'done') {
+					Tool.toast('Please complete all information.');
+					return;
+				}
+				imgs.push($api.attr(imgDoms[i], 'data-key'));
+			}
+			inputBlur();
+			if(!title) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!detail) {
+				Tool.toast('Please complete all information.');
+				return;
+			}if(!score){
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			var firstStepData = {
+				title: title,
+				detail: detail,
+				imgs: imgs,
+				score: score,
+				ispublic:ispublic,
+				memberid:memberid
+			};
+			$api.setStorage('firstStepData', firstStepData);
+			api.execScript({
+				name: 'publish',
+				script: 'swichPageIndex(1);'
+			});
+
+		}
+		function num(){
+			//获取输入的字符数量
+			var titleNum=parseInt($api.val($api.dom('#title')).length);
+			var detailNum=parseInt($api.val($api.dom('#detail')).length);
+			$api.text($api.dom('#tnum'),titleNum);
+			$api.text($api.dom('#dnum'),detailNum);
+		}
+		apiready = function() {
+			$api.setStorage('firstStepData', {});
+			T.html('#wrap', 'wrap');
+			inputBlur(); 
+			//监听 已上传完成
+			$api.css($api.dom('.pic'), 'height: ' + parseInt((api.frameWidth - 36) / 5 + 15) + 'px;');
+			$api.css($api.dom('.add-pic-btn'), 'height: ' + parseInt((api.frameWidth - 36) / 5 + 15) + 'px;background-size: ' + parseInt((api.frameWidth - 36) / 5 + 15) + 'px;');
+			$api.css($api.dom('.add-pic-btn'), 'width: ' + parseInt((api.frameWidth - 36) / 5 + 15) + 'px');
+			L.init();
+			
+			window.onresize = function(){
+//				Tool.toast(api.frameWidth + ':' + api.frameHeight);
+			};			
+			
+			api.addEventListener({
+				name: 'uploaded'
+			},function(ret,err){
+				isUpload = 'false';
+				if(isUpload == 'false' && files.length > 0) {
+					Upload.init({
+						files: files,
+						callbackEvent: 'uploaded'
+					});
+					files = []; //上传图片后重置图片数组
+					isUpload = 'true';
+				}
+			});
+		}
+	</script>
+
+</html>

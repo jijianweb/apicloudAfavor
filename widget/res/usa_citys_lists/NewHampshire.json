@@ -1,0 +1,13 @@
+{
+	"citys": [
+		{
+			"id": "308",
+			"city": "Manchester",
+			"fr": "Manchester",
+			"parentid": "307",
+			"sort": "1",
+			"level": "3",
+			"sub": []
+		}
+	]
+}

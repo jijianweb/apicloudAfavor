@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>语言设置</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/icon.css" />
+		<style type="text/css">
+			body,
+			#main {
+				background-color: #FFFFFF;
+				font-size: 14px;
+			}
+			
+			.list-view {
+				border-bottom: 1px solid #EDEDED;
+				padding: 10px 18px;
+			}
+			
+			.aradio {
+				width: 20px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 20px 20px;
+				background-image: url(../../image/post/round-done-button2.png);
+			}
+			
+			.active {
+				width: 20px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 20px 20px;
+				background-image: url(../../image/post/round-done-button-1.png);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list-view flex-box" onclick="onChange(this,1)" tapmode="">
+					<div class="flex-1">English</div>
+					<div class="aradio eng"></div>
+				</div>
+
+				<div class="list-view flex-box" onclick="onChange(this,2)" tapmode="">
+					<div class="flex-1">French</div>
+					<div class="aradio fre"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+
+	<script type="text/javascript">
+		function onChange(_this, value) {
+
+			var item = $api.dom(_this, '.aradio');
+			if($api.hasCls(item, 'active')) {
+				return;
+			}
+			var rad = $api.dom('.active')
+			if(item) {
+				$api.addCls(item, 'active');
+				$api.removeCls(rad, 'active');
+			}
+			ajax.get({
+				ctrl: 'more',
+				fn: 'setLanguage',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						language: value
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function() {
+					if(value == 1) {
+						$api.addCls($api.dom('.eng'), 'active');
+						$api.removeCls($api.dom('.fre'), 'active');
+					} else {
+						$api.removeCls($api.dom('.eng'), 'active');
+						$api.addCls($api.dom('.fre'), 'active');
+					}
+					api.sendEvent({
+						name: 'language',
+						extra: {
+							languagetype: value
+						}
+					});
+
+					api.sendEvent({
+						name: 'languageChange'
+					});
+
+					api.execScript({
+						name: 'Win',
+						script: 'setTitle()'
+					});
+					api.execScript({
+						frameName: 'setting',
+						script: 'onChange()'
+					});
+					api.closeWin();
+				}
+			});
+		}
+		apiready = function() {
+			api.execScript({
+				name: 'Init',
+				frameName: 'more',
+				script: 'init()'
+			});
+			var language = api.pageParam.language
+			alert(language)
+			if(language == 1) {
+				$api.addCls($api.dom('.eng'), 'active');
+				$api.removeCls($api.dom('.fre'), 'active');
+			} else {
+				$api.removeCls($api.dom('.eng'), 'active');
+				$api.addCls($api.dom('.fre'), 'active');
+			}
+		}
+	</script>
+
+</html>

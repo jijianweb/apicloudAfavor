@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>浏览-筛选</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.range.css" />
+		<style type="text/css">
+			.sort{
+				padding: 0 15px;
+			}
+			
+			.type {
+				text-align: center;
+				color: #828b90;
+				font-size: 16px;
+				margin-bottom:35px;
+			}
+
+			.text2,
+			.active .btn-a {
+				background-color: #32BBB1;
+				color: white;
+			}
+
+			.active .text1 {
+				color: #fff;
+			}
+
+			.text1,
+			.btn-a {
+				color: #32BBB1;
+				/*background-color: white;*/
+			}
+
+			.btn-a {
+				width: 75px;
+				height:75px;
+				border: 2px solid #32BBB1;
+				border-radius: 50%;
+				text-align: center;
+				font-size: 16px;
+			}
+
+			.range {
+				margin-top: 20px;
+			}
+            
+            .footer {
+				padding: 0px 18px 16px;
+			}
+
+			.save {
+				background-color: #32BAB0;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="">
+				<div class="type" style="margin: 28px 0 18px" lan="SortBy">Sort By</div>
+				<div class="flex-box sort flex-center-center">
+					<div class="flex-1 active" onclick="switchSort(this,1)" tapmode>
+						<div class="btn-a flex-center-center flex-box-v" lan="Recent">Recent</div>
+					</div>
+					<div class="flex-1" onclick="switchSort(this,2)" tapmode>
+						<div class="btn-a flex-center-center flex-box-v" lan="Distance">Distance</div>
+					</div>
+					<div class="flex-1" onclick="switchSort(this,3)" tapmode>
+						<div class="btn-a flex-center-center flex-box-v" >
+							<span style="color: inherit;" lan="Price">Price</span>
+							<span class="text1" lan="Low">Low</span>
+						</div>
+					</div>
+					<div class="" onclick="switchSort(this,4)" tapmode>
+						<div class="btn-a flex-center-center flex-box-v">
+							<span style="color: inherit;" lan="Price">Price</span>
+							<span class="text1 " lan="High">High</span>
+						</div>
+					</div>
+				</div>
+				<div class="type" style="margin-top:36px;margin-bottom:20px;" lan="FavorType">
+					Favor Type
+				</div>
+				<div class="flex-box types flex-center-center" style="padding: 0 50px;">
+					<div class="flex-1 bot3 active" onclick="switchType(this, '')" tapmode>
+						<div class="btn-a flex-center-center flex-box-v" lan="Both">Both</div>
+					</div>
+					<div class="flex-1" onclick="switchType(this, 2)" tapmode>
+						<div class="btn-a flex-center-center flex-box-v" lan="Online">Online</div>
+					</div>
+					<div class=" bot4" onclick="switchType(this, 1)" tapmode>
+						<div class="btn-a flex-center-center flex-box-v" lan="Offline">Offline</div>
+					</div>
+				</div>
+				<div style="padding: 65px 36px;">
+					<div class="type" lan="Favor_within">Favor within</div>
+					<div class="range flex-h-ce flex-box-v flex-center-center">
+						<input value="15" id="timeselect" type="range" />
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="save btn-afavor-1" onclick="apply()" lan="APPLY_NOW" tapmode>APPLY NOW</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/template" template="wrap">
+		<div id="main" class="">
+			<div class="type" style="margin: 38px 0 18px" lan="SortBy">Sort By</div>
+			<div class="flex-box sort flex-center-center">
+				<div class="flex-1 active" onclick="switchSort(this,1)" tapmode>
+					<div class="btn-a flex-center-center flex-box-v" lan="Recent">Recent</div>
+				</div>
+				<div class="flex-1" onclick="switchSort(this,2)" tapmode>
+					<div class="btn-a flex-center-center flex-box-v" lan="Distance">Distance</div>
+				</div>
+				<div class="flex-1" onclick="switchSort(this,3)" tapmode>
+					<div class="btn-a flex-center-center flex-box-v" >
+						<span style="color: inherit;" lan="Price">Price</span>
+						<span class="text1" lan="Low">Low</span>
+					</div>
+				</div>
+				<div class="" onclick="switchSort(this,4)" tapmode>
+					<div class="btn-a flex-center-center flex-box-v">
+						<span style="color: inherit;" lan="Price">Price</span>
+						<span class="text1 " lan="High">High</span>
+					</div>
+				</div>
+			</div>
+			<div class="type" style="margin-top:36px;margin-bottom:20px;" lan="FavorType">
+				Favor Type
+			</div>
+			<div class="flex-box types flex-center-center" style="padding: 0 50px;">
+				<div class="flex-1 bot3 active" onclick="switchType(this, '')" tapmode>
+					<div class="btn-a flex-center-center flex-box-v" lan="Both">Both</div>
+				</div>
+				<div class="flex-1" onclick="switchType(this, 2)" tapmode>
+					<div class="btn-a flex-center-center flex-box-v" lan="Online">Online</div>
+				</div>
+				<div class=" bot4" onclick="switchType(this, 1)" tapmode>
+					<div class="btn-a flex-center-center flex-box-v" lan="Offline">Offline</div>
+				</div>
+			</div>
+			<div style="
+					{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+						padding: 65px 36px;
+					{{??}}
+						padding: 55px 36px;
+					{{?}}
+					">
+				<div class="type" lan="Favor_within">Favor within</div>
+				<div class="range flex-h-ce flex-box-v flex-center-center">
+					<input value="2" id="timeselect" type="range" />
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="save btn-afavor-1" onclick="apply()" lan="APPLY_NOW" tapmode>APPLY NOW</div>
+		</div>
+	</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery.range.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+
+		function resetPage(){
+			var frameHeight=api.frameHeight;
+			T.html('#wrap', 'wrap');
+			fixScreen();
+			initRange(frameHeight);
+			L.init();
+			distance = '0,2';	//距离
+			sort = 1;	//排序
+			types = '';	//任务类型
+		}
+
+		function fixScreen() {
+			/*
+			 * 6p适配
+			 */
+			if(api.screenWidth == 640 && api.screenHeight == 1136){
+				$('.btn-a').css({
+					"width": '65px',
+					"height": '65px',
+					"font-size": '14px'
+				});
+			}else if(api.screenWidth == 1242 && api.screenHeight == 2208){
+				$('.btn-a').css({
+					"width": '85px',
+					"height": '85px',
+					"font-size": '16px'
+				});
+				$('.types').css({
+					"padding": '0 50px'
+				});
+			}
+		}
+
+		apiready = function() {
+			var frameHeight=api.frameHeight;
+			T.html('#wrap', 'wrap');
+			fixScreen();
+			initRange(frameHeight);
+			L.init();
+		}
+		initRange();
+
+		var distance = '0,2',
+				sort = 1,
+				types = '';
+
+		function initRange(frameHeight){
+			//初始化滑动选择
+			if(frameHeight>=600){
+				width=320
+			}else{
+				width=260
+			}
+			$('#timeselect').jRange({
+				from: 0,
+				to: 5,
+				step:1,
+				scale: [1 + 'km', 5 + 'km', 10 + 'km',15+'km', 20 + 'km', 20 + '+km'],
+				format: '%s',
+				width: width,
+				showLabels: false,
+				isRange: true,
+				snap: true,
+				ondragend: function(ret){
+					// Tool.toast(ret);
+					distance = ret;
+				}
+			});
+		}
+
+
+		//点击 切换
+		function switchSort(_this, type) {
+			var active = $api.dom('.sort .active');
+			if(active) {
+				$api.removeCls(active, 'active');
+				$api.addCls(_this, 'active');
+				sort = type;
+			}
+		}
+
+		function switchType(_this, type) {
+			var active = $api.dom('.types .active');
+			if(active) {
+				$api.removeCls(active, 'active');
+				$api.addCls(_this, 'active');
+				types = type;
+			}
+		}
+		//apply
+		function apply() {
+			api.sendEvent({
+				name: 'search_browse',
+				extra: {
+					sort: sort,
+					types: types,
+					distance: distance
+				}
+			});
+			api.closeWin();
+		}
+		//reset
+		function reset() {
+			var sactive = $api.dom('.sort .active'),
+				tactive = $api.dom('.types .active');
+			if(sactive) {
+				$api.removeCls(sactive, 'active');
+				$api.addCls($api.dom('.sort div'), 'active');
+			}
+			if(tactive) {
+				$api.removeCls(tactive, 'active');
+				$api.addCls($api.dom('.types div'), 'active');
+			}
+			$('#timeselect').jRange('setValue', '0,10');
+			distance = '0,10';
+			types = '';
+			sort = 1;
+		}
+	</script>
+
+</html>

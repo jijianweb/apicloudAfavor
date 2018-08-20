@@ -1,0 +1,19 @@
+{
+  "require": {
+    "qiniu/php-sdk": "7.0",
+    "jpush/jpush": "3.2",
+    "codeplex/phpexcel": "^1.7",
+    "curl/curl": "^1.2",
+    "php-mod/curl": "1.4.0",
+    "checkmobi/checkmobi-php": "^1.1",
+    "stripe/stripe-php": "5.1.1",
+    "paypal/rest-api-sdk-php":"1.12.0",
+    "phpmailer/phpmailer":"~5.2"
+  },
+  "repositories": {
+    "packagist": {
+      "type": "composer",
+      "url": "https://packagist.phpcomposer.com"
+    }
+  }
+}

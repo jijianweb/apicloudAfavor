@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>title</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/ct.css" />
+		<style>
+			#wrap {
+				padding: 10px 12px;
+			}
+			#clear{
+				color: red;
+			}
+			#header{
+				margin-bottom: 20px;
+			}
+			.list-view{
+				border-bottom: 1px solid #ddd;
+				padding: 10px 0;
+			}
+			#main{
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="flex-box">
+				<div class="flex-1" lan="History">History</div>
+				<div class="flex-1 text-right" id="clear" lan="Clear" onclick="clearHistory()" tapmode="">Clear</div>
+			</div>
+			<div id="main">
+				<div class="list-view text-overflow hidden">
+					All Favors
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		{{? it instanceof Array && it.length > 0 }}
+			{{~it :value:index}}
+				<div class="list-view text-overflow" onclick="goSearch(this)" tapmode="">
+					{{= value }}
+				</div>				
+			{{~}}
+		{{?}}
+	</script>
+	<script type="text/javascript">
+		
+		function clearHistory(){
+			$api.rmStorage('afavorSearchHistory');
+			$api.html($api.dom('#main'), '');
+		}
+		
+		function goSearch(_this){
+			var key = $api.text(_this);
+			api.execScript({
+				name: 'Init',
+				frameName: 'browse_list',
+				script: 'search("' + key + '")'
+			});		
+			api.execScript({
+				name: api.winName,
+				script: 'saveHistory("' + key + '")'
+			});				
+			
+			api.closeWin();			
+		}
+		
+		apiready = function() {
+			var afavorSearchHistory = $api.getStorage('afavorSearchHistory');
+			T.html('#main', 'main', afavorSearchHistory);
+			L.init();
+		};
+	</script>
+
+</html>

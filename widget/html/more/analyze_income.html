@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>分析-支出</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.time {
+				text-align: center;
+				background-color: #EAEBEF;
+				font-size: 12px;
+				height: 20px;
+				line-height: 20px;
+				color: #474747;
+			}
+
+			#gauge {
+				width: 100%;
+				height: 250px;
+			}
+
+			.button {
+				width: 100%;
+				height: 45px;
+				background-color: #EAEBEF;
+			}
+
+			.text {
+				color: #909090;
+				text-align: center;
+				font-size: 12px;
+			}
+			#in-ex{
+				position: relative;
+			}
+			[data-cur='in'] .lncome,
+			[data-cur='ex'] .Expenditure{
+				width: 53%;
+				height: 35px;
+				border-radius: 60px;
+				background-color: #4DBEB7;
+				color: #FFFFFF;
+				line-height: 35px;
+			}
+			#main2{
+				width: 100%;
+			}
+
+
+			.button2 {
+				width: 60%;
+				height: 35px;
+				background-color: #F3F3F3;
+				border-radius: 60px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id="gauge"></div>
+				<div id="in-ex" data-cur='in'>
+					<div class="button flex-box flex-center-center hidden">
+						<div class="flex-box  flex-h-ce button2">
+							<div lan="Income" class="lncome text flex-1 " onclick="cut('in')" tapmode>Income</div>
+							<div lan="Expenditure" class="Expenditure text flex-1" onclick="cut('ex')" tapmode>Expenditure</div>
+						</div>
+					</div>
+					<div id="main2" style="height:300px;"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/justgage.js"></script>
+	<script type="text/javascript" src="../../script/raphael-2.1.4.min.js"></script>
+	<script type="text/javascript" src="../../script/echarts.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div id="gauge" style="
+			{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+				height: 200px;
+			{{?}}
+			"></div>
+		<div id="in-ex" data-cur='in'>
+			<div class="button flex-box flex-center-center hidden">
+				<div class="flex-box  flex-h-ce button2">
+					<div lan="Income" class="lncome text flex-1 " onclick="cut('in')" tapmode>Income</div>
+					<div lan="Expenditure" class="Expenditure text flex-1" onclick="cut('ex')" tapmode>Expenditure</div>
+				</div>
+			</div>
+			<div id="main2" style="height:300px;"></div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var inGraph = '',
+			exGraph = '';
+		apiready = function() {
+			T.html('#main', 'main');
+			init();
+		}
+		function graph(ct) {
+			var total = ct.total,
+					default_currency=ct.ctdefault_currency,
+					currency='',
+					setFontSize = function(){
+						var fontSize = 12;
+						if(api.screenWidth == 1242 && api.screenHeight == 2208){
+							//6p机型
+						}else if(api.screenWidth == 640 && api.screenHeight == 1136){
+							//iphone5
+							fontSize = 10;
+						}else{
+
+						}
+						return fontSize;
+					};
+			if(default_currency== "usd"){
+				currency='$';
+			}else{
+				currency='C$';
+			}
+			var gData = [{
+					value: ct.income,
+					name: 'Income',
+					label: {
+						normal: {
+							formatter: '{b|{b}}\n{yellow|'+currency+'{c}}',
+							color: '#EDCE49',
+							rich: {
+								b: {
+									color: '#828282',
+									align: 'center',
+									fontSize: setFontSize()
+								},
+								yellow: {
+									color: '#EDCE49',
+									align: 'center',
+									fontSize: setFontSize()
+								},
+							}
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#32BBB1'
+						}
+					}
+				},
+				{
+					value: ct.expenditure,
+					name: 'Expenditure',
+					label: {
+						normal: {
+							formatter: '{b|{b}}\n{yellow|-'+currency+'{c}}',
+							color: '#EDCE49',
+							rich: {
+								b: {
+									color: '#828282',
+									align: 'center',
+									fontSize: setFontSize()
+								},
+								yellow: {
+									color: '#EDCE49',
+									align: 'center',
+									fontSize: setFontSize()
+								},
+							}
+						}
+					},
+					itemStyle: {
+						normal: {
+							color: '#D6D6D6'
+						}
+					}
+				},
+			];
+			var sy = ct.total >= 0 ? '' : '-';
+			if(sy != ''){
+				total = total * -1;
+			};
+			var option = {
+				title: [{
+					text: 'Total',
+					left: '49%',
+					top: '40%',
+					textAlign: 'center',
+					textBaseline: 'middle',
+					textStyle: {
+						color: '#000000',
+						fontWeight: 'normal',
+						fontSize: (function(){
+							var fontSize = 16;
+							if(api.screenWidth == 1242 && api.screenHeight == 2208){
+								//6p机型
+							}else if(api.screenWidth == 640 && api.screenHeight == 1136){
+								//iphone5
+								fontSize = 12;
+							}else{
+
+							}
+							return fontSize;
+						}())
+					}
+				}, {
+					text: sy+currency+total,
+					left: '49%',
+					top: '50%',
+					textAlign: 'center',
+					textBaseline: 'middle',
+					textStyle: {
+						color: '#EDCE49',
+						fontWeight: 'normal',
+						fontSize: (function(){
+							var fontSize = 16;
+							if(api.screenWidth == 1242 && api.screenHeight == 2208){
+								//6p机型
+							}else if(api.screenWidth == 640 && api.screenHeight == 1136){
+								//iphone5
+								fontSize = 12;
+							}else{
+
+							}
+							return fontSize;
+						}())
+					}
+				}],
+				series: [{
+					name: 'Total',
+					type: 'pie',
+					radius: (function(){
+						var radius;
+						if(api.screenWidth == 1242 && api.screenHeight == 2208){
+							//6p机型
+							radius = ['60px', '95px'];
+						}else if(api.screenWidth == 640 && api.screenHeight == 1136){
+							//iphone5
+							radius = ['40px', '70px'];
+						}else{
+							radius = ['50px', '80px'];
+						}
+						return radius;
+					}()),
+					clockwise: false,
+					selectedMode: true,
+					selectedOffset: 5,
+					itemStyle: {
+						normal: {
+							borderWidth: 2,
+							borderColor: '#ffffff',
+						},
+					},
+					data: gData
+				}]
+			};
+
+			window['gauge'+api.pageParam.index] = echarts.init(document.getElementById('gauge'));
+			window['gauge'+api.pageParam.index].setOption(option)
+		}
+
+		function cut(index) {
+			if(index == $api.attr($api.dom('#in-ex'),'data-cur')){
+				return ;
+			}
+			$api.attr($api.dom('#in-ex'),'data-cur',index)
+			line(window[index+'Graph']);
+		}
+		function line(ct) {
+			var gaugeDom = $api.dom("#gauge"),
+				gaugePos = $api.offset(gaugeDom),
+				buttonDom = $api.dom('.button'),
+				buttonPos = $api.offset(buttonDom),
+				lineContainerDom = $api.dom('#main2'),
+				lineContainerHeight = api.frameHeight - gaugePos.h - buttonPos.h;
+
+			$api.css(lineContainerDom, 'height:' + lineContainerHeight + 'px')
+
+			// 基于准备好的dom，初始化echarts图表
+			myChart = echarts.init(document.getElementById('main2'));
+			var gdata = [];
+			for(var i in ct){
+				gdata.push(ct[i].y);
+			}
+			var option = {
+				grid: {
+			        left: '3%',
+			        right: '4%',
+			        bottom: '3%',
+			        containLabel: true
+			    },
+				xAxis: [{
+					type: 'category',
+					data: ["M", "TU", "W", "TH", "F", "SA", "SU"]
+				}],
+				yAxis: [{
+					type: 'value',
+					splitNumber: 3
+				}],
+				series: [{
+					name: "",
+					type: "bar",
+					data: gdata,
+					itemStyle: {
+						normal: {
+							color: function(p){
+								return '#82A8A6'
+							}
+						},
+					},
+				}]
+			};
+
+			// 为echarts对象加载数据
+			myChart.setOption(option);
+			  myChart.on('click', function (param) {
+			  	var newdata = JSON.parse(JSON.stringify(gdata));
+			  	for(var i in newdata){
+			  		if(i == param.dataIndex){
+			  			newdata[i] = {
+			  				value: newdata[i],
+			  				label: {
+								normal: {
+									show: true,
+			                        position: 'top',
+			                        formatter: '${c}',
+			                        fontSize: 16,
+			                        padding: 10,
+			                        borderRadius: 10,
+			                        color: '#fff',
+			                        backgroundColor: '#EDCE49'
+								}
+							}
+			  			}
+			  		}
+			  	}
+			  	myChart.setOption({
+			  		series: [{
+						data: newdata,
+						itemStyle: {
+							normal: {
+								color: function(p){
+									if(p.dataIndex == param.dataIndex){
+										return '#32BBB1';
+									}
+									return '#82A8A6'
+								}
+							},
+						},
+			  		}]
+			  	});
+            });
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'more',
+				fn: 'reveneAnaly',
+				hideLoading: true,
+				showError: true,
+				showProgress: true,
+				data: {
+					values: {
+						id: getMemberIdFromStorage(),
+						token: getMemberTokenFromStorage(),
+						time1: api.pageParam.time1,
+						time2: api.pageParam.time2
+					}
+				},
+				success: function(ct) {
+					$api.removeCls($api.dom('.button'),'hidden');
+					graph({
+						income: ct.income,
+						expenditure: ct.expenditure,
+						total: ct.total
+					});
+					line(ct.inGraph);
+					inGraph = ct.inGraph;
+					exGraph = ct.exGraph;
+					L.init();
+				}
+			})
+		}
+	</script>
+
+</html>

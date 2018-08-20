@@ -1,0 +1,27 @@
+{
+	"citys": [{
+		"id": "401",
+		"city": "Corner Brook",
+		"fr": "Corner Brook",
+		"parentid": "400",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "402",
+		"city": "Mount Pearl",
+		"fr": "Mount Pearl",
+		"parentid": "400",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "403",
+		"city": "St. John's",
+		"fr": "St. Jean",
+		"parentid": "400",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}]
+}

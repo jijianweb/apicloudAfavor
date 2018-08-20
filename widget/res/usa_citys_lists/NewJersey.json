@@ -1,0 +1,35 @@
+{
+	"citys": [{
+		"id": "273",
+		"city": "Newark",
+		"fr": "Newark",
+		"parentid": "272",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "274",
+		"city": "Jersey City",
+		"fr": "Jersey",
+		"parentid": "272",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "275",
+		"city": "Paterson",
+		"fr": "Paterson",
+		"parentid": "272",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "276",
+		"city": "Elizabeth",
+		"fr": "Elizabeth",
+		"parentid": "272",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}]
+}

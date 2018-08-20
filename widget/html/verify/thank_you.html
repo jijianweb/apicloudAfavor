@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>thankyou</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main {
+				margin: auto 0;
+			}
+			
+			.bg {
+				background-image: url(../../image/verify/logo.png);
+				background-size: cover;
+				width: 100px;
+				height: 100px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			
+			.text-center {
+				padding-top: 27px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-center-center">
+				<div class="bg"></div>
+				<div class="text-center" lan="You_will_receive_notification_shortly_after_you_re_approved">
+					You will receive notification shortly after you're approved.
+				</div>
+			</div>
+
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			L.init();
+			setTimeout(function(){
+				api.closeToWin({
+					name: 'Init'
+				});
+			},3000)
+		}
+	</script>
+
+</html>

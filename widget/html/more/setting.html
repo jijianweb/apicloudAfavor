@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>设置</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.list-view {
+				line-height: 44px;
+				padding: 0 18px 0 0;
+				border-bottom: 1px solid #E3E3E5;
+			}
+			
+			.list-view>div:nth-child(1) {
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 50px;
+				background-size: 20px;
+			}
+			
+			.list-view>div:nth-child(2) {
+				font-size: 14px;
+				color: #4F4F4F;
+			}
+			
+			.list-view>div:nth-child(3) {
+				font-size: 13px;
+				color: #ABAFB1;
+			}
+			
+			.icon-currency {
+				background-image: url(../../image/more/CURRENCY.png);
+			}
+			
+			.icon-notify {
+				background-image: url(../../image/BELL.png);
+				width:50px;
+				height:28px;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			
+			.icon-language {
+				background-image: url(../../image/EARTH.png);
+			}
+			
+			.icon-password {
+				background-image: url(../../image/more/LOCK.png);
+				background-size: 16px!important;
+			}
+			
+			.btn-card-close {
+				background-image: url(../../image/close.png);
+				background-size:50px 29px;
+			}
+			
+			.btn-card-close,
+			.btn-card {
+				background-position: center;
+				background-repeat: no-repeat;
+				width:50px;
+				height:29px;
+			}
+			
+			.btn-card {
+				background-size:50px 29px;
+				background-image: url(../../image/post/save.png);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<!--<div class="list-view flex-box" onclick="openCurrency()" tapmode>
+					<div class="icon-currency"></div>
+					<div class="flex-1">Currency</div>
+					<div>CAD</div>
+				</div>
+
+				<div class="list-view flex-box flex-h-ce">
+					<div class="icon-notify"></div>
+					<div class="flex-1">Notifications</div>
+					<div class="btn-card-close " onclick="saveCard(this)" tapmode=""></div>
+				</div>
+
+				<div class="list-view flex-box" onclick="openLanguage()" tapmode>
+					<div class="icon-language"></div>
+					<div class="flex-1">Language</div>
+					<div>ENGLISH</div>
+				</div>
+
+				<div class="list-view flex-box" onclick="openPassword()" tapmode>
+					<div class="icon-password"></div>
+					<div class="flex-1">Change Password</div>
+					<div class="icon-forward" style="background-position-x: right;"></div>
+				</div>-->
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="list-view flex-box" onclick="openCurrency()" tapmode>
+			<div class="icon-currency"></div>
+			<div class="flex-1" lan="Currency">Currency</div>
+			<div id="currency">{{=it.currency == 'cad' ? 'CAD' : 'USD'}}</div>
+		</div>
+
+		<div class="list-view flex-box flex-h-ce">
+			<div class="icon-notify"></div>
+			<div class="flex-1" lan="Notifications">Notifications</div>
+			<div class="{{? it.remind==1}}btn-card-close{{??}}btn-card {{?}}" onclick="saveCard(this)" tapmode=""></div>
+		</div>
+
+		<div class="list-view flex-box" onclick="openLanguage()" tapmode>
+			<div class="icon-language"></div>
+			<div class="flex-1" lan="Language">Language</div>
+			<div id="language">{{? it.language==1}}ENGLISH {{??}}FRENCH{{?}}</div>
+		</div>
+
+		<div class="list-view flex-box" onclick="openPassword()" tapmode>
+			<div class="icon-password"></div>
+			<div class="flex-1" lan="ChangePassword">Change Password</div>
+			<div class="icon-forward" style="background-position-x: right;margin-right:2px;"></div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var type = "";
+		var remind="",
+		    currency="",
+		    statue=0,
+		    kindof='',
+		    lantype='',
+		    ltype=0;
+		apiready = function() {
+			api.addEventListener({
+				name: 'currencys'
+			},function(ret){
+				statue=1;
+				var value=ret.value;
+			    var memberinfo = $api.getStorage(CONFIG.KEY.MEMBER_INFO);
+                var cadOrdoll=$api.getStorage('currency');
+				if(value.cy==1){
+					$api.text($api.dom('#currency'),'CAD')
+					kindof='cad'
+				}else if(value.cy ==2){
+					$api.text($api.dom('#currency'),'USD')
+					kindof='usd'
+				}
+				api.closeWin({
+					name: 'Currency'
+				})
+				api.execScript({
+					name: 'Init',
+					frameName: 'more',
+					script: 'init()'
+				});
+			})
+			api.addEventListener({
+				name: 'language'
+			},function(ret){
+				ltype=1;
+				var meml =ret.value.languagetype;
+				if(meml==1){
+					$api.text($api.dom('#language'),'ENGLISH')
+					lantype=1
+				}else{
+					$api.text($api.dom('#language'),'French')
+					lantype=2
+				}
+				api.execScript({
+					name: api.winName,
+					script: 'setTitle("' + LANGUAGE[$api.getStorage('lan')]['Settings'] + '")'
+				});
+			});
+			 //支付币种,1:加币,2:美元
+		    var  val={
+			   	remind : api.pageParam.reminds,
+			   	language:api.pageParam.language,
+			   	currency:api.pageParam.currency
+		    }
+			T.html('#main', 'main', val);
+			L.init();
+		}
+
+		function saveCard(_this) {
+			if($api.dom('.btn-card')) {
+				$api.addCls(_this, 'btn-card-close');
+				$api.removeCls(_this, 'btn-card');
+				type = 1;
+				setRemind(type);
+
+			} else {
+				$api.addCls(_this, 'btn-card');
+				$api.removeCls(_this, 'btn-card-close');
+				type = 0;
+				setRemind(type);
+			}
+		}
+
+		function setRemind(type) {
+			ajax.get({
+				ctrl: 'more',
+				fn: 'setRemind',
+				hideLoading: true,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: type
+					}
+				},
+				success: function() {
+					api.execScript({
+						name: 'Init',
+						frameName: 'more',
+						script: 'init()'
+					});
+				}
+			});
+		}
+
+		function openCurrency() {
+			var kind;
+			if(statue==0){
+				kind=api.pageParam.currency;
+			}else{
+				kind=kindof;
+			}
+			Tool.openWin({
+				winName: 'Currency',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: 'Currency',
+				frameName: 'currency',
+				frameParam: {
+                       kinds:kind
+				},
+				frameUrl: api.wgtRootDir + '/html/more/currency.html'
+			});
+			api.execScript({
+				name: 'Init',
+			    frameName: 'more',
+			    script:'init()'
+			});
+		}
+
+		function openLanguage() {
+			var language=api.pageParam.language
+			Tool.openWin({
+				winName: 'Language',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: 'Language',
+				frameName: 'language',
+				frameParam: {
+                       language:ltype==1 ? lantype:language
+				},
+				frameUrl: api.wgtRootDir + '/html/more/language.html'
+			});
+			api.execScript({
+				name: 'Init',
+			    frameName: 'more',
+			    script:'init()'
+			});
+		}
+
+		function openPassword() {
+			Tool.openWin({
+				winName: 'ChangePassword',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: 'Password',
+				frameName: 'change_password',
+				frameUrl: api.wgtRootDir + '/html/more/change_password.html'
+			});
+		}
+	</script>

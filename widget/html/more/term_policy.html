@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>条款及政策</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.list {
+				padding: 10px 18px 10px 40px;
+				border-bottom: 1px solid #E9E9E9;
+				height: 42px;
+			}
+			
+			.img {
+				height: 10px;
+			}
+			
+			.terms {
+				font-size: 14px;
+				color: #474747;
+			}
+			
+			.list-view {
+				border-bottom: 1px solid #EDEDED;
+				line-height: 44px;
+				font-size: 14px;
+				padding-left:19px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list-view flex-box" onclick="openTermsOrPrivacy(1)" tapmode>
+					<div class="flex-1" lan="TermsConditions">
+						Terms & Conditions
+					</div>
+					<div class="icon-forward"></div>
+				</div>
+
+				<div class="list-view flex-box" onclick="openTermsOrPrivacy(2)" tapmode>
+					<div class="flex-1" lan="PrivacyPolicy">
+						Privacy Policy
+					</div>
+					<div class="icon-forward"></div>
+				</div>
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+
+	<script type="text/javascript">
+		apiready = function() {
+			L.init();
+		}
+
+		function openTermsOrPrivacy(type) {
+			Tool.openWin({
+				winName: type==1 ? 'TermsCondition' : 'PrivacyPolicy',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: type==1 ? 'Terms & Condition' : 'Privacy Policy',
+				frameName:  type==1 ? 'terms_condition' : 'privacy_policy',
+				frameParam: {
+					 type:type
+				},
+				frameUrl: api.wgtRootDir + '/html/more/' + (type == 1 ? 'terms_conditions' : 'privacy_policy') + '.html'
+			});
+		}
+	</script>
+
+</html>
+
+</html>

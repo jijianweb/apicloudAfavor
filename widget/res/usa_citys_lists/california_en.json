@@ -1,0 +1,168 @@
+{
+	"citys": [{
+		"id": 1,
+		"city": "Los Angeles",
+		"fr": "Los Angeles",
+		"tag": "los_angeles"
+	}, {
+		"id": 2,
+		"city": "San Diego",
+		"fr": "San Diego",
+		"tag": "san_diego"
+	}, {
+		"id": 3,
+		"city": "San Jose",
+		"fr": "San Jose",
+		"tag": "san_jose"
+	}, {
+		"id": 4,
+		"city": "San Francisco",
+		"fr": "San Francisco",
+		"tag": "san_francisco"
+	}, {
+		"id": 5,
+		"city": "Long Beach",
+		"fr": "Long Beach",
+		"tag": "long_beach"
+	}, {
+		"id": 6,
+		"city": "Fresno",
+		"fr": "Fresno",
+		"tag": "fresno"
+	}, {
+		"id": 7,
+		"city": "Sacramento",
+		"fr": "Sacramento",
+		"tag": "sacramento"
+	}, {
+		"id": 8,
+		"city": "Oakland",
+		"fr": "Oakland",
+		"tag": "oakland"
+	}, {
+		"id": 9,
+		"city": "Santa Ana",
+		"fr": "Santa Ana",
+		"tag": "santa_ana"
+	}, {
+		"id": 10,
+		"city": "Anaheim",
+		"fr": "Anaheim",
+		"tag": "anaheim"
+	}, {
+		"id": 11,
+		"city": "Bakersfield",
+		"fr": "Bakersfield",
+		"tag": "bakersfield"
+	}, {
+		"id": 12,
+		"city": "Riverside",
+		"fr": "Riverside",
+		"tag": "riverside"
+	}, {
+		"id": 13,
+		"city": "Stockton",
+		"fr": "Stockton",
+		"tag": "Stockton"
+	}, {
+		"id": 14,
+		"city": "Chula Vista",
+		"fr": "Chula Vista",
+		"tag": "chula_vista"
+	}, {
+		"id": 15,
+		"city": "Modesto",
+		"fr": "Modesto",
+		"tag": "modesto"
+	}, {
+		"id": 16,
+		"city": "Fremont",
+		"fr": "Fremont",
+		"tag": "fremont"
+	}, {
+		"id": 17,
+		"city": "Glendale",
+		"fr": "Glendale",
+		"tag": "glendale"
+	}, {
+		"id": 18,
+		"city": "San Bernardino",
+		"fr": "San Bernardino",
+		"tag": "san_bernardino"
+	}, {
+		"id": 19,
+		"city": "Huntington Beach",
+		"fr": "Huntington Beach",
+		"tag": "huntington_beach"
+	}, {
+		"id": 20,
+		"city": "Irvine",
+		"fr": "Irvine",
+		"tag": "irvine"
+	}, {
+		"id": 21,
+		"city": "Oxnard",
+		"fr": "Oxnard",
+		"tag": "oxnard"
+	}, {
+		"id": 22,
+		"city": "Moreno Valley",
+		"fr": "Moreno Valley",
+		"tag": "moreno_valley"
+	}, {
+		"id": 23,
+		"city": "Ontario",
+		"fr": "Ontario",
+		"tag": "ontario"
+	}, {
+		"id": 24,
+		"city": "Rancho Cucamonga",
+		"fr": "Rancho Cucamonga",
+		"tag": "rancho_cucamonga"
+	}, {
+		"id": 25,
+		"city": "Fontana",
+		"fr": "Fontana",
+		"tag": "fontana"
+	}, {
+		"id": 26,
+		"city": "Santa Clarita",
+		"fr": "Santa Clarita",
+		"tag": "santa_clarita"
+	}, {
+		"id": 27,
+		"city": "Garden Grove",
+		"fr": "Garden Grove",
+		"tag": "garden_grove"
+	}, {
+		"id": 28,
+		"city": "Oceanside",
+		"fr": "Oceanside",
+		"tag": "oceanside"
+	}, {
+		"id": 29,
+		"city": "Pomona",
+		"fr": "Pomona",
+		"tag": "pomona"
+	}, {
+		"id": 30,
+		"city": "Santa Rosa",
+		"fr": "Santa Rosa",
+		"tag": "santa_rosa"
+	}, {
+		"id": 31,
+		"city": "Corona",
+		"fr": "Corona",
+		"tag": "corona"
+	}, {
+		"id": 32,
+		"city": "Salinas",
+		"fr": "Salinas",
+		"tag": "salinas"
+	}, {
+		"id": 33,
+		"city": "Pasadena",
+		"fr": "Pasadena",
+		"tag": "pasadena"
+	}]
+}

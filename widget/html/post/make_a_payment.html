@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			[class*=icon-]{
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 46px;
+			}
+			div{
+				color: #585858;
+			}
+			.icon-credit-card{
+				background-image: url(../../image/post/card-1.png);
+				background-size: 20px;
+			}
+			.icon-select{
+				background-image: url(../../image/post/round-done-button2.png);
+				background-size: 20px;
+			}
+			.icon-select.active{
+				background-image: url(../../image/post/round-done-button-1.png);
+			}
+			.icon-plus{
+				background-image: url(../../image/post/add.png);
+				background-size: 20px;
+			}
+			#credit-card .list-view,
+			#paypal,
+			#apple-pay,
+			#income-balance{
+				line-height: 41px;
+			}
+			.icon-paypal{
+				background-image: url(../../image/post/paypal.png);
+				background-size: 20px;
+			}
+			.icon-apple-pay{
+				background-image: url(../../image/post/apple-pay.png);
+				background-size: 26px;
+			}
+			.icon-income-balance{
+				background-image: url(../../image/post/money.png);
+				background-size: 20px;
+			}
+			#credit-card .list-view,
+			#paypal,
+			#apple-pay,
+			#income-balance{
+				border-top: 1px solid #E2E4E5;
+			}
+			
+			#credit-card .list-view:last-child,
+			#paypal,
+			#apple-pay,
+			#income-balance{
+				border-bottom: 1px solid #E2E4E5;
+			}
+			#credit-card,
+			#paypal,
+			#apple-pay,
+			#income-balance{
+				margin-bottom: 35px;
+			}
+			#counter{
+				padding: 20px 36px;
+			}
+			#counter .list-view{
+				line-height: 30px;
+			}
+			#total.list-view{
+				margin-top: 10px;
+				border-top: 1px solid #E2E4E5;
+				line-height: 40px;
+			}
+			#total-price{
+				font-size: 1.5em;
+				font-weight: bolder;
+			}
+			#price-symbol,
+			#property{
+				color: #55BAB0;
+			}
+			#footer{
+		      	padding:20px 18px 16px;
+		      	/*margin-bottom: 16px;*/
+		    }
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id="counter">
+					<div class="list-view flex-box">
+						<div class="flex-1">
+							Favor Price
+						</div>
+						<div>
+							$ 0 CAD
+						</div>
+					</div>
+					<div class="list-view flex-box">
+						<div class="flex-1">
+							Processing Fee
+						</div>
+						<div>
+							+$ 0 CAD
+						</div>
+					</div>
+					<div id="total" class="list-view flex-box">
+						<div class="flex-1" style="font-weight: bolder;">
+							Total
+						</div>
+						<div>
+							<span id="total-price">$ 0</span>
+							CAD
+						</div>
+					</div>
+				</div>
+				<div id="credit-card">
+					<div class="list-view flex-box hidden" onclick="selectPayment(this, 1)" tapmode="">
+						<div class="icon-credit-card"></div>
+						<div class="card-num flex-1">15115614564</div>
+						<div class="icon-select"></div>
+					</div>
+					<div class="list-view add-credit-card flex-box" onclick="addCard()" tapmode="">
+						<div class="icon-plus"></div>
+						<div class="flex-1">Add New Credit Card</div>
+						<div class="icon-forward"></div>
+					</div>
+				</div>
+				<div id="paypal" class="flex-box" onclick="payPal()" tapmode="">
+					<div class="icon-paypal"></div>
+					<div class="flex-1">PayPal Account</div>
+					<div class="icon-forward"></div>
+				</div>
+				<div id="apple-pay" class="flex-box" onclick="selectPayment(this, 3)" tapmode="">
+					<div class="icon-apple-pay"></div>
+					<div class="flex-1">Apple Pay</div>
+					<div class="icon-select"></div>
+				</div>
+				<div id="income-balance" class="flex-box" onclick="selectPayment(this, 4)" tapmode="">
+					<div class="icon-income-balance"></div>
+					<div class="flex-1">
+						Pay from income balance -- 
+						<span id="price-symbol">$</span>
+						<span id="property">0</span>
+					</div>
+					<div class="icon-select"></div>
+				</div>
+			</div>
+			<div id="footer" >
+				<div class="sub btn-afavor-1" lan="SUBMIT" onclick="sub()" tapmode="">SUBMIT</div>
+	   		</div>			
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/rongCloud2.js" ></script>
+	<script type="text/javascript" src="../../script/rongCloud_ps.js" ></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="counter">
+		<div class="list-view flex-box">
+			<div class="flex-1">
+				Favor Price
+			</div>
+			<div>
+				{{= currency == 1 ? 'C$' : '$'}} 
+				{{= it.favorPrice }} {{= currency == 1 ? 'CAD' : 'USD'}}
+			</div>
+		</div>
+		<div class="list-view flex-box">
+			<div class="flex-1">
+				Processing Fee
+			</div>
+			<div>
+				+{{= currency == 1 ? 'C$' : '$'}} 
+				{{= it.fee }} {{= currency == 1 ? 'CAD' : 'USD'}}
+			</div>
+		</div>
+		<div id="total" class="list-view flex-box">
+			<div class="flex-1" style="font-weight: bolder;">
+				Total
+			</div>
+			<div>
+				<span id="total-price">
+					{{= currency == 1 ? 'C$' : '$'}} 
+					{{= it.total }}
+				</span>
+				&nbsp;{{= currency == 1 ? 'CAD' : 'USD'}}
+			</div>
+		</div>
+	</script>
+	
+	<script type="text/template" template="credit-card">
+		{{? it instanceof Array && it.length!=0}}
+			{{~ it:value:index}}
+				<div class="list-view flex-box" onclick="selectPayment(this, 1)" tapmode="">
+					<div class="icon-credit-card"></div>
+					<div class="card-num flex-1">{{= value.number }}</div>
+					<div class="icon-select" card-id="{{= value.id }}"></div>
+				</div>
+			{{~}}
+		{{?}}
+		<div class="list-view add-credit-card flex-box" onclick="addCard()" tapmode="">
+			<div class="icon-plus"></div>
+			<div class="flex-1">Add New Credit Card</div>
+			<div class="icon-forward"></div>
+		</div>		
+	</script>
+	
+	<script type="text/javascript">
+		var currency = $api.getStorage(CONFIG.KEY.CURRENCY),
+			favorPrice,	//任务价格，不包含手续费
+			fee,	//手续费
+			total,	//加上手续费后的任务价格
+			favorId,	//任务id
+			types = 0,	//支付方式
+			paymentid = 0,	//paypal 支付成功后，返回的订单id
+			taskDetail = $api.getStorage('info'), //任务详情数据
+			editData='';
+		var _dom="";
+		var cardid ="";
+		var editType,
+    		repost=0;
+		apiready = function() {
+			favorPrice = api.pageParam.money;
+			favorId = api.pageParam.favorId;
+			fee = parseFloat((api.pageParam.money * 0.03 + 0.5).toFixed(2));
+			total = (favorPrice + fee).toFixed(2);
+			T.html('#counter', 'counter', {
+				favorPrice: favorPrice,
+				fee: fee,
+				total: total
+			});
+			
+			L.init();
+			
+			getBalance(function(){
+				getCreditList();
+			});
+return;
+			editData=$api.getStorage('editData');
+			editType=api.pageParam.editType;
+			repost=api.pageParam.repost; //判断是否过期
+			credits = $api.getStorage('thirdStepData');
+			four = $api.getStorage('four');
+			if(editType==0){
+                if(repost==1){
+                	T.html('#main', 'main', editData);//任务终止重新发布的
+                }else{
+                	T.html('#main', 'main', editData);//任务编辑的
+                }
+			}else{
+				T.html('#main', 'main', credits);
+			}
+			L.init();
+			window.onresize = function(){
+//				Tool.toast(api.frameWidth + ':' + api.frameHeight);
+			};			
+		}
+		
+		function getCreditList(){
+			/*
+			 * 获取信用卡列表
+			 */
+			
+        	ajax.get({
+				ctrl: 'more',
+				fn: 'getPayments',
+				hideLoading: true,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1
+					}
+				},
+				success: function(ct) {
+		            T.html('#credit-card', 'credit-card', ct);
+				}
+			});
+		}
+		
+		function getBalance(cb){
+			/*
+			 * 获取用户资金
+			 */
+			
+			ajax.get({
+				ctrl: 'more',
+				fn: 'index',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					var _dom = $api.dom('#property');
+					$api.text(_dom, ct.balance );
+					if(typeof cb == 'function'){
+						cb();
+					}
+				}
+			});			
+		}
+		
+		function selectPayment(_this, type){
+			/*
+			 * 选择支付方式
+			 */
+			
+			var activeDom = $api.dom('.icon-select.active');
+			
+			types = type;
+			
+			if(activeDom){
+				$api.removeCls(activeDom, 'active');
+			}
+			
+			$api.addCls($api.dom(_this, '.icon-select'), 'active');
+		}
+		
+		var	_ctrl;
+		function sub() { //信用卡支付
+			credits = $api.getStorage('thirdStepData');
+			editData=$api.getStorage('editData');
+			_dom = $api.dom('.icon-select.active');
+            cardid;
+            editType = api.pageParam.editType;
+            repost=api.pageParam.repost;
+            if(editType == 0 && repost!=1){
+              	_ctrl = 'Favor';
+            }else{
+            	_ctrl = 'post';
+            }
+            if(! _dom){
+            	Tool.toast('Please select one payment method.');
+            }
+//          alert(_ctrl + ',' + types);return;
+			if(types == 1 && _dom) {	//信用卡支付
+				cardid = $api.attr(_dom, 'card-id');
+				ajax.get({
+					ctrl:_ctrl,
+					fn: 'creditPay',
+					hideLoading: true,
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							afavorid:editType == 0 ? editData.afavorid : favorId,
+							cardid: cardid
+						}
+					},
+					showProgress: true,
+					success: function() {
+						api.execScript({
+							name: 'task_detail',
+							frameName: 'my_task_detail',
+							script: 'init()'
+						});
+						
+						if(api.pageParam.workers > 1){
+							//多人任务，支付后，加入群聊
+							RongCloud2.joinChat({
+								favorId: favorId
+							});
+						}
+						
+						api.alert({
+							msg: 'You have successfully make the payment, and you favor is ready to go.',
+							buttons: ['OK']
+						}, function(ret){
+							api.closeWin();
+						});
+					},
+					_404: function(msg){
+						Tool.toast(msg);
+					}
+				});
+			} else if(types == 3 && _dom) { //苹果
+				applePay();
+			} else if(types == 4 && _dom) { //余额
+				if(editType==0 && repost!=1){
+					money=editData.money
+				}else{
+					money=' '
+				}
+				ajax.get({
+					ctrl:_ctrl,
+					fn: 'balancePay',
+					hideLoading: true,
+					showProgress: true,
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							afavorid: editType==0 ? editData.afavorid : favorId,
+							money: money
+						}
+					},
+					success: function() {
+						api.execScript({
+							name: 'Init',
+							frameName: 'more',
+							script: 'init()'
+						});
+						
+						//更新任务详情
+						api.execScript({
+							name: 'task_detail',
+							frameName: 'my_task_detail',
+							script: 'init()'
+						});
+						
+						if(api.pageParam.workers > 1){
+							//多人任务，支付后，加入群聊
+							RongCloud2.joinChat({
+								favorId: favorId
+							});
+						}
+						
+						api.alert({
+							msg: 'You have successfully make the payment, and you favor is ready to go.',
+							buttons: ['OK']
+						}, function(ret){
+							api.closeWin();
+						});
+					},
+					_404: function(){
+						Tool.toast('Payment Failure, Insufficient balance. Please select another payment method.');
+					}
+				});
+			}
+		}
+
+		//PayPal支付
+		function payPal() {
+			var paypal = api.require('paypal');
+
+			paypal.pay({
+				currency: currency == 1 ? 'CAD' : 'USD',
+				price: total,
+				description: taskDetail.title,
+				mode: 'sandbox'
+			}, function(ret) {
+				if(ret.state == "success") {
+					paymentid = ret.response.id;
+					//支付成功，将支付信息同步到后台
+					pPal(paymentid);
+				}
+			});
+		}
+		//PayPal接口
+		function pPal(paymentid) {
+			ajax.get({
+				ctrl: 'post',
+				fn: 'paypal',
+				hideLoading: true,
+				showProgress: true,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						afavorid: editType == 0 ? editData.afavorid : favorId,
+						paymentid: paymentid,
+						currency: currency
+					}
+				},
+				success: function() {
+					api.execScript({
+						name: 'task_detail',
+						frameName: 'my_task_detail',
+						script: 'init()'
+					});
+					api.execScript({
+						name:'Init',
+						frameName: 'my_promulgator',
+						script: 'init()'
+					});		
+					
+					if(api.pageParam.workers > 1){
+						//多人任务，支付后，加入群聊
+						RongCloud2.joinChat({
+							favorId: favorId
+						});
+					}
+						
+					api.alert({
+						msg: 'You have successfully make the payment, and you favor is ready to go.',
+						buttons: ['OK']
+					}, function(ret){
+						api.closeWin();
+					});
+				}
+			});
+		}
+		//苹果支付
+		function applePay() {
+			var stripePay = api.require('stripePay');
+			stripePay.deviceSupportsApplePay(function(ret) {
+				if(ret.status) {
+					stripePay.applePay({
+						country: credits.currency == 1 ? 'CA' : 'US',
+						currency: credits.currency == 1 ? 'CAD' : 'USD',
+						paymentItems: [{
+							label: four.title,
+							amount: four.mtype == 1 ? four.remuneration.toString() : four.hcash.toString(),
+						}]
+					}, function(ret, err) {
+						if(ret.eventType == 'didFinish'){
+							aPay(ret.token.tokenId);
+						}
+					});
+				} else {
+					Tool.toast('Apple pay is not supported');
+				}
+			});
+		}
+		//苹果接口
+		function aPay(paytoken) {
+			ajax.get({
+				ctrl: 'post',
+				fn: 'applePay',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						afavorid:editType==0 ? editData.afavorid : credits.afavorid,
+						paytoken: paytoken, //交易凭证
+					}
+				},
+				success: function() {
+					api.execScript({
+						name: 'task_detail',
+						frameName: 'my_task_detail',
+						script: 'init()'
+					});	
+					
+					if(api.pageParam.workers > 1){
+						//多人任务，支付后，加入群聊
+						RongCloud2.joinChat({
+							favorId: favorId
+						});
+					}		
+					
+					api.alert({
+						msg: 'You have successfully make the payment, and you favor is ready to go.',
+						buttons: ['OK']
+					}, function(ret){
+						api.closeWin();
+					});
+				}
+			});
+		}
+
+		function addCard() {
+			api.openWin({
+				name: 'pay_picture',
+				url: api.wgtRootDir + '/html/window/pay_picture.html',
+				pageParam: {
+					frameName: 'add_credit_card',
+					frameUrl: api.wgtRootDir + '/html/post/credit_card.html',
+					frameParam: {
+						favorId: favorId,
+						workers: api.pageParam.workers
+					},
+					headerTitle: 'Credit Card',
+				},
+				reload: true,
+				slidBackEnabled: false,
+			});
+		}		
+	</script>
+
+</html>
+

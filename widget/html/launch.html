@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>引导页</title>
+		<link rel="stylesheet" href="../css/api.css" />
+		<link rel="stylesheet" href="../css/ct.css" />
+		<link rel="stylesheet" href="../css/swiper.min.css" />
+		<link rel="stylesheet" href="../css/aui.css" />
+		<link rel="stylesheet" href="../css/aui-slide.css" />
+		<style type="text/css">
+			#main{
+				background-color: #fff;
+				height: 100%;
+			}
+			#slider .img ,
+			#slider .img-frm{
+				height: 100%;
+				/*width: 100%;*/
+			}
+			._btn {
+				width: 100%;
+				/*bottom: 10px;*/
+				/*height: 60px;*/
+				position: absolute;
+			}
+			._btn .button {
+				width: 180px;
+				height: 60px;
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+			}
+			#pointer a {
+				background-color: rgb(130,139,143);
+				width: 12px;
+				height: 12px;
+				border-radius: 8px;
+				margin-right: 3px;
+				border: none;
+				/* border: 1px solid #F53B3C
+				/*border: 1px solid white;*/
+			}
+			#pointer a.active {
+				background-color: white;
+			}
+			.imgage{
+				position: absolute;
+				margin-top: -70px;
+				padding: 10px 36px;
+			}
+			.getstart{
+				color: #33BAB0;
+				background-color: #fff;
+				border-radius: 50px;
+				margin: 0 50px;
+				width: 100%;
+				padding: 5px 0;
+			}
+			.se{
+				width: 100%;
+				text-align: center;
+				position: absolute;
+				bottom: 17px;
+			}
+			.skip{
+				position: absolute;
+				top: 1.5rem;
+				right: 15px;
+				height: 26px;
+				color: #919191;
+				font-size:0.8rem;
+			}
+			#pointer {
+				line-height: 8px;
+				/* padding-bottom: 131px; */
+				left: 0;
+				position: absolute;
+				bottom: 70px;
+				overflow: hidden;
+				width: 100%;
+				text-align: center;
+				/* top: 50px; */
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div id="slider" class="swipe " style="height: 100%;">
+					<div class="swipe-wrap" style="height: 100%;">
+						<div style="height: 100%;">
+							<div class="img-frm">
+								<div class="img" style="background-image:url(../image/SKIP.png);background-position: center; background-size:cover  ; background-repeat: no-repeat;  ">
+									<span class="skip" lan="SKIP" tapmode="" onclick="openTheme()">SKIP</span>
+								</div>
+							</div>
+						</div>
+						<div style="height: 100%;">
+							<div class="img-frm">
+								<div class="img" style="background-image: url(../image/guide.png);background-position: center; background-size:cover ; background-repeat: no-repeat;  "></div>
+								<span class="skip" lan="SKIP" tapmode="" onclick="openTheme()">SKIP</span>
+							</div>
+						</div>
+						<div style="height: 100%;">
+							<div class="img-frm">
+								<div class="img" style="background-image: url(../image/1-1.png);background-position: center; background-size:cover ; background-repeat: no-repeat;  ">
+									<div class="flex-box flex-center-center se">
+										<div class="getstart" lan="GET_STARTED" tapmode="" onclick="openTheme()">GET STARTED</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="pointer">
+						<a id="p0" class="point active"></a>
+						<a id="p1" class="point"></a>
+						<a id="p2" class="point"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../script/swiper.min.js" ></script>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/common.js" ></script>
+	<script type="text/javascript" src="../script/aui-slide.js" ></script>
+	<script type="text/javascript" src="../script/swipe.js" ></script>
+	<script type="text/javascript" src="../res/language.js" ></script>
+	<script type="text/javascript">
+		//轮播
+		function swipeInit() {
+			window.mySwipe = new Swipe(document.getElementById('slider'), {
+				startSlide: 0,//起始图片切换的位置
+				speed: 300,//切换速度
+				auto: 0,
+				continuous: false,//无限循环图片的效果
+				disableScroll: true,//阻止由于触摸而滚动屏幕
+				stopPropagation: true,//停止滑动
+				callback: function(index, elem) {//回调函数
+					try {
+						var pointer = $api.byId('pointer');
+						var p = $api.domAll(pointer, '.point');
+						if (index == p.length) {
+							for (var i = 0; i < p.length; i++) {
+								$api.removeCls(p[i], 'active');
+							}
+							$api.addCls($api.byId('p0'), 'active');
+						} else if (index - p.length == 1) {
+							for (var i = 0; i < p.length; i++) {
+								$api.removeCls(p[i], 'active');
+							}
+							$api.addCls($api.byId('p1'), 'active');
+						} else {
+							for (var i = 0; i < p.length; i++) {
+								$api.removeCls(p[i], 'active');
+							}
+							$api.addCls($api.byId('p' + index), 'active');
+						}
+					} catch (e) {}
+				},
+				transitionEnd: function(index, elem) {}
+			});
+		}
+		swipeInit();
+		apiready = function() {
+			$api.setStorage(CONFIG.KEY.FIRST_OPEN,true)
+			swipeInit();
+			L.init();
+		}
+		function openLogin() {
+//			Debug.alt(11)
+			api.openFrame({
+			    name: 'login',
+			    url: api.wgtRootDir + '/html/login.html',					    
+//				url: api.wgtRootDir + '/test/google_plus.html',
+			    bounces : false
+			});
+		}
+		//跳转
+		function openTheme() {
+			setTimeout(function() {
+				Tool.initApp();
+				window.setTimeout(openLogin, 300);
+			}, 300)
+		}
+
+	</script>
+</html>

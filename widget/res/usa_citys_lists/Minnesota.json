@@ -1,0 +1,19 @@
+{
+	"citys": [{
+		"id": "270",
+		"city": "Minneapolis",
+		"fr": "Minneapolis",
+		"parentid": "269",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "271",
+		"city": "St. Paul",
+		"fr": "St. Paul",
+		"parentid": "269",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}]
+}

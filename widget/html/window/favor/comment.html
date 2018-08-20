@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>评论列表的win</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css" />
+		<style type="text/css">
+			#header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				height: 90%;
+			}
+			
+			#header {
+				background-color: #32BBB1;
+			}
+			
+			.back {
+				background-repeat: no-repeat;
+				background-position: center;
+				display: inline-block;
+				position: absolute!important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="tit_icon "></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script src="../../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../script/UIChatBox.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title)
+		}
+
+		function close_win() {
+			api.closeWin();
+		}
+		var commentPicList = [];
+		var commentPicKeyList = [];
+		 var typecommont=1
+		apiready = function() {
+			iamg();
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h - 50
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+			var placeholder = LANGUAGE[$api.getStorage('lan')]['TypeSomething'];
+			UIChatBox.init({
+				talkEvent: 'talkComment',
+				scene: 'taskDetailAllComments',
+				isComment: true,
+				inputBar_move: function(ret){
+//					console.log(JSON.stringify(ret));
+					api.setFrameAttr({
+						name: api.pageParam.frameName,
+						rect: {
+							x: 0,
+							y: headerPos.h,
+							w: 'auto',
+							h: api.winHeight - headerPos.h - ret.inputBarHeight - ret.panelHeight
+						}
+					});
+//					api.execScript({
+//						frameName: 'task_comment',
+//						script: 'init()'
+//					});
+					api.execScript({
+						name: api.winName,
+						frameName: api.pageParam.frameName,
+						script: 'inputBar_move()'
+					});					
+//					console.log(JSON.stringify(ret))
+//					console.log(JSON.stringify(api.pageParam))
+				},				
+				placeholder: placeholder
+			});
+		    //回复评论
+			api.addEventListener({
+				name: 'talkComment',
+			}, function(ret) {
+				api.sendEvent({
+					name: 'sendComment',
+					extra: {
+						content: ret.value.content,
+						photo: commentPicKeyList,
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						avatar: avatar,
+						firstname:firstname,
+						lastname:lastname,
+						typecommont:typecommont
+					}
+				});
+				window.scrollTo(0, $api.dom('body').scrollHeight)
+				UIChatBox.setPlaceholder(LANGUAGE[$api.getStorage('lan')]['TypeSomething']);
+				UIChatBox.closeBoard();
+				UIChatBox.closeKeyboard();
+			});
+			api.addEventListener({
+				name: 'setReply_taskCommentList'
+			}, function(ret) {
+				var placeholder = LANGUAGE[$api.getStorage('lan')]['TypeSomething'];
+				if(ret.value.commentid != '') {
+					placeholder = '@' + ret.value.name;
+					window.scrollTo(0, $api.dom('body').scrollHeight)
+					UIChatBox.popupKeyboard();
+					typecommont=2
+				} else {
+					UIChatBox.closeKeyboard();
+				}
+				UIChatBox.setPlaceholder(placeholder);
+			});
+		}
+
+		function clearCommentPic() {
+			commentPicKeyList = [];
+			commentPicList = [];
+			UIChatBox.commentPicList = [];
+			api.closeFrame({
+				name: 'commentPic'
+			});
+		}
+		var avatar = ''
+		    firstname = "",
+			lastname = "";
+		function iamg() {
+			ajax.get({
+				ctrl: 'more',
+				fn: 'index',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					avatar = ct.avatar;
+					firstname = ct.firstname;
+					lastname = ct.lastname;
+				}
+			})
+		}
+	</script>
+
+</html>

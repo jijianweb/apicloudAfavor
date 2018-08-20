@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>win-有返回键的</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header{
+				background-color: #32BBB1;
+				font-size: 14px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+		function close_win(winname) {
+			api.execScript({
+			    frameName:'my_task_detail',
+			    script:'init()'
+			});
+			api.closeToWin({
+				name:'completed'
+			})
+			switch(api.pageParam.frameName){
+				case 'personal_page_edit':
+					api.execScript({
+						frameName: api.pageParam.frameName,
+						script: 'closeWin()'
+					});
+					break;
+				case 'register':
+					api.execScript({
+						name: 'root',
+					    frameName:'login',
+					    script:'logout()'
+					});
+					api.closeWin();
+				default:
+					api.closeWin();
+					break;
+			}
+		}
+
+		apiready = function() {
+			/*暂不需翻译*/
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+	</script>
+
+</html>

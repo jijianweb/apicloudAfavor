@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript">
+		apiready = function(){
+			function openCityList() {
+			var UICityList = api.require('UICityList');
+			UICityList.open({
+				rect: {
+					x: 0,
+					y: y,
+					w: 'auto',
+					h: 'auto'
+				},
+				resource: 'widget:./res/cityList.json',
+				styles: {
+					searchBar: {
+						bgColor: '#696969',
+						cancelColor: '#E3E3E3'
+					},
+					location: {
+						color: '#696969',
+						size: 12
+					},
+					sectionTitle: {
+						bgColor: '#eee',
+						color: '#000',
+						size: 12
+					},
+					item: {
+						bgColor: '#fff',
+						activeBgColor: '#696969',
+						color: '#000',
+						size: 14,
+						height: 40
+					},
+					indicator: {
+						bgColor: '#fff',
+						color: '#696969'
+					}
+				},
+				currentCity: '北京',
+				locationWay: 'GPS',
+				hotTitle: '',
+				fixedOn: api.frameName,
+				placeholder: 'The name of your city'
+			}, function(ret, err) {
+				if(ret) {
+					if (ret.eventType == 'show') {//如果模块打开成功
+						api.hideProgress();//隐藏进度提示
+					}
+					if(ret.eventType=='selected'){
+//						alert(ret.cityInfo.city);
+					}	
+				} else {
+//					alert(JSON.stringify(err));
+				}
+			});
+		}
+		}
+	</script>
+</html>

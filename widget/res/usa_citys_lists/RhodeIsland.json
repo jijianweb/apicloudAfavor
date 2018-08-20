@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "297",
+		"city": "Providence",
+		"fr": "Providence",
+		"parentid": "296",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

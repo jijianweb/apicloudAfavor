@@ -1,0 +1,19 @@
+{
+	"citys": [{
+		"id": "465",
+		"city": "Charlottetown",
+		"fr": "Charlottetown",
+		"parentid": "464",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "466",
+		"city": "Summerside",
+		"fr": "Summerside",
+		"parentid": "464",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}]
+}

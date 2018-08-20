@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>币种设置</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/icon.css" />
+		<style type="text/css">
+			body,
+			#main {
+				background-color: #FFFFFF;
+				font-size: 14px;
+			}
+			
+			.list-view {
+				border-bottom: 1px solid #EDEDED;
+				padding: 10px 18px;
+			}
+			
+			.aradio {
+				width: 20px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 20px 20px;
+				background-image: url(../../image/post/round-done-button2.png);
+			}
+			
+			.active {
+				width: 20px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 20px 20px;
+				background-image: url(../../image/post/round-done-button-1.png);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list">
+					<div class="list-view flex-box" onclick="onChange(this,1)" tapmode="">
+						<div class="flex-1">CAD</div>
+						<div class="aradio cad"></div>
+					</div>
+					<div class="list-view flex-box" onclick="onChange(this,2)" tapmode="">
+						<div class="flex-1">USD</div>
+						<div class="aradio doll"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+
+	<script type="text/javascript">
+		var currency = "";
+		var curr = 0;
+
+		function onChange(_this, value) {
+			var item = $api.dom(_this, '.aradio');
+			if($api.hasCls(item, 'active')) {
+				return;
+			}
+			var rad = $api.dom('.active')
+			if(item) {
+				$api.addCls(item, 'active');
+				$api.removeCls(rad, 'active');
+			}
+			curr = value;
+			ajax.get({
+				ctrl: 'more',
+				fn: 'setCurrency',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						country: curr == 2 ? 'us' : 'ca',
+						currency: curr == 2 ? 'usd' : 'cad'
+					}
+				},
+				showProgress: true,
+				hideLoading: true,
+				success: function() {
+					$api.setStorage(CONFIG.KEY.CURRENCY, curr);
+					curr == 1 ? 'CAD' : 'USD';
+					api.sendEvent({
+						name: 'currencys',
+						extra: {
+							cy: curr
+						}
+					})
+					api.execScript({
+						name: 'Init',
+						frameName: 'post',
+						script: 'init()'
+					});
+					api.execScript({
+						name: 'Init',
+						frameName: 'more',
+						script: 'init()'
+					});
+					api.execScript({
+						name: 'Init',
+						frameName: 'browse_list',
+						script: 'TaskList()'
+					});
+					api.execScript({
+						name: 'Init',
+						frameName: 'my_promulgator',
+						script: 'init()'
+					});
+				}
+			});
+		}
+		apiready = function() {
+			/*不需翻译*/
+			//currency = $api.getStorage('currency',currency);
+			api.execScript({
+				name: 'Init',
+				frameName: 'more',
+				script: 'init()'
+			});
+			currency = api.pageParam.kinds;
+			if(currency== 'cad') {
+				$api.addCls($api.dom('.cad'), 'active');
+				$api.removeCls($api.dom('.doll'), 'active');
+			} else {
+				$api.removeCls($api.dom('.cad'), 'active');
+				$api.addCls($api.dom('.doll'), 'active');
+			}
+		}
+	</script>
+
+</html>

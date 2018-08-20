@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>win-有返回键的</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css"/>
+		<style type="text/css">
+			.update {
+				position: absolute;
+				right: 0px;
+				color: white;
+				font-size: 14px;
+				width: 58px;
+				padding-right: 18px;
+				background-image: url(../../../image/more/list.png);
+				background-size: 18px 16px;
+				height: 47px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.page-bar{
+				position: relative;
+				overflow: hidden;
+				width: 100%;
+				height: 20px;
+				background-color: #EAEBEF;
+				font-size: 12px;
+				line-height: 20px;
+			}
+			.page-item{
+				position: absolute;
+				width: 100%;
+				color: #fff;
+				left: -999px;
+				text-align: center;
+				opacity: 0;
+				transition: left 0.2s ease-in;
+			}
+			[data-cur='0'] [data-page='0'],
+			[data-cur='1'] [data-page='1'],
+			[data-cur='2'] [data-page='2'],
+			[data-cur='3'] [data-page='3']{
+				opacity: 1;
+				left: 0;
+				color: #000000;
+			}
+			[data-cur='0'] [data-page='1'],
+			[data-cur='1'] [data-page='2'],
+			[data-cur='2'] [data-page='3']{
+				left: 40%;
+				opacity: 1;
+			}
+			
+			[data-cur='2'] [data-page='1'],
+			[data-cur='3'] [data-page='2'],
+			[data-cur='1'] [data-page='0']{
+				left: -40%;
+				opacity: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="close_win2()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="update" onclick='close_win()' tapmode></span>
+				</div>
+				<div class="page-bar" data-cur='3'>
+				</div>
+			</div>
+			<div id="main">
+
+			</div>
+		</div>
+	</body>
+	<script type="text/template" template='page'>
+		{{~it:value:index}}
+		<div data-page='{{= index}}' class="page-item" >{{= Tool.toEngDate(value.time1,'MD')}}-{{= Tool.toEngDate(value.time2,'MD')}}</div>
+		{{~}}
+	</script>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+		function close_win() {
+			api.openWin({
+				name: 'income_win',
+			});
+		}
+		function close_win2(){
+			api.closeToWin({
+				name: 'Init'
+			});
+		}
+		var weeks = [];
+		function get4Week(now){
+			if(!now){
+				now = new Date(); 
+			}
+			var nowTime = now.getTime() ; 
+			var day = now.getDay();
+			var oneDayTime = 24*60*60*1000 ; 
+			
+			//显示周一
+			var MondayTime = nowTime - (day-1)*oneDayTime ; 
+			//显示周日
+			var SundayTime =  nowTime + (7-day)*oneDayTime ; 
+			
+			//初始化日期时间
+			var monday = new Date(MondayTime);
+			var sunday = new Date(SundayTime);
+			weeks.unshift({
+				time1: Tool.formatDate(monday,'YMDhms'),
+				time2: Tool.formatDate(sunday,'YMDhms'),
+			});
+			if(weeks.length < 4){
+				var lastNow = new Date(MondayTime - (oneDayTime * 2));
+				get4Week(lastNow);
+			}
+		}
+		function setFrameGroupIndex(index) {
+			if(index ==  $api.attr($api.dom('.page-bar'),'data-cur')){
+				return ;
+			} ;
+			api.setFrameGroupIndex({
+				name: 'analysisGroup',
+				index: index,
+				scroll: true
+			});
+		}
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err){
+				close_win()
+			});
+			get4Week();
+			T.html('.page-bar','page',weeks);
+			var frames = [];
+			for(var i in weeks){
+				frames.push({
+					name: 'analysis'+i,
+					url: winParam.frameUrl,
+					bgColor: winParam.bgColor || '#fff',
+					reload: true,
+					softInputBarEnabled: false,
+					pageParam: {
+						time1: weeks[i].time1,
+						time2: weeks[i].time2,
+						index: i
+					}
+				});
+			}
+			api.openFrameGroup({
+			    name: 'analysisGroup',
+			    rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				},
+			    frames: frames,
+			    index: 3,
+			}, function(ret, err) {
+			    var index = ret.index;
+			    $api.attr($api.dom('.page-bar'),'data-cur',index);
+			});
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+			L.init();
+		}
+	</script>
+
+</html>

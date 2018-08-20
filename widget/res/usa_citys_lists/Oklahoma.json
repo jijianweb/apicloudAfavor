@@ -1,0 +1,27 @@
+{
+	"citys": [{
+		"id": "124",
+		"city": "Oklahoma City",
+		"fr": "Oklahoma City",
+		"parentid": "123",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "125",
+		"city": "Tulsa",
+		"fr": "Tulsa",
+		"parentid": "123",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "126",
+		"city": "Norman",
+		"fr": "Norman",
+		"parentid": "123",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}]
+}

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header {
+				background-color: #33BAB0;
+			}
+			
+			.active {
+				color: #33B9B2;
+			}
+			
+			.circle1,
+			.circle {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 24px 24px;
+				width: 24px;
+				height: 24px;
+				z-index: 1;
+				border-radius: 50%;
+			}
+			
+			.circle {
+				background-image: url(../../image/post/icon.png);
+				z-index: 999;
+			}
+			
+			.circle1 {
+				background-image: url(../../image/post/3.png);
+				background-color: #D9EFEC;
+			}
+			
+			.active_font {
+				color: #D9EFEC;
+			}
+			
+			.active_font1 {
+				color: #33B9B2;
+			}
+			
+			.btn-setp {
+				padding: 20px 45px 0px;
+			}
+			
+			.border {
+				background-color: #D9EFEC;
+			}
+			
+			.border-line,
+			.border {
+				position: relative;
+				height: 3px;
+				width: calc((100% - 24px * 3) / 2 - 6px);
+				width: -webkit-calc((100% - 24px * 3) / 2 - 6px);
+				margin-bottom: 0px;
+				z-index: 0;
+			}
+			
+			.border-line {
+				background-color: #33B9B2;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span lan="Make_A_Favor" class="title text-overflow" style="max-width: 200px;">Make a Favor</span>
+				</div>
+				<div class="flex-box-v flex-h-zhu"  style="background-color:white;">
+					<div class="flex-box flex-center-center btn-setp">
+						<div>
+							<div class="c circle"></div>
+						</div>
+						<div class="b border "></div>
+						<div>
+							<div class="c circle1"></div>
+						</div>
+						<div class="b border"></div>
+						<div>
+							<div class="c circle1"></div>
+						</div>
+						<div class="b border hidden"></div>
+						<div>
+							<div class="c circle1 hidden"></div>
+						</div>
+					</div>
+					<div class="flex-box flex-h-zhu" style="text-align: center;padding: 0 45px">
+						<div lan="Details" class="active_font1 font-size12 flex-1 font text-left">Details</div>
+						<div lan="Location" class="active_font font-size12  flex-1 font">Location</div>
+						<div lan="Budget" class="active_font font-size12  flex-1 font text-right">Budget</div>
+						<div lan="Payment" class="active_font font-size12 hidden flex-1 font">Payment</div>
+					</div>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		var curIndex = 0;
+        var editType;
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title)
+		}
+
+		function close_win() {
+			if(curIndex == 0) {
+				api.closeWin();
+			} else {
+				swichPageIndex(curIndex - 1);
+			}
+			if(editType==0){
+				api.closeWin();
+			}
+		}
+
+		function swichPageIndex(index) {
+			// TODO 返回上一页面切换当前页
+            api.setFrameGroupIndex({
+				name: 'taskGroup',
+				index: index
+			});
+		}
+		
+		function fixHW(){
+			/*
+			 * 适配华为手机
+			 */
+			var header = $api.byId('header'),
+				headerPos = $api.offset(header),
+				main = $api.byId('main'),
+				mainPos = $api.offset(main);
+			api.setFrameGroupAttr({
+				name: 'taskGroup',
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				}
+			});
+		}
+		
+		apiready = function() {
+			editType=api.pageParam.frameParam.editType;
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			L.init();
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			
+			window.onresize = function(){
+//				Tool.toast(api.frameWidth + ':' + api.frameHeight);
+				fixHW();
+			};			
+			
+	        if(editType==0){
+				api.openFrameGroup({
+					name: 'taskGroup',
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					scrollEnabled: false,
+					preload: 0,
+					frames: [ {
+						name: 'fourth_step',
+						url: api.wgtRootDir + '/html/post/fourth_step.html',
+						pageParam: {
+						    editType:api.pageParam.frameParam.editType,
+						    repost:api.pageParam.frameParam.repost
+					    }
+					}]
+				}, function(ret, err) {
+					var domC = $api.domAll('.c');
+					var domB = $api.domAll('.b');
+					var font = $api.domAll('.font')
+					for(var i=0;i<4;i++){
+						$api.addCls(domC[i], 'circle');
+						$api.removeCls(domC[i],'circle1');
+						$api.addCls(font[i], 'active_font1');
+						$api.addCls(domB[i], 'border-line');
+					}
+				})
+			}
+           
+			api.openFrameGroup({
+				name: 'taskGroup',
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				},
+				scrollEnabled: false,
+				preload: 0,
+//				index: 0,
+				frames: [{
+					name: 'first_step',
+					pageParam: {
+						memberid: api.pageParam.frameParam.memberid,
+						ispublic: api.pageParam.frameParam.ispublic,
+						default_currency:api.pageParam.frameParam.default_currency
+					},
+					url: api.wgtRootDir + '/html/post/first_step.html',
+				}, {
+					name: 'second_step_offline',
+					url: api.wgtRootDir + '/html/post/second_step_offline.html',
+                    bounces: false
+				}, {
+					name: 'third_step',
+					url: api.wgtRootDir + '/html/post/third_step.html',
+					pageParam: {
+						classid: api.pageParam.frameParam.classid,
+						default_currency:api.pageParam.frameParam.default_currency
+					}
+				}, {
+					name: 'fourth_step',
+					url: api.wgtRootDir + '/html/post/fourth_step.html',
+				}]
+			}, function(ret, err) {
+				var index = ret.index;
+				var domC = $api.domAll('.c');
+				var domB = $api.domAll('.b');
+				var font = $api.domAll('.font')
+				curIndex = index;
+				for(var i = 0; i < 4; i++) {
+					if(i <= index) {
+						$api.addCls(domC[i], 'circle');
+						$api.removeCls(domC[i], 'circle1');
+
+						if(i != 0) {
+							$api.addCls(domB[i - 1], 'border-line');
+							$api.removeCls(domB[i - 1], 'border');
+							$api.addCls(font[i], 'active_font1')
+							$api.removeCls(font[i], 'active_font');
+						}
+					} else {
+						$api.removeCls(domC[i], 'circle');
+						$api.addCls(domC[i], 'circle1');
+
+						if(i != 0) {
+							$api.removeCls(domB[i - 1], 'border-line');
+							$api.addCls(domB[i - 1], 'border');
+							$api.removeCls(font[i], 'active_font1');
+							$api.addCls(font[i], 'active_font')
+						}
+					}
+				}
+			})
+			//			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+	</script>
+
+</html>

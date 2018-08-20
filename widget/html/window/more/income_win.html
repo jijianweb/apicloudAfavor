@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>win-有返回键的</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css" />
+		<style type="text/css">
+			#header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				background-color: #32BBB1;
+				height: 90%;
+			}
+			
+			#header {
+				background-color: #32BBB1;
+			}
+			
+			.update {
+				position: absolute;
+				right: 0px;
+				color: white;
+				font-size: 14px;
+				width: 58px;
+				padding-right: 18px;
+				background-image: url(../../../image/more/increased-revenue.png);
+				background-size: 18px 18px;
+				height: 47px;
+				background-repeat: no-repeat;
+				background-position: center;
+				transform: rotate(90deg);
+				-ms-transform: rotate(90deg);
+				-moz-transform: rotate(90deg);
+				-webkit-transform: rotate(90deg);
+				-o-transform: rotate(90deg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="update" onclick='click_analytics()' tapmode></span>
+				</div>
+			</div>
+			<div id="main">
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+		function close_win() {
+			api.closeToWin({
+				name: 'Init'
+			});
+		}
+
+		function click_analytics() {
+			api.openWin({
+				name: 'analytics',
+				url: api.wgtRootDir + '/html/window/more/analytics_win.html',
+				pageParam: {
+					frameName: 'analyze_income',
+					frameUrl: api.wgtRootDir + '/html/more/analyze_income.html',
+					frameParam: {
+
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['Analytics'],
+				},
+				slidBackEnabled: false,
+				reload: false,
+			});
+		}
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				close_win()
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+	</script>
+
+</html>

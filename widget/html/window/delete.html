@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务的删除的win</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				height: 90%;
+				width: auto;
+			}
+			#header {
+				background-color: #32BBB1;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span lan="Delete" class="tit_icon" onclick="removeTask()" tapmode="">Delete</span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div lan="Loading" class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title)
+		}
+
+		function close_win() {
+			api.openFrame({
+				name: 'exit',
+				url: api.wgtRootDir + '/html/my_favors/component/exit.html',
+				bgColor: 'transparent',
+				bounces: false,
+				pageParam: {},
+				softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+			});
+		}
+
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+				
+			L.init();	
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+		//删除任务 
+		function removeTask() {
+			var favorid = api.pageParam.frameParam.favorid,
+			    resend=api.pageParam.frameParam.resend;
+			api.openFrame({
+				name: 'delete',
+				url: api.wgtRootDir + '/html/my_favors/component/delete.html',
+				bgColor: 'transparent',
+				bounces: false,
+				pageParam: {
+					favorid:favorid,
+					resend:resend
+				},
+				softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+			});
+			api.execScript({
+				name: 'Init',
+				frameName: 'more',
+				script: 'init()'
+			});
+			api.execScript({
+				name: 'Init',
+				frameName: 'my_promulgator',
+				script: 'init()'
+			});
+			api.execScript({
+				name: 'Init',
+				frameName: 'help_person',
+				script: 'init()'
+			});
+		}
+	</script>
+
+</html>

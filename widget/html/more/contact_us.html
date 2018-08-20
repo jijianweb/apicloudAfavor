@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>关于我们</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main,
+			#footer{
+				padding: 0px 18px;
+			}
+			
+			.text {
+				padding: 0px 15px;
+				border: 1px solid #D3D4D5;
+				border-radius: 25px;
+				color: #D3D4D6;
+				width: 100%;
+				margin: 20px 0;
+			}
+			
+			input[type="text"] {
+				width: 100%;
+			}
+			
+			.area {
+				border: 1px solid #D3D4D5;
+				background-color: white;
+				border-radius: 8px;
+				width: 100%;
+				padding: 15px;
+			}
+			
+			textarea {
+				outline: none;
+				resize: none;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin-bottom: 16px;
+			}
+		    
+		    @media (max-height:400px){
+				.sub{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="text contact-text">
+					<input lan="YourEmailAddress" type="text" id="email" placeholder="Your Email Address" maxlength="50" />
+				</div>
+
+				<div class="area contact-area">
+					<textarea id="message" lan="HowCanWeHelpYou" rows="12" placeholder="How can we help you?" maxlength="500"></textarea>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="sub btn-afavor-1" lan="SEND" onclick="publish()" style="margin-top: 200px;" tapmode="">SEND</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/upload.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		function publish() {
+			var email = $api.trimAll($api.val($api.dom('#email'))),
+				message = $api.val($api.dom('#message'));
+			inputBlur();
+			if(!email) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!message) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			ajax.get({
+				ctrl: 'more',
+				fn: 'contact',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						email: email,
+						message: message
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function() {
+					Tool.toast('Your email have been received, we will process it as soon as possible.');
+					setTimeout(function() {
+						api.closeWin({});
+					}, 3000);
+				}
+			});
+
+		}
+		apiready = function() {
+			inputBlur(); 
+			L.init();
+			
+		}
+			var initBodyHeight = document.body.clientHeight; //页面可视高度
+		//			console.log(initBodyHeight)
+		var keyBoardStatus = false; //键盘是否打开
+		function getKeyBoardStatus() {
+			setTimeout(function() {
+				if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+					keyBoardStatus = true;
+					$api.addCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+					keyBoardStatus = false;
+					$api.removeCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				getKeyBoardStatus();
+			}, 100);
+		}
+//		$(function() {
+//			getKeyBoardStatus();
+//		});
+	</script>
+
+</html>

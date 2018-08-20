@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>title</title>
+		<style>
+			body {}
+		</style>
+	</head>
+
+	<body>
+		<a href="afavor://" id="">Open app</a>
+	</body>
+	<script type="text/javascript" src="script/jquery-1.9.1.min.js" ></script>
+	<script type="text/javascript" src="script/api.web.js" ></script>
+	<script type="text/javascript" src="script/tool.web.js" ></script>
+	
+	<script type="text/javascript">
+//		location.href = 'afavor://';
+//		document.getElementById('openApp').onclick = function(e){
+//			var ifr = document.createElement('iframe');
+//			ifr.src = 'afavor://';
+//			ifr.style.display = 'none';
+//			document.body.appendChild(ifr);
+//		}
+		
+		$(function(){
+			var params = Tool.getQueryStringArgs();
+			if(Tool.hasProp(params)){
+				location.href = 'afavor://?fid' + '=' + params.fid;
+			}
+//			location.href = 'afavor://?' + 
+		});
+//		window.setTimeout(function(){
+//			document.body.removeChild('ifr');
+//		}, 3000);
+	</script>
+
+</html>

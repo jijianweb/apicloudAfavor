@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>工作验证-编辑地址</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main {
+				padding: 0px 18px;
+			}
+
+			input[type="text"],
+			input[type="number"],
+			.value_text {
+				-webkit-appearance: none;
+				outline: none;
+				resize: none;
+				border: 1px solid #CCCCCC;
+				border-radius: 25px;
+				font-size: 14px;
+				color: #000000;
+				width: 100%;
+			}
+
+			input[type="text"],
+			input[type="number"],
+			.value_text {
+				padding: 13px 22px;
+
+			}
+
+			.text {
+				color: #858B8B;
+				font-size: 14px;
+				padding: 0 0 9px 23px;
+			}
+			.save {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin-top:40px;
+				position: relative;
+				bottom:16px;
+			}
+
+			.se {
+				margin-bottom: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="margin-top30 ">
+					<div class="se">
+						<span class="text">Street Address</span>
+						<input type="text" />
+					</div>
+					<div class="se">
+						<span class="text">City</span>
+						<input type="text" placeholder="" />
+					</div>
+					<div class="flex-box se">
+						<div class="flex-1">
+							<div class="text">Province</div>
+							<div class="sel-bor">
+								<div id="province" class="sel" >
+									province
+								</div>
+							</div>
+						</div>
+						<div class="flex-1 " style="margin-left: 15px;">
+							<div class="text">Postal Code</div>
+							<div><input type="number" placeholder="" /></div>
+						</div>
+					</div>
+				</div>
+				<div id="footer">
+					<div class="save" onclick="save()" tapmode="">SAVE</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/UiActionSelector.js" ></script>
+	<script type="text/javascript" src="../../script/area.js" ></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="margin-top30">
+			<div class="se">
+				<span class="text" lan="StreetAddress">Street Address</span>
+				<input id="street" type="text" value="{{=it.street}}" />
+			</div>
+			<div class="se">
+				<span class="text" lan="City">City</span>
+				<div id="city" class="value_text" onclick="openCitySelector()" tapmode>
+					{{= curCity.city.name || '&nbsp;'}}
+				</div>
+			</div>
+			<div class="flex-box se">
+				<div class="flex-1">
+					<div class="text" lan="Province">Province</div>
+					<div class="sel-bor">
+						<div id="province" class="sel" onclick="openCitySelector()" tapmode >
+							{{= curCity.province.name || '&nbsp;'}}
+						</div>
+					</div>
+				</div>
+				<div class="flex-1 " style="margin-left: 15px;">
+					<div class="text" lan="PostalCode">Postal Code</div>
+					<div><input type="text" placeholder="" value="{{=it.postalcode || ''}}" id="postalcode" oninput="postalcodeInput(event,this)" /></div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="save btn-afavor-1" lan="SAVE" onclick="save()" tapmode="">SAVE</div>
+			</div>
+		</div>
+	</script>
+    <script type="text/javascript">
+
+		function postalcodeInput(e,_this){
+			var _val = $api.val(_this);
+			if(!/^[A-Z0-9]{0,6}$/.test(_val)){
+				if(_val.length > 6){
+					$api.val(_this, _val.slice(0, 6));
+					//将键盘收起
+					_this.blur();
+				}else{
+					Tool.toast('Postal code can only type capital letters or Numbers.');
+				}
+			}
+		}
+		var curCity = {
+			country: {},
+			province: {},
+			city: {}
+		};
+
+		var params_1;	//对象类型,记录页面初始化时的数据
+
+		apiready = function() {
+			init();
+		}
+
+		function closeWin(){
+			var params_2 = getParam();
+
+			if(JSON.stringify(params_1) != JSON.stringify(params_2)){
+				api.confirm({
+					title: 'The modified information is not saved. Do you want to exit?',
+					buttons: ['No', 'Yes']
+				}, function(ret, err) {
+					if(ret.buttonIndex == 2) {
+						api.closeWin();
+					}
+				})
+			}else{
+				api.closeWin();
+			}
+		}
+
+		var lastData = {};
+		var url_avatar=''
+		function init() {
+			ajax.get({
+				ctrl: 'favor',
+				fn: 'getHelperAddress',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				showError: true,
+				success: function(ct) {
+					lastData = ct;
+					curCity = Area.getCityName(ct.country,ct.province,ct.city)
+					T.html('#main', 'main', ct);
+					params_1 = getParam();
+					L.init();
+				}
+			});
+		}
+
+		function getParam(){
+			var params = {
+				street: $api.val($api.dom('#street')),
+				postalcode: $api.val($api.dom('#postalcode')),
+				city: curCity.city.value,
+				province: curCity.province.value
+			};
+
+			return params;
+		}
+
+		function save() {
+			var street = $api.val($api.dom('#street')),
+				postalcode = $api.val($api.dom('#postalcode'));
+			if(postalcode && !/^[A-Z0-9]{6,20}$/.test(postalcode)) {
+				Tool.toast('Postal code can only type capital letters or Numbers.');
+				return;
+			}
+
+			var values = {
+				id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+				token: $api.getStorage(CONFIG.KEY.TOKEN),
+				street: street,
+				city: curCity.city.value,
+				province: curCity.province.value,
+				postalcode: postalcode
+			}
+
+            ajax.get({
+				ctrl: 'favor',
+				fn: 'editHelperAddress',
+				data: {
+					values: values
+				},
+				showProgress: true,
+				hideLoading: true,
+				showError: true,
+				success: function() {
+					Tool.toast('Edit Successfully.')
+					api.sendEvent({
+						name: 'helper_address',
+						extra: {
+							address: 'success'
+						}
+					})
+					setTimeout(api.closeWin,300);
+				},
+				_404: function(){
+					api.closeWin()
+				}
+			});
+
+		}
+	</script>
+
+</html>

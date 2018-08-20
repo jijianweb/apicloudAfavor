@@ -1,0 +1,43 @@
+{
+	"citys": [{
+		"id": "216",
+		"city": "Memphis",
+		"fr": "Memphis",
+		"parentid": "215",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "217",
+		"city": "Nashville",
+		"fr": "Nashville",
+		"parentid": "215",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "218",
+		"city": "Knoxville",
+		"fr": "Knoxville",
+		"parentid": "215",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "219",
+		"city": "Chattanooga",
+		"fr": "Chattanooga",
+		"parentid": "215",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "220",
+		"city": "Clarksville",
+		"fr": "Clarksville",
+		"parentid": "215",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}]
+}

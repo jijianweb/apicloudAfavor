@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>筛选</title>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/jquery.range.css" />
+		<style type="text/css">
+			.from,
+			.to {
+				padding: 10px 20px 0 40px;
+				color: #99A1A3;
+			}
+			
+			.options {
+				position: relative;
+				padding: 0 10px;
+				width: 90%;
+				margin: 5px 5%;
+				border: 1px solid #D5D7D8;
+				border-radius: 20px;
+			}
+			
+			.footer {
+				padding: 0 18px;
+			}
+			
+			.apply {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin-bottom: 16px;
+			}
+			
+			.fromDate,
+			.toDate {
+				margin: 5px 0;
+				height: 30px;
+				font-size: 14px;
+				line-height: 30px;
+			}
+			
+			input[type=date]::-webkit-calendar-picker-indicator {
+				-webkit-appearance: none!important;
+				-moz-appearance: none !important;
+				appearance: none !important;
+				margin: 0;
+				visibility: hidden;
+				/*width: 100%;*/
+				position: relative;
+				opacity: 0 !important;
+				z-index: 998;
+				display: none !important;
+			}
+			
+			#timeselect {
+				opacity: 0;
+			}
+			
+			.range {
+				margin-top: 35px;
+				margin-bottom: 40px;
+			}
+			
+			.type {
+				text-align: center;
+				color: #828b90;
+				font-size: 18px;
+			}
+			
+			.down {
+				right: 5px;
+				top: 10px;
+				width: 24px;
+				height: 20px;
+				background-image: url(../../image/down.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 14px 8px;
+				position: absolute;
+				background-color: #fff;
+			}
+			/*华为按钮调整*/
+			@media (max-height:400px){
+				.apply{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div style="margin-top: 35px;">
+					<div class="type" lan="DateRange">Date Range</div>
+					<div class="range flex-h-ce flex-box-v flex-center-center">
+						<input id="timeselect" type="range" />
+					</div>
+				</div>
+				<div class="from" lan="From">From</div>
+				<div class="options flex-box">
+					<input type="date" class="fromDate flex-1" id="from"  onchange="onDateChange(this)" tapmode/>
+					<div class="down"></div>
+				</div>
+				<div class="to" lan="To">To</div>
+				<div class="options flex-box">
+					<input type="date" class="toDate flex-1" id="to" onchange="onDateChange(this)" tapmode/>
+					<div class="down"></div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="apply btn-afavor-1" onclick="apply()" tapmode="" lan="APPLY_NOW">
+					APPLY NOW
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery.range.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/javascript" src="../../script/date.js" ></script>
+	<script type="text/javascript">
+		var time1 = '',
+			time2 = '',
+			dateRange = '',
+			pageParam = '';
+		var initBodyHeight = document.body.clientHeight; //页面可视高度
+		//			console.log(initBodyHeight)
+		var keyBoardStatus = false; //键盘是否打开
+		function getKeyBoardStatus() {
+			setTimeout(function() {
+				if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+					keyBoardStatus = true;
+					$api.addCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+					keyBoardStatus = false;
+					$api.removeCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				getKeyBoardStatus();
+			}, 100);
+		}
+//		$(function() {
+//			getKeyBoardStatus();
+//		});
+		apiready = function() {
+			pageParam = api.pageParam;
+			time1 = pageParam.time1;
+			time2 = pageParam.time2;
+			dateRange = pageParam.dateRange;
+			initRange();
+			setValue();
+
+			L.init();
+		}
+
+		function apply() {
+			api.showProgress();
+			api.sendEvent({
+				name: 'income_all_reinit',
+				extra: {
+					time1: time1,
+					time2: time2,
+					dateRange: dateRange
+				}
+			})
+			setTimeout(function() {
+				api.hideProgress();
+				api.closeWin();
+			}, 300);
+		}
+
+		function initRange() {
+			var frameHeight = api.frameHeight;
+			if(frameHeight >= 600) {
+				width = 280
+			} else {
+				width = 250
+			}
+			//初始化滑动选择
+			$('#timeselect').jRange({
+				from: 0,
+				to: 4,
+				step: 1,
+				scale: [4 + 'wks', 3 + 'm', 6 + 'm', 12 + 'm', 'All'],
+				format: '%s',
+				width: width,
+				showLabels: true,
+				isRange: true,
+				snap: true,
+				ondragend: onRangeChange,
+				onbarclicked: onRangeChange
+			});
+
+		}
+
+		function setValue() {
+			$('#timeselect').jRange('setValue', dateRange);
+			$api.val($api.dom('#from'), time1);
+			$api.val($api.dom('#to'), time2);
+		}
+
+		function onRangeChange(value) {
+			dateRange = value;
+			var dateRanges = value.split(',');
+			var time = '';
+			if(dateRanges[1] == 4) {
+				time = {
+					time1: '',
+					time2: ''
+				}
+			} else if(dateRanges[0] == 0 || dateRanges[0] == dateRanges[1]) {
+				time = getTimeRange(dateRanges[1]);
+			} else {
+				time = getTimeRange(dateRanges[0], dateRanges[1]);
+			}
+			time1 = time.time1;
+			time2 = time.time2;
+			setValue();
+		}
+
+		function checkDate(_this){
+			/*
+			 * 验证日期，不能选择未来的时间
+			 */
+			var t = $api.val(_this),
+				ts = new Date(t).getTime(),
+				now = new Date(),
+				year = now.getFullYear(),
+				month = D.formatNum(now.getMonth() + 1),
+				date = D.formatNum(now.getDate()),
+				nowTs = new Date(year + '-' + month + '-' + date).getTime(),
+				datetime = D.f2(nowTs, '-');
+
+			if(ts > nowTs){
+				Tool.toast('Cannot choose future time.');
+				$api.val(_this, datetime);
+			}
+		}
+
+		function onDateChange(_this) {
+			var dateDoms = $api.domAll('input[type=date]');
+			var t1 = $api.val(dateDoms[0]),
+				t2 = $api.val(dateDoms[1]);
+			var date1 = new Date(t1),
+				date2 = new Date(t2);
+			if(date1.getTime() > date2.getTime()) {
+				time1 = t2;
+				time2 = t1;
+			} else {
+				time1 = t1;
+				time2 = t2;
+			}
+			dateRange = '0,4';
+			setValue();
+		}
+
+		function rest() {
+			dateRange = '0,0';
+			time = getTimeRange(0);
+			time1 = time.time1;
+			time2 = time.time2;
+			setValue();
+		}
+	</script>
+
+</html>

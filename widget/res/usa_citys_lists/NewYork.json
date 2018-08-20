@@ -1,0 +1,43 @@
+{
+	"citys": [{
+		"id": "158",
+		"city": "New York",
+		"fr": "New York",
+		"parentid": "157",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "159",
+		"city": "Buffalo",
+		"fr": "Buffalo",
+		"parentid": "157",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "160",
+		"city": "Rochester",
+		"fr": "Rochester",
+		"parentid": "157",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "161",
+		"city": "Yonkers",
+		"fr": "Yonkers",
+		"parentid": "157",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "162",
+		"city": "Syracuse",
+		"fr": "Syracuse",
+		"parentid": "157",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}]
+}

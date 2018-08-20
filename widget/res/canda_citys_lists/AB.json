@@ -1,0 +1,147 @@
+{
+	"citys": [{
+		"id": "310",
+		"city": "Airdrie",
+		"fr": "Airdrie",
+		"parentid": "309",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "311",
+		"city": "Brooks",
+		"fr": "Brooks",
+		"parentid": "309",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "312",
+		"city": "Calgary",
+		"fr": "Calgary",
+		"parentid": "309",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "313",
+		"city": "Camrose",
+		"fr": "Camrose",
+		"parentid": "309",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "314",
+		"city": "Chestermere",
+		"fr": "Chestermere",
+		"parentid": "309",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "315",
+		"city": "Cold Lake",
+		"fr": "Cold Lake",
+		"parentid": "309",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "316",
+		"city": "Edmonton",
+		"fr": "Edmonton",
+		"parentid": "309",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "317",
+		"city": "Fort Saskatchewan",
+		"fr": "Fort Saskatchewan",
+		"parentid": "309",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "318",
+		"city": "Grande Prairie",
+		"fr": "Grande Prairie",
+		"parentid": "309",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "319",
+		"city": "Lacombe",
+		"fr": "Lacombe",
+		"parentid": "309",
+		"sort": "10",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "320",
+		"city": "Leduc",
+		"fr": "Leduc",
+		"parentid": "309",
+		"sort": "11",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "321",
+		"city": "Lethbridge",
+		"fr": "Lethbridge",
+		"parentid": "309",
+		"sort": "12",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "322",
+		"city": "Lloydminster\u00a0",
+		"fr": "Lloydminster",
+		"parentid": "309",
+		"sort": "13",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "323",
+		"city": "Medicine Hat",
+		"fr": "Medicine Hat",
+		"parentid": "309",
+		"sort": "14",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "324",
+		"city": "Red Deer",
+		"fr": "Red Deer",
+		"parentid": "309",
+		"sort": "15",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "325",
+		"city": "Spruce Grove",
+		"fr": "Spruce Grove",
+		"parentid": "309",
+		"sort": "16",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "326",
+		"city": "St. Albert",
+		"fr": "St. Albert",
+		"parentid": "309",
+		"sort": "17",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "327",
+		"city": "Wetaskiwin",
+		"fr": "Wetaskiwin",
+		"parentid": "309",
+		"sort": "18",
+		"level": "3",
+		"sub": []
+	}]
+}

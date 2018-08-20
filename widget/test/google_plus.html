@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/ct.css" />
+		<style type="text/css">
+			button:not(:first-child) {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-zhu">
+				<div>Google 登录</div>
+				<button class="btn btn-info btn-lg" onclick="getTokens()" tapmode="">登录</button>
+				<button class="btn btn-info btn-lg" onclick="login()" tapmode="">登录</button>
+				<button class="btn btn-info btn-lg" onclick="logout()" tapmode>登出</button>
+				<button class="btn btn-info btn-lg" onclick="getProfileImage()" tapmode="">获取用户头像</button>
+				<button class="btn btn-info btn-lg" onclick="getCurrentToken()" tapmode="">获取Token</button>
+				<button class="btn btn-info btn-lg" onclick="refreshToken()" tapmode="">刷新Token</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript">
+		function getTokens() {
+			var google = api.require('google');
+			google.getTokens(function(ret, err) {
+			    if (ret.status) {
+			        alert(JSON.stringify(ret));
+			    } else {
+			        alert(err.code);
+			    }
+			});
+		}
+		
+		function login() {
+			var google = api.require('google');
+			google.signIn(function(ret, err) {
+				if(err) {
+					api.alert({
+						msg: JSON.stringify(err)
+					});
+				} else {
+					console.log(JSON.stringify(ret,null,2))
+				}
+			})
+		}
+
+		function getProfileImage() {
+			var google = api.require('google');
+			google.getProfileImage({
+				dimension: 200
+			}, function(ret) {
+				api.alert({
+					msg: ret.imageUrl
+				});
+			});
+		}
+
+		function logout() {
+			var google = api.require('google');
+			google.disconnect();
+		}
+
+		function getUserInfo() {
+			var facebook = api.require('facebook');
+			facebook.getUserInfo(function(ret, err) {
+				if(ret.status) {
+					api.alert({
+						msg: JSON.stringify(ret)
+					});
+				} else {
+					api.alert({
+						msg: JSON.stringify(err)
+					});
+				}
+			});
+		}
+
+		function getCurrentToken() {
+			var google = api.require('google');
+			google.getTokens(function(ret, err) {
+				if(ret.status) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(err.code);
+				}
+			});
+		}
+
+		function refreshToken() {
+			var google = api.require('google');
+			google.refreshTokens(function(ret, err) {
+				if(ret.status) {
+					alert(JSON.stringify(ret));
+				} else {
+					alert(err.code);
+				}
+			});
+		}
+
+		apiready = function() {
+
+		}
+	</script>
+
+</html>

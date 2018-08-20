@@ -1,0 +1,35 @@
+{
+	"citys": [{
+		"id": "253",
+		"city": "Kansas City",
+		"fr": "Kansas",
+		"parentid": "252",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "254",
+		"city": "St. Louis",
+		"fr": "St. Louis",
+		"parentid": "252",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "255",
+		"city": "Springfield",
+		"fr": "Springfield",
+		"parentid": "252",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "256",
+		"city": "Independence",
+		"fr": "Independence",
+		"parentid": "252",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}]
+}

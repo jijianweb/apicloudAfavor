@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/ct.css" />
+		<style type="text/css">
+			button:not(:first-child) {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-zhu">
+				<button class="btn btn-info btn-lg" onclick="aPay()" tapmode>wodeapply</button>
+				<button class="btn btn-info btn-lg" onclick="deviceSupportsApplePay()" tapmode="">判断当前设备是否支持苹果支付</button>
+				<button class="btn btn-info btn-lg" onclick="applePay()" tapmode="">调用苹果支付，获取 token</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript">
+		function deviceSupportsApplePay() {
+			var stripePay = api.require('stripePay');
+			stripePay.deviceSupportsApplePay(function(ret) {
+				if(ret.status) {
+					alert('支持');
+				} else {
+					alert('不支持');
+				}
+			});
+		}
+
+		function applePay() {
+			var stripePay = api.require('stripePay');
+			stripePay.applePay({
+				country: '',
+				currency: '',
+				paymentItems: [{
+					label: 'Hat',
+					amount: '50.00'
+				}, {
+					label: 'T-shirt',
+					amount: '50.00'
+				}]
+			}, function(ret, err) {
+				api.alert({
+					msg: JSON.stringify(ret)
+				});
+			});
+		}
+
+		function aPay() {
+			var stripePay = api.require('stripePay');
+			stripePay.deviceSupportsApplePay(function(ret) {
+				if(ret.status) {
+					var stripePay = api.require('stripePay');
+					stripePay.applePay({
+						country: 'USA',
+						currency:credits.currency ==1 ? 'CAD':'USD',
+						paymentItems: four.title
+					}, function(ret, err) {
+						api.alert({
+							msg: JSON.stringify(ret)
+						});
+					});
+				} else {
+					alert('不支持');
+				}
+			});
+		}
+
+		apiready = function() {
+
+		}
+	</script>
+
+</html>

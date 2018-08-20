@@ -1,0 +1,19 @@
+{
+	"citys": [{
+		"id": "115",
+		"city": "Omaha",
+		"fr": "Omaha",
+		"parentid": "114",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "116",
+		"city": "Lincoln",
+		"fr": "Lincoln",
+		"parentid": "114",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}]
+}

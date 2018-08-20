@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>个人主页更换头像</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body,
+			#wrap,
+			#main {
+				background-color: transparent;
+			}
+			
+			#main {
+				/*background-color: #1B1B1B;*/
+			}
+			
+			.avatar-box {
+				position: relative;
+			}
+			
+			.avatar {
+				width: 92%;
+				height: 92%;
+				/*background-color: #C0C5C7;*/
+				border-radius: 50%;
+			}
+			
+			.tips,
+			.notice {
+				color: #fff;
+			}
+			
+			.tips {
+				padding-top: 10px;
+			}
+			
+			.notice {
+				padding-top: 5px;
+			}
+			
+			.tools {
+				position: absolute;
+				bottom: 15px;
+				width: 100%;
+			}
+			
+			.tools>div {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.pic {
+				background-image: url(../../image/verify/Forma-1.png);
+				width: 29px;
+				height: 25px;
+			}
+			
+			.take {
+				background-image: url(../../image/verify/7.png);
+				width: 59px;
+				height: 58px;
+			}
+			
+			.filp {
+				background-image: url(../../image/verify/11.png);
+				width: 29px;
+				height: 25px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-ce">
+				<div class="avatar-box flex-box flex-center-center">
+					<div class="avatar"></div>
+				</div>
+				<div class="tips"></div>
+				<div class="notice"></div>
+			</div>
+			<div id="footer">
+				<div class="tools flex-box flex-h-ce flex-h-zhu">
+					<div class="flex-1"></div>
+					<div class="pic " onclick="album()" tapmode></div>
+					<div class="flex-1"></div>
+					<div class="take " onclick="takePhoto()" tapmode></div>
+					<div class="flex-1"></div>
+					<div class="filp " onclick="filpCam()" tapmode></div>
+					<div class="flex-1"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript">
+		//相册
+		function album() {
+			Tool.getOnePic({
+				success: function(ret) {
+					if(ret) {
+						if(ret.data) {
+							ret.imagePath = ret.data;
+							openUpload(ret)
+						}
+					}
+				}
+			})
+		}
+		//拍照  
+//		api.closeToWin({
+//		  name:'personal_page_edit'
+//		});
+		function takePhoto() {
+			var FNPhotograph = api.require('FNPhotograph');
+			var picName = 'pic_' + getMemberIdFromStorage() + '_' + new Date().getTime() + '.png';
+			FNPhotograph.takePhoto({
+				quality: 'high',
+				path: 'fs://FNPhotograph/' + picName,
+				album: false
+			}, function(ret) {
+				if(ret.imagePath) {
+					openUpload(ret);
+				}
+			});
+		}
+
+		function filpCam() {
+			var FNPhotograph = api.require('FNPhotograph');
+			FNPhotograph.getCamera(function(ret) {
+				if(ret.status) {
+					var camera = '';
+					if(ret.camera == 'front') {
+						camera = 'back';
+					} else {
+						camera = 'front';
+					}
+					FNPhotograph.setCamera({
+						camera: camera
+					});
+				}
+			});
+		}
+
+		function openUpload(ret) {
+			api.openWin({
+				name: 'upload',
+				url: api.wgtRootDir + '/html/window/verify/black_win.html',
+				pageParam: {
+					headerTitle: 'Profile Photo',
+					frameName: 'personal_upload',
+					frameUrl: api.wgtRootDir + '/html/component/personal_upload.html',
+					frameParam: {
+						imagePath: ret.imagePath,
+						type: 1,
+					}
+				},
+				//	    		delay: api.systemType == 'ios' ? 0 : 300,
+				slidBackEnabled: false
+			})
+		}
+
+		function openlight() {
+			var FNPhotograph = api.require('FNPhotograph');
+			FNPhotograph.getFlashlight(function(ret) {
+				if(ret.status) {
+					var light = '';
+					switch(ret.flashlight) {
+						case 'on':
+							light = 'off';
+							break;
+					}
+					FNPhotograph.setFlashlight({
+						flashlight: light
+					});
+				}
+			});
+		}
+		apiready = function() {
+			var frameWidth = api.frameWidth;
+			$api.css($api.dom('.avatar-box'), 'width:' + frameWidth + 'px')
+			$api.css($api.dom('.avatar-box'), 'height:' + frameWidth + 'px')
+			var avatarRect = $api.offset($api.dom('.avatar'));
+			var FNPhotograph = api.require('FNPhotograph');
+			FNPhotograph.openCameraView({
+				rect: {
+					x: avatarRect.l,
+					y: avatarRect.t,
+					w: avatarRect.w,
+					h: avatarRect.h
+				},
+				//			    orientation: 'portrait',
+				fixedOn: api.frameName,
+				fixed: true
+			}, function(ret) {
+				if(ret.status) {
+					openlight()
+				}
+			});
+			api.addEventListener({
+				name: 'closeFN'
+			}, function() {
+				api.closeWin({
+					name: 'upload'
+				})
+				var FNPhotograph = api.require('FNPhotograph');
+				FNPhotograph.closeCameraView(function(ret) {
+					FNPhotograph.openCameraView({
+						rect: {
+							x: avatarRect.l,
+							y: avatarRect.t,
+							w: avatarRect.w,
+							h: avatarRect.h
+						},
+						orientation: 'portrait',
+						fixedOn: api.frameName,
+						fixed: true
+					}, function(ret) {
+						if(ret.status) {
+							openlight()
+						}
+					});
+				});
+			})
+			api.addEventListener({
+				name: 'pause'
+			}, function(ret) {
+				var FNPhotograph = api.require('FNPhotograph');
+				FNPhotograph.closeCameraView(
+					function(ret) {});
+			})
+			api.addEventListener({
+				name: 'resume'
+			}, function() {
+				var FNPhotograph = api.require('FNPhotograph');
+				FNPhotograph.openCameraView({
+					rect: {
+						x: avatarRect.l,
+						y: avatarRect.t,
+						w: avatarRect.w,
+						h: avatarRect.h
+					},
+					orientation: 'portrait',
+					fixedOn: api.frameName,
+					fixed: true
+				}, function(ret) {
+					if(ret.status) {
+						openlight()
+					}
+				});
+			})
+		}
+	</script>
+
+</html>

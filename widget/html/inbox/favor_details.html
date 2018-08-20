@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>聊天-任务详情</title>
+		<link rel="stylesheet" href="../../css/api.css" />
+		<link rel="stylesheet" href="../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+				background-color: #transparent;
+			}
+			.title{
+				padding: 20px 16px 0px 16px;
+				font-size: 17px;
+			}
+			.img {
+				width: 55px;
+				height: 55px;
+				border: 1px solid #EEEEEE;
+				background-image: url(../../image/inbox/photo-3.png);
+				border-radius: 50%;
+				padding: 10px 16px;
+				margin-right: 8px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			.completed{
+				margin: 0 10px;
+				height: 6px;
+				width: 100%;
+				background-color:#EAEBEF;
+				border-radius:60px;
+			}
+			.open,.ongoing{
+				margin: 0 10px;
+				height: 6px;
+				width: 100%;
+				background-color: #83D3D0;
+				border-radius:60px;
+			}
+			.money{
+				text-align: center;
+				font-size: 50px;
+				color: #33BBB2;
+			}
+			.sp{
+				font-size: 30px;
+				left: 140px;
+				color: #33BBB2;
+				margin-top: -30px;
+			}
+			.ce{
+				width: 100%;
+				text-align: center;
+				margin: 0px auto;
+			}
+			.text,.advance{
+				padding-top: 10px;
+				font-size: 12px;
+				color: #34BBB2;
+				text-align: center;
+			}
+			.finish{
+				padding-top: 10px;
+				font-size: 12px;
+				color: #EAEBEF;
+				text-align: center;
+			}
+			.worker{
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+				border-right-color: #34BBB2;
+				background-color: #34BBB2;
+				padding: 10px 10px;
+				color: #FFFFFF;
+				margin-right: 2px;
+				font-size: 14px;
+			}
+			.number{
+				margin-right: 5px;
+				color: #FFFFFF;
+				font-size: 20px;
+			}
+			.difficulty{
+				border-bottom-right-radius: 20px;
+				border-top-right-radius: 20px;
+				border: 2px solid #34BBB2;
+				padding: 10px 10px;
+				border-left-color: #34BBB2;
+			}
+			.word{
+				color: #34BBB2;	
+				margin-right: 10px;
+			}
+			.chat{
+				border-top-left-radius: 20px;
+				border-bottom-left-radius: 20px;
+				border: 2px solid #34BBB2;
+				padding: 5px 10px;
+				border-left-color: #34BBB2;
+				margin-right: 3px;
+			}
+			.icon{
+				width: 17px;
+				height: 16px;
+				margin-right: 10px;
+				background-image: url(../../image/inbox/wecheat.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.info{
+				color: #34BBB2;
+			}
+			.favor{
+				border-bottom-right-radius: 20px;
+				border-top-right-radius: 20px;
+				background-color: #34BBB2;
+				padding: 12px 10px;
+				text-align: center;
+			}
+			.calendar{
+				width: 18px;
+				height: 20px;
+				margin-right: 5px;
+				background-image: url(../../image/browse/rili.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+			.address{
+				width: 17px;
+				height: 22px;
+				margin-right: 6px;
+				background-image: url(../../image/browse/location.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			.online,.date{
+				font-size: 14px;
+			}
+			.details{
+				margin-top: 15px;
+				background-color: #EAEBEF;
+				padding: 5px 0;
+				text-align: center;
+				color: #8F9799;
+			}
+			.content{
+				padding: 10px 15px;
+			}
+			.message{
+				margin: 10px 20px;
+				background-color: #EFF9F8;
+				border-radius: 10px;
+			}
+			.communication{
+				padding: 20px 30px;
+			}
+			.head-portrait{
+				width: 55px;
+				height: 55px;
+				border: 1px solid #EEEEEE;
+				border-radius: 50%;
+				margin-right: 10px;
+				background-image: url(../../image/inbox/photo-3.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			.name{
+				font-size: 12px;
+				color: #919797;
+				margin-bottom: 3px;
+			}
+			.time{
+				font-size: 12px;
+				color: #919797;
+			}
+			.num{
+				width: 20px;
+				height: 20px;
+			}
+			.star{
+				height: 17px;
+				width: 17px;
+				background-image: url(../../image/browse/star-2.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				margin-right: 3px;
+			}
+			.star-1{
+				height: 17px;
+				width: 17px;
+				background-image: url(../../image/4.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				margin-right: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap" class="wrap">
+			<div id="header" class="header">
+				<div class="title text-left"> I need a logo design for a new child care business.</div>
+			</div>
+			<div id="main" class="main">
+				<div class="flex-box" style="margin-top: 15px; padding: 10px 15px;">
+					<div class="img"></div>
+					<div class="flex-1" style="margin:5px 0px 0 6px;">
+						<div class="name" style="margin-bottom: 10px;">Posted by <span style="color: #83D3D0; font-size: 16px;">Lucas Fan</span></div>
+						<div class="time">16 hours ago</div>
+					</div>
+				</div>
+				<div class="flex-box flex-center-center" style="padding: 20px;">
+					<div class="open">
+						<div class="text">Open</div>
+					</div>
+					<div class="ongoing">
+						<div class="advance">Ongoing</div>
+					</div>
+					<div class="completed">
+						<div class="finish">Complete</div>
+					</div>
+				</div>
+				<div class="flex-box flex-center-center" style="margin-top: 40px;">
+					<div class="sp">$</div>
+					<div class="money">50</div>
+				</div>
+				<div class="flex-box" style="padding: 50px 15px 0 15px;">
+					<div class="worker flex-1"><span class="number">1</span>Worker</div>
+					<div class="difficulty flex-box flex-v-ce flex-2">
+						<span class="word">Difficulty</span>
+						<div class="image flex-box">
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star-1"></div>
+							<div class="star-1"></div>
+						</div>	
+					</div>
+				</div>
+				<div class="flex-box" style="padding: 15px 15px;">
+					<div class="chat flex-box flex-v-ce flex-2">
+						<div class="icon"></div>
+						<span class="info">Chat</span>
+					</div>
+					<div class="favor flex-3">
+						<div style="color: #FFFFFF;">Favor Complete</div>
+					</div>
+				</div>
+				<div class="flex-box flex-v-ce" style="padding: 20px 15px 0 15px;">
+					<div class="address"></div>
+					<div class="online">Online</div>
+				</div>
+				<div class="flex-box flex-v-ce" style="padding: 15px 15px 0 15px">
+					<div class="calendar"></div>
+					<div class="date">Due Date - 28 May 2017</div>
+				</div>
+				<div class="details">
+					Favor Details
+				</div>
+				<div class="content">
+					I need a logo design a new coffee shop and the I need a logo design a new coffee shop and the I need a logo design a new coffee shop and the 
+				</div>
+				<div class="details">
+					Ongoing by
+				</div>
+				<div class="message">
+					<div class="communication flex-box flex-h-ce">
+						<div class="head-portrait"></div>
+						<div class="flex-box-v">
+							<div class="name">John Smith</div>
+							<div class="flex-box flex-v-ce">
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="num">(4.8)</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer" class="footer">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js" ></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript">
+		apiready = function(){
+			
+		}
+	</script>
+</html>

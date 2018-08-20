@@ -1,0 +1,19 @@
+{
+	"citys": [{
+		"id": "244",
+		"city": "Louisville",
+		"fr": "Louisville",
+		"parentid": "243",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "245",
+		"city": "Lexington",
+		"fr": "Lexington",
+		"parentid": "243",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}]
+}

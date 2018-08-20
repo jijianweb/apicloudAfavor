@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "411",
+		"city": "Iqaluit",
+		"fr": "Iqaluit",
+		"parentid": "410",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

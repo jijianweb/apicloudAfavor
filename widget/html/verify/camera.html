@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>照相机页面</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<style type="text/css">
+			#main{
+				background-color: #1B1B1B;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript">
+		apiready = function(){
+			/*暂不需翻译*/
+			var FNPhotograph = api.require('FNPhotograph');
+			FNPhotograph.openCameraView({
+			    rect: {
+			       x: 0,
+			       y: 0,
+			       w: api.frameWidth,
+			       h: api.frameWidth
+			    },
+			    orientation: 'portrait',
+			    fixedOn: api.frameName,
+			    fixed: true
+			}, function(ret){
+				if(ret.status){
+					api.openFrame({
+						name: 'file_photo_cam',
+						url: api.wgtRootDir + '/html/verify/file_photo_cam.html',
+						rect:{
+							x:0,
+							y:55,
+						},
+						bounces: false,
+					})
+				}
+			});
+		}
+	</script>
+</html>

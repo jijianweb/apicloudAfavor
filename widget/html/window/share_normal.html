@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务的分享win-没有评论</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				height: 90%;
+			}
+			#header {
+				background-color:#32BBB1;	
+			}
+			.back,
+			.share {
+				background-repeat: no-repeat;
+				background-position: center;
+				display: inline-block;
+				position: absolute!important;
+			}
+			.share {
+				background-size: 25px 6px;
+				width: 15px;
+				height:2px;
+				background-image: url(../../image/post/111.png);
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="tit_icon share" onclick="share()" tapmode=""></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js" ></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title)
+		}
+		function close_win() {
+			var type=api.pageParam.frameParam.type;
+			var isself=api.pageParam.frameParam.isself;
+			var favorstatus=api.pageParam.frameParam.favorstatus;
+//			if( type==2 ||(isself==1&&favorstatus==2)){
+//				api.closeToWin({
+//					name:'Init'
+//				});
+//			}
+            api.closeWin({})
+		}
+		apiready = function() {
+			/*暂不需翻译*/
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+		//打开分享页面
+		function share(){
+			api.openWin({
+					name: 'MoreOptions',
+					url: api.wgtRootDir + '/html/window/reset_password.html',
+					pageParam: {
+						frameName:'more_options',
+						frameUrl: api.wgtRootDir + '/html/my_favors/share_task.html',
+						frameParam: {
+							favorid: api.pageParam.frameParam.favorid
+						},
+						headerTitle: LANGUAGE[$api.getStorage('lan')]['MoreOptions']
+					},
+					reload: true,
+					slidBackEnabled: false,
+			});
+		}
+	</script>
+
+</html>

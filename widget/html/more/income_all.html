@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>收入列表收入</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.date:nth-child(1) {
+				margin-top: 170px;
+				padding: 3px 20px;
+				background-color: #EAEBEF;
+				color: #A5AAAD;
+			}
+			
+			.date {
+				padding: 3px 20px;
+				background-color: #EAEBEF;
+				color: #A5AAAD;
+			}
+			
+			.list {
+				padding: 15px 18px;
+				border-bottom: 1px solid #EAEBEF;
+			}
+			
+			.round {
+				width: 5px;
+				height: 5px;
+				background-color: #899396;
+				border-radius: 50%;
+				margin-right: 8px;
+			}
+			
+			.money {
+				padding: 0 5px 0 30px;
+				font-size: 15px;
+			}
+			
+			.img {
+				margin-top: 2px;
+				height: 13px;
+			}
+			
+			.img2 {
+				height: 20px;
+				margin-right: 10px;
+			}
+			
+			.button {
+				background-color: #F3F3F3;
+				width:313px;
+				height:39px;
+				margin: 0px auto;
+				border-radius:25px;
+				font-size: 14px;
+			}
+			
+			.text {
+				color: #B4B8BA;
+				width: 121px;
+				height: 39px;
+				padding-top: 10px;
+			}
+			
+			.cut {
+				width: 121px;
+				height: 39px;
+				border-radius:25px;
+				background-color: #33BAB0;
+				color: #FFFFFF;
+				padding-top: 10px;
+				padding-left:3px;
+			}
+			
+			.text2 {
+				font-size: 15px;
+				color: #33BAB0;
+			}
+			
+			.word {
+				display: -webkit-box!important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: normal;
+				word-wrap:break-word;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+			}
+			.a{
+				padding:16px 0 10px;
+			}
+			/*.money2 .symbol{
+				width: 39px;
+				text-align: right;
+				position: absolute;
+				top:20px;
+				left:-40px;
+			}*/
+			.symbol{
+				text-align:center;
+				color: #EECD49;
+			}
+			/*.money2 {
+				color: #EECD49;
+				font-size:48px;
+				padding-top:20px;
+				position: relative;
+				text-align: center;
+			}*/
+		     .font-size48{
+		     	font-size:48px;
+		     	margin-top: 11px;
+		     }
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<!--<div class="">
+					<div class="flex-box flex-center-center font-size48" >
+							<span class="symbolC">C$</span>
+							<span class="symbol">$</span>
+						    <span style="color:#EECD49">14554565.68</span>
+					</div>
+					</div>
+					<div style="margin-top:18px;" class="">
+						<div class="text-center button flex-box flex-center-center">
+							<div class="all text flex-1 cut" onclick="cut(1)" tapmode>Everything</div>
+							<div class="gain text flex-1 " onclick="cut(2)" tapmode>lncome</div>
+							<div class="expend text flex-1 " onclick="cut(3)" tapmode>Expenditure</div>
+						</div>
+					</div>
+					<div class="flex-box flex-center-center a" onclick="click_screen()" tapmode>
+						<div><img src="../../image/1212.png" class="img2"></div>
+						<div class="text2">VIEWING LAST 4 WEEKS</div>
+					</div>
+
+					<div class="date">Friday,May 30, 2017</div>
+					<div class="list flex-box flex-v-ce" onclick="click_detail()" tapmode>
+						<div class="round"></div>
+						<div class="word flex-1">Video editing for an agency award.</div>
+						<div class="money">$45</div>
+						<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+					</div>
+					<div class="date">Thursday,May 29, 2017</div>
+					<div class="list flex-box flex-v-ce">
+						<div class="round"></div>
+						<div class="word flex-1">Video editing for an agency award.</div>
+						<div class="money">$45</div>
+						<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+					</div>
+					<div class="date">Friday,May 30, 2017</div>
+					<div class="list flex-box flex-v-ce">
+						<div class="round"></div>
+						<div class="word flex-1">Video editing for an agency award.</div>
+						<div class="money">$45</div>
+						<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+					</div>
+					<div class="date">Friday,May 30, 2017</div>
+					<div class="list flex-box flex-v-ce">
+						<div class="round"></div>
+						<div class="word flex-1">Video editing for an agency award.</div>
+						<div class="money">$45</div>
+						<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+					</div>
+					<div class="list flex-box flex-v-ce">
+						<div class="round"></div>
+						<div class="word flex-1">Video editing for an agency award.</div>
+						<div class="money">$45</div>
+						<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+					</div>-->
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="">
+			<div class="flex-box flex-center-center font-size48" >
+				<span class="symbol">{{=it.default_currency == 'cad' ? 'C$' : '$'}}</span>
+			    <span style="color:#EECD49">{{=it.money}}</span>
+			</div>
+			<div style="margin-top: 20px;">
+				<div class="text-center button flex-box flex-center-center">
+					<div lan="Everything" class="all text flex-1 {{= type == 1 && 'cut'}} hidden" onclick="cut(1)" tapmode>Everything</div>
+					<div lan="Income" class="gain text flex-1 {{= type == 2 && 'cut'}}" onclick="cut(2)" tapmode>Income</div>
+					<div lan="Expenditure" class="expend text flex-1 {{= type == 3 && 'cut'}}" onclick="cut(3)" tapmode>Expenditure</div>
+				</div>
+			</div>
+			<div class="flex-box flex-center-center a" onclick="click_screen()" tapmode>
+				<div><img src="../../image/1212.png" class="img2"></div>
+				<div class="text2">
+					{{= dateRange == '0,0' && 'VIEWING LAST 4 WEEKS' || (dateRange == '0,1' || dateRange == '1,1') && 'VIEWING LAST 3 MONTHS' || (dateRange == '0,2' || dateRange == '2,2') && 'VIEWING LAST 6 MONTHS' || (dateRange == '0,3' || dateRange == '3,3') && 'VIEWING LAST 12 MONTHS' || 'VIEWING ALL' }}
+				</div>
+			</div>
+		</div>
+		{{? it.list instanceof Array && it.list.length!=0}} 
+			{{~ it.list:values:index}}
+				<div class="date">{{=values.time}}</div>
+				{{? values.list instanceof Array && values.list.length!=0}} 
+					{{~ values.list:value:i}}
+						<div class="list flex-box flex-v-ce" onclick="click_detail({{=value.id}},{{=value.type}})" tapmode>
+							<div class="round"></div>
+							<div class="word flex-1">{{=value.title}}</div>
+							<div class="money">
+								{{=default_currency == 'cad' ? 'C$' : '$'}}  
+								
+								{{? value.type==2}}
+									{{=value.realtotal}}
+								{{??}}
+									{{=value.realtotal}}
+								{{?}}
+							</div>
+							<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+						</div>
+					{{~}} 
+				{{?}} 
+			{{~}} 
+		{{??}}
+			<div class="flex-box-v flex-h-zhu margin-top40 text-center" lan="There_is_no_content">
+				 No content
+			</div>
+		{{?}}
+	</script>
+	<!--<script type="text/template" template='list'>
+		{{? it instanceof Array && it.length!=0}} 
+			{{~ it:values:index}}
+				<div class="date">{{=values.time}}</div>
+				{{? values.list instanceof Array && values.list.length!=0}} 
+					{{~ values.list:value:i}}
+					<div class="list flex-box flex-v-ce" onclick="click_detail({{=value.id}},{{=value.type}})" tapmode="">
+						<div class="round"></div>
+						<div class="word flex-1">{{=value.title}}</div>
+						<div class="money">{{=default_currency == 'cad' ? 'C$' : '$'}} {{=value.realtotal}}</div>
+						<div class="forword"><img src="../../image/browse/grey.png" class="img"></div>
+					</div>
+					{{~}} 
+				{{?}} 
+			{{~}} 
+		{{?}}
+	</script>-->
+	<script type="text/javascript">
+		var type = 2,	//2018-1-19, 需求调整，不需要显示 Everything 列表
+			dateRange = "0,0";
+		var values = {
+			id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+			token: $api.getStorage(CONFIG.KEY.TOKEN),
+			type: type,
+			time1: '',
+			time2: ''
+		},
+		loadMoreValue = {
+			id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+			token: $api.getStorage(CONFIG.KEY.TOKEN),
+			type: type,
+			time1: '',
+			time2: ''
+		};
+		
+		var default_currency='';
+		apiready = function() {
+			var time = getTimeRange(0);
+			values.time1 = time.time1;
+			values.time2 = time.time2;
+			init();
+			api.addEventListener({
+				name: 'income_all_reinit'
+			}, function(ret) {
+				dateRange = ret.value.dateRange;
+				values.time1 = ret.value.time1;
+				values.time2 = ret.value.time2;
+				init(values.type, 1)
+			});
+			
+			Refresh.init({
+				container: '#main',
+				ctrl: 'more',
+				fn: 'getRevenue',
+				values: values,
+				beforeRender: function(ct) {
+					default_currency = ct.default_currency;
+					formatData(ct);
+					//排序
+					ct.list.sort(function(a, b){
+						return -(new Date(a.time2).getTime() - new Date(b.time2).getTime());
+					});					
+				},
+				success: function() {
+
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'more',
+				fn: 'getRevenue',
+				values: loadMoreValue,
+				showError: true,
+				countSelector: '.list',
+				field: 'list',
+				beforeRender: function(ct) {
+					console.log('加载更多：----------' + JSON.stringify(ct, null, 2));
+					default_currency = ct.default_currency;
+					formatData(ct);
+					//排序
+					ct.list.sort(function(a, b){
+						return -(new Date(a.time2).getTime() - new Date(b.time2).getTime());
+					});					
+				},
+				success: function() {}
+			})
+		}
+
+		function cut(index) {
+			type = index;
+			values.type = loadMoreValue.type = index;
+			init(type);
+		}
+
+		function formatData(ct){
+			var list = [];
+			for(var i in ct.list) {
+				var t_obj = new Date(i.replace(/-/g, '/'));
+				var t = t_obj.toString().split(' ', 4);
+				var _day=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+				    _day2=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+				    _month=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+				    _month2=['January','February','March','April','May','June','July','August','September','October','November','December'];
+				//拼接日期的字符串
+				for(var k=0;k<_day.length;k++){
+					if(t[0]==_day[k]){
+						t[0]=_day2[k];
+					}
+				}
+				for(var j=0;j<_month.length;j++){
+					if(t[1]==_month[j]){
+						t[1]=_month2[j];
+					}
+				}
+				t_string = t[0] + ', ' + t[1] + ' ' + t[2] + ', ' + t[3];
+				list.push({
+					time2: i.split(' ')[0],	//截取年月日，排序用
+					time: t_string,
+					list: ct.list[i]
+				});
+			}
+			ct.list = list;
+		}
+		
+		function init(type) {
+			ajax.get({
+				ctrl: 'more',
+				fn: 'getRevenue',
+				data: {
+					values: values
+				},
+				hideLoading: true,
+				success: function(ct) {
+					default_currency = ct.default_currency;
+
+					formatData(ct);
+					
+					ct.list.sort(function(a, b){
+						var flag = -(new Date(a.time2).getTime() - new Date(b.time2).getTime());
+						return flag;
+					});
+					console.log('组装：----------' + JSON.stringify(ct, null, 2));
+					T.html('#main', 'main', ct);
+					L.init();
+				}
+
+			});
+		
+		}
+		
+//		incomeData.list.sort(function(a, b){
+//			return -(new Date(a.time2).getTime() - new Date(b.time2).getTime());
+//		});
+//		
+//		console.log('组装：----------' + JSON.stringify(incomeData, null, 2));
+
+		function click_detail(id, type) {
+			// 收支类型,1:收入,2:支出
+			if(type == 1) {
+				api.openWin({
+					name: 'detail',
+					url: api.wgtRootDir + '/html/window/win_back.html',
+					pageParam: {
+						frameName: 'income_detail',
+						frameUrl: api.wgtRootDir + '/html/more/income_detail.html',
+						frameParam: {
+							revenueid: id
+						},
+						headerTitle: 'lncome',
+					},
+					slidBackEnabled: false,
+					reload: true,
+				});
+			} else {
+				api.openWin({
+					name: 'detail',
+					url: api.wgtRootDir + '/html/window/win_back.html',
+					pageParam: {
+						frameName: 'expend_detail',
+						frameUrl: api.wgtRootDir + '/html/more/expend_detail.html',
+						frameParam: {
+							revenueid: id
+						},
+						headerTitle: 'Expenditure',
+					},
+					slidBackEnabled: false,
+					reload: true,
+				});
+			}
+		}
+
+		function click_screen() {
+			api.openWin({
+				name: 'click_screen',
+				url: api.wgtRootDir + '/html/window/browse/screen_win.html',
+				pageParam: {
+					frameName: 'income_screen',
+					frameUrl: api.wgtRootDir + '/html/more/income_screen.html',
+					frameParam: {
+						time1: values.time1,
+						time2: values.time2,
+						dateRange: dateRange
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['Filters'],
+				},
+				slidBackEnabled: false,
+				reload: true,
+			});
+		}
+	</script>
+
+</html>

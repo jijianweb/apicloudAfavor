@@ -1,0 +1,27 @@
+{
+	"citys": [{
+		"id": "232",
+		"city": "Milwaukee",
+		"fr": "Milwaukee",
+		"parentid": "231",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "233",
+		"city": "Madison",
+		"fr": "Madison",
+		"parentid": "231",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "234",
+		"city": "Green Bay",
+		"fr": "Green Bay",
+		"parentid": "231",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}]
+}

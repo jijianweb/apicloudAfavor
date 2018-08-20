@@ -1,0 +1,19 @@
+{
+	"citys": [{
+		"id": "290",
+		"city": "Des Moines",
+		"fr": "Des Moines",
+		"parentid": "289",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "291",
+		"city": "Cedar Rapids",
+		"fr": "Cedar Rapids",
+		"parentid": "289",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}]
+}

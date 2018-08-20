@@ -1,0 +1,192 @@
+#header{
+	background-color: #33BAB0;
+}
+#header .topbar {
+	display: none;
+}
+
+#header .activebar {
+	display: block;
+	border-bottom: none;
+}
+#main{
+	overflow-y: hidden;
+}
+#footer {
+	border-top: 1px solid #F5F5F5;
+}
+
+#footer>div {
+	height: 48px;
+	/*line-height: 48px;*/
+}
+
+.icon-search,
+.btn-search,
+.icon-filter,
+.icon-location,
+.icon-down,
+#footer [class*=icon] {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20px;
+}
+
+#footer .icon-browse {
+	background-image: url(../image/inbox/glass.png);
+}
+
+#footer .icon-inbox {
+	background-image: url(../image/post/envelope-grey.png);
+}
+
+#footer .icon-post {
+	background-image: url(../image/inbox/font.png);
+	background-size: auto 20px;
+}
+
+#footer .icon-myfavors {
+	background-image: url(../image/my_task.png);
+	background-size: auto 20px;
+}
+
+#footer .icon-more {
+	background-image: url(../image/inbox/more.png);
+}
+
+#footer .title {
+	font-size: 12px;
+	color: #9DA2A6;
+	padding-bottom: 2px;
+}
+
+#footer .active .icon-browse {
+	background-image: url(../image/1212.png);
+}
+
+#footer .active .icon-inbox {
+	background-image: url(../image/inbox/envelope.png);
+}
+
+#footer .active .icon-post {
+	background-image: url(../image/home_post.png);
+}
+
+#footer .active .icon-myfavors {
+	background-image: url(../image/list-grey11.png);
+}
+
+#footer .active .icon-more {
+	background-image: url(../image/more-details-circular-button-grey.png);
+}
+
+#footer .active .title {
+	color: #33BAB0;
+}
+
+/*
+ * Browse 头部样式
+ */
+
+#myfavors.topbar,
+#browse.topbar{
+	height: auto;
+}
+#myfavors .title,
+#browse .title{
+	position: relative;
+	line-height: 48px;
+	height: 48px;
+}
+.icon-location{
+	width: 50px;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	background-size: 15px;
+	background-image: url(../image/browse/browers-1.png);
+}
+.map {
+	background-image: url(../image/browse/location-icon-top-right-3.png);
+}
+.list {
+	background-image: url(../image/more/list.png);
+}
+
+.icon-down{
+	width: 16px;
+	height: 10px;
+	background-size: contain;
+	background-image: url(../image/sort-down.png);
+}
+
+#browse .search{
+	height: 37px;
+	line-height: 37px;
+	background-color: #33BAB0;
+	padding-left: 18px;
+}
+#browse .form-control{
+	background-color: rgba(255,255,255,0.4);
+	border-radius: 25px;
+}
+#browse .input{
+	padding-right: 10px;
+}
+#browse input{
+	width: 100%;
+}
+.icon-filter{
+	width: 50px;
+	background-image: url(../image/browse/yingyin.png);
+}
+.icon-search{
+	width: 40px;
+	background-image: url(../image/browse/search--grey.png);
+}
+.btn-search{
+	width: 37px;
+	background-image: url(../image/browse/browers.png);
+	background-size: contain;
+}
+
+#location-msg{
+	background-color: #33BAB0;
+	font-size: 12px;
+	color: #fff;
+	line-height: 22px;
+}
+
+/*-----------my favors 头部样式-----------------*/
+#myfavors .group{
+	padding: 0 20px;
+	padding-top: 21px;
+	background-color: #fff;
+}
+#myfavors .tabbar,
+#myfavors .tabbar > div{
+	border-radius: 25px;
+	background-color: #F2F2F2;
+}
+
+#myfavors .tabbar{
+	height: 36px;
+	line-height: 37px;
+	overflow: hidden;
+}
+
+#myfavors .tabbar > div{
+	color: #b4b8bb;
+}
+
+#myfavors .tabbar > div.active{
+	color: #fff;
+	background-color: #33BAB0;
+}
+
+/*
+ * Inbox 页头
+ */
+
+

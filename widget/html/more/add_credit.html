@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>添加信用卡详情</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main {
+				padding: 20px 18px 0px;
+			}
+
+			input[type="month"],
+			input[type="text"],
+			input[type="number"],
+			.value_text {
+				outline: none;
+				resize: none;
+				border: 1px solid #CCCCCC;
+				border-radius: 25px;
+				color: #000000;
+				width: 100%;
+			}
+
+			.sel-bor {
+				border: 1px solid #CCCCCC;
+				border-radius: 25px;
+				width: 100%;
+			}
+
+			.sel {
+				color: #000000;
+				outline: none;
+				resize: none;
+				padding: 13px 22px 13px;
+				width: 95%;
+				border: none;
+				appearance: none;
+				-moz-appearance: none;
+				-webkit-appearance: none;
+				background: url(../../image/down.png)no-repeat scroll right center transparent;
+				background-size: 13px 8px;
+			}
+
+			input[type="password"],
+			input[type="text"],
+			input[type="number"],
+			.value_text {
+				padding: 13px 10px 13px 15px;
+				margin-bottom: 10px;
+				font-size: 14px;
+			}
+
+			input[type="month"] {
+				margin-bottom: 10px;
+				padding:2px 11px 0px 16px;
+				height: 45px;
+			}
+
+			.text {
+				color: #828B8F;
+				font-size: 14px;
+				padding: 0 0px 5px 10px;
+			}
+
+			.card {
+				font-size: 12px;
+				color: #858B8B;
+				text-align: right;
+				padding: 6px 5px 0px 0;
+			}
+
+			.foot{
+            	padding:100px 0px 0px;
+            	width:100%;
+            }
+			.save {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+                bottom: 16px;
+			}
+
+			.btn-card {
+				width: 50px;
+				height: 28px;
+				border: 1px solid #CFEEEB;
+				background-color: #32BBB1;
+				border-radius: 25px;
+			}
+
+			.cirlce {
+				width: 50px;
+				height: 50px;
+				background-image: url(../../image/post/lock.png);
+				background-size:contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				margin: 0 auto;
+			}
+
+			.bom-t {
+				text-align: center;
+				color: #D7D8DA;
+				font-size: 12px;
+				padding-top: 10px;
+				width: 210px;
+				margin: 0 auto;
+			}
+			/*样式调整2017-11-5*/
+			input[type="text"],
+			.value_text{
+				padding: 13px 22px 13px;
+				font-size: 14px;
+				margin-bottom:30px;
+			}
+			.text{
+				padding-bottom: 9px;
+				padding-left: 22px;
+			}
+			#main{
+				padding-top: 22px;
+			}
+			.sel{
+				padding: 14px 22px;
+				font-size: 14px;
+			}
+			/*华为按钮调整*/
+			@media (max-height:400px){
+				.save{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div>
+					<span class="text" lan="Name">Name</span>
+					<!-- JIANWEI FAN -->
+					<input type="text" placeholder="" id="name" value="" />
+				</div>
+				<div>
+					<span class="text" lan="Card_number">Card number</span>
+					<input placeholder="" id="number" value="" type="text" onkeypress="return event.keyCode>=48&&event.keyCode<=57" oninput="value=value.replace(/[^\d]/g,'') " />
+				</div>
+				<div class="flex-box">
+					<div class="flex-1">
+						<div class="text" lan="ExpireDate">Expire Date</div>
+						<input type="month" id="expire" />
+					</div>
+					<div class="flex-1" style="margin-left: 15px;">
+						<div class="text" lan="SecurityCode">Security Code</div>
+						<input id="securityCode" value="" type="text" onkeypress="return event.keyCode>=48&&event.keyCode<=57" oninput="value=value.replace(/[^\d]/g,'') " />
+					</div>
+				</div>
+				<div>
+					<span class="text" lan="StreetAddress">Street Address</span>
+					<!-- 9 Chillwood Crt -->
+					<input type="text" id="address" value="" />
+				</div>
+				<div>
+					<span class="text" lan="City">City</span>
+					<div id="city" class="value_text" onclick="openCitySelector()" tapmode>
+						<!--{{= curCity.city.name || '&nbsp;'}}-->&nbsp;
+					</div>
+				</div>
+
+				<div class="flex-box">
+					<div class="flex-1">
+						<div class="text" lan="Province">Province</div>
+						<div class="sel-bor">
+							<div id="province" class="sel" onclick="openCitySelector()" tapmode>
+								<!--{{= curCity.province.name || '&nbsp;'}}-->&nbsp;
+							</div>
+						</div>
+					</div>
+					<div class="flex-1 " style="margin-left: 15px;">
+						<div class="text" lan="PostalCode">Postal Code</div>
+						<!-- L3R9P1 -->
+						<div><input style="" type="text" placeholder="" id="postalCode" value="" oninput="postalcodeInput(event,this)" /></div>
+					</div>
+				</div>
+				<div class="copy" style="margin-top: 40px;">
+					<div class="cirlce"></div>
+					<div class="bom-t" lan="AddCreditCardTip">
+						Afavor will maintain the confidentiality
+						  of your information
+					</div>
+				</div>
+				<div class="foot" id="footer">
+					<div class="save btn-afavor-1" onclick="save()" lan="ADD_CREDIT_CARD" tapmode>ADD CREDIT CARD</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/area.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/UiActionSelector.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+
+		function postalcodeInput(e, _this) {
+			var _val = $api.val(_this);
+			if(!/^[A-Z0-9]{0,6}$/.test(_val)){
+				if(_val.length > 6){
+					$api.val(_this, _val.slice(0, 6));
+					//将键盘收起
+					_this.blur();
+				}else{
+					Tool.toast('Postal code can only type capital letters or Numbers.');
+				}
+			}
+		}
+		//var initBodyHeight = document.body.clientHeight;//页面可视高度
+//			console.log(initBodyHeight)
+//	    var keyBoardStatus = false;//键盘是否打开
+//	    function getKeyBoardStatus(){
+//	  		setTimeout(function(){
+//	        if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false){
+//	          keyBoardStatus = true;
+//				$api.addCls($api.dom('#footer'), 'hidden');
+//	          getKeyBoardStatus();
+//	          return false;
+//	        }
+//	        if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true){
+//	          keyBoardStatus = false;
+//				$api.removeCls($api.dom('#footer'), 'hidden');
+//	          getKeyBoardStatus();
+//	          return false;
+//	        }
+//	        getKeyBoardStatus();
+//	      },100);
+//	    }
+
+		apiready = function() {
+			L.init();
+			inputBlur(); //将键盘收下来
+			api.addEventListener({
+				name: 'cardReader'
+			}, function(ret, err) {
+				if(ret.value.cardNum) {
+					$api.val($api.dom('#number'), ret.value.cardNum);
+				}
+				if(ret.value.expiryMonth && ret.value.expirtyYear) {
+					$api.val($api.dom('#expire'), ret.value.expirtyYear + '-' + ret.value.expiryMonth);
+				}
+				if(ret.value.cvv) {
+					$api.val($api.dom('#securityCode'), ret.value.cvv);
+				}
+			})
+		}
+		var curCity = {
+			country: {},
+			province: {},
+			city: {}
+		};
+
+		function save() {
+			var name = $api.val($api.dom('#name')),
+				number = $api.val($api.dom('#number')),
+				expire = $api.val($api.dom('#expire')),
+				securitycode = $api.val($api.dom('#securityCode')),
+				address = $api.val($api.dom('#address')),
+				city = curCity.city.value || '',
+				province = curCity.province.value || '',
+				country = curCity.country.value || '',
+			postalcode = $api.val($api.dom('#postalCode'));
+			var exp = expire.split('-', 2);
+			expire = exp[1] + '-' + exp[0];
+			var expYear = parseInt(exp[0]);
+			var expMonth = parseInt(exp[1]);
+
+			console.log(expMonth);
+			console.log(expYear);
+
+			if(!name) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!number) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!expire) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!securitycode) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!city) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!address) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(province == " ") {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!postalcode) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!/^[A-Z0-9]{6,20}$/.test(postalcode)) {
+				Tool.toast('Postal code can only type capital letters or Numbers.');
+				return;
+			}
+			var values = {
+				id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+				token: $api.getStorage(CONFIG.KEY.TOKEN),
+				type: 1,
+				name: name,
+				number: number,
+				expiredate: expire,
+				securitycode: securitycode,
+				street: address,
+				city: city,
+				privince: province,
+				country: country,
+				postalcode: postalcode,
+			}
+
+			var stripePay = api.require('stripePay');
+			api.showProgress({
+				title: 'Loading...',
+				text: 'Please wait...',
+				modal: true
+			});
+			stripePay.getToken({
+				cvc: securitycode,
+				expMonth: expMonth,
+				expYear: expYear,
+				number: number
+			}, function(ret, err) {
+				if(ret.status) {
+					console.log(JSON.stringify(ret, null, 2));
+					if(ret.token.details.funding != 'credit'){
+						var tip = 'It is not a credit card.Please try again.';
+						Tool.toast(tip);
+						api.hideProgress();
+						return;
+					}
+
+					ajax.get({
+						ctrl: 'more',
+						fn: 'addPayments',
+						data: {
+							values: values
+						},
+						hideLoading: true,
+						showError: true,
+						showProgress: true,
+						success: function() {
+//							Tool.toast('Added Successfully.');
+							api.execScript({
+								name: 'PaymentMethod',
+								frameName: 'make_payments',
+								script: 'init()'
+							});
+
+							api.alert({
+								msg: 'Your bank information can be found in the online banking system.'
+							}, function(ret){
+								api.closeWin();
+							});
+						}
+					});
+				} else {
+					api.hideProgress();
+					console.log(JSON.stringify(err))
+					try {
+						Tool.toast(JSON.parse(err.msg).NSLocalizedDescription)
+					} catch(e) {
+						Tool.toast(err.msg)
+					}
+				}
+			});
+		}
+	</script>
+
+</html>

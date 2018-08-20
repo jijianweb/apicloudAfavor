@@ -1,0 +1,45 @@
+{
+	"citys": [
+		{
+			"id": "4",
+			"city": "Seattle",
+			"fr": "Seattle",
+			"parentid": "3",
+			"sort": "1",
+			"level": "3",
+			"sub": []
+		}, {
+			"id": "5",
+			"city": "Spokane",
+			"fr": "Spokane",
+			"parentid": "3",
+			"sort": "2",
+			"level": "3",
+			"sub": []
+		}, {
+			"id": "6",
+			"city": "Tacoma",
+			"fr": "Tacoma",
+			"parentid": "3",
+			"sort": "3",
+			"level": "3",
+			"sub": []
+		}, {
+			"id": "7",
+			"city": "Vancouver",
+			"fr": "Vancouver",
+			"parentid": "3",
+			"sort": "4",
+			"level": "3",
+			"sub": []
+		}, {
+			"id": "8",
+			"city": "Bellevue",
+			"fr": "Bellevue",
+			"parentid": "3",
+			"sort": "5",
+			"level": "3",
+			"sub": []
+		}
+	]
+}

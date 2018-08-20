@@ -1,0 +1,59 @@
+{
+	"citys": [{
+		"id": "178",
+		"city": "Detroit",
+		"fr": "Détroit",
+		"parentid": "177",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "179",
+		"city": "Great Rapids",
+		"fr": "Great Rapids",
+		"parentid": "177",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "180",
+		"city": "Warren",
+		"fr": "Warren",
+		"parentid": "177",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "181",
+		"city": "Sterling Heights",
+		"fr": "Sterling Heights",
+		"parentid": "177",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "182",
+		"city": "Flint",
+		"fr": "Flint",
+		"parentid": "177",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "183",
+		"city": "Lansing",
+		"fr": "Lansing",
+		"parentid": "177",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "184",
+		"city": "Ann Arbor",
+		"fr": "Ann Arbor",
+		"parentid": "177",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}]
+}

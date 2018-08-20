@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/ct.css" />
+		<style type="text/css">
+			button:not(:first-child) {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-zhu">
+				<button class="btn btn-info btn-lg" onclick="openCardView()" tapmode="">打开输入信用卡信息界面</button>
+				<button class="btn btn-info btn-lg" onclick="getToken()" tapmode="">获取Token</button>
+				<button class="btn btn-info btn-lg" onclick="addPaymentCardTextField()" tapmode="">添加一个 stripe 移动端 SDK 生成的输入框</button>
+				<button class="btn btn-info btn-lg" onclick="submitPayment()" tapmode="">通过输入框获取 token</button>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript">
+		function openCardView() {
+			var stripePay = api.require('stripePay');
+			stripePay.openCardView(function(ret) {
+				if(ret.eventType != 'cancel'){
+					console.log(JSON.stringify(ret, null, 2))
+					api.alert({
+						msg: JSON.stringify(ret)
+					});
+				}
+			});
+		}
+
+		function getToken() {
+			var stripePay = api.require('stripePay');
+			stripePay.getToken({
+//				cvc: '123',
+				expMonth: 4,
+				expYear: 2022,
+				//信用卡：5528533735086284  6259625266866101
+				//借记卡：4724090157688431
+				number: '4724090157688431'
+			}, function(ret, err) {
+				if(ret.status) {
+					alert(JSON.stringify(ret))
+					console.log(JSON.stringify(ret, null, 2))
+					//获取 token 成功
+				} else {
+					alert(err.code + ':' + err.msg);
+				}
+			});
+		}
+         
+		function addPaymentCardTextField() {
+			//Android平台暂不支持本接口
+			var stripePay = api.require('stripePay');
+			stripePay.addPaymentCardTextField({
+				rect: {
+					x: 0,
+					y: 50,
+					w: api.winWidth,
+					h: 100
+				},
+				fixedOn: api.frameName
+			}, function(ret, err) {
+				if(ret.isValid){
+					alert(JSON.stringify(ret))
+					console.log(JSON.stringify(ret, null, 2))
+				}
+			});
+		}
+
+		function submitPayment() {
+			var stripePay = api.require('stripePay');
+			stripePay.submitPayment(function(ret, err) {
+				if(ret.status) {
+					alert(JSON.stingify(ret));
+				} else {
+					alert(err.code);
+				}
+			});
+		}
+
+		apiready = function() {
+
+		}
+	</script>
+
+</html>

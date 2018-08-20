@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>退出登录</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body,
+			#main {
+				filter: alpha(opacity=0.4);
+				background-color: rgba(193, 193, 193, 0.4);
+				text-shadow:1px 1px 1px #F0F0F0;
+			}
+
+			.bg {
+				position: absolute;
+				background-color: rgba(193, 193, 193,0.4;);
+				width: 100%;
+				height: 100%;
+			}
+
+
+			.al{
+				background-color:white;
+				width: 90%;
+			}
+			.yes{
+				color:#31BAB0;
+				border-left: 1px solid #D7D7D7;
+			}
+			.unber{
+
+				border-top:1px solid #D7D7D7;
+			}
+			.yes,
+			.no{
+				padding: 12px 0px;
+			}
+			.up{
+				padding:25px 15px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="bg">
+				<div class="cover filter_bg"></div>
+			</div>
+			<div id="main" class="flex-box-v flex-h-ce flex-h-zhu" style="padding: 0 18px;">
+				<div class="al">
+					<div class="up" lan="AreYouSureToLogout">Are you sure to logout?</div>
+					<div class="flex-box unber">
+						<div class="flex-1 text-center  no" lan="No" onclick="api.closeFrame()" tapmode>No</div>
+						<div class="yes flex-1 text-center" onclick="logout()" lan="Yes" tapmode>Yes</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			L.init();
+		}
+
+		function signOut(){
+			ajax.get({
+				ctrl: 'Common',
+				fn: 'logout',
+				hideLoading: true,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				success: function(){
+					api.hideProgress();
+					$api.rmStorage(CONFIG.KEY.MEMBER_ID);
+					$api.rmStorage(CONFIG.KEY.TOKEN);
+					api.execScript({
+						name: 'root',
+						script: 'openLogin()'
+					});
+
+					setTimeout(function(){
+						api.closeWin({
+							name:"Init"
+						});
+					}, 300);
+				}
+			});
+		}
+
+		function logout(){
+			var google = api.require('google'),
+					facebook = api.require('facebook');
+
+			api.showProgress({
+				title: 'logout...',
+				text: 'Please wait...'
+			});
+
+			google.hasAuth(function(ret, err) {
+//				alert(JSON.stringify(ret, null, 2))
+		    if(ret.status){
+		    	//退出Google登录
+		    	google.signOut();
+		    	signOut();
+		    }else{
+		    	//监测facebook是否登录
+			    facebook.getCurrentToken(function(ret){
+//			    	alert(JSON.stringify(ret, null, 2))
+	          if(ret.isLogin) {
+	          	//退出facebook登录
+	            facebook.logout();
+	          }
+            signOut();
+			   	});
+		    }
+			});
+		}
+	</script>
+
+</html>

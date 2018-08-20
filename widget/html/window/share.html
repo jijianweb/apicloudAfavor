@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务的分享win</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				height: 90%;
+				
+			}
+			#header {
+				background-color:#32BBB1;	
+			}
+			.back,
+			.share {
+				background-repeat: no-repeat;
+				background-position: center;
+				display: inline-block;
+				position: absolute!important;
+			}
+			.share {
+				background-size: 25px 6px;
+				width: 15px;
+				height:2px;
+				background-image: url(../../image/post/111.png);
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="tit_icon share" onclick="share()" tapmode=""></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js" ></script>
+	<!--<script type="text/javascript" src="../../script/UIChatTools.js" ></script>-->
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title)
+		}
+
+		function close_win() {
+			api.closeWin();
+//			api.execScript({
+//				name:'Init',
+//				frameName:'my_promulgator',
+//				script:'init()'
+//			});
+		}
+		var commentPicList = [];
+		var commentPicKeyList = [];
+		apiready = function() {
+			/*暂不需翻译*/
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			//获取用户当前状态判断用户是否
+			api.addEventListener({
+			    name: 'sendStatus'
+			}, function(ret, err) {
+				var value=ret.value;
+			    status=value.status;
+			});
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+			
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h-50
+					},
+					bgColor: winParam.bgColor || '#fff',
+					allowEdit: false,
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					allowEdit: false,
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+			//输入框逻辑
+			var placeholder = LANGUAGE[$api.getStorage('lan')]['TypeSomething'];
+			
+			//关闭评论入口
+			api.addEventListener({
+				name: 'closeTaskDetailCommentEntrance'
+			}, function(ret){
+				UIChatBox.close();
+				api.setFrameAttr({
+					name: winParam.frameName,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h						
+					}
+				})
+			});
+			
+			UIChatBox.init({
+				scene: 'taskDetail',
+				talkEvent: 'taskDetail',
+				isComment: true,
+				inputBar_move: function(ret){
+//					console.log(JSON.stringify(ret));
+//					Tool.toast(api.pageParam.frameName)
+					api.setFrameAttr({
+						name: api.pageParam.frameName,
+						rect: {
+							x: 0,
+							y: headerPos.h,
+							w: 'auto',
+							h: api.winHeight - headerPos.h - ret.inputBarHeight - ret.panelHeight
+						}
+					});
+					
+					api.execScript({
+						name: api.winName,
+						frameName: api.pageParam.frameName,
+						script: 'inputBar_move()'
+					});
+//					console.log(JSON.stringify(ret))
+//					console.log(JSON.stringify(api.pageParam))
+				},
+				placeholder: placeholder
+			});
+			api.addEventListener({
+				name: 'addCommentPic'
+			},function(ret){
+				if(ret && ret.value && ret.value.commentPicList){
+					commentPicList = ret.value.commentPicList;
+					UIChatBox.commentPicList = commentPicList;
+				}
+			});
+			api.addEventListener({
+				name: 'commentPicUploaded'
+			},function(ret){
+				if(ret && ret.value && ret.value.commentPicKeyList){
+					commentPicKeyList = ret.value.commentPicKeyList;
+				}
+			})
+			//关闭键盘
+			api.addEventListener({
+				name: 'closeKey'
+			}, function(ret, err) {
+				var obj = api.require('UIChatBox');
+				obj.closeBoard();
+				api.setFrameAttr({
+					name: 'commentPic',
+					hidden: true
+				});
+			});
+			api.addEventListener({
+				name: 'taskDetail',
+			},function(ret){
+				// 用户按下发送按钮
+				
+				if(commentPicList.length != commentPicKeyList.length){
+					Tool.toast('Please wait for the picture to be uploaded');
+					UIChatBox.setValue(ret.value.content);
+					return ;
+				}
+				if(commentPicKeyList.length > 0){
+					api.confirm({
+						title: 'Tips',
+						msg: 'Post comments and pictures?',
+						buttons: ['cancel','yes']
+					},function(r,e){
+						var index = r.buttonIndex;
+						if(index == 2){
+							api.sendEvent({
+								name: 'postComment',
+								extra: {
+									content: ret.value.content,
+									photo: commentPicKeyList
+								}
+							});
+							clearCommentPic();
+						}else{
+							UIChatBox.setValue(ret.value.content);
+							return ;
+						}
+					})
+				}else{
+					api.sendEvent({
+						name: 'postComment',
+						extra: {
+							content: ret.value.content,
+							photo: commentPicKeyList
+						}
+					});
+				}
+				UIChatBox.setPlaceholder(LANGUAGE[$api.getStorage('lan')]['TypeSomething']);
+				UIChatBox.closeBoard();
+				UIChatBox.closeKeyboard();
+			});
+			api.addEventListener({
+				name: 'setReply'
+			},function(ret){
+				var placeholder = LANGUAGE[$api.getStorage('lan')]['TypeSomething'];
+				//判断是否是回复 ==空是评论  非等于是回复
+				if(ret.value.commentid != ''){
+					//回复某某
+					placeholder = '@'+ret.value.name;
+					UIChatBox.popupKeyboard();
+				}else{
+					UIChatBox.closeKeyboard();
+				}
+				UIChatBox.setPlaceholder(placeholder);
+				
+			})
+		}
+		function clearCommentPic(){
+			commentPicKeyList=[];
+			commentPicList=[];
+			UIChatBox.commentPicList = [];
+			api.closeFrame({
+				name: 'commentPic'
+			});
+		}
+		//打开分享页面
+		function share(){
+			api.execScript({
+				frameName: api.pageParam.frameName,
+				script: "share()"
+			});
+			return;
+			api.openWin({
+					name: 'reset_password',
+					url: api.wgtRootDir + '/html/window/reset_password.html',
+					pageParam: {
+						frameName:'share_task',
+						frameUrl: api.wgtRootDir + '/html/my_favors/share_task.html',
+						frameParam: {
+							favorid: api.pageParam.frameParam.favorid
+						},
+						headerTitle: LANGUAGE[$api.getStorage('lan')]['MoreOptions']
+					},
+					reload: true,
+					slidBackEnabled: false,
+				});
+		}
+	</script>
+
+</html>

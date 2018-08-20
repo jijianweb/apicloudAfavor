@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发现列表</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			img {
+				height: 20px;
+			}
+			
+			.birth {
+				padding: 7px 0;
+				padding-left: 10px;
+				border-bottom: 1px solid #DDDDDD;
+				line-height: 25px;
+				height: 40px;
+			}
+			
+			.select,
+			.selects {
+				margin: auto 16px;
+			}
+			
+			.selects.active{
+				display: block;
+			}
+			.selects {
+				display: none;
+			}
+			.select2 {
+				margin: auto 14px;
+			}
+			
+			.hint {
+				font-size: 14px;
+				color: #CCCCCC;
+				padding-left: 16px;
+				border-bottom: 1px solid #DDDDDD;
+				height: 40px;
+				line-height: 40px;
+			}
+			
+			.text {
+				font-size: 13px;
+			}
+			
+			.img {
+				width: 18px;
+				width: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="hint" lan="Base_Location">Base Location</div>
+				<div class="flex-box birth" onclick="selectProvince(this)" tapmode>
+					<span class="select2">
+						<img src="../../image/browse/1212.png" class="img"/>
+					</span>
+					<span class="flex-1 text" lan="Enter_a_new_address">
+						Enter a new address
+					</span>
+					<span id="enter" class="selects " class="img">
+						<img src="../../image/browse/round-done-button-1.png"/>
+					</span>
+				</div>
+				<div class="flex-box birth" onclick="mineAdd(this)" tapmode>
+					<span class="select">
+						<img src="../../image/more/location.png"/>
+					</span>
+					<span class="flex-1 text" lan="CurrenLoaction">Current Loaction</span>
+					<span id="location" class="selects active" class="img">
+						<img src="../../image/browse/round-done-button-1.png"/>
+					</span>
+				</div>
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+
+	<script type="text/javascript">
+		//我当前地址
+		function mineAdd(_this){
+			$api.addCls($api.dom('#location'),'active');
+			$api.removeCls($api.dom('#enter'),'active');
+			$api.rmStorage('cityinfo');
+			var GoogleMap = api.require('googleMap');
+			GoogleMap.getLocation({
+				autoStop: false
+			},function(ret) {
+			    if (ret.status) {
+			    	$api.setStorage(CONFIG.KEY.LON,ret.lon);
+			    	$api.setStorage(CONFIG.KEY.LAT,ret.lat);
+			    	$api.setStorage('slat',ret.lat);
+			    	$api.setStorage('slon',ret.lon);
+					GoogleMap.getNameFromCoords({
+					    lon: ret.lon,
+					    lat: ret.lat
+					}, function(ret) {
+					console.log('getNameFromCoords: ---' + JSON.stringify(ret));
+					    if (ret.status) {
+					    	if(!$api.getStorage('cityinfo')){
+					    		$api.setStorage('cityinfo',ret)
+					    	}
+					    	api.sendEvent({
+								name: 'task',
+								extra: {
+									curAddr: '1',
+								}
+							});
+					    }
+					});
+					api.execScript({
+						name:'Init',
+						frameName: 'browse_list',
+						script: 'TaskList()'
+					});
+					setTimeout(function() {
+						api.closeToWin({
+							name: 'Init'
+						});
+					},300);
+			    }
+			});
+			
+		}
+		var countryObj = {},
+			provinceObj = {},
+			cityObj = {};
+			
+		apiready = function() {
+			if(api.pageParam.curAddr == '1'){
+				$api.addCls($api.dom('#location'),'active');
+				$api.removeCls($api.dom('#enter'),'active');
+			}else{
+				$api.removeCls($api.dom('#location'),'active');
+				$api.addCls($api.dom('#enter'),'active');
+			}
+			var slat = $api.getStorage('slat'),
+				slon = $api.getStorage('slon'),
+				lat = $api.getStorage(CONFIG.KEY.LAT),
+				lon = $api.getStorage(CONFIG.KEY.LON);
+			if(lat && lon){
+				if(slat && slon){
+					console.log(lat)
+					console.log(slat)
+					if(lat == slat && lon == slon){
+						$api.removeCls($api.dom('.active'),'active');
+						$api.addCls($api.domAll('.selects')[1],'active');
+					}else{
+						$api.removeCls($api.dom('.active'),'active');
+						$api.addCls($api.domAll('.selects')[0],'active');
+					}
+					
+				}
+			}
+			api.addEventListener({
+				name: 'selectProvince'
+			}, function(ret) {
+				provinceObj = ret.value;
+				cityObj = {};
+				if(provinceObj.id == '98' || provinceObj.id == '111'){
+					api.sendEvent({
+						name: 'task',
+						extra: {
+							curAddr: '0',
+							country: countryObj,
+							province: provinceObj,
+							city: {
+								id: '',
+								city: ''
+							}
+						}
+					});
+				}else{
+					openCityList();
+				}
+			})
+			api.addEventListener({
+				name: 'selectCity'
+			}, function(ret) {
+				cityObj = ret.value.cityInfo;
+				$api.removeCls($api.dom('#location'),'active');
+				$api.addCls($api.dom('#enter'),'active');
+				api.sendEvent({
+					name: 'task',
+					extra: {
+						curAddr: '0',
+						country: countryObj,
+						province: provinceObj,
+						city: cityObj
+					}
+				});
+			});
+			L.init();
+		}
+		function selectProvince(_this){
+			Tool.actionSheet({
+				title: 'Select Country',
+				buttons: ['USA','CANADA'],
+				cancelTitle: 'Cancel',
+				success:function(index){
+					var type = '';
+					switch(index){
+						case 1:
+							type = 1;
+							countryObj = {
+								id: '1',
+								city: 'USA'
+							}
+						break;
+						case 2:
+							type = 2;
+							countryObj = {
+								id: '2',
+								city: 'CANADA'
+							}
+						break;
+					}
+					if(index < 3){
+						provinceObj = {};
+						cityObj = {};
+						openProvinceList(type);
+					}
+				}
+			})
+		}
+		function openProvinceList(type) {
+			api.openWin({
+				name: 'ProvinceList',
+				url: api.wgtRootDir + '/html/window/post/province_list.html',
+				pageParam:{
+					type: type
+				},
+				delay: 300
+			});
+		}
+		function openCityList() {
+			api.openWin({
+				name: 'CityList',
+				url: api.wgtRootDir + '/html/window/post/citys_list.html',
+				pageParam: {
+					countyid: countryObj.id,
+					province: provinceObj
+				},
+				delay: 600,
+				animation: {
+		    		type: 'none'
+		    	}
+			});
+		}
+	</script>
+
+</html>

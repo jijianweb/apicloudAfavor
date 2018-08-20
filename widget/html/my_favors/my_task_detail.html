@@ -1,0 +1,1685 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-发布者和帮助者-任务详情-线上和线下</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/task_detail.css" />
+		<link rel="stylesheet" href="../../css/task_line.css" />
+		<style type="text/css">
+			span[lan]{
+				color: inherit;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<!-- 任务基本信息 -->
+				<div class="hidden">
+					<div style="padding: 10px 15px;">
+					<div class="flex-box ">
+						<div class="flex-1 task-t">I need a logo design for a new child care business.</div>
+						<!-- 编辑任务 -->
+						<div class="pencil flex-h-ce " onclick="edit()" tapmode></div>
+						<div class="love heart" onclick="collect()" tapmode></div>
+					</div>
+					<div class="flex-box" style="margin-top: 15px;">
+						<div class="img"></div>
+						<div class="flex-1" style="margin:10px 0px 0 6px;">
+							<div class="text">Posted by <span style="color: #83D3D0 ;">Lucas Fan</span></div>
+							<div class="flex-box">
+								<div class="text flex-1">16 hours ago</div>
+								<div class="text">3 km away</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 任务进度条 -->
+					<div class="flex-box flex-h-zhu" style="padding:13px 26px;">
+						<div class="open flex-1"><span class="op">Open</span></div>
+						<div class="completed flex-1"><span class="co">Ongoing</span></div>
+						<div class="completed flex-1"><span class="co">Completed</span></div>
+					</div>
+
+					<!--价格-->
+					<div class="flex-box flex-h-zhu" style="margin:25px 0px 35px">
+						<div class="money">
+							<span class="sp">C$</span>
+							<span style="color: inherit;">256</span>
+						</div>
+					</div>
+
+
+					<div class="flex-box flex-center-center">
+						<div class="mack" lan="Do_it_Now">Make an Offer</div>
+					</div>
+
+					<div class="flex-box flex-center-center" style="margin-top:11px;">
+						<div class="week flex-box flex-center-center" >
+							<span style="color: inherit;" class="number">5</span>&nbsp;Workers
+						</div>
+						<div class=" flex-box dic flex-center-center">
+							<span style="margin-right:4px;color: #33BBB2;">Difficulty</span>
+							<div class="star-solid "></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+						</div>
+					</div>
+
+					<div class="flex-box flex-center-center" style="margin-top:11px;">
+						<div class=" quit flex-box flex-center-center" style="background:red;" onclick="helpAccept()" tapmode>
+							<div class="quit-icon flex-3"></div>
+							<div class="flex-3" style="color:white;" lan="Quit">Quit</div>
+						</div>
+						<div class=" flex-center-center dic-1" lan="Begin" onclick="helpAccept()" tapmode>Begin</div>
+					</div>
+
+					<div class="flex-box flex-center-center" style="margin-top:10px;">
+						<div class="mack" lan="Completed">Completed</div>
+					</div>
+					<div class="flex-box flex-center-center" style="margin-top:10px;">
+						<div class=" week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+							<div class="ic"></div>
+							<div class="" style="color:#33BBB2;" lan="Chat">Chat</div>
+						</div>
+						<div class=" flex-center-center dic-1" lan="Waiting" style="background-color:#33BBB2;">Waiting</div>
+					</div>
+					<div class="flex-box flex-center-center" style="margin-top:10px;">
+						<div class=" week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+							<div class="ic"></div>
+							<div class="" style="color:#33BBB2;" lan="Chat">Chat</div>
+						</div>
+						<div class=" flex-center-center dic-2" lan="Ratings" onclick="rating()" tapmode>Ratings</div>
+					</div>
+					<div class="flex-box flex-center-center" style="margin-top:10px;">
+						<div class=" week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+							<div class="ic"></div>
+							<div class="" style="color:#33BBB2;" lan="Chat">Chat</div>
+						</div>
+						<div lan="FavorComplete" class=" flex-center-center dic-1" onclick="" tapmode>Favor Complete</div>
+					</div>
+					<div class="flex-box flex-h-ce" style="margin-top:9px;">
+						<p class="sing"></p>
+						<p style="padding-left:5px;">tryr5ywu45u5u</p>
+					</div>
+					<div class="flex-box flex-h-ce">
+						<p class="calendar"></p>
+						<p class="flex-1 ter-t">Due Date -28 May 2017</p>
+						<p class="ter" onclick="terminate()" tapmode>Terminate</p>
+					</div>
+				</div><!-- end 任务基本信息 -->
+
+				<!-- 任务详情 -->
+				<div class="title" lan="Favor_Details">Favor Details</div>
+				<div class="margin-bottom10" style="padding: 10px;">
+					大公会都会发生的活动盘丝洞人居率
+				</div>
+				<div style="padding: 10px;" class="pic">
+					<div class="pic-box">
+						<div id="scroller">
+							<ul>
+								<li>
+									<div onclick="openPhotoBrowser()" tapmode="">
+										<div class="img-picture" style="background-image: url();"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- end 任务详情 -->
+
+				<!-- 地址信息 -->
+				<div class="title margin-top10" lan="Address">Address</div>
+				<div style="text-align:center;font-size:14px; padding: 3px 0;">天府路421号地洞街</div>
+				<div class="map"></div>
+				<!-- end 地址信息 -->
+
+				<!-- 帮助者申请列表 -->
+				<div class="title " lan="HelperList">Helper List</div>
+				<div style="padding:10px 6px;">
+					<!--<div class="flex-center-center flex-box-v" style="padding: 15px; text-align: center;" lan="There_is_no_helper">There is no helper.</div>-->
+					<div style="padding:5px;">
+						<div class="flex-box flex-h-ce swiper-container" style="background-color:#ECF9F7;">
+							<div class="flex-1 swiper-button-prev ">
+								<div class="left hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							<div class="swiper-button-next">
+								<div class="right hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div style="padding: 20px 0 10px;">
+										<div class="flex-box" style="padding-bottom: 10px;">
+											<div class="flex-box-v flex-center-center flex-1">
+												<div class="flex-box-v flex-center-center" style="">
+													<div class="header-icon" style="background-image:url();"></div>
+													<div class="name text-overflow">Kate dj</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid ">
+														</div>
+														<div class="star-com"></div>
+													</div>
+													<div class="flex-box flex-center-center" style="text-align: center;">
+														<div class="name flex-1">(0.0)</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center">
+													<div class="btn-a btn-assigned  btn-accept  flex-box" data-value=''>
+														<span class="ao accept" style="color: white;">Accept Offer</span>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- end 帮助者申请列表 -->
+
+				<!-- 帮助者列表 -->
+				<div class="title">Ongoing_by</div>
+				<div style="padding: 10px 8px;">
+					<div class="flex-box ongoing flex-center-center"  onclick="openPersonalDetail()" tepmode>
+						<div class="img"  style="background-image: url();" ></div>
+						<div class="flex-1" style="margin:10px 0px 0 10px;">
+							<div class="text text-left" style="color: #000000;">Lisa White</div>
+							<div class="flex-box flex-h-ce">
+						       <div class="star-solid "></div>
+							   <div class="star "></div> (2.0)
+							</div>
+						</div>
+					</div>
+				</div><!-- end 帮助者列表 -->
+
+				<!-- 评论列表 -->
+				<div class="title" lan="Comments">Comments</div>
+				<div class="flex-box" style="padding: 5px;border-bottom: 1px solid #DEE0E1;">
+					<div class="flex-1 margin-left10 text" style="color:#91989C;"></div>
+					<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;" tapmode="">View All Comments</div>
+				</div>
+				<div id="comments">
+					<div class="flex-box">
+						<div class="flex-box-v flex-center-center" style="width:60px;padding:0 10px 0 30px;">
+							<div class="header-icon" style="background-image: url();"></div>
+						<div class="name text-overflow">Kate Kali</div>
+						</div>
+						<div class="comment  flex-1	">
+							裕丰的一天的晚上有什么不同的你
+						</div>
+						<div class="flex-box-v">
+							<div class="flex-1 text2 text-right">1h</div>
+							<div class="reply text-right" lan="Reply" id="reply" onclick="reply(this)" tapmode>Reply</div>
+						</div>
+
+					</div>
+					<!--回复的列表-->
+					 <div class="flex-box flex-h-ce margin-top10 font-size12">
+					 	<!--回复人的头像-->
+					 	<div class="" style="margin-left:69px;">
+					 		<div class="img-reply"></div>
+					 	</div>
+					 	<div class="comment flex-1 ">
+					 		I think so......裕
+					 	</div>
+					 	<div class="text2 text-right">50s</div>
+					 </div>
+					 <div class="flex-box flex-h-ce font-size12">
+					 	<!--回复人的头像-->
+					 	<div class="" style="margin-left:69px;">
+					 		<div class="img-reply"></div>
+					 	</div>
+					 	<div class="comment flex-1" style="padding-top:30px;">
+					 		<span >Jimmi:</span>
+					 		I think so......I think so......裕I think so......I think so......裕
+					 		I think so......裕I think so......裕I think so......I think so......裕
+					 	</div>
+					 	<div class="text2 text-right">50s</div>
+					 </div>
+
+					<!--end回复-->
+				</div><!-- end 评论列表 -->
+
+				<!--<div class="flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+					You haven't received any comments yet.
+				</div>-->
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript " src="../../script/api.js "></script>
+	<script type="text/javascript " src="../../script/doT.min.js "></script>
+	<script type="text/javascript " src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../script/area.js"></script>
+	<script type="text/javascript" src="../../script/iscroll.js"></script>
+	<script type="text/javascript" src="../../script/swiper.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/swipe.js"></script>
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js"></script>
+
+	<!--<script type="text/javascript" src="../../script/UIChatTools.js" ></script>-->
+	<script type="text/javascript" src="../../script/rongCloud2.js" ></script>
+	<script type="text/javascript" src="../../res/chatBox/emotion_url.js"></script>
+	<script type="text/javascript" src="../../script/task_detail.js" ></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/javascript" src="../../script/map.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/task_detail_line.js" ></script>
+	<script type="text/template" template="main">
+		<!-- 任务基本信息 -->
+		<div style="padding: 10px 15px;">
+			<div class="flex-box ">
+				<div class="flex-1 task-t">{{=it.title}}</div>
+				<!-- 编辑任务 -->
+				{{? it.isself1==2 && it.status==1}}
+				    {{? it.offernum == 0}}
+				    	<div class="pencil flex-h-ce" onclick="edit({{=it.id}},1,{{=it.isdue}})" tapmode></div>
+					{{??}}
+				    	<div class="pencil flex-h-ce" onclick="edit({{=it.id}},2,{{=it.isdue}})" tapmode></div>
+					{{?}}
+				{{?}}
+
+				{{? it.isself1 == 2 && it.status == 2 && it.ispay == 2}}
+					<!-- 发布者未支付状态，可删除任务 -->
+					<div class="trash flex-h-ce" onclick="deleteFavor({{= it.id }})" tapmode></div>
+				{{?}}
+
+				{{? it.isself1 !=2 && it.status==1}}
+				   <div class="{{= it.collection == 0 ? 'love' : 'loved'}} heart" onclick="collect()" tapmode></div>
+		        {{?}}
+			</div>
+			<div class="flex-box" style="margin-top: 15px;">
+				<div class="img" onclick="openPersonalDetail('{{=it.firstname}}','{{=it.lastname}}',{{=it.memberid }})" style="background-image: url({{= Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div>
+				<div class="flex-1" style="margin:10px 0px 0 6px;">
+					<div class="text">{{= LANGUAGE[$api.getStorage('lan')]['Posted_by'] }} <span style="color: #83D3D0 ;">{{=it.firstname}} {{=it.lastname}}</span></div>
+					<div class="flex-box">
+						<div class="text flex-1">{{=D.favors2(it.createdtime)}}</div>
+						{{? it.type ==1}}
+						    <div class="text">{{= formatDistance(it.distance)}} away</div>
+						{{?}}
+					</div>
+				</div>
+			</div>
+
+			<!-- 任务进度条 -->
+			<div class="flex-box flex-center-center" style="padding:13px 26px;">
+				<div class="open flex-1"><span lan="Open" class="op">Open</span></div>
+				{{?   it.status==1}}
+					<div class="completed flex-1"><span lan="Ongoing" class="co">Ongoing</span></div>
+				    <div class="completed flex-1"><span lan="Completed" class="co">Completed</span></div>
+		        {{?? (it.status==2 && it.helpstatus==1) || (it.status==2 && it.helpstatus==0)|| (it.status==3 && it.isself==1) || (it.status==2 &&it.israting1 ==0) || (it.isself1==2 && it.helpstatus==0)}}
+		            <div class="open flex-1"><span lan="Ongoing" class="op">Ongoing</span></div>
+				    <div class="completed flex-1"><span lan="Completed" class="co">Completed</span></div>
+		        {{??}}
+		            <div class="open flex-1"><span lan="Ongoing" class="op">Ongoing</span></div>
+					<div class="open flex-1"><span lan="Completed" class="op">Completed</span></div>
+		        {{?}}
+			</div>
+
+			<!--价格-->
+			<div class="flex-box flex-center-center" style="margin:25px 0px 35px">
+				<div class="money">
+					<span class="sp">{{= default_currency == 'cad' ? 'C$ ' : '$ '}}</span>
+					<span style="color: inherit;">{{=it.total}}</span>
+				</div>
+			</div>
+			<!--
+				isoffer 当前用户是否申请了工作,0:未申请,1:申请了（0:显示dot it now,1:
+				不显示dot it now,判断isagree,帮助者视觉）
+			-->
+			{{? it.isoffer==0}}
+			    <div class="flex-box flex-center-center">
+					 <div class="mack btn-afavor-mack" lan="Do_it_Now" onclick="ApplyHelper({{=it.checkstatus}},{{=it.id}})"tapmode="">Do it Now!</div>
+				</div>
+			{{?}}
+			<!--
+				工作的人数和困难的等级
+			-->
+			<div class="flex-box flex-center-center" style="margin-top:11px;">
+				<div class="week btn-afavor-week flex-box  flex-center-center" style="
+					{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+						padding-left: 5px;
+					{{?}}
+					">
+					<span style="color: inherit;" id="worker-num" class="btn-afavor-number">{{=it.workers}}&nbsp;</span>
+					{{? it.workers<=1 }}
+				       {{= LANGUAGE[$api.getStorage('lan')]['Worker'] }}
+					{{??}}
+					   {{= LANGUAGE[$api.getStorage('lan')]['Workers'] }}
+					{{?}}
+				</div>
+				<div class=" flex-box dic btn-afavor-dic  flex-center-center">
+					<span style="padding-right: 4px;color: #33BBB2;" lan="Difficulty">Difficulty</span>
+					{{? it.level}}
+						{{for(var i=0;i< 5;i++) { }}
+							{{? i< it.level}}
+					            <div class="star-solid "></div>
+					        {{??}}
+							    <div class="star "></div>
+							{{?}}
+					    {{ } }}
+					{{?}}
+				</div>
+			</div>  <!--end 工作的人数和困难的等级-->
+			<!--
+				status:任务状态:0:未支付,1:发布中,2:进行中,3:帮组者完成,4：发布者完成,5:完成并且评价完3和4都是完成
+				isself1=1是帮助者 isself=2是发布者
+				isrefuse 帮助者是否拒绝,0:拒绝,1:同意,2:未操作（0:不显示任何按钮,1:判断israting1,帮助者视觉,2:显示是否接受任务按钮）
+				israting1 帮助者是否完成任务,0:未完成,1:已完成,2:已评价,3:等待（0:显示favor complete,1:显示评价按钮,2:显示completed按钮,帮助者视觉）
+			    isagree 发布者是否同意,0:未同意,1:同意（0:不显示任何按钮,1:判断isrefuse,帮助者视觉
+			    israting 发布者是否评价,0:否,1:是（0:显示是否评价任务按钮,1:显示completed按钮,发布者视觉）
+			    excstatus 是否异常,0:不是,1:是
+			-->
+			{{?  it.isagree==1 && it.isrefuse==2}}
+				<!--发布者同意帮助申请的任务，帮助者的页面显示quite和begin -->
+			    <div class="flex-box flex-center-center" style="margin-top:11px;">
+			    	<!--是否有异常处理状态-->
+					{{? it.status==6 || it.excstatus==1}}
+						<div class=" quit btn-afavor-week-1 flex-box flex-center-center" style="background:red;">
+							<div class="quit-icon"></div>
+							<div class="margin-left10" style="color:white;" lan="Quit">Quit</div>
+						</div>
+						<div class=" flex-center-center dic-1 btn-afavor-dic1" lan="Accept">Accept</div>
+					{{??}}
+					<div class="quit btn-afavor-week-1 flex-box flex-center-center" style="background:red;" onclick="helpAccept(1,{{=it.id}})" tapmode="">
+						<div class="quit-icon btn-afavor-quit"></div>
+						<div class="margin-left10" style="color:white;" lan="Quit">Quit</div>
+					</div>
+					<div class=" flex-center-center dic-1 btn-afavor-dic1" lan="Accept" onclick="helpAccept(2,{{=it.id}})" tapmode="">Accept</div>
+				    {{?}}
+			    </div>
+			{{?}}
+
+            {{? (it.isoffer==1 &&  it.isagree==1 && it.isrefuse==1 && it.israting1==2) || (it.helpstatus==2 && it.israting==1) }}
+            <!--发布者同意帮助完成的任务，帮助者评价完发布者显示completed 和发布者评价完显示completed-->
+				<div class="flex-box flex-center-center" style="margin-top:11px;">
+					<div class="mack btn-afavor-mack" lan="Completed">Completed</div>
+				</div>
+			{{?}}
+
+
+
+			{{? it.status==2 ||it.status==3|| it.status==4 || it.status==5}}
+				<!-- 发布者支付任务 -->
+				{{? it.ispay==2 && it.status == 2 }}
+					<div class="flex-box flex-center-center" style="margin-top:11px;">
+						{{? it.isself == 1 }}
+							<div class="mack btn-afavor-mack" lan="Make_a_Payment" onclick="makePayment({{= it.id }}, {{= it.total }}, {{= it.workers }})" tapmode="">Make a Payment</div>
+						{{??}}
+							<div class="mack btn-afavor-mack" lan="Waiting">Waiting</div>
+						{{?}}
+					</div>
+				{{?}}
+
+				{{? it.ispay == 1 }}	<!-- 发布者已支付 -->
+				<!--除去open状态的chat按钮显示-->
+				<div class="flex-box flex-center-center" style="margin-top:11px;">
+					{{? (it.israting!=1 && it.israting1!=2 )&& (it.isself1==1 ||it.isself1==2) }}
+					   	<div class="week-1 btn-afavor-week-1 flex-box flex-center-center" onclick="openCheat({{=it.isself1}})" tapmode>
+							<div class="ic btn-afavor-ic"></div>
+							<div class="btn-afavor-chat" style="color:#33BBB2;" lan="Chat">Chat</div>
+				        </div>
+			        {{?}}
+				    {{? it.isoffer==1 && it.isagree==1 && it.isrefuse==1 && it.israting1==3}}
+			        <!--帮助者等待发布者确认完成任务-->
+						<div class="flex-center-center dic-1 btn-afavor-dic1" lan="Waiting" style="background-color:#33BBB2;">Waiting</div>
+				    {{?? (it.isoffer==1 &&  it.isagree==1 && it.isrefuse==1 && it.israting1==1) && (it.isself1==1 ||it.isself1==2)}}
+				    <!--帮助者评价帮助者-->
+				    	<div class="flex-center-center dic-2 btn-afavor-dic1" lan="Ratings"
+				    		{{? !(it.status==6 || it.excstatus==1) }}
+				    			onclick="rating({{=it.id}},{{=it.isself1}},{{=it.type}})" tapmode=""
+				    		{{?}}
+				    		>Ratings</div>
+				    {{?}}
+
+				    {{?  it.isoffer==1 && it.isagree==1 && it.isrefuse==1 && it.israting1==0}}
+				    <!--帮助者任务进行中 -->
+					    <!--是否有异常处理状态-->
+					    <div class="flex-center-center dic-1 btn-afavor-dic1" lan="FavorComplete"
+					        {{? it.status!=6 || it.excstatus!=1}}onclick="helpAccept(3,{{=it.id}})" tapmode=""{{?}}>Favor Complete</div>
+					{{?}}
+
+					{{?  it.helpstatus==0}}
+					<!--发布者视角任务进行中-->
+					    <div class="flex-center-center dic-1 btn-afavor-dic1" lan="Ongoing">Ongoing</div>
+					{{??  it.helpstatus==1}}
+					    <!--发布者等待任务完成-->
+					       <div class="flex-center-center dic-1 btn-afavor-dic1" lan="FavorComplete"
+					       	{{? it.status!=6 || it.excstatus!=1}}
+					       	   onclick="perOngoing()" tapmode=""
+					       	{{?}}
+					       	>Favor Complete</div>
+					{{?}}
+
+					{{? it.helpstatus==2 && it.israting==0}}
+					 <!--发布者评价帮助者-->
+						    <div lan="Ratings" class=" flex-center-center dic-2 btn-afavor-dic1"
+						    	{{? it.status!=6 || it.excstatus!=1}}
+						    	    onclick="rating({{=it.id}},{{=it.isself1}},{{=it.type}})" tapmode=""
+						    	{{?}}
+						    >Ratings</div>
+					{{?}}
+				</div>
+				{{?}}
+			{{?}}
+
+			<div class="flex-box flex-h-ce" style="margin-top:9px;">
+				<p class="sing"></p>
+				<p style="padding-left:5px;">
+					{{? it.type==1}}
+					    {{? (it.isself1 == 1 && parseInt(it.status) >= 2) && it.ispay == 1 }}
+					       {{=it.location || ''}}
+					    {{?? it.isself1==2}}
+					 	   {{=it.location || ''}}
+					 	{{?}}
+
+					 	{{? (it.ispay == 2 && it.isself1 != 2) }}
+	                    	{{=Area.getCityName(it.country,it.province,it.city).city.name || ''}},
+					 		{{=Area.getCityName(it.country,it.province,it.city).province.name || ''}}
+					 	{{?}}
+					{{??}}
+						{{=LANGUAGE[$api.getStorage('lan')]['Online'] }}
+					{{?}}
+				</p>
+			</div>
+			<div class="flex-box flex-h-ce">
+					<p class="calendar"></p>
+					<p class="flex-1 {{? it.isdue==1 }}ter-t{{?}}"style="padding-left:5px;">
+						<span lan="DueDate">Due Date</span> - {{= Tool.toEngDate(it.duedate,'YMD')}}
+					</p>
+				{{? it.isdue==1  && it.status==2 && it.ongoingby.length>0 && it.isself1==2}}
+				   <p class="ter" onclick="terminate({{=it.isdue}},{{=it.memberid}}, {{= it.ispay }})" tapmode="">Terminate</p>
+				{{?}}
+			</div>
+		</div><!-- end 任务基本信息 -->
+		<!-- 任务详情 -->
+		<div class="title" lan="Favor_Details">Favor Details</div>
+		<div class="margin-bottom10" style="padding: 10px; color: #474747;word-wrap: break-word;">
+			{{=it.details}}
+		</div>
+		{{? it.attachments instanceof Array && it.attachments.length!=0}}
+		<div style="padding: 10px;" class="pic">
+			<div class="pic-box">
+				<div id="scroller">
+					<ul>
+						{{ for(var i=0; i<it.attachments.length; i++) { }}
+							<li>
+								<div onclick="openPhotoBrowser('{{=it.attachments}}','{{=i}}')" tapmode="">
+									<div class="img-picture" style="background-image: url({{= Tool.imageCompressByQiNiu(it.attachments[i],0,200,200)}});"></div>
+								</div>
+							</li>
+						{{ } }}
+					</ul>
+				</div>
+			</div>
+		</div><!-- end 任务详情 -->
+	{{?}}
+	{{? it.type==1}}
+		<!-- 地址信息 -->
+		<div class="title margin-top10" lan="Address">Address</div>
+		<div >
+			<div style="text-align:center;font-size:14px; padding: 3px 0;">
+			    {{? (it.isself1 == 1 && parseInt(it.status) >= 2) && it.ispay == 1 }}
+			       {{=it.location || ''}}
+			    {{?? it.isself1==2}}
+			 	   {{=it.location || ''}}
+			 	{{?}}
+
+			 	{{? (it.ispay == 2 && it.isself1 != 2) }}
+                	{{=Area.getCityName(it.country,it.province,it.city).city.name || ''}},
+			 		{{=Area.getCityName(it.country,it.province,it.city).province.name || ''}}
+			 	{{?}}
+			</div>
+		    <div class="map"></div>
+		</div>
+		<!-- end 地址信息 -->
+	{{?}}
+
+	{{? it.status==1}}
+			<div class="title margin-top10" lan="HelperList">Helper List</div>
+			<div style="padding:10px 6px;">
+				{{? it.offernum== 0}}
+				    <div class="flex-center-center flex-box-v" style="padding: 15px; text-align: center;" lan="There_is_no_helper">
+				    	No helper.
+				    </div>
+				{{??}}
+				  <div style="padding:5px;">
+						<div class="flex-box flex-h-ce swiper-container" style="background-color:#ECF9F7;">
+							<div class="flex-1 swiper-button-prev">
+								<div class="left hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							<div class="swiper-button-next">
+								<div class="right hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							{{? it.workers==1}}
+							<!--判断单人多人连线-->
+								{{? it.newOffers instanceof Array && it.newOffers.length!=0}}
+								    <div class="swiper-wrapper">
+								      {{~ it.newOffers :value:index}}	<!-- 遍历帮助者列表 页数 -->
+											<div class="swiper-slide">
+												<div style="padding: 20px 10px 10px;">
+													{{~value :v:i }}
+														{{? i % 3 == 0 }}
+														<div class="flex-box" style="padding-bottom: 10px;"><!-- 1行 -->
+															{{ for(var j=0;j<3;j++){ }}
+																{{? it.newOffers[index][j + i] }}
+															       <div class="flex-box-v flex-center-center flex-1">
+																		<div class="flex-box-v flex-center-center" onclick="openPersonalDetail('{{=it.newOffers[index][j + i].firstname}}','{{=it.newOffers[index][j + i].lastname}}',{{=it.newOffers[index][j + i].id }})" tapmode>
+																			<div class="header-icon" style="background-image:url({{= Tool.imageCompressByQiNiu(it.newOffers[index][j + i].realavatar,0,200,200)}});"></div>
+																			<div class="name text-overflow" style="color: #000000;">{{=it.newOffers[index][j + i].firstname}} {{=it.newOffers[index][j + i].lastname}}</div>
+																			<div class="flex-box" style="overflow: visible;">
+																				{{? it.newOffers[index][j + i].helperstar}}
+																				    {{for(var a=0;a< 5;a++) { }}
+																				    	{{? a < it.newOffers[index][j + i].helperstar}}
+																				            <div class="star-com-solid "></div>
+																	                    {{?}}
+																	                {{ } }}
+																	            {{?}}
+																			</div>
+																			<div class="flex-box flex-center-center" style="text-align: center;">
+																	            {{? parseFloat(it.newOffers[index][j + i].helperstar) > 0 }}
+																					<div class="name flex-1" style="color: #000000;">
+																						({{= parseFloat(it.newOffers[index][j + i].helperstar).toFixed(1) }})
+																					</div>
+																				{{??}}
+																					<div class="name flex-1" style="color: #000000;height: 25px;">
+																						--
+																					</div>
+																				{{?}}
+																			</div>
+																		</div>
+																		<!--发布者同意帮助申请按钮-->
+																		{{? it.isself1==2}}
+																		   <!--status 发布者决定状态,:1:申请中,2:同意申请,3:拒绝申请,4:发布者确认完成,5:发布者已经评价-->
+																			<div class="flex-box-v flex-center-center">
+																				{{? it.status==6 || it.excstatus==1}}
+																					<div class="btn-a {{? it.newOffers[index][j + i].status==1 }} btn-accept
+																						{{?? it.newOffers[index][j + i].status==2}} btn-assigned{{??}} btn-back{{?}} flex-box"
+																						data-value='{{=JSON.stringify(it.newOffers[index][j + i])}}'>
+																						<span  class="ao accept flex-1">
+																							{{? it.newOffers[index][j + i].status==2}}
+																								{{= LANGUAGE[$api.getStorage('lan')]['Assigned'] }}
+																							{{??}}
+																								{{= LANGUAGE[$api.getStorage('lan')]['AcceptOffer'] }}
+																							{{?}}
+																						</span>
+																						<span class="btn-close"></span>
+																					</div>
+																				{{??}}
+																					<div class="btn-a
+																						{{? it.newOffers[index][j + i].status==1 && !it.isSelectedOffer}} btn-accept
+																						{{?? it.newOffers[index][j + i].status==2 && it.isSelectedOffer}} btn-assigned
+																						{{?? it.newOffers[index][j + i].status==1 && it.isSelectedOffer}} btn-back{{?}} flex-box"
+																						data-value='{{= JSON.stringify(it.newOffers[index][j + i])}}'
+																						     onclick="accpt(this,{{=it.workers}}, '{{= it.newOffers[index][j + i].firstname}} {{=it.newOffers[index][j + i].lastname }}')" tapmode>
+																						<span  class="ao accept flex-1">
+																									{{? it.newOffers[index][j + i].status==2}}
+																										{{= LANGUAGE[$api.getStorage('lan')]['Assigned'] }}
+																									{{??}}
+																										{{= LANGUAGE[$api.getStorage('lan')]['AcceptOffer'] }}
+																									{{?}}
+																								</span>
+																						<span class="btn-close"></span>
+																					</div>
+																				{{?}}
+																			</div>   <!--end 按钮结尾-->
+																		{{?}}
+																	</div><!-- end 单个申请者节点 -->
+																{{?}}
+															{{ } }}
+														</div><!-- 一行3个节点 -->
+														{{?}}
+													{{~}}
+												</div>
+											</div>
+									    {{~}}	<!-- end 遍历帮助者列表 -->
+									</div>
+								{{?}}
+							{{?? it.workers>1}}
+								<div class="swiper-wrapper">
+
+								</div>
+							{{?}}
+						</div>
+				  </div>
+				{{?}}
+			</div><!-- end 帮助者申请列表 -->
+	{{?}}
+
+	{{?  it.status>=2}}
+		<!-- 帮助者列表 -->
+		<div class="title" style="margin-top: 10px;">
+			{{? it.status == 4 }}
+				{{= LANGUAGE[$api.getStorage('lan')]['Complete_by'] }}
+			{{??}}
+				{{= LANGUAGE[$api.getStorage('lan')]['Ongoing_by'] }}
+			{{?}}
+		</div>
+		{{? it.ongoingby instanceof Array && it.ongoingby.length!=0}}
+			{{? it.workers == 1 }}
+	            {{~ it.ongoingby:value:index}}
+	               {{? value.list instanceof Array && value.list.length!=0}}
+					    {{? value.list.length==1}}
+					        {{~ value.list:onvalue:onindex}}
+					            <div style="padding: 0px 8px 10px;">  <!--ongoing 的单人连线-->
+									<div class="flex-box ongoing margin-top10 flex-center-center" onclick="openPersonalDetail('{{=onvalue.firstname}}','{{=onvalue.lastname}}',{{=onvalue.id}})" tepmode>
+										<div class="img" style="background-image: url({{=Tool.imageCompressByQiNiu(onvalue.realavatar,0,200,200)}});"></div>
+										<div class="flex-1" style="margin:10px 0px 0 10px;">
+											<div class="text text-left" style="color: #000000;">{{=onvalue.firstname}} {{=onvalue.lastname}}</div>
+											<div class="flex-box flex-h-ce">
+										        {{for(var i=0;i< 5;i++) { }}
+													{{? i< onvalue.helperstar}}
+														<div class="star-solid "></div>
+											        {{??}}
+											            <div class="star "></div>
+											        {{?}}
+											    {{ } }}
+											    ({{=onvalue.helperstar}})
+											</div>
+										</div>
+									</div>
+								</div><!-- end ongoing帮助者列表 -->
+						    {{~}}
+					    {{?}}
+				   {{?}}
+		        {{~}}
+	        {{?? it.workers > 1 }}
+			    <!--ongoing的多人连线-->
+			    <div id="ongoing-by">
+					<div class="page"></div>
+				</div>
+	        {{?}}
+		{{??}}
+			<div style="padding: 10px 15px;">
+				<div class="flex-box ongoing flex-center-center" lan="There_is_no_relevant_information">
+					There is no relevant information.
+				</div>
+			</div>
+		{{?}}
+	{{?}}
+
+	{{? it.status==1}}
+		<!-- 评论列表 -->
+		<div class="title" lan="Comments">Comments</div>
+		<div class="flex-box" style="padding: 5px;border-bottom: 1px solid #DEE0E1;">
+				<div class="flex-1 margin-left10 text" style="color:#91989C;">
+					{{? it.comments<=1 }}
+						{{=it.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}
+					{{??}}
+						{{=it.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comments'] }}
+					{{?}}
+				</div>
+				{{? it.comments>3}}
+					<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;" onclick="viewAll({{=it.id}})" tapmode="">View All Comments</div>
+				{{??}}
+					<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;">View All Comments</div>
+				{{?}}
+		</div>
+		{{? it.commentlist instanceof Array && it.commentlist.length!=0}}
+		    {{~ it.commentlist:value:index}}
+				<div id="comments-{{= value.id }}">
+					<div class="flex-box cf">
+						<div class="flex-box-v flex-center-center" style="width:60px;padding:0 10px 0 30px;">
+							<div class="header-icon" onclick="openPersonalDetail('{{=value.firstname}}','{{=value.lastname}}',{{=value.memberid }})" tapmode style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+						<div class="name text-overflow">{{=value.firstname}} {{=value.lastname}}</div>
+						</div>
+						<div class="comment flex-1 flex-box flex-h-ce" style="margin-left: 10px;" onclick="reply(this,'{{= value.id}}','{{=value.firstname}} {{=value.lastname}}')" tapmode>
+							{{=UIChatBox.transToEmotionUrl('../..', value.content)}}
+						</div>
+						<div class="flex-box-v">
+							<div class="flex-1 text2 text-right">{{=D.favors(value.createdtime)}}</div>
+							<div class="reply text-right" lan="Reply" id="reply{{= value.id}}" onclick="reply(this,'{{= value.id}}','{{=value.firstname}} {{=value.lastname}}')" tapmode>Reply</div>
+						</div>
+					</div>
+					<!--回复的列表-->
+					{{? value.reply instanceof Array && value.reply.length!=0}}
+						{{~ value.reply:vr:indexs}}
+							 <div class="flex-box margin-top10 font-size12">
+							 	<!--回复人的头像-->
+							 	<div class="" style="margin-left:65px;">
+							 		<div class="img-reply" onclick="openPersonalDetail('{{=vr.firstname}}','{{=vr.lastname}}',{{=vr.memberid}})" tapmode style="background-image: url({{=Tool.imageCompressByQiNiu(vr.avatar,0,200,200)}});"></div>
+							 	</div>
+							 	<div class="comment flex-1" style="margin-top:5px;width:{{= api.winWidth - 160 }}px">
+							 		<span style="color:#33BAB0;">{{=vr.firstname}} {{=vr.lastname}}:</span>
+							 		{{=UIChatBox.transToEmotionUrl('../..',vr.content)}}
+							 	</div>
+							 	<div class="text2 text-right">{{=D.favors(vr.createdtime)}}</div>
+							 </div>
+						 {{~}}
+					{{?}}<!--end回复-->
+				</div><!-- end 评论列表 -->
+			{{~}}
+		{{??}}
+			<div class="flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+				No comments yet.
+			</div>
+		{{?}}
+	{{?}}
+	</script>
+
+	<script type="text/template" template="img">
+		<li style="width: {{= parseInt((api.frameWidth - 36) / 5)}}px;height: {{= parseInt((api.frameWidth - 36) / 5)}}px;">
+			<div class="pl" imgUrl="" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}">
+				<div class="img-frm">
+					<span class="close" style="" onclick="removePic(event, this)" tapmode></span>
+					<div class="img" style="background-image: url({{= it.url}});">
+						<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+							<div class=" flex-1 status"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</script>
+
+	<script type="text/template" template="swiper-row">
+		<div class="flex-box swiper-row-line">
+			{{? it.line }}
+			<div class="swiper-line" style="
+				{{? it.group.length == 2 }}
+					left: {{= document.body.clientWidth / 4 }}px;
+					right: {{= document.body.clientWidth / 4 }}px;
+				{{?? it.group.length == 3 }}
+					left: {{= document.body.clientWidth / 6 }}px;
+					right: {{= document.body.clientWidth / 6 }}px;
+				{{?? it.group.length == 4 }}
+					left: {{= document.body.clientWidth / 8 }}px;
+					right: {{= document.body.clientWidth / 8 }}px;
+					top:21.5px
+				{{?? it.group.length == 5 }}
+					left: {{= document.body.clientWidth / 10 }}px;
+					right: {{= document.body.clientWidth / 10 }}px;
+					top:16.5px;
+				{{?}}
+				"></div>
+			{{?}}
+
+			{{~it.group :value:index}}
+			<div class="swiper-cell flex-1 flex-box-v flex-v-ce" onclick="openPersonalDetail('{{=value.firstname}}','{{=value.lastname}}',{{=value.id}})" helper-id="{{= value.id }}" helper-name="{{= value.firstname + ' ' + value.lastname }}">
+				<div class="swiper-avatar {{= it.line ? 'line' : '' }}" style="
+					{{? it.group.length == 5 }}
+						width: 37px;height:37px;
+					{{?? it.group.length == 4 }}
+						width: 43px;height:43px;
+					{{?}}">
+						<div class="_l" style="background-image: url({{= Tool.imageCompressByQiNiu(value.realavatar,0,86,86) }});"></div>
+					</div>
+				<div class="swiper-nickname">
+					{{= value.firstname + ' ' + value.lastname }}
+				</div>
+
+
+				{{? parseFloat(value.helperstar) > 0 }}
+					<div class="swiper-star-list flex-box">
+						{{ for(var s=0;s<Math.round(value.helperstar);s++){ }}
+						<div class="swiper-star"></div>
+						{{ } }}
+					</div>
+					<div class="swiper-score">
+						({{= parseFloat(value.helperstar).toFixed(1) }})
+					</div>
+				{{??}}
+					<div class="swiper-score zero">
+						--
+					</div>
+				{{?}}
+
+
+				{{? !it.line }}
+				<!-- 非连线 -->
+					{{? !it.ongoing && value.state == 0 }}
+						{{? it.isself == 1 && value.status == 1 }}
+						<button class="swiper-accept-btn " {{= it.isFull ? 'disabled' : '' }} deal-status="1" helper-num="1" group="false" onclick="dealOffer(this, event)" tapmode="">
+							<span>{{= LANGUAGE[$api.getStorage('lan')]['AcceptOffer'] }}</span>
+						</button>
+						{{?? it.isself == 1 && value.status == 2 }}
+						<button class="swiper-accept-btn cancel" helper-num="1" deal-status="2" group="false"  onclick="dealOffer(this, event)" tapmode="">
+							<span>{{= LANGUAGE[$api.getStorage('lan')]['Assigned'] }}</span>
+						</button>
+						{{?}}
+					{{?}}
+				{{?}}
+			</div>
+			{{~}}
+		</div>
+
+		{{? it.line}}
+			{{? !it.ongoing && it.group[0].state == 0 }}
+			<div class="text-center">
+				{{? it.isself == 1 && it.group[0].status == 1 }}
+				<button class="swiper-accept-btn " {{= it.isFull ? 'disabled' : '' }} helper-num="{{= it.group.length }}" deal-status="1" group="true"  onclick="dealOffer(this, event)" tapmode="">
+					<span>{{= LANGUAGE[$api.getStorage('lan')]['AcceptOffer'] }}</span>
+				</button>
+				{{?? it.isself == 1 && it.group[0].status == 2 }}
+				<button class="swiper-accept-btn cancel" helper-num="{{= it.group.length }}" deal-status="2" group="true"  onclick="dealOffer(this, event)" tapmode="">
+					<span>{{= LANGUAGE[$api.getStorage('lan')]['Assigned'] }}</span>
+				</button>
+				{{?}}
+			</div>
+			{{?}}
+		{{?}}
+	</script>
+
+  <script type="text/javascript">
+		//任务id
+		var favorid = "";
+		//照片数组
+		var photo = [];
+		//评论id
+		var commentid = '';
+		var types= 0;
+		var default_currency;
+
+		function sort1(ct){
+			/*
+			 * 针对单人任务对帮助者申请列表数据进行排序
+			 */
+			var _arr = [];
+			if(!(ct.offers instanceof Array)){
+				return;
+			}
+			ct.newOffers = [];
+			ct.offers.forEach(function(value, index, ar){
+				_arr.push(value[0]);
+				if(_arr.length == 6 || !ar[index+1]){
+					ct.newOffers.push(_arr);
+					_arr = [];
+				}
+				if(value[0].status == 2){
+					ct.isSelectedOffer = true;	//是否已经选好帮助者
+				}
+			});
+		}
+//		查看大图
+		function openPhotoBrowser(imge, index) {
+			var imgArr = [],
+				imgsplit = imge.split(',');
+			for(var i = 0; i < imgsplit.length, g = imgsplit[i]; i++) {
+				imgArr.push(g);
+			}
+			Tool.openPhotoBrowser({
+				images: imgArr,
+				activeIndex: index,
+				bgColor: 'rgba(0,0,0, 0.5)',
+				click: function(photoBrowser) {
+					photoBrowser.close();
+				}
+			});
+		}
+		function initSwiper(){
+			//初始化swiper插件
+			var mySwiper = new Swiper('.swiper-container', {
+				prevButton: '.left',
+				nextButton: '.right',
+				onTransitionEnd: function(swiper) {
+					if(swiper.slides.length == 1) {
+						$api.addCls($api.dom('.right'), 'hidden');
+						$api.addCls($api.dom('.left'), 'hidden');
+					}
+					if((swiper.realIndex > 0) && (swiper.realIndex == swiper.slides.length - 1)) {
+						$api.removeCls($api.dom('.left'), 'hidden');
+						$api.addCls($api.dom('.right'), 'hidden');
+					} else if((swiper.realIndex == 0) && swiper.slides.length > 1) {
+						$api.removeCls($api.dom('.right'), 'hidden');
+						$api.addCls($api.dom('.left'), 'hidden');
+					}
+				}
+			});
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'favorDetails',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					default_currency = $api.getStorage(CONFIG.KEY.CURRENCY) == 1 ? 'cad' : 'usd';
+			        $api.setStorage('default_currency', default_currency)
+					$api.setStorage('info', ct); //用于聊天的数据
+                    var attachments=ct.attachments;
+					var piclength=parseInt(attachments.length);
+					//单人任务
+					if(parseInt(ct.workers) == 1){
+						sort1(ct);
+						//ongoingby的列表有多少人数
+	                    var ongoing=[];
+	                    if(ct.ongoingby && ct.ongoingby.length!=0){
+	                    	for(var i in ct.ongoingby){
+	                    		ongoing.push({
+	                    			list:ct.ongoingby[i]
+	                    		});
+	                    	}
+	                    }
+	                    ct.ongoingby = ongoing;
+	                    console.log('ongoing:'+JSON.stringify(ongoing))
+					}
+					T.html('#main', 'main', ct);
+					//多人任务
+					if(parseInt(ct.workers) > 1){
+						initHelperListForLine(ct);
+						initOngoingByListForLine(ct);
+					}
+
+					initSwiper();
+
+				  if(piclength!=0){
+						iscrollInit();
+					}
+
+				    $('div.img-picture').lazyload({
+						effect: "fadeIn"
+					});
+
+			    	var status = ct.status;
+			    	api.sendEvent({
+					    name: 'sendStatus',
+					    extra: {
+					        status : status
+					    }
+					});
+
+	                L.init();
+
+					var num=ct.type;
+					if(num == 1){
+					  	openSmallMap({
+							x: ct.x,
+							y: ct.y
+						});
+					}
+
+					//如果当前任务处于进行中，关闭评论输入框入口
+					if(parseInt(ct.status) > 1){
+						api.sendEvent({
+							name: 'closeTaskDetailCommentEntrance'
+						});
+					}
+				}
+			});
+		}
+        //发布者处理工作申请 处理状态,1:取消,2:同意,3:拒绝,4:确认完成
+        function accpt(_this, workers, helperName) {
+        	var types;
+        	if($api.hasCls(_this, 'btn-accept')) {
+        		types = 2;
+        	}else{
+        		types = 1;
+        	}
+
+			api.confirm({
+				msg: types == 1 ? 'Cancel ' + helperName + ' Offer ?' : 'Accept ' + helperName + ' Offer ?',
+				buttons: ['NO', 'YES']
+			}, function(ret){
+				if(ret.buttonIndex == 2){
+					dealHelper(_this, workers, helperName);
+				}
+			});
+        }
+
+		function dealHelper(_this, workers, helperName) {
+			/*
+			 * 处理单人任务帮助者申请
+			 */
+			var offers = $api.attr(_this, 'data-value');
+			console.log(JSON.parse(offers));
+			//console.log(JSON.stringify(offers,null,2))
+			//	Debug.alt(JSON.parse(offers,null,2));
+			var memberid = [],
+				memberids = [];
+			memberid = JSON.parse(offers);
+			console.log(JSON.stringify(memberid, null, 2)+'00099')
+			if(memberid instanceof Array && memberid.length != 0) {
+				for(var i = 0; i < memberid.length; i++) {
+					memberids.push(memberid[i].id);
+				}
+			} else {
+				memberids = memberid.id;
+			}
+			memberids = memberids.toString();
+			if($api.hasCls(_this, 'btn-back')){
+				return;
+			}
+			if($api.hasCls(_this, 'btn-accept')) {
+				types = 2;
+				$api.addCls(_this, 'btn-assigned');
+				$api.removeCls(_this, 'btn-accept');
+				$api.text($api.dom(_this, '.ao'), LANGUAGE[$api.getStorage('lan')]['Assigned']);
+				var btnBcak = $api.domAll('.btn-accept');
+				if(workers == memberids) {
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.removeCls(btnBcak[i], 'btn-accept');
+						$api.addCls(btnBcak[i], 'btn-back');
+					}
+				}
+				//单人选着任务
+				if(workers==1){
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.removeCls(btnBcak[i], 'btn-accept');
+						$api.addCls(btnBcak[i], 'btn-back');
+					}
+				}
+
+			} else if($api.hasCls(_this, 'btn-assigned')) {
+				types = 1;
+				$api.removeCls(_this, 'btn-assigned');
+				$api.addCls(_this, 'btn-accept');
+				$api.text($api.dom(_this, '.ao'), LANGUAGE[$api.getStorage('lan')]['AcceptOffer']);
+				var btnBcak = $api.domAll('.btn-back');
+				if(workers == memberids) {
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.addCls(btnBcak[i], 'btn-accept');
+						$api.removeCls(btnBcak[i], 'btn-back');
+					}
+				}
+				//单人选着任务
+				if(workers==1){
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.addCls(btnBcak[i], 'btn-accept');
+						$api.removeCls(btnBcak[i], 'btn-back');
+					}
+				}
+			}
+
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'dealOffer',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						memberids: memberids,
+						status: types
+					}
+				},
+				hideLoading:true,
+				success: function(ct) {
+					api.execScript({
+						name: 'Init',
+						frameName: 'my_promulgator',
+						script: 'init()'
+					});
+				},
+				//				_404: function(){
+				//						Tool.toast('该任务最多有1个帮助者');
+				//				}
+			});
+		}
+
+
+
+		//TODO:发布者确定帮助者的任务是否完成 处理状态,1:取消,2:同意,3:拒绝,4:确认完成
+        function perOngoing(){
+        	var deal = function(){
+        		ajax.get({
+					ctrl: 'Favor',
+					fn: 'dealOffer',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid:favorid,
+							status:4
+						}
+					},
+					showProgress: true,
+					hideLoading: true,
+					success: function() {
+						init();
+						setTimeout(function(){
+	//						api.execScript({
+	//						    name:'task_detail',
+	//						    frameName:'my_task_detail',
+	//						    script:'init()'
+	//						});
+							api.execScript({
+							    name:'Init',
+							    frameName:'help_person',
+							    script:'init()'
+							});
+						},300)
+					}
+				});
+        	};
+
+			api.confirm({
+    			msg: 'Favor Completed ?',
+    			buttons: ['NO', 'YES']
+    		}, function(ret){
+    			if(ret.buttonIndex == 2){
+					deal();
+    			}
+    		});
+        }
+		//帮助处理工作申请 处理状态,处理状态,1:拒绝,2:同意,3:确认完成
+        function helpAccept(type,id){
+        	//memberids=ct.renderOffers;
+    		var status=api.pageParam.stute,
+    			deal = function(){
+    				ajax.get({
+						ctrl: 'Favor',
+						fn: 'dealWork',
+						data: {
+							values: {
+								id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+								token: $api.getStorage(CONFIG.KEY.TOKEN),
+								favorid: favorid,
+								status: type
+							}
+						},
+						hideLoading: true,
+						showProgress: true,
+						success: function() {
+							init();
+							api.execScript({
+							    name:'Init',
+							    frameName:'my_promulgator',
+							    script:'init()'
+							});
+							api.execScript({
+								name:'Init',
+								frameName: 'browse_list',
+								script: 'TaskList()'
+							});
+							if(type==3){
+		//						$api.addCls($api.dom('.ctext'),'op')
+		//						$api.addCls($api.dom('.oc'),'open')
+								setTimeout(function(){
+									api.execScript({
+										name:'Init',
+										frameName:'help_person',
+										script:'init()'
+									});
+								},300)
+							}
+						}
+					});
+    			};
+
+    		if(type == 3){
+    			api.confirm({
+	    			msg: 'Favor Completed ?',
+	    			buttons: ['NO', 'YES']
+	    		}, function(ret){
+	    			if(ret.buttonIndex == 2){
+						deal();
+	    			}
+	    		});
+    		}else{
+    			deal();
+    		}
+        }
+
+        //TODO:发布者编辑任务
+        function edit(id, type,isdue) {
+			if(type == 1) {
+				//任务还没有人报名
+				api.openWin({
+					name: 'delete',
+					url: api.wgtRootDir + '/html/window/delete.html',
+					pageParam: {
+						frameName: 'edit_outline',
+						frameUrl: api.wgtRootDir + '/html/my_favors/edit_outline.html',
+						frameParam: {
+							favorid: id,
+							isdue:isdue
+						},
+						headerTitle: 'Edit',
+					},
+					reload: true,
+					slidBackEnabled: false,
+				});
+			} else {
+				//任务已有人报名
+				api.openWin({
+					name: 'delete',
+					url: api.wgtRootDir + '/html/window/delete.html',
+					pageParam: {
+						frameName: 'edit',
+						frameUrl: api.wgtRootDir + '/html/my_favors/edit.html',
+						frameParam: {
+							favorid: id,
+							isdue:isdue
+						},
+						headerTitle: 'Edit',
+					},
+					reload: true,
+					slidBackEnabled: false,
+				});
+			}
+
+		}
+		//回复评论
+		function reply(_this, cid, name) {
+			var itemDom = $api.dom('#comments-' + cid),
+				fDom = $api.dom(itemDom, '.cf'),
+				_dom = $api.dom(fDom, '.reply'),
+				replyDoms = $api.domAll('.cf .reply');
+
+			[].forEach.call(replyDoms, function(dom, index){
+				if(dom != _this){
+					$api.text(dom, 'Reply');
+				}
+			});
+
+			if($api.text(_this) == 'Cancel'){
+				commentid = '';
+				$api.text(_this, 'Reply');
+			}else{
+				commentid = cid;
+				$api.text(_dom, 'Cancel');
+			}
+
+
+			api.sendEvent({
+				name: 'setReply',
+				extra: {
+					commentid: commentid,
+					name: name
+				}
+			});
+		}
+		//打开评论列表
+		function viewAll(id) {
+			api.openWin({
+				name: 'comment',
+				url: api.wgtRootDir + '/html/window/favor/comment.html',
+				pageParam: {
+					frameName: 'task_comment',
+					frameUrl: api.wgtRootDir + '/html/my_favors/task_comment.html',
+					frameParam: {
+						favorid: id
+					},
+					headerTitle: 'Comments',
+				},
+				softInputMode: 'resize',
+				reload: true,
+				bounces: true,
+				slidBackEnabled: false,
+			});
+		}
+        //打开发布者或这帮者的个人详情
+		function openPersonalDetail(firstname, lastname, memberid){
+			var config = $api.getStorage(CONFIG.KEY.MEMBER_ID);
+			if(memberid == config) {
+				Tool.openWin({
+					winName: 'PersonalPage',
+					winUrl: api.wgtRootDir + '/html/window/more/personal_page.html',
+					frameName: 'personal_page',
+					frameParam: {
+						firstname: firstname,
+						lastname: lastname
+					},
+					title: firstname + ' ' + lastname,
+					frameUrl: api.wgtRootDir + '/html/more/personal_page.html'
+				});
+			} else {
+				//打开其他人的个人主页
+				Tool.openWin({
+					winName: 'Personahelpe',
+					winUrl: api.wgtRootDir + '/html/window/win_back.html',
+					frameName: 'person_help',
+					frameParam: {
+						firstname: firstname,
+						lastname: lastname,
+						otherid: memberid
+					},
+					reload: true,
+					title: firstname + ' ' + lastname,
+					frameUrl: api.wgtRootDir + '/html/more/personage_help.html'
+				});
+			}
+		}
+		//发送评论 type=2 ? commentid:''
+		function addComment(content, photo) {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'addComment',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						type: commentid == '' ? 1 : 2,
+						commentid: commentid,
+						content: content,
+						photo: photo.length > 0 ? photo : ''
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+//					Tool.toast('Successful');
+					commentid = '';
+					init();
+				}
+			});
+		}
+		//图位置大小
+		function iscrollInit() {
+			var menuDom = $api.dom('.pic #scroller'),
+				liDoms = $api.domAll(menuDom, 'li');
+			width = 0;
+
+			for(var i = 0, len = liDoms.length; i < len, g = liDoms[i]; i++) {
+				width += $api.offset(liDoms[i]).w;
+			}
+			width += 1;
+			$api.css($api.dom('.pic #scroller'), 'width:' + width + 'px');
+			if(liDoms.length == 9) {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + $api.offset(liDoms[0]).w * 5 + 'px;');
+			} else if(liDoms.length > 5) {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + $api.offset(liDoms[0]).w * 4 + 'px;');
+			} else {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + width + 'px;');
+			}
+			scroll = new IScroll('.pic>.pic-box', {
+				eventPassthrough: true,
+				scrollX: true,
+				scrollY: false,
+				preventDefault: false,
+				mouseWheel: true
+			});
+			$api.dom('.pic>.pic-box').addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+		}
+		//收藏功能
+		function collect() {
+			if($api.dom('.love')) {
+				$api.addCls($api.dom('.love'), 'loved');
+				$api.removeCls($api.dom('.love'), 'love');
+				//添加收藏
+				ajax.get({
+					ctrl: 'Browse',
+					fn: 'addCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid: favorid,
+							type: 1
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading:true,
+					success: function() {
+						Tool.toast('Add to Favorites.');
+						api.sendEvent({
+							name: 'collect',
+							extra: {
+								fid: favorid,
+								isCollect: true
+							}
+						})
+					}
+				});
+			} else {
+				$api.addCls($api.dom('.heart'), 'love');
+				$api.removeCls($api.dom('.heart'), 'loved');
+				//取消收藏
+				ajax.get({
+					ctrl: 'Browse',
+					fn: 'delCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid: favorid,
+							type: 1
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading:true,
+					success: function() {
+						Tool.toast('Remove from Favorites.');
+						api.sendEvent({
+							name: 'collect',
+							extra: {
+								fid: favorid,
+								isCollect: false
+							}
+						})
+					}
+				});
+			}
+		}
+
+		//接受任务
+		function ApplyHelper(type,id){
+		   var checkstatus=type;
+		   //$checkstatus 是否验证,0:未验证,1:等待验证,2:已经验证
+		    if(checkstatus==0){
+			   	Tool.openWin({
+						winName: 'verify',
+						title: 'As a Helper',
+						winUrl:　 api.wgtRootDir + '/html/window/verify/close_win.html',
+						frameName: 'verify',
+						frameUrl: api.wgtRootDir + '/html/verify/verify.html',
+				})
+		    }else if(checkstatus==1){
+		     	api.openFrame({
+						name:'thank_you',
+						url: api.wgtRootDir + '/html/verify/thank_you.html',
+						bounces:false
+				});
+		    }else if(checkstatus==2){
+		   	    Tool.openWin({
+					winName: 'next_verify',
+					winUrl: api.wgtRootDir + '/html/window/verify/close_win.html',
+					title: 'Finish Registration',
+					frameUrl: api.wgtRootDir + '/html/browse/apply_helper.html',
+					frameName: 'next_verify',
+					frameParam: {
+						favorid:id
+					}
+				})
+		    }
+		}
+        //聊天
+		function openCheat(isself1){
+			/*打开融云进行聊天
+			 * @param	{string}	isself1 - 当前用户身份,1:帮助者，2:发布者
+			 */
+			var memberInfo=$api.getStorage(CONFIG.KEY.MEMBER_INFO),	//用户信息
+			 	ct = $api.getStorage('info'),	//任务详情数据
+			 	mid = $api.getStorage(CONFIG.KEY.MEMBER_ID),
+			 	rong = api.require('rongCloud2'),
+			 	targetId = '',	//
+				nickname = '',
+				inboxtype, //区分单聊、群聊任务
+				chatIds = [],	//针对群聊类型，所有帮助者的id
+				groupIds = [],	//由帮助者id和发布者id由小到大拼接成的字符串
+				avatar = '';
+			if(parseInt(ct.workers) > 1) {
+				//群聊
+				nickname = 'Group';
+				targetId = favorid;
+				inboxtype = 1;
+				ct.ongoingby.forEach(function(value, index){
+					value.forEach(function(v, i){
+						chatIds.push(v.id);
+						groupIds.push(v.id);
+					});
+				});
+				groupIds.push(ct.memberid);
+				groupIds.sort(function(a, b){
+					return parseInt(a) - parseInt(b);
+				});
+			}else{
+				//单聊
+				if(mid == ct.memberid){
+					//当前用户为发布者
+//					console.log('当前用户为发布者:' + JSON.stringify(ct.ongoingby));
+					targetId = ct.ongoingby[0][0].id;	//帮助者id
+					nickname = ct.ongoingby[0][0].firstname + "  " + ct.ongoingby[0][0].lastname;	//帮助者昵称
+					avatar = ct.ongoingby[0][0].avatar;	//帮助者头像
+				}else{
+					//当前用户为帮助者
+					targetId = ct.memberid;	//发布者id
+					avatar = ct.avatar;	//发布者头像
+					nickname = ct.firstname + "  " + ct.lastname;	//发布者的昵称
+				}
+				inboxtype = 2;
+			}
+
+			var id = favorid.toString();
+			var pname = ct.firstname + " " + ct.lastname;	//发布者昵称
+			RongCloud2.joinGroup({
+				isCancel: inboxtype == 1 ? false : true,
+			    groupId: inboxtype == 1 ? groupIds.join('') : '',	//任务id
+			    groupName: 'Group',	//群聊名称
+			    success: function(){
+					api.openWin({
+						name: 'talk_with',
+						url: api.wgtRootDir + '/html/window/talk_with.html',
+						pageParam: {
+							chatIds: chatIds,	//针对群聊类型，所有帮助者的id
+							groupId: groupIds.join(''),	//群聊id，由帮助者id和发布者id由小到大拼接成的字符串
+							pid: ct.memberid,	//发布者id
+							pnmae: pname,	//发布者昵称
+							pavatar: ct.avatar, //发布者头像
+//							pfirstname: ct.firstname,
+//							plastname: ct.lastname,
+							mavatar: memberInfo.avatar,	//当前用户头像
+							targetId: targetId,	//两种情况，群聊：任务id；单聊：对方id
+							avatar: avatar,	//单聊, 对方头像, 发布者头像或帮助者头像
+							targetNickname: nickname,	//两种情况，群聊：Group；单聊：对方昵称
+							favorid: favorid,	//任务id
+							type:isself1,	//当前用户身份,1:帮助者，2:发布者
+							inboxtype: inboxtype	//区分单聊、群聊任务
+						},
+						bounces: false,
+						slidBackEnabled: false
+					});
+			    }
+			});
+		}
+		//打开评价页面
+		function rating(id, isself1,type) {
+			var _url ='/html/more/';
+			if(isself1==2){
+				//从发布者角度打开评价页面评价帮助者
+				_url+='evaluate_post.html';
+			}else if(isself1==1 && type==1){
+				//线下帮助者评价发布者
+				_url+='evaluate_help_offline.html';
+			}else if(isself1==1 &&type==2 ){
+				//线上帮助者评价发布者
+				_url +='evaluate.html';
+			}
+
+			//调试: 任务评价完成后，关闭聊天入口
+//			api.sendEvent({
+//				name: 'closeChatEntrance',	//关闭对应的聊天入口
+//				extra: {
+//					favorId: favorid
+//				}
+//			});
+
+			api.openWin({
+				name: 'win_back',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					frameName:'evaluate',
+					frameUrl: api.wgtRootDir + _url,
+					frameParam: {
+                         favorid:favorid,
+                         isself1:isself1
+					},
+					headerTitle: 'Ratings',
+				},
+		    });
+		}
+
+	    //过期处理
+        function terminate(isdue,memberid, ispay){
+        	var postdue=1 //判断是否是终止任务
+        	api.openFrame({
+				name: 'terminate',
+				url: api.wgtRootDir + '/html/my_favors/component/terminate.html',
+				bgColor: 'transparent',
+				bounces: false,
+				pageParam: {
+					isdue:isdue,
+					ispay: ispay,
+				    favorid:favorid,
+				    postdue:postdue,
+				    memberid :memberid
+				},
+				softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+			});
+        }
+
+		function share(){
+			var taskTitle = $api.text($api.dom('.task-t'));
+			api.openWin({
+					name: 'reset_password',
+					url: api.wgtRootDir + '/html/window/reset_password.html',
+					pageParam: {
+						frameName:'share_task',
+						frameUrl: api.wgtRootDir + '/html/my_favors/share_task.html',
+						frameParam: {
+							favorid: api.pageParam.favorid,
+							isOpen: true,
+							taskTitle: taskTitle
+						},
+						headerTitle: LANGUAGE[$api.getStorage('lan')]['MoreOptions']
+					},
+					reload: true,
+					slidBackEnabled: false,
+				});
+		}
+
+	  function inputBar_move(){
+	  	if(commentid){
+	  		//回复别人评论，滚动到对应评论的位置
+	  		var commentDom = $api.dom('#comments-' + commentid),
+	  				pos = $api.offset(commentDom);
+
+	  		window.scrollTo(0, pos.t);
+//	  		Tool.toast(pos.h);
+	  	}else{
+	  		//评论任务，滚到底部
+	  		window.scrollTo(0, 99999);
+	  	}
+	  }
+
+	  apiready = function() {
+			favorid = api.pageParam.favorid;
+			init();
+			//关闭键盘
+			touch.on('#main', 'touchstart swipeing', function(event) {
+				api.sendEvent({
+					name: 'closeKey'
+				});
+			});
+
+			//发表评论
+			api.addEventListener({
+				name: 'postComment'
+			}, function(ret) {
+				addComment(ret.value.content, ret.value.photo);
+			});
+			$api.css($api.dom('.pic'), 'height: ' + parseInt((api.frameWidth - 36) / 5 + 15) + 'px;');
+		}
+	</script>
+
+</html>

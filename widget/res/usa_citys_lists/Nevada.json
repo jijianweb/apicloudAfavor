@@ -1,0 +1,35 @@
+{
+	"citys": [{
+		"id": "75",
+		"city": "Las Vegas",
+		"fr": "Las Vegas",
+		"parentid": "74",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "76",
+		"city": "Henderson",
+		"fr": "Henderson",
+		"parentid": "74",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "77",
+		"city": "Reno",
+		"fr": "Reno",
+		"parentid": "74",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "78",
+		"city": "North Las Vegas",
+		"fr": "North Las Vegas",
+		"parentid": "74",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}]
+}

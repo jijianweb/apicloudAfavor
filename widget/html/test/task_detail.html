@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-发布者-任务详情-线上和线下</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/task_detail.css" />
+		<link rel="stylesheet" href="../../css/task_line.css" />
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				
+				<div class="">
+					<!-- 任务基本信息 -->
+					<div class="hidden" style="padding: 10px 15px;">
+						<div class="flex-box ">
+							<div class="flex-1 task-t">I need a logo design for a new child care business.</div>
+							<!-- 编辑任务 -->
+							<div class="pencil flex-h-ce " onclick="edit()" tapmode></div>
+							<div class="love heart" onclick="collect()" tapmode></div>
+						</div>
+						<div class="flex-box" style="margin-top: 15px;">
+							<div class="img"></div>
+							<div class="flex-1" style="margin:10px 0px 0 6px;">
+								<div class="text">Posted by <span style="color: #83D3D0 ;">Lucas Fan</span></div>
+								<div class="flex-box">
+									<div class="text flex-1">16 hours ago</div>
+									<div class="text">3 km away</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- 任务进度条 -->
+						<div class="flex-box" style="padding:13px 0px;">
+							<div class="open"><span class="op">Open</span></div>
+							<div class="completed"><span class="co">Ongoing</span></div>
+							<div class="completed"><span class="co">Completed</span></div>
+						</div>
+
+						<!--价格-->
+						<div class="flex-box flex-center-center" style="margin:25px 0px">
+							<div class="sp">$</div>
+							<div class="money">50</div>
+						</div>
+
+						<div class="mack" lan="Do_it_Now">Do it Now!</div>
+
+						<div class="flex-box " style="margin-top:5px;">
+							<div class="week flex-1 flex-box  flex-center-center">1 worker</div>
+							<div class="flex-3 flex-box dic flex-center-center">
+								<span style="margin-right: 8px;color: #33BBB2;">Difficulty</span>
+								<div class="star-solid "></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+							</div>
+						</div>
+
+						<div class="flex-box " style="margin-top:5px;">
+							<div class="flex-2 quit flex-box flex-center-center" style="background:red;" onclick="accpt()" tapmode>
+								<div class="quit-icon flex-3"></div>
+								<div class="flex-3" style="color:white;" lan="Quit">Quit</div>
+							</div>
+							<div class="flex-3 flex-center-center dic-1" lan="Begin" onclick="accpt()" tapmode>Begin</div>
+						</div>
+
+						<div class="flex-box" style="margin-top:10px;">
+							<div class="mack" lan="Completed">Completed</div>
+						</div>
+						<div class="flex-box" style="margin-top:10px;">
+							<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+								<div class="ic flex-1"></div>
+								<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+							</div>
+							<div class="flex-3 flex-center-center dic-1" lan="Waiting" style="background-color:#33BBB2;">Waiting</div>
+						</div>
+						<div class="flex-box" style="margin-top:10px;">
+							<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+								<div class="ic flex-1"></div>
+								<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+							</div>
+							<div class="flex-3 flex-center-center dic-2" lan="Ratings" onclick="rating()" tapmode>Ratings</div>
+						</div>
+						<div class="flex-box" style="margin-top:10px;">
+							<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+								<div class="ic flex-1"></div>
+								<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+							</div>
+							<div lan="FavorComplete" class="flex-3 flex-center-center dic-1" onclick="" tapmode>Favor Complete</div>
+						</div>
+						<div class="flex-box flex-h-ce" style="margin-top:9px;">
+							<p class="sing"></p>
+							<p style="padding-left:5px;">tryr5ywu45u5u</p>
+						</div>
+						<div class="flex-box flex-h-ce">
+							<p class="calendar"></p>
+							<p class="flex-1 ter-t">Due Date -28 May 2017</p>
+							<p class="ter" onclick="terminate()" tapmode>Terminate</p>
+						</div>
+					</div>
+					<!-- end 任务基本信息 -->
+
+					<!-- 任务详情 -->
+					<div class="title" lan="Favor_Details">Favor Details</div>
+					<div class="margin-bottom10 hidden" style="padding: 10px;">
+						大公会都会发生的活动盘丝洞人居率
+					</div>
+					<div class="hidden" style="padding: 10px;" class="pic">
+						<div class="pic-box">
+							<div id="scroller">
+								<ul>
+									<li>
+										<div onclick="openPhotoBrowser()" tapmode="">
+											<div class="img-picture" style="background-image: url();"></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!-- end 任务详情 -->
+
+					<!-- 地址信息 -->
+					<div class="title margin-top10" lan="Address">Address</div>
+					<div style="text-align:center;font-size:14px; padding: 3px 0;">天府路421号地洞街</div>
+					<div class="map"></div>
+					<!-- end 地址信息 -->
+
+					<!-- 帮助者申请列表 -->
+					<div class="title " lan="HelperList">Helper List</div>
+					<div style="padding:10px 6px;">
+						<!--<div class="flex-center-center flex-box-v" style="padding: 15px; text-align: center;" lan="There_is_no_helper">There is no helper.</div>-->
+						<div style="padding:5px;">
+							<div class="flex-box flex-h-ce swiper-container" style="background-color:#ECF9F7;">
+								<div class="flex-1 swiper-button-prev ">
+									<div class="left hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+								</div>
+								<div class="swiper-button-next">
+									<div class="right hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+								</div>
+								<!-- 帮助者列表轮播 -->
+								<div class="swiper-wrapper">
+									<div class="swiper-slide swiper-page hidden"><!-- 页数 -->
+										<div class="swiper-row swiper-line-5"><!--n人连线-->
+											<div class="flex-box swiper-row-line">
+												<div class="swiper-line"></div>
+												<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+													<div class="swiper-avatar"></div>
+													<div class="swiper-nickname">
+														Mark EricksMark
+													</div>
+													<div class="swiper-star-list flex-box">
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+													</div>
+													<div class="swiper-score">
+														(4.0)
+													</div>
+												</div>
+												
+												<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+													<div class="swiper-avatar"></div>
+													<div class="swiper-nickname">
+														Mark Ericks
+													</div>
+													<div class="swiper-star-list flex-box">
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+													</div>
+													<div class="swiper-score">
+														(4.0)
+													</div>
+												</div>
+												
+												<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+													<div class="swiper-avatar"></div>
+													<div class="swiper-nickname">
+														Mark Ericks
+													</div>
+													<div class="swiper-star-list flex-box">
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+													</div>
+													<div class="swiper-score">
+														(4.0)
+													</div>
+												</div>
+											</div>
+											<div class="text-center">
+												<button class="swiper-accept-btn" onclick="console.log('2')">
+													<span>Accept Offer</span>
+												</button>
+											</div>
+										</div><!-- end row -->
+										
+										<!-- 单人一行排版 -->
+										<div class="swiper-row swiper-line-4">
+											<div class="swiper-row-line flex-box">
+												<div class="swiper-line"></div>
+												<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+													<div class="swiper-avatar"></div>
+													<div class="swiper-nickname">
+														Mark Ericks
+													</div>
+													<div class="swiper-star-list flex-box">
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+													</div>
+													<div class="swiper-score">
+														(4.0)
+													</div>
+													<button class="swiper-accept-btn">
+														<span>Accept Offer</span>
+													</button>													
+												</div>
+												
+												<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+													<div class="swiper-avatar"></div>
+													<div class="swiper-nickname">
+														Mark Ericks
+													</div>
+													<div class="swiper-star-list flex-box">
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+													</div>
+													<div class="swiper-score">
+														(4.0)
+													</div>
+													<button class="swiper-accept-btn cancel">
+														<span>Accept Offer</span>
+													</button>
+												</div>
+												
+												<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+													<div class="swiper-avatar"></div>
+													<div class="swiper-nickname">
+														Mark Ericks
+													</div>
+													<div class="swiper-star-list flex-box">
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+														<div class="swiper-star"></div>
+													</div>
+													<div class="swiper-score">
+														(4.0)
+													</div>
+													<button class="swiper-accept-btn">
+														<span>Accept Offer</span>
+													</button>
+												</div>
+												
+											</div>
+												
+										</div>										
+									</div><!-- end page -->
+									
+									
+									<div class="swiper-slide swiper-page hidden"><!-- 页数 -->
+										<!--3人连线-->
+										<div class="swiper-row swiper-line-3"></div>
+										
+										<!--2人连线-->
+										<div class="swiper-row swiper-line-2"></div>
+										
+									</div><!-- end page -->
+									
+									<div class="swiper-slide swiper-page hidden"><!-- 页数 -->
+										<!--1人连线-->
+										<div class="swiper-row swiper-line-11"></div>
+										
+										<!--1人连线-->
+										<div class="swiper-row swiper-line-12"></div>
+										
+									</div><!-- end page -->									
+								</div>
+								<!-- end 帮助者列表轮播 -->
+							</div>
+						</div>
+					</div>
+					<!-- end 帮助者申请列表 -->
+
+					<!-- 帮助者列表 -->
+					<div class="title">Ongoing by</div>
+					<div id="ongoing-by">
+						<div class="page">
+							<div class="swiper-row hidden"><!--n人连线-->
+								<div class="flex-box swiper-row-line">
+									<div class="swiper-line"></div>
+									<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+										<div class="swiper-avatar"></div>
+										<div class="swiper-nickname">
+											Mark EricksMark
+										</div>
+										<div class="swiper-star-list flex-box">
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+										</div>
+										<div class="swiper-score">
+											(4.0)
+										</div>
+									</div>
+									
+									<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+										<div class="swiper-avatar"></div>
+										<div class="swiper-nickname">
+											Mark Ericks
+										</div>
+										<div class="swiper-star-list flex-box">
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+										</div>
+										<div class="swiper-score">
+											(4.0)
+										</div>
+									</div>
+									
+									<div class="swiper-cell flex-1 flex-box-v flex-v-ce">
+										<div class="swiper-avatar"></div>
+										<div class="swiper-nickname">
+											Mark Ericks
+										</div>
+										<div class="swiper-star-list flex-box">
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+											<div class="swiper-star"></div>
+										</div>
+										<div class="swiper-score">
+											(4.0)
+										</div>
+									</div>
+								</div>
+							</div><!-- end row -->
+						</div>
+							
+					</div>
+					<!-- end 帮助者列表 -->
+
+					<!-- 评论列表 -->
+					<div class="title" lan="Comments">Comments</div>
+					<div class="flex-box" style="padding: 5px;border-bottom: 1px solid #DEE0E1;">
+						<div class="flex-1 margin-left10 text" style="color:#91989C;"></div>
+						<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;" tapmode="">View All Comments</div>
+					</div>
+					<div id="comments">
+						<div class="flex-box">
+							<div class="flex-box-v flex-center-center" style="width:60px;padding:0 10px 0 30px;">
+								<div class="header-icon" style="background-image: url();"></div>
+								<div class="name">Kate Kali</div>
+							</div>
+							<div class="comment  flex-1	">
+								裕丰的一天的晚上有什么不同的你
+							</div>
+							<div class="flex-box-v">
+								<div class="flex-1 text2 text-right">1h</div>
+								<div class="reply text-right" lan="Reply" id="reply" onclick="reply(this)" tapmode>Reply</div>
+							</div>
+						</div>
+					</div>
+					<!-- end 评论列表 -->
+
+					<!--<div class="flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+					You haven't received any comments yet.
+				</div>-->
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript " src="../../script/api.js "></script>
+	<script type="text/javascript " src="../../script/doT.min.js "></script>
+	<script type="text/javascript " src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../script/area.js"></script>
+	<script type="text/javascript" src="../../script/iscroll.js"></script>
+	<script type="text/javascript" src="../../script/swiper.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/swipe.js"></script>
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js"></script>
+	<script type="text/javascript" src="../../res/chatBox/emotion_url.js"></script>
+	<script type="text/javascript" src="../../test/script/offers.js" ></script>
+	<script type="text/javascript" src="../../script/task_detail_line.js"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	
+
+	<script type="text/template" template="swiper-row">
+		<div class="flex-box swiper-row-line">
+			{{? it.line }}
+			<div class="swiper-line" style="
+				{{? it.group.length == 2 }}
+					left: {{= document.body.clientWidth / 4 }}px;
+					right: {{= document.body.clientWidth / 4 }}px;
+				{{?? it.group.length == 3 }}
+					left: {{= document.body.clientWidth / 6 }}px;
+					right: {{= document.body.clientWidth / 6 }}px;
+				{{?? it.group.length == 4 }}
+					left: {{= document.body.clientWidth / 8 }}px;
+					right: {{= document.body.clientWidth / 8 }}px;
+					top:21.5px
+				{{?? it.group.length == 5 }}
+					left: {{= document.body.clientWidth / 10 }}px;
+					right: {{= document.body.clientWidth / 10 }}px;
+					top:16.5px;
+				{{?}}
+				"></div>
+			{{?}}
+
+			{{~it.group :value:index}}
+			<div class="swiper-cell flex-1 flex-box-v flex-v-ce" helper-id="{{= value.id }}">
+				<div class="swiper-avatar {{= it.line ? 'line' : '' }}" style="
+					{{? it.group.length == 5 }}
+						width: 37px;height:37px;
+					{{?? it.group.length == 4 }}
+						width: 43px;height:43px;
+					{{?}}
+					background-image: url({{= Tool.imageCompressByQiNiu(value.avatar,0,86,86) }});
+					"></div>
+				<div class="swiper-nickname">
+					{{= value.firstname + ' ' + value.lastname }}
+				</div>
+
+
+				{{? parseFloat(value.helperstar) > 0 }}
+					<div class="swiper-star-list flex-box">
+						{{ for(var s=0;s<Math.round(value.helperstar);s++){ }}
+						<div class="swiper-star"></div>
+						{{ } }}
+					</div>
+					<div class="swiper-score">
+						({{= parseFloat(value.helperstar).toFixed(1) }})
+					</div>
+				{{??}}
+					<div class="swiper-score zero">
+						--
+					</div>
+				{{?}}
+
+
+				{{? !it.line }}
+				<!-- 非连线 -->
+					{{? !it.ongoing }}
+						{{? it.isself == 1 && value.status == 1 }}
+						<button class="swiper-accept-btn " {{= it.isFull ? 'disabled' : '' }} deal-status="1" helper-num="1" group="false" onclick="dealOffer(this)" tapmode="">
+							<span>Accept Offer</span>
+						</button>
+						{{?? it.isself == 1 && value.status == 2 }}
+						<button class="swiper-accept-btn cancel" helper-num="1" deal-status="2" group="false"  onclick="dealOffer(this)" tapmode="">
+							<span>Assigned</span>
+						</button>
+						{{?}}
+					{{?}}	
+				{{?}}
+			</div>
+			{{~}}
+		</div>
+
+		{{? it.line}}
+			{{? !it.ongoing }}
+			<div class="text-center">
+				{{? it.isself == 1 && it.group[0].status == 1 }}
+				<button class="swiper-accept-btn " {{= it.isFull ? 'disabled' : '' }} helper-num="{{= it.group.length }}" deal-status="1" group="true"  onclick="dealOffer(this)" tapmode="">
+					<span>Accept Offer</span>
+				</button>
+				{{?? it.isself == 1 && it.group[0].status == 2 }}
+				<button class="swiper-accept-btn cancel" helper-num="{{= it.group.length }}" deal-status="2" group="true"  onclick="dealOffer(this)" tapmode="">
+					<span>Assigned</span>
+				</button>
+				{{?}}
+			</div>
+			{{?}}
+		{{?}}
+	</script>
+	
+	<script type="text/javascript">
+//		var _offers = [],
+//				_obj = {},
+//				singleOffers = [],	//单人报名
+//				offers = sortToOffers(offers);	//排序后
+//		offers.forEach(function(value, index){
+//			if(value.length >= 2){
+//				_obj.group = value;
+//				_offers.push(_obj);
+//			}else{
+//				singleOffers.push(value[0]);
+//			}
+//			_obj = {};
+//		});		
+		//var _offers = sortToOffers(offers);
+		
+//		console.log(JSON.stringify(_offers, null, 2))
+//		initSwiper();
+
+		//1人连线
+		//T.html('.swiper-line-11', 'swiper-row', _offers[5]);
+		//2人连线
+		//T.html('.swiper-line-2', 'swiper-row', _offers[3]);
+		//3人连线
+		//T.html('.swiper-line-3', 'swiper-row', _offers[2]);
+		//4人连线
+		//T.html('.swiper-line-4', 'swiper-row', _offers[1]);
+		//5人连线
+		//T.html('.swiper-line-5', 'swiper-row', _offers[0]);
+		
+		//initSwiper();
+		
+//		initHelperListForLine(res.body.content);
+		initOngoingByListForLine(res.body.content);
+		initSwiper();
+		
+
+		
+		
+		
+		function initSwiper(){
+			var mySwiper = new Swiper('.swiper-container', {
+				prevButton: '.left',
+				nextButton: '.right',
+				onTransitionEnd: function(swiper) {
+					if(swiper.slides.length == 1) {
+						$api.addCls($api.dom('.right'), 'hidden');
+						$api.addCls($api.dom('.left'), 'hidden');
+					}
+					if((swiper.realIndex > 0) && (swiper.realIndex == swiper.slides.length - 1)) {
+						$api.removeCls($api.dom('.left'), 'hidden');
+						$api.addCls($api.dom('.right'), 'hidden');
+					} else if((swiper.realIndex == 0) && swiper.slides.length > 1) {
+						$api.removeCls($api.dom('.right'), 'hidden');
+						$api.addCls($api.dom('.left'), 'hidden');
+					}
+				}
+			});			
+		}
+		
+		function createSwiperPageDom(){
+			return '<div class="swiper-slide swiper-page"></div>';
+		}
+		
+		function createSwiperRowDom(){
+			return '<div class="swiper-row"></div>';
+		}
+		
+		function makeTemplate(template, data){
+			var _html = doT.template($api.html($api.dom('[template="' + template + '"]')))(data || '');
+			
+			return _html;
+		}
+	</script>
+
+</html>

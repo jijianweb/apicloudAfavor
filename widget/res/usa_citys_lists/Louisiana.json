@@ -1,0 +1,35 @@
+{
+	"citys": [{
+		"id": "280",
+		"city": "Baton Rouge",
+		"fr": "Baton Rouge",
+		"parentid": "279",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "281",
+		"city": "New Orleans",
+		"fr": "Nouvelle Orléans",
+		"parentid": "279",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "282",
+		"city": "Shreveport",
+		"fr": "Shreveport",
+		"parentid": "279",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "283",
+		"city": "Lafayette",
+		"fr": "Lafayette",
+		"parentid": "279",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}]
+}

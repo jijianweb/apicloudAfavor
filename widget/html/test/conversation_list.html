@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<style type="text/css">
+			.list-view{
+				height: 80px;
+				padding: 10px;
+				border-bottom: 1px solid #ddd;
+				position: relative;
+			}
+			.list-view > .flex-1{
+				height: 100%;
+				padding-left: 10px;
+			}
+			.img-frm,
+			.img{
+				background-size: cover;
+			}
+			.list-view .img-frm{
+				background: transparent url(../../res/avatar_default.png) no-repeat center;
+				position: relative;
+				height: 60px;
+				width: 60px;
+				border: 1px solid #ddd;
+			}
+			.img{
+				height: 100%;
+				width: 100%;
+			}
+			.list-view .title{
+				margin-bottom: 10px;
+			}
+			.flex-center-v{
+				justify-content: center;
+				-webkit-justify-content: center;
+				-webkit-box-pack: center;
+			}			
+			.name{
+				margin-bottom: 5px;
+			}		
+			.sign{
+				position: relative;
+				color: #B4B4B4;
+				font-size: 12px;
+				height: 23px;
+			}		
+			.datetime{
+				font-size: 12px;
+				line-height: 1.8;
+				color: #aaa;
+				/*background-color: red;*/
+			}
+			.msg-num{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				top: -5px;
+				right: -5px;
+				background-color: red;
+				border-radius: 50%;
+				text-align: center;
+				color: #fff;
+				font-size: 14px;
+				padding: 2px 2px;
+			}
+			img.expression{
+				position: relative;
+				width: 20px;
+				height: 20px;
+				top: 5px;
+			}			
+			.talk {
+				width: 50px;
+				height: 50px;
+				background-color: #54D165;
+				padding: 5px;
+				border-radius: 50%;
+				position: fixed;
+				right: 10px;
+				bottom: 80px;
+				z-index: 2;
+			}		 
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div onclick="testIM()" tapmode>聊天</div>
+			<div id="main">
+				<div class="null hidden flex-box">
+					<div class="flex-1">
+						加载中...
+					</div>
+				</div>
+				<div class="list-view flex-box " onclick="" tapmode="">
+					<div class="img-frm">
+						<div class="img" style="background-image: url();"></div>
+						<span class="msg-num">91</span>
+					</div>
+					<div class="flex-1 flex-box-v flex-center-v">
+						<div class="flex-box">
+							<div class="flex-1 flex-box" style="padding-right: 10px;">
+								<div class="name text-overflow">
+									weiweiweiweiweiweiweiwei
+								</div>
+								<div>
+									<span class="ct-icon-type" style="font-size: 18px;"></span>								
+								</div>
+							</div>
+							<div class="datetime text-right">
+								5月23日
+							</div>
+						</div>
+						<div class="sign text-overflow">
+							你好
+							<img class="expression" src="../../res/chatBox/emotion/Expression_1.png" />
+							<img class="expression" src="../../res/chatBox/emotion/Expression_1.png" />
+						</div>
+					</div>
+				</div>				
+			</div>
+		</div>
+	</body>
+	<script type="text/template" template="main">
+		{{ if(it instanceof Array && it.length!=0 && typeof it[0].latestMessage === 'object'){ }}
+			{{~it :value:index }}
+				{{? typeof value.latestMessage === 'object' }}
+				<div class="list-view flex-box" targetid="{{= value.targetId }}">
+					<div class="img-frm">
+						<div class="img" style="background-image: url(../../image/avatar_default.png);"></div>
+						{{? value.unreadMessageCount }}
+							<span class="msg-num">{{= (value.unreadMessageCount<100?value.unreadMessageCount:99) }}</span>
+						{{??}}
+							<span class="msg-num hidden"></span>
+						{{?}}
+					</div>
+					<div class="flex-1 flex-box-v flex-center-v">
+						<div class="flex-box">
+							<div class="flex-1 flex-box" style="padding-right: 10px;">
+								<div class="name text-overflow">
+									{{= value.targetId  }}
+								</div>
+							</div>
+							<div class="datetime text-right">
+								{{= D.t1(value.receivedTime, 1) }}
+							</div>
+						</div>
+						<div class="sign text-overflow" data-messageId="{{= value.latestMessageId }}">
+							{{? value.draft}}
+								[草稿]  {{= value.draft }}
+							{{??}}
+								{{= getLastMsgExt(value.targetId, value.latestMessageId, value.objectName, value.latestMessage.text) || '' }}
+								
+								<!--{{? value.objectName == 'RC:TxtMsg' }}
+									{{= h(value.latestMessage.text)||'' }}
+								{{?? value.objectName == 'RC:VcMsg' }}
+									[语音]
+								{{??}}
+									[图片]
+								{{?}}-->
+							{{?}}
+						</div>
+					</div>
+				</div>	
+				{{?}}
+			{{~}}
+		{{ }else{ }}
+			<div class="null flex-box">
+				<div class="flex-1">
+					暂无相关内容~
+				</div>
+			</div>		
+		{{ } }}
+	</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+
+	<script type="text/javascript" src="../../script/rongCloud2.js" ></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js" ></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js" ></script>
+	<script type="text/javascript">
+		
+		
+		function testIM(){
+			api.prompt({
+				title: '提示信息',
+				msg: '聊天对象id',
+				buttons: ['取消', '确定']
+			}, function(ret, err){
+				if(ret.buttonIndex == 2 && ret.text){
+					setTimeout(function(){
+						api.openWin({
+							name: 'TalkWith',
+							url: api.wgtRootDir + '/html/window/test/talk_with.html',
+							pageParam: {
+								targetId: ret.text
+							},
+							bounces: false
+						});
+					}, 1000);
+				}
+			});
+		}
+		function openTalkWith(_this, targetId){
+//			var msgNumDom = $api.dom(_this, '.msg-num'),
+//					msgNum = $api.hasCls(msgNumDom, 'hidden') ? 0 : $api.text(msgNumDom);
+			
+			/*先获取对方头像、昵称*/
+			api.openWin({
+				name: 'TalkWith',
+				url: api.wgtRootDir + '/html/window/test/talk_with.html',
+				pageParam: {
+					//targetAvatar: ct[0].avatar,
+					targetNickname: 'hh',
+					targetId: 7
+				},
+				bounces: false,
+				slidBackEnabled: false
+			});			
+		}
+		function h(str){
+			if(str){
+				var regx = /(\&[l,g]t;)|(api.wgtRootDir)/gm,
+						_html = str.replace(regx, function(match){
+							switch(match){
+								case '&lt;':
+									return '<';
+								case '&gt;':
+									return '>';
+								case 'api.wgtRootDir':
+									return '../..';
+							}
+						});
+				return _html;
+			}else{
+				return '';
+			}
+		}
+		function reload(){
+			RongCloud2.getConversationList(function(result){
+				console.log(JSON.stringify(result,null,2))
+				T.html('#main', 'main', result);
+				api.refreshHeaderLoadDone();
+			});
+		}
+		
+		//获取最新一条信息内容，显示于列表
+		function getLastMsgExt(targetId,latestMessageId, objectName, _text) {
+			RongCloud2.getLatestMessages({
+				targetId: targetId,
+				count: 1
+			}, function(result){
+				var lIdDom = $api.dom('[data-messageId="'+latestMessageId+'"]');
+				if(result[0].extra) {
+					if(result[0].senderUserId == targetId) {
+						$api.text(lIdDom,  "'" + targetId + "'" + '撤回了一条信息');
+					}else {
+						$api.text(lIdDom,  '你撤回了一条信息');
+					}
+				}else {
+					var msg = '';
+					switch(objectName) {
+						case 'RC:TxtMsg':
+//							var lIdDom = $api.dom('[data-messageId="'+latestMessageId+'"]');
+//							UIChatBox.getImgsText(_text, function(textTransed) {
+//								$api.text(lIdDom, textTransed);
+//							});
+							msg = h(_text)||'';
+							$api.html(lIdDom, msg);
+							break;
+						case 'RC:VcMsg':
+							msg = '[语音]';
+							$api.text(lIdDom, msg);
+							break;
+						default:
+							msg = '[图片]';
+							$api.text(lIdDom, msg);
+							break;
+					}
+				}
+				
+			});
+		}
+		
+		//监听命令消息，设置本地消息附加信息，保存于本地
+		function setMsgExtra(targetId, value) {
+			RongCloud2.getLatestMessages({
+				targetId: targetId,
+				count: 50
+			}, function(result){
+				console.log('getMoreMessages:' + JSON.stringify(result))
+				var data = JSON.parse(value.content.data),
+						msgTime = data.msgTime;
+				for(var i=0;i<result.length;i++) {
+					var content = result[i].content;
+					var g = JSON.parse(content.extra).msgTime;
+					if(g == msgTime) {
+						var messageId = result[i].messageId;
+//						alert(messageId +','+ typeof messageId +','+ typeof parseInt(messageId))
+						RongCloud2.setMessageExtra({
+							messageId: parseInt(messageId),
+							value: '{\"msgTime\": "'+g+'",\"type\": "recallMsg"}',
+							success: function(ret) {
+								console.log('对方撤回一条信息成功');
+							}
+						});
+						return;
+					}
+				}
+			});
+		}
+
+		apiready = function(){
+			reload();
+			
+			//在#main下注册节点变动事件
+			$api.addEvt($api.dom('#main'), 'DOMNodeInserted', function(e){
+				if(e.target.nodeType === 1 && $api.hasCls(e.target, 'list-view')){
+					touch.on(e.target, 'hold click', function(evt){
+						var targetId = $api.attr(e.target, 'targetid'),
+								buttons, notificationStatus;
+						if(evt.type === 'hold'){
+							buttons = ['置顶聊天', '删除该聊天'];
+							RongCloud2.getConversationNotificationStatus({
+								targetId: targetId,
+								success: function(result){
+									notificationStatus = result.notificationStatus;
+									
+									if(notificationStatus === 'DO_NOT_DISTURB'){
+										buttons.push('取消免打扰');
+									}else if(notificationStatus === 'NOTIFY'){
+										buttons.push('开启免打扰');
+									}
+									
+									Tool.actionSheet({
+										buttons: buttons
+									}, function(buttonIndex){
+										switch(buttonIndex){
+											case 1:
+												
+												break;
+											case 2:
+												RongCloud2.clearMessages({
+													targetId: targetId,
+													success: function(){
+														RongCloud2.removeConversation({
+															targetId: targetId,
+															success: function(){
+																$api.remove(e.target);
+															}
+														});
+													}
+												});
+												break;
+											case 3:
+												RongCloud2.setConversationNotificationStatus({
+													targetId: targetId,
+													notificationStatus: notificationStatus === 'NOTIFY' ? 'DO_NOT_DISTURB' : 'NOTIFY',
+													success: function(result){
+														api.toast({
+															msg: result.notificationStatus == 'NOTIFY' ? '已取消免打扰' : '已开启免打扰',
+															location: 'middle'
+														});
+													}
+												});
+												break;
+										}
+									});
+								}
+							});
+						}else if(evt.type === 'click'){
+							openTalkWith(e.target, targetId);
+						}
+					});
+				};
+			});
+			api.setRefreshHeaderInfo({
+			    visible: true,
+//			    loadingImg: 'widget://res/icon-refresh.png',
+			    bgColor: 'rgba(0,0,0,0)',
+			    textColor: '#666',
+			    textDown: '下拉刷新...',
+			    textUp: '松开刷新...',
+			    showTime: true
+			}, function(ret, err){
+				if('none' === api.connectionType){
+					api.toast({
+						msg: '网络无法连接，请检查网络设备是否正常',
+						location: 'bottom',
+						duration: 2000
+					});
+					api.refreshHeaderLoadDone();
+					return;
+				}
+				reload();
+				/*刷新未读条数*/
+//				api.sendEvent({
+//					name: 'reloadNotRead'
+//				});
+			});			
+			//刷新聊天消息列表
+			api.addEventListener({
+				name: 'viewappear'
+			}, function(ret, err){
+				//reload();
+			});
+			
+			/*标记会话为未读*/
+			api.addEventListener({
+				name: 'newMessage'
+			}, function(ret, err){
+				var value = ret.value.message,
+						conversationDoms = $api.domAll('[targetid]'),
+						conversationDom = $api.dom('[targetid="'+ value.targetId +'"]'),
+						conversationDomCopy,
+						msgNumDom, msgNum, nullDom, messageDom;
+						
+				//console.log(JSON.stringify(value))		
+						
+				if(conversationDom){
+					//已存在会话
+					msgNumDom = $api.dom(conversationDom, '.msg-num');
+					msgNum = parseInt($api.text(msgNumDom));
+					messageDom = $api.dom(conversationDom, '.sign');
+					switch(value.objectName){
+						case 'RC:TxtMsg':
+							$api.html(messageDom, h(value.content.text));
+							break;
+						case 'RC:ImgMsg':
+							$api.html(messageDom, '[图片]');
+							break;
+						case 'RC:VcMsg':
+							$api.html(messageDom, '[语音]');
+							break;
+						case 'RC:CmdMsg':
+							$api.html(messageDom, "'" + value.targetId + "'" + '  撤回了一条信息');
+							setMsgExtra(value.targetId, value);
+							break;
+					}
+					$api.text($api.dom(conversationDom, '.datetime'), D.t1(value.receivedTime, 1));
+					if($api.hasCls(msgNumDom, 'hidden')){
+						$api.removeCls($api.text(msgNumDom, 1), 'hidden');
+					}else{
+						$api.text(msgNumDom, msgNum+1);
+					}
+					
+					/*会话置顶*/
+					var flag = conversationDoms[0] === conversationDom
+//					alert($api.attr(conversationDoms[0], 'targetid') + ':'+ value.targetId);
+//					$api.dom('#main').appendChild(conversationDomCopy)
+					
+					if(!flag){
+						conversationDomCopy = conversationDom.cloneNode(true);
+						$api.remove(conversationDom);
+						$api.dom('#main').insertBefore(conversationDomCopy, conversationDoms[0])
+					}					
+				}else{
+					//若存在"加载中..."遮罩层，则去除
+					nullDom = $api.dom('.null');
+					//调整数据结构，以适配模板
+					value.latestMessage = value.content;
+					
+					if(nullDom){
+						$api.remove(nullDom);
+					}
+					T.prepend('#main', 'main', [value]);
+				}
+			});
+			
+			//标注该会话为已读
+			api.addEventListener({
+				name: 'clearMessagesUnreadStatus'
+			}, function(ret, err){
+				var conversationDom = $api.dom('[targetid="'+ ret.value.targetId +'"]'),
+						msgNumDom, messageId, messageDom;
+				if(conversationDom){
+					//清除未读红点
+					msgNumDom = $api.dom(conversationDom, '.msg-num');
+					if(!$api.hasCls(msgNumDom, 'hidden')){
+						RongCloud2.clearMessagesUnreadStatus({
+							targetId: ret.value.targetId,
+							success: function(){
+								//未读条数清零
+								$api.text(msgNumDom, 0);
+								$api.addCls(msgNumDom, 'hidden');
+							}
+						});
+					}
+					
+					/* 更新该会话最近一次的消息内容
+					 * 分两种情况：新消息、用户主动删除消息
+					 */
+					messageDom = $api.dom(conversationDom, '.sign');
+					messageId = $api.attr(messageDom, 'data-messageId');
+					RongCloud2.getConversation({
+						targetId: ret.value.targetId,
+						success: function(result){
+							if(messageId != result.latestMessageId){
+								//更新消息发送时间
+								$api.text($api.dom(conversationDom, '.datetime'), D.t1(result.receivedTime, 1));
+								switch(result.objectName){
+									case 'RC:TxtMsg':
+										$api.html(messageDom, h(result.latestMessage.text));
+										break;
+									case 'RC:ImgMsg':
+										$api.html(messageDom, '[图片]');
+										break;
+									case 'RC:VcMsg':
+										$api.html(messageDom, '[语音]');
+										break;
+								}
+							}
+						}
+					});
+				}
+			});
+		
+			//保存某一会话的文字消息草稿
+			api.addEventListener({
+				name: 'setTextMessageDraft'
+			}, function(ret, err) {
+				api.closeWin({
+					name: 'TalkWith'
+				});
+				
+				if(ret && ret.value) {
+					var conversationDom = $api.dom('[targetid="'+ ret.value.targetId +'"]'),
+							msgNumDom, messageId, messageDom,
+							txt = ret.value.txt,
+							targetId = ret.value.targetId;
+					
+					if(!conversationDom) return;
+					
+					messageDom = $api.dom(conversationDom, '.sign');	
+					
+					if(txt) {
+						$api.text(messageDom, '[草稿]   ' + h(txt));
+						RongCloud2.saveTextMessageDraft({
+							targetId: targetId,
+							content: txt
+						});
+					}else {
+						RongCloud2.clearTextMessageDraft({
+							targetId: targetId
+						}, function() {});
+					}
+				}
+			});
+		}
+	</script>
+</html>

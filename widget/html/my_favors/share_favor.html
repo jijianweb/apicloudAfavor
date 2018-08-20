@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>分享给帮助者</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.head_img {
+				width: 55px;
+				height: 55px;
+				background-color: #33BDB5;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.ongoing {
+				background-color: #EFF9F8;
+				padding: 15px;
+				border-radius: 10px;
+				margin-top: 5px;
+				box-shadow:2px 2px 14px rgba(0,0,0,0.2);
+			}
+			
+			.star {
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: aquamarine;
+			}
+			
+			.text {
+				margin-bottom: 5px;
+				font-size: 12px;
+			}
+			
+			.img_love {
+				height: 15px;
+				margin-right: 10px;
+			}
+			
+			.img {
+				height: 15px;
+				width: 18px;
+				margin-left: 2px;
+			}
+			
+			.love {
+				margin-top:15px;
+				background-image: url(../../image/browse/round-done-button-1.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: 18px 17px;
+				width:20px;
+				height:17px;
+				background-image: url(../../image/browse/like-heart.png);
+			}
+			
+			.check {
+				width: 20px;
+				height: 20px;
+				position: absolute;
+				margin-top: -15px;
+				background-image: url(../../image/browse/round-done-button-1.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="margin-top10">
+				<div style="padding:0px 18px;" class="hidden">
+					<div class="flex-box ongoing flex-center-center " onclick="check(this)" tapmode="">
+						<div class="head_img" style="background-image: url(../../image/inbox/photo-3.png);"></div>
+						<div class="flex-1" style="margin:5px 0px 0 10px;">
+							<div class="text">Jhohn Smith</div>
+							<div class="flex-box flex-h-ce text">
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" /> (4.8)
+							</div>
+						</div>
+						<div class="flex-box-v flex-center-center">
+							<div class="check"></div>
+							<div class="love"></div>
+						</div>
+					</div>
+					<div class="flex-box ongoing flex-center-center " onclick="check(this)" tapmode="">
+						<div class="head_img" style="background-image: url(../../image/inbox/photo-3.png);"></div>
+						<div class="flex-1" style="margin:5px 0px 0 10px;">
+							<div class="text">Jhohn Smith</div>
+							<div class="flex-box flex-h-ce text">
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" /> (4.8)
+							</div>
+						</div>
+						<div class="flex-box-v flex-center-center" >
+							<div class="check hidden"></div>
+							<div class="love"></div>
+						</div>
+					</div>
+					<div class="flex-box ongoing flex-center-center " onclick="check(this)" tapmode="">
+						<div class="head_img" style="background-image: url(../../image/inbox/photo-3.png);"></div>
+						<div class="flex-1" style="margin:5px 0px 0 10px;">
+							<div class="text">Jhohn Smith</div>
+							<div class="flex-box flex-h-ce text">
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" /> (4.8)
+							</div>
+						</div>
+						<div class="flex-box-v flex-center-center" >
+							<div class="check hidden"></div>
+							<div class="love"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript " src="../../script/api.js "></script>
+	<script type="text/javascript " src="../../script/doT.min.js "></script>
+	<script type="text/javascript " src="../../script/common.js "></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div style="padding:0px 18px;">
+			{{? it.list instanceof Array && it.list.length!=0}} {{~ it.list:value:index}}
+			<div class="flex-box ongoing flex-center-center" onclick="check(this)" tapmode="">
+				<div class="head_img" style="background-image: url({{=Tool.imageCompressByQiNiu(value.realavatar,0,200,200)}});"></div>
+				<div class="flex-1" style="margin:5px 0px 0 10px;">
+					<div class="text">{{=value.firstname}} {{=value.lastname}}</div>
+					<div class="flex-box flex-h-ce text">
+						{{? value.helperstar>=0}} 
+						    {{for(var i=0;i<5;i++) { }} 
+						      	 {{? i< value.helperstar}} 
+						      	 	<img src="../../image/star.png" class="img" />
+						      	 {{?}} 
+						    {{ } }}
+						     ({{=value.helperstar}})
+						{{?}} 
+					</div>
+				</div>
+				<div class="flex-box-v flex-center-center">
+					<div class="check hidden" mid="{{= value.memberid}}"></div>
+					<div class="love"></div>
+				</div>
+			</div>
+			{{~}} {{??}}
+			<div class="null flex-box">
+				<div class="flex-1" lan="NoMessage">
+					No favorites helpers.
+				</div>
+			</div>
+			{{?}}
+		</div>
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			init();
+			//下拉刷新
+			Refresh.init({
+				container: '#main',
+				ctrl: 'More',
+				fn: 'getFavorites',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: 2
+				},
+				template: 'main',
+				success: function(ct) {
+					$('div.head_img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'More',
+				fn: 'getFavorites',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: 2
+				},
+				showError: true,
+			}, function(ct, page) {
+				$('div.head_img').slice((page - 1) * 10).lazyload({
+					effect: "fadeIn"
+				});
+			})
+		}
+
+		function init() {
+			ajax.get({
+				ctrl: 'More',
+				fn: 'getFavorites',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 2
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					T.html('#main', 'main', ct);
+					L.init();
+				}
+			});
+		}
+		function check(_this) {
+			if($api.hasCls($api.dom(_this, '.check'), 'hidden')) {
+				$api.removeCls($api.dom(_this, '.check'), 'hidden');
+				$api.addCls($api.dom(_this, '.check'), 'active');
+			} else {
+				$api.addCls($api.dom(_this, '.check'), 'hidden');
+				$api.removeCls($api.dom(_this, '.check'), 'active')
+			}
+		}
+		//分享
+		function share(fid) {
+			var checkLen = $api.domAll('.active');
+			var memberList = [];
+			for(var i = 0; i < checkLen.length; i++) {
+				memberList.push($api.attr(checkLen[i], 'mid'))
+			}
+			var menberSub=[],
+			    menber =[];   
+			//menberSub=JSON.parse(memberList);
+			if(menberSub instanceof Array && menberSub.length != 0){
+				for(var i = 0; i < menberSub.length; i++) {
+					menber.push(menberSub[i]);
+				}
+			}
+			menber= menber.toString();
+			if(memberList.length != 0) {
+				ajax.get({
+					ctrl: 'Favor',
+					fn: 'shareFavor',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid: fid,
+							memberid: memberList
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function() {
+						Tool.toast("share successfully");
+						api.closeWin();
+					}
+				});
+			} else {
+				Tool.toast('Please select the helper.');
+			}
+		}
+		//		function taskDetail(){
+		//			api.openWin({
+		//					name: 'share',
+		//					url: api.wgtRootDir + '/html/window/share.html',
+		//					pageParam: {
+		//						frameName: 'min_task_details',
+		//						frameUrl: api.wgtRootDir + '/html/my_favors/min_task_details.html',
+		//						frameParam: {
+		//                          favorid: id
+		//						},
+		//						headerTitle: 'Favor Details',
+		//					},
+		//					reload: true,
+		//					slidBackEnabled: false,
+		//				});
+		//		}
+	</script>
+
+</html>

@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布-私密任务-第三步</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main {
+				padding: 20px 18px;
+			}
+
+			.foot {
+				padding: 0px 18px 0px;
+				width: 100%;
+				position: relative;
+				top: 70px;
+			}
+
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+			}
+
+			.price {
+				font-size: 32px;
+				border: 1px solid #B1B7BA;
+				margin-bottom: 30px;
+				padding: 15px 25px;
+				border-radius: 10px;
+			}
+
+			.es {
+				font-size: 14px;
+				padding-top: 3px;
+			}
+
+			.es,
+			.eh {
+				color: #828B8F;
+				text-align: center;
+				padding-right: 10px;
+			}
+
+			.es {
+				text-align: right;
+				line-height: 27px;
+			}
+
+			.eh {
+				margin: 14px 0 9px 0;
+				font-size: 18px;
+			}
+
+			.eh1 {
+				margin: 3px 0 8px 0;
+				font-size: 18px;
+				color: #828B8F;
+			}
+
+			.per {
+				font-weight: bold;
+				font-size: 22px;
+				text-align: left;
+				margin-right: 0px;
+				padding-left: 10px;
+			}
+
+			.hr {
+				border-bottom: 1px solid #32BBB1;
+			}
+			/*or*/
+
+			.cirlce {
+				text-align: center;
+				width: 24px;
+				height: 24px;
+				line-height: 24px;
+				border-radius: 50%;
+				background-color: #32BBB1;
+				position: relative;
+				bottom: 13px;
+				margin: 0 auto;
+			}
+
+			.cirlce::before {
+				content: 'Or';
+				color: white;
+				font-size: 14px;
+				position: relative;
+				top: -1px;
+			}
+			/*end or*/
+
+			.date {
+				background-color: #32BBB1;
+				border-radius: 35px;
+				text-align: center;
+				padding: 5px;
+			}
+
+			.right-add,
+			.left-minus {
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background-color: white;
+				color: #32BBB1;
+			}
+
+			.right-add {
+				background-image: url(../../image/post/plus.png);
+				background-color: #32BBB1;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.left-minus {
+				background-image: url(../../image/post/minus.png);
+				background-color: #32BBB1;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+
+			.simpol {
+				font-size: 40px;
+				color: #BDC3C5;
+				text-align: center;
+				margin-left: 16px;
+			}
+
+			.mar {
+				text-align: right;
+				padding-right: 15px;
+			}
+
+			.hour,
+			.h-m {
+				color: #BABFC1;
+				border: 1px solid #B1B7BA;
+				width: 154px;
+				height: 67px;
+				border-radius: 13px;
+				margin-bottom: 30px;
+				font-size: 36px;
+
+			}
+
+			.h-m {
+				margin-left: 11px;
+			}
+
+			.htext {
+				text-align: right;
+				padding-right: 10px;
+				color: #000000;
+				width: 50px;
+			}
+
+			.hour_pr {
+				color: #BABFC1;
+			}
+
+			.htime {
+				color: #BABFC1;
+				position: relative;
+			}
+
+			.hmoney {
+				color: #BABFC1;
+			}
+
+			.prices1 {
+				text-align: center;
+				width:65px;
+			}
+		/*total*/
+			.money {
+				font-size: 50px;
+				margin-bottom: 38px;
+				padding: 0 0px 0 8px;
+				border: 1px solid #B1B7BA;
+				border-radius: 13px;
+				width: 171px;
+				height: 74px;
+				line-height: 74px;
+			}
+
+			.tprice {
+				color: #BABFC1;
+			}
+
+			.pr1 {
+				width: 86px;
+				text-align: center;
+				color: #000000;
+
+			}
+
+			#footer {
+				padding: 0 18px;
+				margin-bottom: 16px;
+			}
+
+			input::-webkit-input-placeholder {
+				color: #BDC3C8;
+			}
+
+			input:focus::-webkit-input-placeholder {
+				color: white;
+			}
+			@media (max-height:468px) and (max-width:360px){
+					/*华为H60-L01 有底部导航*/
+				.hour, .h-m{
+					margin-bottom: 0px;
+				}
+				#footer{
+					margin-bottom: 10px;
+				}
+			}
+			@media (max-height:456px) and (max-width:360px){
+				/*华为 6p 有底部虚拟导航栏*/
+				.hour, .h-m{
+					margin-bottom: 0px;
+				}
+				#footer{
+					margin-bottom: 10px;
+				}
+			}
+			@media (max-height:400px){
+				.sub{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div style="width:200px; margin: 0 auto;">
+					<div class="date flex-box ">
+						<div class="left-minus" onclick="calculation(-1)" tapmode=""></div>
+						<div class="flex-1" style="color: white; font-size: 20px;padding-top:8px;">
+							<span id="count" style="color:inherit;">1</span>
+							<span lan="Workers" style="color: inherit;">Workers</span>
+						</div>
+						<div class="right-add" onclick="calculation(1)" tapmode=""></div>
+					</div>
+				</div>
+				<div class="flex-center-center flex-box-v">
+					<div class="eh" lan="TotalFixPrice">Total Fix Price</div>
+					<div class="flex-box money flex-h-zhu">
+						<span class=" tprice" id="simpol">$</span>
+						<span class="tpmun">
+						    <input class="pr1" type="number"  id="cash"  placeholder="0.0" oninput="wayOne()" tapmode=""/>
+					    </span>
+					</div>
+				</div>
+				<div style="padding: 0 15px;">
+					<div class="hr"></div>
+					<div class="cirlce"></div>
+				</div>
+				<div class="flex-box flex-center-center">
+					<div class="eh1" lan="Hourly">Hourly</div>
+				</div>
+				<div class="flex-box flex-center-center">
+					<div class="hour flex-box flex-center-center" oninput="wayTwo()" tapmode="">
+						<span><input class="htext" type="number" id="time" placeholder="0" /></span>
+						<span class="hour_pr">hr.</span>
+					</div>
+					<div class=" h-m flex-box flex-center-center" oninput="wayTwo()" tapmode="">
+						<span class="hmoney"  id="simpol">C$</span>
+						<span><input class="prices1" type="number" placeholder="0.0" id="moeny" /></span>
+						<span class="htime">/h</span>
+					</div>
+				</div>
+				<div class="flex-box flex-h-zhu" style="margin-top:20px">
+					<div class="es" lan="EstimatedBudget">Estimated Budget</div>
+					<div class="per">
+						<span id="simpol">$</span>
+						<span id="everyOne">0</span> / <span lan="Person">Person</span>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="sub btn-afavor-1" lan="POST" onclick="publish()" tapmode="">POST</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script src="../../script/font.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var default_currency = "";
+		apiready = function() {
+			$api.setStorage('thirdStepData', {});
+			// C$:padding-left:8px; $padding-left:33px
+			default_currency = api.pageParam.default_currency;
+			if(default_currency == "cad") {
+				var sim = $api.domAll('#simpol');
+				for(var i = 0; i < sim.length; i++) {
+					$api.text(sim[i], 'C$');
+				}
+			} else {
+				var sim = $api.domAll('#simpol');
+				for(var i = 0; i < sim.length; i++) {
+					$api.text(sim[i], '$');
+				}
+			}
+
+			window.onresize = function(){
+//				Tool.toast(api.frameWidth + ':' + api.frameHeight);
+			};
+
+			L.init();
+			console.log(JSON.stringify($api.getStorage('message')));
+		}
+		var initBodyHeight = document.body.clientHeight; //页面可视高度
+		//			console.log(initBodyHeight)
+		var keyBoardStatus = false; //键盘是否打开
+		function getKeyBoardStatus() {
+			setTimeout(function() {
+				if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+					keyBoardStatus = true;
+					$api.addCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+					keyBoardStatus = false;
+					$api.removeCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				getKeyBoardStatus();
+			}, 100);
+		}
+//		$(function() {
+//			getKeyBoardStatus();
+//		});
+		//小时
+		var time = $api.val($api.dom('#time'));
+		//每小时的金额
+		var moeny = $api.val($api.dom('#moeny'));
+		//金额
+		var remuneration = $api.val($api.dom('#cash'));
+		//多少人
+		var nums = $api.text($api.dom('#count'));
+		var hcash;
+		var mtype = '',
+			title = '';
+		//每人多少钱
+		function wayOne(num) {
+			var length = $api.trimAll($api.val($api.dom('#cash')))
+			//验证金额格式
+//			var patrn =/^-?\d+\.?\d{0,2}$/;
+//			var re = new RegExp(patrn);
+//			if(!re.test(length)) {
+//				Tool.toast("Incorrect payment amount input");
+//				return;
+//			}
+			//	var length=$api.val($api.dom('#cash')).replace(/[^\d]/g,'').length
+			length=parseInt($api.trimAll($api.val($api.dom('#cash'))).length);
+			postFontOne(length)
+			$api.val($api.dom('#moeny'),'');
+			moeny = '';
+			$api.val($api.dom('#time'),'');
+			time = '';
+			var price = 0;
+			if(num) {
+				price = remuneration / num;
+			} else {
+				remuneration = $api.val($api.dom('#cash'));
+				var nums = $api.text($api.dom('#count'));
+				price = remuneration / nums;
+
+			}
+			$api.text($api.dom('#everyOne'), price.toFixed(2));
+			mtype = 1;
+		}
+		//按小时
+		function wayTwo(num) {
+			var timelength = $api.trimAll($api.val($api.dom('#time')));
+			timelength=parseInt($api.trimAll($api.val($api.dom('#time'))).length);
+			var moenylength = $api.trimAll($api.val($api.dom('#moeny')));
+			moenylength=parseInt($api.trimAll($api.val($api.dom('#moeny'))).length);
+			postFontTwo(timelength,moenylength)
+			$api.val($api.dom('#cash'), '');
+			//每小时的金额
+			moeny = $api.val($api.dom('#moeny'));
+			//小时
+			time = $api.val($api.dom('#time'));
+			if(num) {
+				hPrice = moeny * time / num;
+			} else {
+				var nums = $api.text($api.dom('#count'));
+				hPrice = moeny * time / nums;
+			}
+			$api.text($api.dom('#everyOne'), hPrice.toFixed(2));
+			hcash = time * moeny;
+			remuneration = '';
+			mtype = 2;
+		}
+
+		function postSuccess(){
+			/*
+			 * 任务发布成功后
+			 */
+
+			api.openFrame({
+				name: 'thank_you',
+				url: api.wgtRootDir + '/html/thank_you.html',
+				bounces: false,
+				pageParam: {},
+				softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+			});
+			api.execScript({
+				name: 'Init',
+				frameName: 'more',
+				script: 'init()'
+			});
+		}
+
+		function publish() {
+			if(!((time && moeny) || remuneration)) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+
+			var classid = "";
+			classid = api.pageParam.classid;
+			//是否按小时收费,0为否，1为是
+			var ishours = '';
+			if(time != '' && moeny != '' && remuneration == '') {
+				ishours = 1;
+			} else if(time == '' && moeny == '' && remuneration != '') {
+				ishours = 0;
+			}
+			var workers = parseInt($api.text($api.dom('#count')));
+
+			var message = $api.getStorage('message');
+			var firstStepData = $api.getStorage('firstStepData');
+//			alert(message.lon+','+message.lat)
+//			alert($api.getStorage(CONFIG.KEY.LON)+','+$api.getStorage(CONFIG.KEY.LAT))
+			var values = {
+				id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+				token: $api.getStorage(CONFIG.KEY.TOKEN),
+				x: message.lon || $api.getStorage(CONFIG.KEY.LON),
+				y: message.lat || $api.getStorage(CONFIG.KEY.LAT),
+				//x:116.37156,
+				//y:39.981962,
+				title: firstStepData.title,
+				details: firstStepData.detail,
+				attachments: firstStepData.imgs,
+				level: firstStepData.score,
+				location: message.address,
+				workers: workers,
+				remuneration: remuneration,
+				remuneration1: moeny,
+				hourly: time,
+				ishours: ishours,
+				type: message.types,
+				duedate: message.types == 1 ? message.offDate : message.onDate,
+				country: message.county,
+				city: message.city,
+				province: message.province,
+				classid: classid,
+				ispublic: firstStepData.ispublic ==1 ?  firstStepData.ispublic : 0,
+				memberid: firstStepData.memberid,
+				postalcode:message.code
+			}
+//			alert(JSON.stringify(values,null,2))
+			var four = {
+				//标题
+				title: firstStepData.title,
+				//按人数结算
+				remuneration: remuneration,
+				//按小时结算
+				hcash: hcash,
+				//选择类型
+				mtype: mtype
+			}
+			ajax.get({
+				ctrl: 'post',
+				fn: 'PostAfavor',
+				data: {
+					values: values
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					 postSuccess();
+
+//					var thirdStepData = ct;
+//					$api.setStorage('thirdStepData', thirdStepData);
+					//获取任务id
+					api.sendEvent({
+						name: 'fid',
+						extra: {
+							afavorid: ct.afavorid,
+							exit: 2
+						}
+					});
+
+//					$api.setStorage('four', four);
+//					api.execScript({
+//						name: 'publish',
+//						script: 'swichPageIndex(3)'
+//					});
+//					console.log(values.x + '--' + values.y);
+				}
+			})
+
+		}
+		var everyOne = parseInt($api.text($api.dom('#everyOne')));
+		var hPrice = 0;
+
+		function calculation(type) {
+			/**
+			 * type = -1  减法
+			 * type = 1 加法
+			 * */
+			var workers = parseInt($api.text($api.dom('#count')));
+			if(workers >= 5 && type == 1 || workers <= 1 && type == -1) {
+				return;
+			}
+			var num = workers + type;
+			$api.text($api.dom('#count'), num);
+			if($api.val($api.dom('#cash')) > 0) {
+				if(num) {
+					price = remuneration / num;
+				} else {
+					remuneration = $api.val($api.dom('#cash'));
+					var nums = $api.text($api.dom('#count'));
+					price = remuneration / nums;
+
+				}
+				$api.text($api.dom('#everyOne'), price.toFixed(2));
+			}
+			if(($api.val($api.dom('#moeny')) > 0) && ($api.val($api.dom('#time')) > 0)) {
+				//每小时的金额
+				var moeny = $api.val($api.dom('#moeny'));
+				//小时
+				var time = $api.val($api.dom('#time'));
+				if(num) {
+					hPrice = moeny * time / num;
+				} else {
+					var nums = $api.text($api.dom('#count'));
+					hPrice = moeny * time / nums;
+				}
+				$api.text($api.dom('#everyOne'), hPrice.toFixed(2));
+			}
+		}
+	</script>
+
+</html>

@@ -1,0 +1,43 @@
+{
+	"citys": [{
+		"id": "247",
+		"city": "Atlanta",
+		"fr": "Atlanta",
+		"parentid": "246",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "248",
+		"city": "Augusta",
+		"fr": "Augusta",
+		"parentid": "246",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "249",
+		"city": "Columbus",
+		"fr": "Columbus",
+		"parentid": "246",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "250",
+		"city": "Savannah",
+		"fr": "Savannah",
+		"parentid": "246",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "251",
+		"city": "Athens",
+		"fr": "Athènes",
+		"parentid": "246",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}]
+}

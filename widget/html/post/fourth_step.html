@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布-第四步</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+		<style type="text/css">
+			body,
+			#main {
+				background: #FFFFFF;
+			}
+
+			.list {
+				margin-top: 20px;
+				border-bottom: 1px solid #EFEFEF;
+			}
+
+			.item,
+			.item-1,
+			.item-2 {
+				border-top: 1px solid #EFEFEF;
+				padding: 9px 16px;
+			}
+			.item-2 {
+				border-bottom: 1px solid #EFEFEF;
+			}
+			.item-1 {
+				border-bottom: 1px solid #EFEFEF;
+				margin: 35px 0;
+			}
+
+			.card {
+				background-image: url(../../image/post/card-1.png);
+				background-size: 20px 15px;
+			}
+
+			.add {
+				background-image: url(../../image/post/add.png);
+				background-size: 20px 20px;
+			}
+
+			.paypal {
+				background-image: url(../../image/post/paypal.png);
+				background-size: 20px 20px;
+			}
+
+			.apple {
+				background-image: url(../../image/post/apple-pay.png);
+				background-size:contain;
+				width: 23px;
+				height: 20px;
+				margin-right: 10px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			.data {
+				background-image: url(../../image/post/money.png);
+				background-size: 20px 15px;
+			}
+
+			.data,
+			.paypal,
+			.card,
+			.add {
+				width: 20px;
+				height: 20px;
+				margin-right: 10px;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+
+			.visa {
+				padding-right: 5px;
+			}
+
+			.text {
+				color: #8C8C8C;
+				font-size: 14px;
+			}
+
+			.right-tick {
+				background-size: 7px 14px;
+				background-image: url(../../image/post/grey-32.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 7px;
+				height: 14px;
+			}
+
+
+			.aradio {
+				width: 20px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 20px 20px;
+				background-image: url(../../image/post/round-done-button2.png);
+			}
+			.radio {
+				width: 20px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 20px 20px;
+				background-image: url(../../image/post/round-done-button-1.png);
+			}
+			span {
+				color: #60C2BA;
+			}
+			#footer{
+		      	padding:20px 18px 0px;
+		      	margin-bottom: 16px;
+		    }
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+			}
+			
+			@media (max-height:456px) and (max-width:360px){
+				/*华为 6p 有底部虚拟导航栏*/
+				#footer{
+					margin-bottom: 10px;
+				}
+			}	
+			@media (max-height:400px){
+				.sub{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap" >
+			<div id="main" >
+				<div class="list hidden">
+					<div class="flex-box item flex-h-ce" onclick="cRadio(this)" tapmode>
+						<div class="card"></div>
+						<div class="flex-1 text">xxxx xxxx xxxx 0908</div>
+						<div class="aradio"></div>
+					</div>
+					<div class="flex-box item flex-h-ce" onclick="cRadio(this)" tapmode>
+						<div class="card"></div>
+						<div class="flex-1 text">xxxx xxxx xxxx 4592</div>
+						<div class="aradio"></div>
+					</div>
+					<div class="flex-box item-2 flex-h-ce" onclick="addCard()" tapmode>
+						<div class="add"></div>
+						<div class="flex-1 text">Add New Credit Card</div>
+						<div class="right-tick"></div>
+					</div>
+					<div class="flex-box item-1 flex-h-ce">
+						<div class="paypal"></div>
+						<div class="flex-box flex-1  flex-h-ce " onclick="addPaypal()" tapmode>
+							<div class="flex-1 text">Pay With PayPal</div>
+							<div class="right-tick"></div>
+						</div>
+					</div>
+					<div class="flex-box item flex-h-ce" onclick="cRadio(this)" tapmode>
+						<div class="apple"></div>
+						<div class="flex-1 text">Apple Pay</div>
+						<div class="aradio"></div>
+					</div>
+					<div class="flex-box item flex-h-ce" onclick="cRadio(this)" tapmode>
+						<div class="data"></div>
+						<div class="flex-1 text">Pay from income balance -- <span>$1688</span></div>
+						<div class="aradio"></div>
+					</div>
+				</div>
+			</div>
+			<div id="footer" >
+				<div class="sub btn-afavor-1" lan="SUBMIT" onclick="sub()" tapmode="">SUBMIT</div>
+	    </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="list">
+			{{? it.credit instanceof Array && it.credit.length!=0}} {{~ it.credit: value:index}}
+			<div class="flex-box item flex-h-ce" onclick="cRadio(this,1)" tapmode>
+				<div class="card"></div>
+				<div class="flex-1 text">{{=value.number}}</div>
+				<div class="aradio" data-soucre="{{= value.cardid }}"></div>
+			</div>
+			{{~}} {{?}}
+			<div class="flex-box item-2 flex-h-ce" onclick="addCard()" tapmode>
+				<div class="add"></div>
+				<div class="flex-1 text" lan="AddNewCreditCard">Add New Credit Card</div>
+				<div class="right-tick"></div>
+			</div>
+			<div class="flex-box item-1 flex-h-ce" onclick="payPal()" tapmode>
+				<div class="paypal"></div>
+				<div class="flex-box flex-1  flex-h-ce ">
+					<div class="flex-1 text" lan="PayWithPayPal">Pay With PayPal</div>
+					<div class="right-tick"></div>
+				</div>
+			</div>
+			{{? api.systemType == 'ios'}}
+			<div class="flex-box item flex-h-ce" onclick="cRadio(this,3)" tapmode>
+				<div class="apple"></div>
+				<div class="flex-1 text" lan="ApplePay">Apple Pay</div>
+				<div class="aradio"></div>
+			</div>
+			{{?}}
+			<div class="flex-box item flex-h-ce" onclick="cRadio(this,4)" tapmode>
+				<div class="data"></div>
+				<div class="flex-1 text">
+					<span lan="Pay_from_income_balance" style="color: #8C8C8C;">Pay from income balance</span>
+					--
+					<span>{{=it.currency==1 ? 'C$' : '$'}} {{=it.balance}}</span>
+				</div>
+				<div class="aradio"></div>
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var credits = "",
+			four = "",
+			types = 0,
+			paymentid = 0,
+			editData='';
+		var _dom="";
+		var cardid ="";
+		var editType,
+    		repost=0;
+		apiready = function() {
+			editData=$api.getStorage('editData');
+			editType=api.pageParam.editType;
+			repost=api.pageParam.repost; //判断是否过期
+			credits = $api.getStorage('thirdStepData');
+			four = $api.getStorage('four');
+			if(editType==0){
+                if(repost==1){
+                	T.html('#main', 'main', editData);//任务终止重新发布的
+                }else{
+                	T.html('#main', 'main', editData);//任务编辑的
+                }
+			}else{
+				T.html('#main', 'main', credits);
+			}
+			L.init();
+			window.onresize = function(){
+//				Tool.toast(api.frameWidth + ':' + api.frameHeight);
+			};			
+		}
+		var initBodyHeight = document.body.clientHeight;//页面可视高度
+//			console.log(initBodyHeight)
+	    var keyBoardStatus = false;//键盘是否打开
+	    function getKeyBoardStatus(){
+	  		setTimeout(function(){
+	        if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false){
+	          keyBoardStatus = true;
+				$api.addCls($api.dom('#footer'), 'hidden');
+	          getKeyBoardStatus();
+	          return false;
+	        }
+	        if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true){
+	          keyBoardStatus = false;
+				$api.removeCls($api.dom('#footer'), 'hidden');
+	          getKeyBoardStatus();
+	          return false;
+	        }
+	        getKeyBoardStatus();
+	      },100);
+	    }
+//		$(function() {
+//	    	getKeyBoardStatus();
+//	    });
+		function cRadio(_this,type){
+			var item=$api.dom(_this, '.item .aradio');
+			var rad=$api.dom('.radio')
+			if(item){
+			   $api.addCls(item,'radio');
+               $api.removeCls(rad,'radio');
+			}
+			 types = type;
+		}
+		var	_ctrl;
+		function sub() { //信用卡支付
+			credits = $api.getStorage('thirdStepData');
+			editData=$api.getStorage('editData');
+			_dom = $api.dom('.item .radio');
+            cardid = $api.attr(_dom, 'data-soucre');
+            editType = api.pageParam.editType;
+            repost=api.pageParam.repost;
+            if(editType == 0 && repost!=1){
+              	_ctrl = 'Favor';
+            }else{
+            	_ctrl = 'post';
+            }
+            if(! _dom){
+            	Tool.toast('Please select one payment method.');
+            }
+//          alert(editData.afavorid+','+credits.afavorid)
+			if(types == 1 && _dom) {
+				ajax.get({
+					ctrl:_ctrl,
+					fn: 'creditPay',
+					hideLoading: true,
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							afavorid:editType == 0 ? editData.afavorid : credits.afavorid,
+							cardid: cardid,
+							money: ""
+						}
+					},
+					showProgress: true,
+					success: function() {
+						api.openFrame({
+							name: 'thank_you',
+							url: api.wgtRootDir + '/html/thank_you.html',
+							bounces: false,
+							pageParam: {},
+							softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+						});
+					},
+					_404: function(msg){
+						Tool.toast(msg);
+					}
+				});
+			} else if(types == 3 && _dom) { //苹果
+				applePay();
+			} else if(types == 4 && _dom) { //余额
+				if(editType==0 && repost!=1){
+					money=editData.money
+				}else{
+					money=' '
+				}
+				ajax.get({
+					ctrl:_ctrl,
+					fn: 'balancePay',
+					hideLoading: true,
+					showProgress: true,
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							afavorid:editType==0? editData.afavorid : credits.afavorid,
+							money: money
+						}
+					},
+					success: function() {
+						api.openFrame({
+							name: 'thank_you',
+							url: api.wgtRootDir + '/html/thank_you.html',
+							bounces: false,
+							pageParam: {},
+							softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+						});
+						api.execScript({
+							name: 'Init',
+							frameName: 'more',
+							script: 'init()'
+						});
+					},
+					_404: function(){
+						Tool.toast('Insufficient balance. Please select another payment method.');
+					}
+				})
+			}
+		}
+
+		//PayPal支付
+		function payPal() {
+			var paypal = api.require('paypal'),
+					four = $api.getStorage('four');	//支付参数
+
+			paypal.pay({
+				currency: credits.currency == 1 ? 'CAD' : 'USD',
+				price: four.mtype == 1 ? four.remuneration.toString() : four.hcash.toString(),
+				description: four.title,
+				mode: 'sandbox'
+			}, function(ret) {
+				if(ret.state == "success") {
+					paymentid = ret.response.id;
+					//支付成功，将支付信息同步到后台
+					pPal(paymentid);
+				}
+				    $api.removeCls($api.dom('.radio'),'radio');
+			});
+		}
+		//PayPal接口
+		function pPal(paymentid) {
+			ajax.get({
+				ctrl: 'post',
+				fn: 'paypal',
+				hideLoading: true,
+				showProgress: true,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						afavorid:editType==0 ? editData.afavorid : credits.afavorid,
+						paymentid: paymentid,
+						currency: credits.currency
+					}
+				},
+				success: function() {
+					api.openFrame({
+						name: 'thank_you',
+						url: api.wgtRootDir + '/html/thank_you.html',
+						bounces: false,
+						pageParam: {},
+						softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+					});
+				}
+			});
+		}
+		//苹果支付
+		function applePay() {
+			var stripePay = api.require('stripePay');
+			stripePay.deviceSupportsApplePay(function(ret) {
+				if(ret.status) {
+					stripePay.applePay({
+						country: credits.currency == 1 ? 'CA' : 'US',
+						currency: credits.currency == 1 ? 'CAD' : 'USD',
+						paymentItems: [{
+							label: four.title,
+							amount: four.mtype == 1 ? four.remuneration.toString() : four.hcash.toString(),
+						}]
+					}, function(ret, err) {
+						if(ret.eventType == 'didFinish'){
+							aPay(ret.token.tokenId);
+						}
+					});
+				} else {
+					Tool.toast('Apple pay is not supported');
+				}
+			});
+		}
+		//苹果接口
+		function aPay(paytoken) {
+			ajax.get({
+				ctrl: 'post',
+				fn: 'applePay',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						afavorid:editType==0 ? editData.afavorid : credits.afavorid,
+						paytoken: paytoken, //交易凭证
+					}
+				},
+				success: function() {
+					Tool.toast('Publish task success');
+					setTimeout(api.closeWin,500);
+				}
+			})
+		}
+
+		function addCard() {
+			api.openWin({
+				name: 'pay_picture',
+				url: api.wgtRootDir + '/html/window/pay_picture.html',
+				pageParam: {
+					frameName: 'paypal',
+					frameUrl: api.wgtRootDir + '/html/post/credit_card.html',
+					frameParam: {
+						favorId: $api.getStorage('thirdStepData').afavorid
+					},
+					headerTitle: 'Credit Card',
+				},
+				reload: true,
+				slidBackEnabled: false,
+			});
+		}
+	</script>
+
+</html>

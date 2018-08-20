@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>more-添加借记卡</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main {
+				padding: 10px 17px;
+			}
+
+			input[type="text"],
+			input[type="number"],
+			.sel {
+				outline: none;
+				resize: none;
+				border: 1px solid #CCCCCC;
+				border-radius: 25px;
+				color: #000000;
+				width: 100%;
+			}
+
+			.sel {
+				padding: 8px 0 10px 15px;
+				font-size: 12px;
+			}
+
+			input[type="text"],
+			input[type="number"] {
+				margin-bottom: 10px;
+				padding: 0 14px;
+				color: #000000;
+				font-size: 14px;
+			}
+
+			.text {
+				color: #858B8B;
+				font-size: 14px;
+				padding: 0 0px 5px 14px;
+			}
+			.card {
+				font-size: 12px;
+				color: #858B8B;
+				text-align: right;
+				padding: 6px 5px 0px 0;
+			}
+
+			.btn-card-close {
+				background-image: url(../../image/close.png);
+				background-size:50px 29px;
+			}
+
+			.btn-card-close,
+			.btn-card {
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 50px;
+				height: 29px;
+			}
+
+			.btn-card {
+				background-image: url(../../image/post/save.png);
+				background-size:50px 29px;
+			}
+            .foot{
+            	padding:0px 18px 0px;
+            	width:100%;
+            }
+			.save {
+				background-color: #32BBB1;
+				border-radius: 25px;
+ 				color: white;
+                text-align:center;
+				position: relative;
+				bottom: 16px;
+			}
+			.cirlce {
+				width:50px;
+				height:50px;
+				background-image: url(../../image/post/lock.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				margin: 0 auto;
+			}
+
+			.bom-t {
+				text-align: center;
+				color: #D7D8DA;
+				font-size: 12px;
+				padding-top: 10px;
+				width: 210px;
+				margin: 0 auto;
+			}
+
+			.list-view {
+				margin-top: 15px;
+			}
+			.context {
+				color: #000000;
+			}
+
+			/*样式调整2017-11-5*/
+			input[type="text"],
+			input[type="number"]{
+				padding: 13px 22px 13px;
+				font-size: 14px;
+				margin-bottom: 20px;
+			}
+			#main{
+				padding: 10px 18px;
+			}
+			.text{
+				padding-bottom: 9px;
+				padding-left: 22px;
+			}
+			/*华为按钮调整*/
+			@media (max-height:400px){
+				.save{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<!--<div class="list-view">
+					<span class="text" lan="TransitNumber">Transit Number</span>
+					<input type="number" name='nums' id="transitnumber" placeholder="Ex. 4589" />
+				</div>
+				<div class="list-view">
+					<span class="text" lan="InsititutionNumber">Insititution Number</span>
+					<input type="text" name='nums' id="institunumber" placeholder="Ex. 741" />
+				</div>
+				<div class="list-view">
+					<span class="text">Account Number</span>
+					<input type="text" name='nums' id="accountnumber" placeholder="Ex. 3569585" />
+				</div>
+
+				<div class="flex-box flex-h-ce" style="height: 30px;">
+					<div class="flex-1 card" lan="Save_card_details">Save Card Details</div>
+					<div class="btn-card " onclick="isSave(this)" tapmode=""></div>
+				</div>
+
+				<div class="copy " style="margin-top: 60px;">
+					<div class="cirlce"></div>
+					<div class="bom-t" style="margin-bottom: 50px;" lan="AddCreditCardTip">
+						Afavor will maintain the confidentiality
+						   of your information
+					</div>
+				</div>-->
+			</div>
+			<div class="foot" id="footer">
+				<div class="save btn-afavor-1" onclick="addAccount()" lan="ADD_DEBIT_ACCOUNT" tapmode>ADD DEBIT ACCOUNT</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="list-view">
+			<span class="text" lan="TransitNumber">Transit Number</span>
+			<input type="number" class="context" name='nums' placeholder="Ex. 45891" value="{{=it.debitcard.transitnumber || ''}}" />
+		</div>
+		<div class="list-view">
+			<span class="text" lan="InsititutionNumber">Insititution Number</span>
+			<input type="text" class="context" name='nums' placeholder="Ex. 741" value="{{=it.debitcard.institunumber || ''}}" />
+		</div>
+		<div class="list-view">
+			<span class="text" lan="AccountNumber">Account Number</span>
+			<input type="text" class="context" name='nums' placeholder="Ex. 3569585" value="{{=it.debitcard.accountnumber || ''}}" />
+		</div>
+
+		<div class="flex-box flex-h-ce" style="height: 30px;">
+			<div class="flex-1 card" lan="{{= api.pageParam._traNum ? 'Save_card_details' : 'SetAsDefaultDebitCart' }}" style="
+				{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					font-size: 14px;
+				{{?}}
+			">
+				Save Card Details
+			</div>
+			<div class="btn-card " onclick="isSaveCard(this)" tapmode=""></div>
+		</div>
+
+		<div class="copy" style="padding-bottom: 10px;
+			{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+				margin-top: 10px;
+			{{??}}
+				margin-top: 50px;
+			{{?}}
+			">
+			<div class="cirlce"></div>
+			<div class="bom-t" style="
+				{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					margin-bottom: 4px;
+				{{??}}
+					margin-bottom: 10px;
+				{{?}}
+				" lan="AddCreditCardTip">
+						Afavor will maintain the confidentiality <br />
+						   of your information
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var favorid = "";
+		apiready = function() {
+			init();
+			favorid = api.pageParam.favorid;
+		}
+
+		function init() {
+			var ct = {
+				debitcard: {
+					transitnumber: api.pageParam._traNum,
+					institunumber: api.pageParam._insNum,
+					accountnumber: api.pageParam._accNum,
+				}
+			}
+			T.html('#main', 'main', ct);
+			if(api.deviceModel == 'iPhone 5'){
+				$('.list-view').css({
+					'margin-top': '0'
+				});
+			}
+
+			L.init();
+		}
+		var isdefaults = 2,
+		    isSave=1;
+		//是否默认收款卡,1:否,2:是
+		function isSaveCard(_this) {
+			if($api.hasCls($api.dom('.btn-card'),'btn-card')){
+        		//关闭后仅做一次消费使用
+        		$api.addCls(_this, 'btn-card-close');
+				$api.removeCls(_this, 'btn-card');
+				isdefault=1;
+				isSave=0;
+			}else{
+				$api.addCls(_this, 'btn-card');
+				$api.removeCls(_this, 'btn-card-close');
+				isdefault=2;
+				isSave=1;
+			}
+//			var transitnumber = $api.val($api.dom('#transitnumber')),
+//				institunumber = $api.val($api.dom('#institunumber')),
+//				accountnumber = $api.val($api.dom('#accountnumber'));
+//			ajax.get({
+//				ctrl: 'more',
+//				fn: 'editPayments',
+//				data: {
+//					values: {
+//						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+//						token: $api.getStorage(CONFIG.KEY.TOKEN),
+//						type: 2,
+//						pid: pid,
+//						institunumber: institunumber,
+//						transitnumber: transitnumber,
+//						accountnumber: accountnumber,
+//						isdefault: isdefault
+//					}
+//				},
+//				showError: true,
+//				showProgress: true,
+//				hideLoading: true,
+//				success: function() {}
+//			});
+		}
+		//输入储蓄卡
+		function addAccount() {
+			var nums = $api.domAll('[name=nums]');
+			var _traNum = $api.val(nums[0]),
+				_insNum = $api.val(nums[1]),
+				_accNum = $api.val(nums[2]);
+			if(!_traNum) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!_insNum) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!_accNum) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+
+			var values = {
+				id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+				token: $api.getStorage(CONFIG.KEY.TOKEN),
+				type: 2,
+				institunumber: _insNum,
+				transitnumber: _traNum,
+				accountnumber: _accNum,
+				isdefault: isdefaults
+			}
+			ajax.get({
+				ctrl: 'more',
+				fn: 'addPayments',
+				data: {
+					values: values
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function() {
+//					Tool.toast('Added Successfully.');
+					api.execScript({
+						name: 'PaymentMethod',
+						frameName: 'favorites_helpers',
+						script: 'init()'
+					});
+					api.sendEvent({
+						name: 'account',
+						extra: {
+							traNum: _traNum,
+							insNum: _insNum,
+							accNum: _accNum,
+							isSave: isSave
+						}
+					});
+					api.alert({
+						msg: 'Your bank information can be found in the online banking system.'
+					}, function(ret){
+						api.closeWin();
+					});
+				}
+			});
+		}
+	</script>
+</html>

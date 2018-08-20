@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>筛选Win</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" href="../../../css/swiper.min.css" />
+		<link rel="stylesheet" href="../../../css/win.css" />
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="icon-cancel-circle" onclick="api.closeWin()" tapmode=""></span>
+					<span class="title">As a Helper</span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+
+		apiready = function() {
+			var header = $api.dom('#header');
+			$api.fixStatusBar(header);
+
+			Tool.openFrame({
+				frameName: api.pageParam.frameName,
+				frameUrl: api.pageParam.frameUrl
+			});
+		}
+	</script>
+
+</html>

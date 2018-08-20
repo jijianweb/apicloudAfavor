@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>隐私权政策 和 条款及条件</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style type="text/css">
+			#header{
+				padding: 20px 0;
+			}
+			#main{
+				padding: 0 10px;
+			}
+			
+			ul.second{
+				margin-top: 8px;
+			}
+			li.first{
+				margin-bottom: 20px;
+			}
+			li.second, li.third{
+				margin-top: 8px;
+			}
+			.num{
+				margin-right: 6px;
+			}
+			li.first > div:first-child div{
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header" class="text-center">
+				AFAVOR PRIVACY POLICY
+			</div>
+			<div id="main">
+				<ul class="first">
+					<li class="first">
+						<div class="flex-box">
+							<div class="num">2.</div>
+							<div class="content flex-1">
+								Personal information we collect 
+							</div>
+						</div>
+						<ul class="second">
+							<li class="second">
+								<div class="flex-box">
+									<div class="num">2.1.</div>
+									<div class="content flex-1">
+										We provide our website on a free access basis and you do not need to register to use and/or access However, we may require you to create a user account to access or use certain features of the site. To effect and manage your registration, we may ask you to provide personal information such as name, email, phone number, address, gender, photograph and/or date of birth. We collect the following information about you: When you submit personal information, you agree that we will handle your information in accordance with our privacy policy. 
+									</div>
+								</div>
+							</li>
+							
+							<li class="second">
+								<div class="flex-box">
+									<div class="num">2.2.</div>
+									<div class="content flex-1">
+										We collect the following types of personal information.
+									</div>
+								</div>
+								
+								<ul class="third">
+									<li class="third">
+										<div class="flex-box">
+											<div class="num">2.2.1.</div>
+											<div class="content flex-1">
+												Information you provide to us: 2.2.1.This is information that you provide to us when you register with the site or when you use our services. It includes but not limited to account registration information such and name, user name and contact information, credit card information, photograph, gender, date of birth as well as interests and preferences; information you provide to us via social media log-ins or other third party services.
+											</div>
+										</div>										
+									</li>
+								</ul>
+							</li>
+							
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+    <script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="../../script/privacy_policy.js" ></script>
+    <script type="text/template" template="main">
+    	<ul class="first">
+    	{{~it :value:index}}
+    		<li class="first">
+				<div class="flex-box">
+					<div class="num">{{= (index + 1) }}.</div>
+					<div class="content flex-1">
+						{{= value.content }}
+					</div>
+				</div>
+				
+				{{? value.child }}
+				<ul class="second">
+					{{~value.child :val:ind }}
+						<li class="second">
+							<div class="flex-box">
+								<div class="num">{{= (index + 1) }}.{{= (ind + 1) }}.</div>
+								<div class="content flex-1">
+									{{= val.content }}
+								</div>
+							</div>
+							
+							{{? val.child }}
+							<ul class="third">
+								{{~val.child :v:i}}
+									<li class="third">
+										<div class="flex-box">
+											<div class="num">{{= (index + 1) }}.{{= (ind + 1) }}.{{= (i + 1) }}.</div>
+											<div class="content flex-1">
+												{{= v.content }}
+											</div>
+										</div>										
+									</li>
+								{{~}}
+							</ul>	
+							{{?}}
+						</li>
+					{{~}}
+				</ul>	
+				{{?}}
+    		</li>
+    	{{~}}
+    	</ul>
+    </script>
+    <script type="text/template" template="main2">
+    	<div class="article">
+			{{=it.content}}
+		</div>
+    </script>
+	<script type="text/javascript">
+		
+		T.html('#main', 'main', PrivacyPolicy);
+		apiready = function(){
+			/*暂不需翻译*/
+//			T.html('#main', 'main', PrivacyPolicy);
+		}
+		function init(){
+			var type=api.pageParam.type;
+			ajax.get({
+					ctrl: 'more',
+					fn: 'TermsOrPolicies',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							type:type
+						}
+					},
+					success: function(ct) {
+							T.html('#main', 'main', ct);
+					}
+			});
+		}
+	</script>
+</html>

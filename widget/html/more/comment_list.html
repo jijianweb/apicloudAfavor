@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>评论列表(从个人主页进入发布者)</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.img_head {
+				width: 55px;
+				height: 55px;
+				background-image: url(../../image/inbox/photo-3.png);
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				margin-left: 15px;
+			}
+			
+			.content {
+				padding: 0 5px 0 10px;
+			}
+			
+			.img {
+				height: 17px;
+				margin-bottom: 6px;
+			}
+			
+			.text {
+				color: #a0a6a9;
+				font-size: 12px;
+			}
+			
+			.list-item {
+				border-bottom: 1px solid #E9E9E9;
+				padding: 10px 5px 10px 0;
+			}
+			
+			.referrals {
+				padding: 0px 10px 5px;
+				font-size: 14px;
+				color: #474747;
+			}
+			
+			span {
+				color: #33BAB0;
+			}
+			
+			.title {
+				font-size: 14px;
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: normal;
+				width:200px;
+				word-wrap:break-word;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+
+				<div class="list-item hidden">
+
+					<div class="referrals">askhbdkalsdnhaklsjnkcjabnskjnkajsbnd</div>
+					<div class="flex-box">
+						<div class="img_head" style="background-image: url(../../image/inbox/photo-3.png);"></div>
+						<div class="flex-1 flex-box-v content">
+							<div>
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+								<img src="../../image/star.png" class="img" />
+							</div>
+							<div class="flex-1">
+								<div class="title"><span>Assemble IKEAsofabed</span> and and removeAssemble IKEAsofabed and remove</div>
+							</div>
+							<div class="money" style="text-align: right;">
+								<div class="text">5 minutes ago</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script src="../../script/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/template" template="main">
+		{{? it.list instanceof Array && it.list.length!=0}} {{~ it.list:value:index}}
+		<div class="list-item" onclick="openPersonalDetail('{{=value.firstname}}','{{=value.lastname}}',{{=value.memberid}})" tapmode="">
+			<div class="referrals">{{=value.title}}</div>
+			<div class="flex-box">
+				<div class="img_head" style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+				<div class="flex-1 flex-box-v content">
+					<div>
+						{{for(var i=0;i
+						< 5;i++) { }} {{? i<value.star}} <img src="../../image/star.png" class="img" /> {{?}} {{ } }}
+					</div>
+					<div class="flex-1">
+						<div class="title"><span>{{=value.firstname}} {{=value.lastname}}:&nbsp;</span>"{{=value.message}}"</div>
+					</div>
+					<div class="money" style="text-align: right;">
+						<div class="text">{{=D.favors2(value.createdtime)}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{~}} {{??}} {{?}}
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			/*此页面不需要翻译*/
+			init();
+		}
+
+		function init() {
+			/*
+			$type,查看类型,1:自己的评价列表,2:其他人的评价列表
+			$otherid 其他人id
+			$style 视角类型,1:作为发布者视角,2:作为帮组者视角
+			 * */
+			var types = api.pageParam.type,
+				styles = api.pageParam.styles,
+				otherid = api.pageParam.otherid;
+			//			    alert(types+' -'+styles+"--"+ otherid)
+			ajax.get({
+				ctrl: 'more',
+				fn: 'getReviews',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: types,
+						style: styles,
+						otherid: otherid
+					}
+				},
+				showError: true,
+				success: function(ct) {
+					T.html('#main', 'main', ct);
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+			//下拉刷新
+			Refresh.init({
+				container: '#main',
+				ctrl: 'more',
+				fn: 'getReviews',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: types,
+					style: styles,
+					otherid: otherid
+				},
+				template: 'main',
+				success: function(ct) {
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'more',
+				fn: 'getReviews',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: types,
+					style: styles,
+					otherid: otherid
+				},
+				showError: true,
+			}, function(ct, page) {
+				$('div.img').slice((page - 1) * 10).lazyload({
+					effect: "fadeIn"
+				});
+			})
+
+		}
+		//打开发布者或帮助者的个人详情
+		function openPersonalDetail(firstname, lastname, memberid) {
+			var config = $api.getStorage(CONFIG.KEY.MEMBER_ID);
+//			alert('config:'+config)
+			if(memberid == config) {
+				Tool.openWin({
+					winName: 'PersonalPage',
+					winUrl: api.wgtRootDir + '/html/window/more/personal_page.html',
+					frameName: 'personal_page',
+					frameParam: {
+						firstname: firstname,
+						lastname: lastname
+					},
+					title: firstname + ' ' + lastname,
+					frameUrl: api.wgtRootDir + '/html/more/personal_page.html'
+				});
+			} else {
+				//打开其他人的个人主页
+				Tool.openWin({
+					winName: 'Personahelpe',
+					winUrl: api.wgtRootDir + '/html/window/win_back.html',
+					frameName: 'person_help',
+					frameParam: {
+						firstname: firstname,
+						lastname: lastname,
+						otherid: memberid
+					},
+					reload: true,
+					title: firstname + ' ' + lastname,
+					frameUrl: api.wgtRootDir + '/html/more/personage_help.html'
+				});
+			}
+		}
+	</script>
+
+</html>

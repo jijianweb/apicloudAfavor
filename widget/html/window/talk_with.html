@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>聊天详情-群聊</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+			}
+			#header{
+				background-color: #32BBB1;
+			}
+			.back,
+			.share {
+				background-repeat: no-repeat;
+				background-position: center;
+				display: inline-block;
+				position: absolute!important;
+			}
+
+			.cam {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 22px 17px;
+				display: inline-block;
+				top: 21px;
+				background-image: url(../../image/inbox/togeter-logo.png)
+			}
+
+			.title-1 {
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				/*word-break: break-all;*/
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				font-size: 14px;
+				margin-bottom: 5px;
+				margin-top: 8px;
+				margin-right: 10px;
+				min-height: 16px;
+			}
+
+			.text {
+				font-size: 12px;
+				color: #868686;
+				margin-top: 6px;
+				display: -webkit-box!important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				margin-top: -1px;
+			}
+
+			.helper {
+				font-size: 11px;
+				color: #868686;
+				display: -webkit-box!important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+			}
+
+			.num {
+				color: #3EBBB2;
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+
+			.img-1 {
+				width: 55px;
+				height: 55px;
+				background-color: #83D3D0;
+				border-radius: 50%;
+				border: 1px solid #CFEEEB;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-image: url(../../image/inbox/photo-3.png);
+				margin: 0 8px 0 -5px
+			}
+
+			.ic {
+				margin-right: 5px;
+			}
+
+			.img1{
+				height: 13px;
+			}
+
+			.money {
+				text-align: center;
+				min-width: 50px;
+			}
+
+			.task {
+				background-color: #F3F3F5;
+				padding: 17px 12px 14px 15px;
+				border-radius: 10px;
+				height:90px;
+				box-shadow: 0px 1px 5px rgba(0,0,0,0.2);
+			}
+
+			.distance {
+				font-size: 12px;
+				color: #868686;
+			}
+			.collect,
+			.cancel{
+				top: 0;
+				right: -5px;
+				width: 18px;
+				height: 16px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+				position: absolute;
+			}
+			.collect {
+				background-image: url(../../image/browse/heart-line.png);
+			}
+
+			.cancel {
+				background-image: url(../../image/browse/like-heart.png);
+			}
+
+			.task_box {
+				padding: 7px 10px;
+				/*height: 113px;*/
+			}
+
+			.re {
+				display: none;
+			}
+
+			.block {
+				display: block;
+			}
+			.price_box{
+				text-align: right;
+			}
+			.love{
+				position: relative;
+				text-align: right;
+				margin-top: 8px;
+				height: 20px;
+			}
+			.text2{
+				font-size: 12px;
+				color: #868686;
+			}
+			.more{
+			    width: 10px;
+				height: 0;
+				border-top: 10px solid #3CBBB0;
+				border-right: 5px solid transparent;
+				border-left: 5px solid transparent;
+
+			}
+			.close{
+				width: 0;
+			    height: 0;
+			    border-right: 5px solid transparent;
+			    border-bottom: 10px solid #3CBBB0;
+			    border-left: 5px solid transparent;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="closeWin()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="tit_icon cam hidden" onclick="opendetail()" tapmode=""></span>
+				</div>
+				<div class="task_box" style="background-color: #FFFFFF;">
+					<div class="task flex-box flex-h-ce visible-hidden">
+						<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+						<div class="content flex-1">
+							<div class="info flex-box-v">
+								<div class="title-1">
+									Assemble IKEA sofabed and remove cardboard.
+								</div>
+								<div class="flex-1 flex-box flex-v-ce">
+									<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+									<div class="flex-1 text">271 Veum Circles Suite 672</div>
+								</div>
+								<div class="helper">111</div>
+							</div>
+						</div>
+						<div class="price_box">
+							<div class="love">
+								<div class="collect "></div>
+							</div>
+							<div class="num flex-1 text-right">$214</div>
+							<div class="text2">3km away</div>
+						</div>
+						<div class="flex-box flex-center-center" style="height: 100%; margin-left: 6px; width: 15px;">
+							<div class="more" onclick="openMore()" tapmode=""></div>
+							<div class="close re" onclick="closeFrame()" tapmode=""></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div id="main">
+				<div class="null hidden">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js"></script>
+	<script type="text/javascript" src="../../script/rongCloud2.js"></script>
+	<script type="text/javascript" src="../../script/fs.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		{{? it instanceof Array && it.length != 0}} 
+			{{~it :value:index}}
+				{{? index == 0}}
+					<div class="task  flex-box flex-h-ce ">
+						<div class="img-1" style="background-image: url({{= Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});" tapmode="" onclick="openTheme()"></div>
+						<div class="content flex-1" tapmode="" onclick="openTheme()">
+							<div class="info flex-box-v flex-v-zhu">
+								<div class="title-1">
+									{{= value.title}}
+								</div>
+								<div class="flex-1 flex-box flex-h-ce address">
+									<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+									<div class="flex-1 text">
+										{{? value.location }}	
+											{{= value.location}}
+										{{??}}	
+											{{= LANGUAGE[$api.getStorage('lan')]['Online'] }}
+										{{?}}	
+									</div>
+								</div>
+								<div class="helper">
+									{{? value.comments == 0}} 
+										0 {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}  
+									{{?? value.comments == 1}} 
+										1 {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}  
+									{{??}} 
+										{{= value.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comments'] }} 
+									{{?}}
+									,
+									
+									{{? value.offers == 0}} 
+										0 {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }} 
+									{{?? value.offers == 1}} 
+										1 {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }} 
+									{{??}} 
+										{{= value.offers}} {{= LANGUAGE[$api.getStorage('lan')]['Offers'] }} 
+									{{?}}
+								</div>
+							</div>
+						</div>
+						<div class="price_box">
+							<div class="love">
+								<div class="collect {{= value.collection == 1 ? 'cancel' : ''}}" onclick="collection(this, {{= value.id }})" tapmode=""></div>
+							</div>
+							<div class="num flex-1 text-right" tapmode="" onclick="openTheme()">{{=value.default_currency == 'cad' ? 'C$' : '$'}}{{=value.total}}</div>
+							<div class="text2" tapmode="" onclick="openTheme()">{{= formatDistance(value.distance)}} away</div>
+						</div>
+						{{? it.length > 1}}
+							<div class="flex-box flex-center-center" onclick="openMore()" style="height: 100%; margin-left: 6px; width: 15px;" tapmode="">
+								<div class="more"></div>
+							</div>
+						{{?}}
+					</div>
+				{{?}}
+			{{~}}
+		{{??}}
+			<div class="task  flex-box flex-h-ce">
+				<div class="img-1" style="background-image: url({{= Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});" tapmode="" onclick="openTheme()"></div>
+				<div class="content flex-1" tapmode="" onclick="openTheme()">
+					<div class="info flex-box-v flex-v-zhu">
+						<div class="title-1">{{= it.title}}</div>
+						<div class="flex-1 flex-box flex-h-ce address">
+							<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+							<div class="flex-1 text">
+								{{? it.location }}	
+									{{= it.location}}
+								{{??}}	
+									{{= LANGUAGE[$api.getStorage('lan')]['Online'] }}
+								{{?}}
+							</div>
+						</div>
+						<div class="helper">
+							{{? it.comments == 0}} 
+								0 {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}  
+							{{?? it.comments == 1}} 
+								1 {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}  
+							{{??}} 
+								{{= it.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comments'] }}  
+							{{?}}
+							,
+							
+							{{? it.offers == 0}} 
+								0 {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }}  
+							{{?? it.offers == 1}} 
+								1 {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }}  
+							{{??}} 
+								{{= it.offers}} {{= LANGUAGE[$api.getStorage('lan')]['Offers'] }} 
+							{{?}}
+						</div>
+					</div>
+				</div>
+				<div class="price_box">
+					<div class="love">
+						<div class="collect {{= it.collection == 1 ? 'cancel' : ''}}" onclick="collection(this, {{= it.id }})" tapmode=""></div>
+					</div>
+					<div class="num flex-1" tapmode="" onclick="openTheme()">{{=it.default_currency == 'cad' ? 'C$' : '$'}}{{=it.total}}</div>
+					<div class="text2" tapmode="" onclick="openTheme()">{{= formatDistance(it.distance)}} away</div>
+				</div>
+			</div>
+		{{?}}
+	</script>
+	<script type="text/javascript">
+		var favorid = '';
+		var targetId = '';
+		var statue='',type= '',inboxtype= '';
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+		function opendetail(){
+			/*
+			 * 打开多人聊天成员列表
+			 */
+			api.openFrame({
+			    name: 'detail',
+			    type: 'movein',
+			    url: api.wgtRootDir + '/html/inbox/detail.html',
+			    rect: {
+			        x: 0,
+			        y: 0,
+			        w: 'auto',
+			        h: 'auto'
+			    },
+			    bounces: false,
+			});
+		}
+
+		function closeWin() {
+			var ctype = '';
+			var detail = $api.getStorage('detail');
+			if(api.pageParam.conversationType){
+				switch(api.pageParam.conversationType){
+					case 'GROUP':
+						ctype = 'GROUP';
+					break;
+					case 'PRIVATE':
+						ctype = 'PRIVATE';
+					break;
+				}
+			}else{
+				if (detail instanceof Array && detail.length != 0) {
+					ctype = detail[0].ongoingby.length == 1 ? 'PRIVATE' : 'GROUP';
+				}else{
+					ctype = detail.ongoingby.length == 1 ? 'PRIVATE' : 'GROUP';
+				}
+
+			}
+			
+			$api.rmStorage('isOpenTalkWithPage');
+			
+			$api.rmStorage('tid');
+			api.sendEvent({
+				name: 'clearMessagesUnreadStatus',
+				extra: {
+					targetId: api.pageParam.inboxtype == 1 ? api.pageParam.groupId : api.pageParam.targetId,
+					type: ctype
+				}
+			});
+			api.closeWin();
+//			//获取输入框的值
+//			UIChatBox.getValue(function(value) {
+//				api.sendEvent({
+//					name: 'setTextMessageDraft',
+//					extra: {
+//						targetId: api.pageParam.targetId,
+//						txt: value
+//					}
+//				});
+//			})
+		}
+		//获取任务信息
+		function getDetail(favorid, callback) {
+			ajax.get({
+				ctrl: 'Inbox',
+				fn: 'favorDetails',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						postid: api.pageParam.pid,
+						favorid: favorid,
+						memberid: api.pageParam.inboxtype == 1 ? api.pageParam.chatIds : targetId,
+						type: type,
+						inboxtype: inboxtype
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					T.html('.task_box', 'main', ct);
+//					alert(JSON.stringify(ct,null,2))
+					statue = ct.status;
+					$api.setStorage('detail',ct)
+					if(typeof callback == 'function') {
+						callback(ct);
+					}
+
+				}
+			});
+		}
+		function openMore() {
+			api.openFrame({
+			    name: 'more',
+			    type: 'movein',
+			    bgColor: 'rgba(0,0,0,0.3)',
+			    url: api.wgtRootDir + '/html/inbox/more.html',
+			    pageParam: {
+			    	inboxtype: api.pageParam.inboxtype
+			    },
+			    rect: {
+			        x: 0,
+			        y: 0,
+			        w: 'auto',
+			        h: 'auto'
+			    },
+			    bounces: false,
+			});
+		}
+		function closeFrame() {
+			api.closeFrame({
+				name: 'more'
+			});
+		}
+		
+		function refreshHeart(isCollected){
+			var collectDOM = $api.dom('.love .collect'),
+				ct1 = $api.getStorage('detail');
+
+			if(isCollected == 1){
+				$api.addCls(collectDOM, 'cancel');
+				ct1[0].collection = 1;
+			}else{
+				$api.removeCls(collectDOM, 'cancel');
+				ct1[0].collection = 0;
+			}
+			$api.setStorage('detail',ct1);
+		}
+		
+		function collection(_this, favorid){
+			/*
+			 * 任务 收藏/取消收藏
+			 */
+			
+			var isCollected = $api.hasCls(_this, 'cancel'),	//判断是否处于已收藏状态
+				fn = isCollected ? 'delCollection' : 'addCollection';
+			ajax.get({
+				ctrl: 'Browse',
+				fn: fn,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1,
+						favorid: favorid
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					var ct1 = $api.getStorage('detail');
+					if(fn == 'delCollection'){
+						//取消收藏
+						$api.removeCls(_this, 'cancel');
+						Tool.toast('Remove from Favorites.');
+						if(ct1 instanceof Array){
+							ct1[0].collection = 0;
+						}else{
+							ct1.collection = 0;
+						}
+						
+					}else{
+						//收藏
+						$api.addCls(_this, 'cancel');
+						Tool.toast('Add to Favorites.');
+						if(ct1 instanceof Array){
+							ct1[0].collection = 1;
+						}else{
+							ct1.collection = 1;
+						}
+					}
+					
+//					console.log(JSON.stringify(ct1),null,2);
+//					console.log(JSON.stringify(ct1[0].collection))
+					
+					$api.setStorage('detail',ct1);
+//					console.log(JSON.stringify($api.getStorage('detail')))
+				}
+			});
+		}
+	
+		var type = '',
+			WIN_HEIGHT;
+		apiready = function() {
+			/*暂不需翻译*/
+//			Debug.alt(JSON.stringify(api.pageParam,null,2))
+			console.log('talk_with页面参数：-----------' + JSON.stringify(api.pageParam,null,2));
+//			return; 
+
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+				
+			WIN_HEIGHT = api.winHeight;	
+			favorid = api.pageParam.favorid;
+			targetId = api.pageParam.targetId;
+			memberid = api.pageParam.targetId;
+			type =api.pageParam.type;	//当前用户身份,1:帮助者，2:发布者
+			inboxtype = api.pageParam.inboxtype;
+//			Debug.alt(api.pageParam.inboxtype)
+			$api.setStorage('tid',api.pageParam.targetId);
+//			console.log(JSON.stringify(api.pageParam,null,2))
+//			Debug.alt(JSON.stringify(winParam,null,2))
+
+			getDetail(favorid, function(ct) {
+				console.log(JSON.stringify(ct))
+				$api.text($api.dom('.title'), winParam.targetNickname || '对方');
+				var detail = $api.getStorage('detail');
+				L.init();
+//				alert(ct[0].postid);
+//				return;
+//				console.log(JSON.stringify(detail))
+
+//				if(detail.length > 1){
+//					//调整收藏icon
+//					$api.css($api.dom('.cancel'),'right: 55px');
+//					$api.css($api.dom('.collect'),'right: 55px');
+//				}
+				var url = '';
+				if(winParam.conversationType){
+					//从 inbox 列表进来该页面
+					switch(winParam.conversationType){
+						case 'GROUP':
+							url =  api.wgtRootDir + '/html/inbox/talk_with_more.html';
+							$api.removeCls($api.dom('.cam'),'hidden');
+						break;
+						case 'PRIVATE':
+							url = api.wgtRootDir + '/html/inbox/mathias_adam.html';
+							$api.addCls($api.dom('.cam'),'hidden');
+						break;
+					}
+				}else{
+					//从任务详情进入该页面
+					if(ct instanceof Array && ct[0].ongoingby.length == 1){
+						//单聊
+						url = api.wgtRootDir + '/html/inbox/mathias_adam.html';
+					}else{
+						//群聊
+						$api.removeCls($api.dom('.cam'),'hidden');
+						url = api.wgtRootDir + '/html/inbox/talk_with_more.html';
+					}
+				}
+
+				api.openFrame({
+					name: 'talk_with',
+					url: url,
+					bounces: true,
+					bgColor: '#fff',
+					pageParam: {
+						groupId: winParam.groupId || '',
+						chatIds: winParam.chatIds,
+						pid: winParam.pid,	//发布者id
+						pavatar: winParam.pavatar, //发布者头像
+//						pfirstname: winParam.pfirstname,
+//						plastname: winParam.plastname,
+						pname: winParam.pnmae,
+						mavatar: winParam.mavatar,
+						targetNickname: winParam.targetNickname,
+//						targetAvatar: winParam.targetAvatar,
+						targetId: winParam.targetId,
+						avatar: winParam.avatar,
+						favorid: winParam.favorid,
+						memberid: winParam.targetId,
+						type: winParam.type,
+						inboxtype: winParam.inboxtype
+					},
+					rect: {
+						x: 0,
+						y: headerPos.h ,
+						w: 'auto',
+						h: mainPos.h - 20
+					},
+					reload: true
+				});
+
+				//打开chatBox
+				UIChatBox.init({
+					talkFrame: 'talk_with'
+				});
+
+			})
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				closeWin();
+			});
+			//关闭键盘
+			api.addEventListener({
+				name: 'closeKey'
+			}, function(ret, err) {
+				var obj = api.require('UIChatBox');
+				obj.closeBoard();
+//				obj.closeKeyboard();
+			});
+
+		}
+	    function openTheme() {
+			if(api.systemType == 'android'){
+				api.showProgress({
+					title: '加载中...',
+					text: '请稍后...'
+				});
+			}	    	
+	    	setTimeout(function(){
+	    		api.openWin({
+					name: 'share_normal',
+					url: api.wgtRootDir + '/html/window/share_normal.html',
+					pageParam: {
+						frameName:'task_detail',
+						frameUrl: api.wgtRootDir + '/html/my_favors/my_task_detail.html',
+						frameParam: {
+	                         favorid:favorid,
+						},
+						headerTitle: 'Favor Detail',
+					},
+			    });
+			    api.hideProgress();
+	    	}, api.systemType == 'ios' ? 0 : 1000);
+				
+		}
+	</script>
+
+</html>

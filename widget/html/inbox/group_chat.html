@@ -1,0 +1,1959 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>聊天</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+				background-color: transparent;
+			}
+			
+			.header {
+				position: fixed;
+				top: 0px;
+				height: 118px;
+				z-index: 999;
+			}
+			
+			.title-1 {
+				font-size: 14px;
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+			}
+			
+			.text {
+				font-size: 12px;
+				color: #868686;
+				margin-top: 6px;
+				display: -webkit-box!important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+			}
+			
+			.helper {
+				font-size: 11px;
+				color: #868686;
+			}
+			
+			.num {
+				color: #3EBBB2;
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+			
+			.img-1 {
+				width: 55px;
+				height: 55px;
+				background-color: #83D3D0;
+				border-radius: 50%;
+				border: 1px solid #CFEEEB;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-image: url(../../image/inbox/photo-3.png);
+				margin: 0 8px 0 8px
+			}
+			
+			.ic {
+				width: 10px;
+				height: 13px;
+				background-image: url(../../image/inbox/favor-location-icon.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				margin-right: 5px;
+				margin-top: 5px;
+			}
+			
+			.money {
+				text-align: center;
+				margin-top: 5px;
+				padding: 0 10px 0 20px;
+			}
+			
+			.task {
+				background-color: #F3F3F5;
+				padding: 10px 5px 5px 5px;
+				border-radius: 10px;
+				margin: 7px 10px 0px 10px;
+			}
+			
+			.distance {
+				font-size: 12px;
+				color: #868686;
+			}
+			
+			.collect {
+				background-image: url(../../image/inbox/like-empty-heart.png);
+				width: 16px;
+				height: 15px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				position: relative;
+				margin-bottom: 15px;
+				top: 10px;
+				float: right;
+				background-color: #FFFFFF;
+			}
+			
+			#main {
+				margin-top: 20px;
+				padding: 10px 0;
+			}
+
+			body,
+			#main,
+			#main>.list-view,
+			.datetime {
+				background-color: #fff;
+			}
+			body,
+			#main {
+				padding: 10px 0;
+			}
+			
+			#main {
+				-webkit-box-flex: 1;
+				box-flex: 1;
+				-webkit-flex: 1;
+				flex: 1;
+				padding-bottom: 50px;
+				
+			}
+			
+			.datetime {
+				/*margin-top: 10px;*/
+			}
+			
+			.datetime>span {
+				padding: 3px 8px;
+				color: #fff;
+				background-color: #DFDFDF;
+				font-size: 12px;
+				border-radius: 4px;
+			}
+			
+			.list-view {
+				/*min-height: 80px;*/
+				position: relative;
+				padding: 10px;
+			}
+			
+			.list-view.other {}
+			
+			.me {
+				justify-content: flex-end;
+				-webkit-justify-content: flex-end;
+				-webkit-box-pack: end;
+			}
+			
+			.mesg {
+				letter-spacing: 1px;
+				max-width: 220px;
+				min-width: 30px;
+				position: relative;
+				height: 100%;
+				background-color: #E6E7E9;
+				padding: 8px 8px;
+				font-size: 14px;
+				line-height: 1.5;
+				border-radius: 5px;
+				word-break: break-word;
+			}
+			
+			.mesg {
+				margin-left: 12px;
+			}
+			
+			.me .mesg {
+				margin-right: 12px;
+				background-color: #31BAB0;
+				color: #FFFFFF;
+			}
+			
+			.mesg::before {
+				content: '';
+				display: inline-block;
+				position: absolute;
+				width: 0;
+				height: 0;
+				top: 10px;
+				border: solid #fff;
+				border-width: 4px 8px;
+			}
+			
+			.other .mesg::before {
+				left: -16px;
+				border-color: transparent #E6E7E9 transparent transparent;
+			}
+			
+			.me .mesg::before {
+				right: -16px;
+				border-color: transparent transparent transparent #31BAB0;
+			}
+			/*begin 语音消息*/
+			
+			.mesg.voice {
+				height: 40px;
+				width: 70px;
+			}
+			
+			.me .mesg.voice {
+				background-color: #B2E866;
+				justify-content: flex-end;
+				-webkit-justify-content: flex-end;
+				-webkit-box-pack: end;
+			}
+			
+			.me .mesg.voice::before {
+				border-color: transparent transparent transparent #B2E866;
+			}
+			
+			.voice-dur {
+				position: absolute;
+				bottom: 5px;
+				color: #999
+			}
+			
+			.me .voice-dur {
+				left: -25px;
+			}
+			
+			.other .voice-dur {
+				right: -25px;
+			}
+			/*未读红点*/
+			
+			.voice.new::after {
+				content: '';
+				position: absolute;
+				background-color: #E44240;
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				display: block;
+				top: 0;
+			}
+			
+			.other .voice.new::after {
+				right: -20px;
+			}
+			/*end 语音消息*/
+			
+			.img-frm,
+			.img {
+				background-color: #E9E9E9;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				background-image: url(../../image/circle/pic_bg.png);
+			}
+			
+			.list-view .img-frm {
+				height: 50px;
+				width: 50px;
+				border-radius: 50%;
+				border: 1px solid #ddd;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-image: url(../../image/circle/pic_bg.png);
+			}
+			
+			img.expression {
+				position: relative;
+				top: 6px;
+				/*left: -5px;*/
+				width: 25px;
+				height: 25px;
+			}
+			
+			.other .img-mesg-frm {
+				position: relative;
+				width: 90px;
+				height: 130px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				margin-left: 6px;
+				-webkit-clip-path: polygon( 85px 0, /*右上角起点*/
+				88px 1px, 90px 5px, /*右上角终点*/
+				90px 125px, /*右下角起点*/
+				88px 129px, 85px 130px, /*右下角终点*/
+				15px 130px, /*左下角起点*/
+				11px 128px, 10px 125px, /*左下角终点*/
+				10px 40px, /*箭头起点*/
+				1px 32px, 0px 30px, 1px 27px, 10px 20px, /*箭头终点*/
+				10px 5px, /*左上角起点*/
+				11px 2px, 15px 0/*左上角终点*/
+				);
+			}
+			
+			.other .img-mesg {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				width: 100%;
+				height: 100%;
+				background-image: url(../../image/circle/pic_bg.png);
+				-webkit-clip-path: polygon( 85px 1px, /*右上角起点*/
+				87px 2px, 89px 5px, /*右上角终点*/
+				89px 125px, /*右下角起点*/
+				87px 128px, 85px 129px, /*右下角终点*/
+				15px 129px, /*左下角起点*/
+				12px 127px, 11px 125px, /*左下角终点*/
+				11px 40px, /*箭头起点*/
+				2px 32px, 1px 30px, 2px 28px, 11px 21px, /*箭头终点*/
+				11px 5px, /*左上角起点*/
+				12px 3px, 15px 1px/*左上角终点*/
+				);
+			}
+			
+			.me .img-mesg-frm {
+				position: relative;
+				width: 90px;
+				height: 130px;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				margin-right: 6px;
+			}
+			
+			.img-mesg-frm {
+				width: 90px;
+				height: 130px;
+				background-image: url(../../image/circle/pic_bg.png);
+			}
+			
+			.me .img-mesg {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+				width: 100%;
+				height: 100%;
+				background-image: url(../../image/circle/pic_bg.png);
+				-webkit-clip-path: polygon( 74px 1px, /*右上角起点*/
+				77px 2px, 78px 5px, /*右上角终点*/
+				78px 21px, /*箭头起点*/
+				87px 28px, 89px 30px, 88px 32px, 78px 40px, /*箭头终点*/
+				78px 125px, /*右下角起点*/
+				77px 128px, 74px 129px, /*右下角终点*/
+				5px 129px, /*左下角起点*/
+				2px 128px, 1px 125px, /*左下角终点*/
+				1px 5px, /*左上角起点*/
+				2px 2px, 6px 1px/*左上角终点*/
+				);
+			}
+			
+			.img-mesg-status {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+			
+			.other .status {
+				color: #fff;
+				padding-left: 10px;
+			}
+			
+			.me .status {
+				color: #fff;
+				padding-right: 10px;
+			}
+			
+			.me .error {
+				color: red;
+				font-size: 20px;
+				position: relative;
+				right: 0;
+				top: 10px;
+				height: 25px;
+			}
+			
+			.me .img-err {
+				top: 55px;
+				right: 15px;
+			}
+			
+			.me .voice-err {
+				top: 10px;
+				right: 25px;
+			}
+			
+			.me .sending {
+				background-image: url(../../image/loading_more.gif);
+				background-size: cover;
+				background-position: center;
+				width: 15px;
+				height: 15px;
+				position: relative;
+				top: 10px;
+			}
+			
+			.me .voice-sending {
+				top: 10px;
+				right: 25px;
+			}
+			
+			.recall {
+				text-align: center;
+				padding-top: 10px;
+			}
+			
+			.recallMsg {
+				background-color: #DFDFDF;
+				padding: 3px;
+				border-radius: 5px;
+				-webkit-border-radius: 5px;
+				color: #fff;
+				font-size: 12px;
+			}
+			/*bubblemenu*/
+			
+			.tooltip {
+				position: absolute;
+				z-index: 1070;
+				font-size: 12px;
+				line-height: 1.42857143;
+			}
+			
+			.tooltip.top {
+				padding: 5px 0;
+				margin-top: -3px;
+			}
+			
+			.tooltip.top .tooltip-arrow {
+				bottom: 0;
+				left: 50%;
+				margin-left: -5px;
+				border-width: 5px 5px 0;
+				border-top-color: #000;
+			}
+			
+			.tooltip-arrow {
+				position: absolute;
+				width: 0;
+				height: 0;
+				border-color: transparent;
+				border-style: solid;
+			}
+			
+			.tooltip-inner {
+				color: #fff;
+				text-align: center;
+				background-color: #000;
+				border-radius: 5px;
+			}
+			
+			.tooltip-inner span {
+				padding: 6px 8px;
+				color: #fff;
+				font-size: 14px;
+				letter-spacing: 2px;
+				border-right: 1px solid #fff;
+			}
+			
+			.tooltip-inner span:last-child {
+				border-right: none;
+			}
+			
+			.line {
+				margin: 0 5px;
+				font-size: 15px;
+			}
+			
+			.tooltip.in {
+				filter: alpha(opacity=90);
+				opacity: 1;
+			}
+			
+			.fade {
+				opacity: 0;
+				-webkit-transition: opacity .15s linear;
+				-o-transition: opacity .15s linear;
+				transition: opacity .15s linear;
+			}
+			/* 礼物  */
+			
+			.gift_mesg .img_box {
+				width: 45px;
+				height: 45px;
+				border: 1px solid #4CC295;
+				border-radius: 3px;
+				margin-right: 5px;
+				background-color: #fff;
+			}
+			
+			.gift_mesg .img {
+				background-image: url(../../image/ring.png);
+				border-radius: 0;
+				width: 30px;
+				height: 30px;
+				margin: 3px;
+				background-size: contain;
+			}
+			
+			.me .gift_mesg,
+			.other .gift_mesg {
+				position: relative;
+				padding: 5px;
+				background-color: #FAFBD8;
+			}
+			
+			.me .gift_mesg.mesg::before {
+				border-color: transparent transparent transparent #FAFBD8;
+			}
+			
+			.other .gift_mesg.mesg::before {
+				border-color: transparent #FAFBD8 transparent transparent;
+			}
+			
+			.bd {
+				border: 1px dashed #EAE0A9;
+				border-radius: 3px;
+			}
+			
+			.byme {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 30px;
+				height: 30px;
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/chat_gift_byme.png);
+			}
+			
+			.title {
+				color: #D9677A;
+				padding-left: 25px;
+				border-bottom: 1px solid #EAE0A9;
+			}
+			
+			.contnet {
+				padding-top: 5px;
+				padding-left: 15px;
+				color: #4CC295;
+			}
+			
+			.gift_top {
+				padding: 5px;
+			}
+			
+			.gift_box {
+				margin-left: 2px;
+				width: 15px;
+				height: 15px;
+				background-image: url(../../image/chat_item_gift_icon.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			
+			.exp {
+				color: #D9677A;
+				margin: 5px 12px 0 12px;
+			}
+			
+			.stick {
+				width: 15px;
+				height: 15px;
+				background-image: url(../../image/chat_item_gift_stick.png);
+				background-size: cover;
+				background-repeat: no-repeat;
+				background-position: center;
+				margin-right: 5px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<!--<div id="header" class="header" style="background-color: #fff;">
+				<div class="task flex-box flex-h-ce">
+					<div class="img-1" tapmode="" onclick="openTheme()"></div>
+					<div class="flex-box-v flex-1" tapmode="" onclick="openTheme()">
+						<div class="title-1 text-left">Assemble IKEA sofabed and remove cardboard.</div>
+						<div class="se flex-box flex-v-ce" style="margin-top: 3px;">
+							<div class="ic"></div>
+							<div class="flex-1 text text-left">271 Veum Circles Suite 672</div>
+						</div>
+						<div class="helper">17 Comments, 8 Offers</div>
+					</div>
+					<div class="flex-box-v">
+						<div class="money">
+							<div class="collect"></div>
+							<div class="num" tapmode="" onclick="openTheme()">$214</div>
+							<div class="distance text-right" tapmode="" onclick="openTheme()">3km away</div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+			<div id="main">
+				<section class="hidden">
+					<div class="datetime text-center">
+						<span>
+							4月6日		10:40
+						</span>
+					</div>
+
+					<div class="recall">
+						<span class="recallMsg">
+							你撤回了一条消息
+						</span>
+					</div>
+
+					<div class="list-view flex-box other">
+						<div class="flex-box">
+							<div class="img-frm">
+								<div class="img" style="background-image: url(../../image/nv.jpg);"></div>
+							</div>
+							<div class="gift_wrap">
+								<div class="mesg gift_mesg">
+									<div class="bd flex-box flex-h-ce">
+										<div class="gift_top">
+											<div class="title flex-box flex-h-ce">收到礼物<em class="gift_box"></em></div>
+											<div class="contnet">收到一个小黄瓜</div>
+										</div>
+										<div class="img_box flex-box flex-h-ce flex-h-zhu">
+											<div class="img"></div>
+										</div>
+									</div>
+									<div class="byme"></div>
+								</div>
+								<div class="exp text-right">
+									<em class="stick"></em>你的经验值+10
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-view flex-box me">
+						<div class="flex-box">
+							<div class="gift_wrap">
+								<div class="mesg gift_mesg">
+									<div class="bd flex-box flex-h-ce">
+										<div class="gift_top">
+											<div class="title flex-box flex-h-ce">赠送礼物<em class="gift_box"></em></div>
+											<div class="contnet">送一个小黄瓜</div>
+										</div>
+										<div class="img_box flex-box flex-h-ce flex-h-zhu">
+											<div class="img"></div>
+										</div>
+									</div>
+									<div class="byme"></div>
+								</div>
+								<div class="exp text-right">
+									<em class="stick"></em>你的经验值+10
+								</div>
+							</div>
+							<div class="img-frm">
+								<div class="img" style="background-image: url(../../image/nv.jpg);"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-view flex-box other">
+						<div class="flex-box">
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+							<div class="mesg">
+								哈哈
+							</div>
+						</div>
+					</div>
+					<div class="list-view flex-box other">
+						<div class="flex-box">
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+							<div class="mesg">
+								<img class="expression" src="../../res/chatBox/emotion/Expression_1.png" width="25" height="25" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="list-view flex-box me">
+						<div class="flex-box">
+							<span class="sending"></span>
+							<span class="error hidden">!!</span>
+							<div class="mesg">
+								<img class="expression" src="../../res/chatBox/emotion/Expression_1.png" width="25" height="25" alt="" />
+							</div>
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+						</div>
+					</div>
+					<div class="list-view flex-box me">
+						<div class="flex-box">
+							<span class="sending"></span>
+							<span class="error hidden">!!</span>
+							<div class="mesg">
+								哇哇哇哇哇
+								<img class="expression" src="../../res/chatBox/emotion/Expression_1.png" width="25" height="25" alt="" />
+							</div>
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+						</div>
+					</div>
+					<div class="list-view flex-box me">
+						<div class="flex-box">
+							<span class="sending"></span>
+							<span class="error hidden">!!</span>
+							<div class="mesg">
+								.
+							</div>
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-view flex-box other">
+						<div class="flex-box">
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+							<div class="img-mesg-frm">
+								<div class="img-mesg">
+									<div class="img-mesg-status flex-box flex-h-zhu flex-h-ce">
+										<div class="status">
+											60%
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-view flex-box me">
+						<div class="flex-box">
+							<span class="error img-err ">!!</span>
+							<div class="img-mesg-frm">
+								<div class="img-mesg">
+									<div class="img-mesg-status flex-box flex-h-zhu flex-h-ce ">
+										<div class="status">
+											60%
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-view flex-box me">
+						<div class="flex-box">
+							<span class="sending voice-sending"></span>
+							<span class="error voice-err hidden">!!</span>
+							<div class="mesg voice flex-box flex-h-ce">
+								<svg class="init" width="17" height="18">
+									<path class="path1" d="M8 0 Q0 9 8 18" stroke="#6AA33A" fill="none" stroke-width="2">
+										<animate attributeName="visibility" begin='' repeatDur='6s' dur='1.5s' values="hidden;hidden;visible;"></animate>
+									</path>
+									<path class="path2" d="M12 4 Q7 9 12 14" stroke="#6AA33A" fill="none" stroke-width="2">
+										<animate attributeName="visibility" begin='' dur='1.5s' repeatDur='6s' values="hidden;visible;visible;"></animate>
+									</path>
+									<path d="M16 7 Q14 9 16 11.5" stroke="#6AA33A" fill="none" stroke-width="2"></path>
+								</svg>
+								<span class="voice-dur">
+									5''
+								</span>
+							</div>
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+						</div>
+					</div>
+
+					<div class="list-view flex-box other" onclick="testSvg(this)">
+						<div class="flex-box">
+							<div class="img-frm">
+								<div class="img"></div>
+							</div>
+							<div class="mesg voice flex-box flex-h-ce new">
+								<svg class="init" width="17" height="18">
+									<path d="M1 7 Q3 9 1 11.5" stroke="#888" fill="none" stroke-width="2"></path>
+									<path d="M5 4 Q10 9 5 14" stroke="#888" fill="none" stroke-width="2">
+										<animate attributeName="visibility" begin='' dur='1.5s' repeatDur='6s' values="hidden;visible;visible;"></animate>
+									</path>
+									<path d="M9 0 Q17 9 9 18" stroke="#888" fill="none" stroke-width="2">
+										<animate attributeName="visibility" begin='' repeatDur='6s' dur='1.5s' values="hidden;hidden;visible;"></animate>
+									</path>
+								</svg>
+								<span class="voice-dur">
+									5''
+								</span>
+							</div>
+						</div>
+					</div>
+				</section>
+
+			</div>
+		</div>
+	</body>
+	<!--发送文本消息-->
+	<script type="text/template" template="txt">
+		{{? it.senderUserId == it.targetId }}
+		<div class="list-view flex-box other">
+			<!--来自对方的消息-->
+			<div class="flex-box">
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+				<div class="mesg message" txt="{{= strToJson(it.content.extra).content }}" data-sentTime="{{= strToJson(it.content.extra).msgTime }}" data-messageId="{{= it.messageId }}">
+					{{= h(strToJson(it.content.extra).content) }}
+				</div>
+			</div>
+		</div>
+		{{??}}
+		<div class="list-view flex-box me">
+			<!--“我”发出的消息-->
+			<div class="flex-box">
+				<span class="sending {{= it.sentStatus == 'SENDING' ? '':'hidden'}}"></span>
+				<span class="error {{= it.sentStatus == 'FAILED' ? '':'hidden'}}" data-msg-type="txt" data-content="{{= it.content.text }}">!!</span>
+				<div class="mesg message text_mesg" txt="{{= strToJson(it.content.extra).content }}" data-sentStatus="{{= getSentStatus(it.sentStatus) }}" data-sentTime="{{= strToJson(it.extra||it.content.extra).msgTime }}" data-messageId="{{= it.messageId }}">
+					{{= h(strToJson(it.content.extra).content) }}
+				</div>
+				<div class="img-frm" onclick="openProfile({{= strToJson(it.content.extra).mid }})" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+			</div>
+		</div>
+		{{?}}
+	</script>
+	<!--发送图片消息-->
+	<script type="text/template" template="img">
+		{{? it.senderUserId && it.targetId && it.senderUserId == it.targetId }}
+		<div class="list-view flex-box other">
+			<div class="flex-box">
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+				<div class="img-mesg-frm">
+					<div class="img-mesg message" data-sentTime="{{= strToJson(it.extra||it.content.extra).msgTime }}" data-messageId="{{= it.messageId }}" path="{{= it.content.imageUrl }}" style="background-image: url({{= it.content.imageUrl || it.content.imagePath || it.content.thumbPath }});">
+						<span class="img_mesg"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{??}}
+		<div class="list-view flex-box me">
+			<div class="flex-box">
+				<span class="sending {{= it.sentStatus == 'SENDING' ? '':'hidden'}}"></span>
+				<span class="error img-err {{= it.sentStatus == 'FAILED' ? '':'hidden'}}" data-msg-type="img" data-content="{{= it.content.imageUrl || it.content.imagePath }}">!!</span>
+				<div class="img-mesg-frm" onclick="" tapmode="">
+					<div class="img-mesg message" data-sentStatus="{{= getSentStatus(it.sentStatus) }}" data-sentTime="{{= strToJson(it.extra||it.content.extra).msgTime }}" data-messageId="{{= it.messageId || 0 }}" path="{{= it.content.imageUrl || it.content.imagePath }}" style="background-image: url({{= it.content.imageUrl|| it.content.imagePath || it.content.thumbPath }});">
+						{{? !it.messageId }}
+						<div class="img-mesg-status flex-box flex-h-zhu flex-h-ce ">
+							<div class="status" sentTime="{{= strToJson(it.extra||it.content.extra).msgTime }}" data-messageId="{{= it.messageId || 0 }}">
+								0%
+							</div>
+						</div>
+						{{?}}
+					</div>
+				</div>
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+			</div>
+		</div>
+		{{?}}
+	</script>
+	<!--时间-->
+	<script type="text/template" template="datetime">
+		<div class="datetime text-center">
+			<span>
+				{{= D.t1(it.datetime, 1) }}
+			</span>
+		</div>
+	</script>
+	<!--语音-->
+	<script type="text/template" template="vc">
+		{{? it.senderUserId && it.targetId && it.senderUserId == it.targetId }}
+		<div class="list-view flex-box other">
+			<div class="flex-box">
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+				<div class="mesg message voice flex-box flex-h-ce {{= JSON.parse(it.extra||it.content.extra).isRead==0?'new':'' }}" extra='{{= it.extra||it.content.extra }}' data-sentTime="{{= JSON.parse(it.extra||it.content.extra).msgTime }}" data-messageId="{{= it.messageId }}" playing="false" voicePath="{{= it.content.voicePath }}" onclick="RongCloud2.playVoice(this)">
+					<svg class="init" width="17" height="18">
+						<path d="M1 7 Q3 9 1 11.5" stroke="#888" fill="none" stroke-width="2"></path>
+						<path d="M5 4 Q10 9 5 14" stroke="#888" fill="none" stroke-width="2">
+							<animate attributeName="visibility" begin='indefinite' dur='1.5s' repeatDur='{{= it.content.duration }}s' values="hidden;visible;visible;"></animate>
+						</path>
+						<path d="M9 0 Q17 9 9 18" stroke="#888" fill="none" stroke-width="2">
+							<animate attributeName="visibility" begin='indefinite' repeatDur='{{= it.content.duration }}s' dur='1.5s' values="hidden;hidden;visible;"></animate>
+						</path>
+					</svg>
+					<span class="voice-dur">
+							{{= it.content.duration }}''
+						</span>
+				</div>
+			</div>
+		</div>
+		{{??}}
+		<div class="list-view flex-box me">
+			<div class="flex-box">
+				<span class="sending voice-sending {{= it.sentStatus == 'SENDING' ? '':'hidden'}}"></span>
+				<span class="error voice-err {{= it.sentStatus == 'FAILED' ? '':'hidden'}}" data-msg-type="voice" data-content="{{= it.content.voicePath }}|{{= it.content.duration }}">!!</span>
+				<div class="mesg message voice flex-box flex-h-ce" data-sentStatus='{{= getSentStatus(it.sentStatus) }}' data-sentTime="{{= JSON.parse(it.extra||it.content.extra).msgTime }}" data-messageId="{{= it.messageId }}" playing="false" voicePath="{{= it.content.voicePath }}" onclick="RongCloud2.playVoice(this)">
+					<svg class="init" width="17" height="18">
+						<path class="path1" d="M8 0 Q0 9 8 18" stroke="#6AA33A" fill="none" stroke-width="2">
+							<animate attributeName="visibility" begin='indefinite' repeatDur='{{= it.content.duration }}s' dur='1.5s' values="hidden;hidden;visible;"></animate>
+						</path>
+						<path class="path2" d="M12 4 Q7 9 12 14" stroke="#6AA33A" fill="none" stroke-width="2">
+							<animate attributeName="visibility" begin='indefinite' dur='1.5s' repeatDur='{{= it.content.duration }}s' values="hidden;visible;visible;"></animate>
+						</path>
+						<path d="M16 7 Q14 9 16 11.5" stroke="#6AA33A" fill="none" stroke-width="2"></path>
+					</svg>
+					<span class="voice-dur">
+							{{= it.content.duration }}''
+						</span>
+				</div>
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+			</div>
+		</div>
+		{{?}}
+	</script>
+	<!--  礼物   -->
+	<script type="text/template" template="gift">
+		{{? it.senderUserId && it.targetId && it.senderUserId == it.targetId }}
+		<div class="list-view flex-box other">
+			<div class="flex-box">
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" data-sentTime="{{= strToJson(it.extra || it.content.extra).msgTime}}" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+				<div class="gift_wrap">
+					<div class="mesg message gift_mesg" data-messageId="{{=it.messageId || 0}}">
+						<div class="bd flex-box flex-h-ce">
+							<div class="gift_top">
+								<div class="title flex-box flex-h-ce">收到礼物<em class="gift_box"></em></div>
+								<div class="contnet">
+									{{? strToJson(it.content.extra).name}} 收到一个{{= strToJson(it.content.extra).name}} {{?}}
+								</div>
+							</div>
+							<div class="img_box flex-box flex-h-ce flex-h-zhu">
+								<div class="img" style="background-image: url({{= it.content.imageUrl|| it.content.imagePath || it.content.thumbPath}});"></div>
+							</div>
+						</div>
+						<div class="byme"></div>
+					</div>
+					<div class="exp text-right">
+						<em class="stick"></em>你的经验值+{{= strToJson(it.content.extra).exp}}
+					</div>
+				</div>
+			</div>
+		</div>
+		{{??}}
+		<div class="list-view flex-box me">
+			<div class="flex-box">
+				<span class="sending {{= it.sentStatus == 'SENDING' ? '':'hidden'}}"></span>
+				<span class="error {{= it.sentStatus == 'FAILED' ? '':'hidden'}}" data-msg-type="gift" data-content="{{= it.content.imagePath || it.content.thumbPath }}">!!</span>
+				<div class="gift_wrap">
+					<div class="mesg message gift_mesg" data-sentStatus="{{=getSentStatus(it.sentStatus)}}" data-sentTime="{{= strToJson(it.extra||it.content.extra).msgTime }}" data-messageId="{{=it.messageId || 0}}">
+						<div class="bd flex-box flex-h-ce" exp="{{= strToJson(it.content.extra).exp}}" name="{{= strToJson(it.content.extra).name}}">
+							<div class="gift_top">
+								<div class="title flex-box flex-h-ce">赠送礼物<em class="gift_box"></em></div>
+								<div class="contnet">
+									{{? strToJson(it.content.extra).name}} 送了一个{{= strToJson(it.content.extra).name}} {{?}}
+								</div>
+							</div>
+							<div class="img_box flex-box flex-h-ce flex-h-zhu">
+								<div class="img" sentTime="{{= strToJson(it.extra||it.content.extra).msgTime }}" style="background-image: url({{= it.content.imageUrl|| it.content.imagePath || it.content.thumbPath}});"></div>
+							</div>
+						</div>
+						<div class="byme"></div>
+					</div>
+					<div class="exp text-right">
+						<em class="stick"></em>你的经验值+{{= strToJson(it.content.extra).exp}}
+					</div>
+				</div>
+				<div class="img-frm" onclick="openProfile('{{= strToJson(it.content.extra).mid }}')" tapmode="">
+					<div class="img" style="background-image: url({{= Tool.imageCompressByQiNiu(strToJson(it.content.extra).mavatar,0,200,200)}});"></div>
+				</div>
+			</div>
+		</div>
+		{{?}}
+	</script>
+	<!--发送图片进度遮罩-->
+	<script type="text/template" template="pr">
+		<div class="img-mesg-status flex-box flex-h-zhu flex-h-ce ">
+			<div class="status" sentTime="{{= it }}">
+				0%
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/rongCloud2.js"></script>
+	<script type="text/javascript" src="../../script/UIChatBox.js"></script>
+	<script type="text/javascript" src="../../script/fs.js"></script>
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js"></script>
+
+	<script type="text/javascript">
+		function strToJson(value) {
+			var str = JSON.parse(value);
+			return str;
+		}
+
+		/*表情转义处理*/
+		function h(str) {
+			if(str) {
+				var regx = /(\&[l,g]t;)|(api.wgtRootDir)/gm,
+					_html = str.replace(regx, function(match) {
+						console.log(match)
+						switch(match) {
+							case '&lt;':
+								return '<';
+							case '&gt;':
+								return '>';
+							case 'api.wgtRootDir':
+								return '../..';
+						}
+					});
+				return _html;
+			} else {
+				return '';
+			}
+		}
+		/*聊天记录滚动底部*/
+		function scrollToBottom() {
+			setTimeout(function() {
+				window.scrollTo(0, $api.dom('body').scrollHeight)
+			}, 100);
+		}
+
+		//获取发送状态
+		function getSentStatus(status) {
+			var st = '';
+			switch(status) {
+				case 'FAILED':
+					st = 'error';
+					break;
+				case 'SENT':
+					st = 'success';
+					break;
+				default:
+					st = 'ready';
+					break;
+			}
+			return st;
+		}
+		//获取语音聊天时长
+		function getHoldingTime(time) {
+			var h = '00',
+				m = '00',
+				s = '00';
+			if(time / 1000 % 60 < 10) {
+				s = '0' + parseInt(time / 1000 % 60);
+			} else {
+				s = parseInt(time / 1000 % 60);
+			}
+			if(time / 1000 / 60 % 60 < 10) {
+				m = '0' + parseInt(time / 1000 / 60 % 60);
+			} else {
+				m = parseInt(time / 1000 / 60 % 60);
+			}
+			if(time / 1000 / 60 / 60 % 24 < 10) {
+				h = '0' + parseInt(time / 1000 / 60 / 60 % 60);
+			} else {
+				h = parseInt(time / 1000 / 60 / 60 % 60);
+			}
+			if(time / 1000 < 60) {
+				return m + ':' + s;
+			} else if(time / 1000 / 60 / 60 < 24) {
+				return h + ':' + m + ':' + s;
+			} else {
+				return parseInt(time / 1000 / 60 / 60 / 24) + '天 ' + h + ':' + m + ':' + s;
+			}
+		}
+		//删除消息
+		function deleteMessages(e, messageId) {
+			RongCloud2.deleteMessages({
+				messageIds: [parseInt(messageId)],
+				success: function() {
+					var dateTimeDoms = $api.domAll('.datetime'),
+						listViewDoms = $api.domAll('.list-view');
+					if(dateTimeDoms.length > 1) {
+						if($api.hasCls(e.target.previousSibling, 'datetime') && $api.hasCls(e.target.nextSibling, 'datetime')) {
+							$api.remove(e.target.previousSibling);
+						}
+					} else {
+						if(listViewDoms.length === 1) {
+							if($api.hasCls(e.target.previousSibling, 'datetime')) {
+								$api.remove(e.target.previousSibling);
+							}
+						}
+					}
+					$api.remove(e.target);
+				}
+			});
+		}
+		//复制文本
+		function clipBoard(_text) {
+			UIChatBox.getImgsText(_text, function(textTransed) {
+				var clipBoard = api.require('clipBoard');
+				clipBoard.set({
+	    		value: textTransed
+				},function(ret, err) {
+			    if(ret.status){
+			    	Tool.toast('复制成功~');
+			    }else{
+		        api.toast({
+							msg: err.msg
+						});
+			    }
+				});												
+			});
+		}
+		//点击查看大图
+		function Bigpicture(e, param) {
+			var photoBrowser = api.require('photoBrowser');
+			var messageId = $api.attr($api.dom(e.target, '.img-mesg'), 'data-messageId'),
+				imgAllDom = $api.domAll('.img-mesg'),
+				images = [],
+				activeIndex = 0;
+			//			if($api.dom('.list-view:last-of-type .message')){
+			var oldid = $api.attr($api.dom('.list-view:last-of-type .message'), 'data-messageId');
+			//			}
+			var args = {
+				targetId: param.targetId,
+				objectName: 'RC:ImgMsg',
+				oldestMessageId: -1,
+				count: parseInt(oldid)
+			};
+			api.showProgress();
+			RongCloud2.getHistoryMessagesByObjectName(args, function(result) {
+				if(result.length > 1) {
+					var result = result.reverse();
+				}
+				var newArr = [];
+				for(var i = 0; i < result.length; i++) {
+					if(!JSON.parse(result[i].content.extra).type) {
+						newArr.push(result[i]);
+					}
+				}
+				for(var i = 0; i < newArr.length; i++) {
+					if(!JSON.parse(newArr[i].content.extra).type) {
+
+						images.push(newArr[i].content.imageUrl);
+						if(messageId == newArr[i].messageId) {
+							activeIndex = i;
+						}
+					}
+				}
+				if(images.length != 0) {
+					api.hideProgress();
+					photoBrowser.open({
+						images: images,
+						activeIndex: activeIndex,
+						placeholderImg: 'widget://image/circle/pic_bg.png',
+						bgColor: 'rgba(0,0,0,0.8)'
+					}, function(ret, err) {
+						if(ret.eventType == 'click') {
+							photoBrowser.close();
+						}
+						if(ret.eventType == 'longPress') {
+							photoBrowser.getImage({
+								index: ret.index
+							}, function(ret, err) {
+								Tool.actionSheet({
+									buttons: ['保存到相册'],
+									success: function(bid) {
+										if(bid == 1) {
+											api.saveMediaToAlbum({
+												path: ret.path
+											}, function(r, e) {
+												if(r && r.status == true) {
+													Tool.toast('保存成功~');
+												}
+											});
+										}
+									}
+								});
+							});
+						}
+					});
+				}
+			});
+		}
+		//图片浏览
+		function openPhotoBrowser(e) {
+			var messageId = $api.attr($api.dom(e.target, '.img-mesg'), 'data-messageId'),
+				imgAllDom = $api.domAll('.img-mesg'),
+				images = [],
+				activeIndex = 0;
+			for(var i = 0; i < imgAllDom.length; i++) {
+				images.push($api.attr(imgAllDom[i], 'path'));
+				if(messageId == $api.attr(imgAllDom[i], 'data-messageId')) {
+					activeIndex = i;
+				}
+			}
+			//console.log(JSON.stringify(images))
+			Tool.openPhotoBrowser({
+				images: images,
+				activeIndex: activeIndex,
+				show: function(photoBrowser, btnIndex) {},
+				change: function(photoBrowser, btnIndex) {},
+				click: function(photoBrowser, btnIndex) {
+					photoBrowser.close();
+				},
+				loadImgSuccess: function(photoBrowser, btnIndex) {},
+				longPress: function(photoBrowser, btnIndex) {
+					Debug.alt('长按图片')
+				}
+			});
+		}
+		//撤回消息
+//		function recall(e, args) {
+//			RongCloud2.sendCommandMessage({
+//				targetId: args.targetId,
+//				name: 'recallMsg',
+//				data: '{\"msgTime\": "' + args.msgTime + '",\"type\": "recallMsg"}',
+//				success: function(ret) {
+//					RongCloud2.setMessageExtra({
+//						messageId: args.messageId,
+//						value: '{\"msgTime\": "' + args.msgTime + '",\"type\": "recallMsg"}',
+//						success: function(ret) {
+//							$api.after(e.target, doT.template($api.html($api.dom('[template=rc]')))(args));
+//							api.parseTapmode();
+//							//							T.append('#main', 'rc', args);
+//							$api.remove(e.target);
+//						}
+//					});
+//				}
+//			});
+//		}
+		//发送拍照 图片
+		function sendImage(param, ret) {
+			RongCloud2.sendImageMessage({
+				targetId: param.targetId,
+				file: ret.value.message,
+				prepare: function(ret, args) {
+					var message = ret.result.message,
+						messageId = message.messageId,
+						statusDom = $api.dom('[sentTime="' + args.sentTime + '"]'),
+						messageDom = $api.closest(statusDom, '.message');
+					$api.attr(messageDom, 'data-messageId', messageId);
+				},
+				progress: function(ret, args) {
+					$api.text($api.dom('[sentTime="' + args.sentTime + '"]'), ret.result.progress + '%');
+				},
+				success: function(ret, args) {
+					//					api.sendEvent({
+					//						name: 'setTop',
+					//						extra: {
+					//							targetId: param.username
+					//						}
+					//					});
+					var statusDom = $api.dom('[sentTime="' + args.sentTime + '"]').parentElement;
+					$api.remove(statusDom);
+				},
+				error: function(ret, err, args) {
+					Debug.alt('send image error');
+				}
+			});
+		}
+		//重发消息
+		function repeat(e, param, memberInfo) {
+			var	listDom = $api.closest(e.target, '.me'),
+					msgDom = $api.dom(e.target, '.message'),
+					errDom = $api.dom(listDom, '.error'),
+					sendDom = $api.dom(listDom, '.sending'),
+					type = $api.attr(errDom, 'data-msg-type'),
+					messageId = $api.attr(msgDom, 'data-messageId'),
+					sentTime = $api.attr(msgDom, 'data-sentTime'),
+					content = $api.attr(errDom, 'data-content'),
+					msg_content = $api.attr(msgDom,'txt');
+			if($api.dom(msgDom,'.bd')){
+				var gift_exp = $api.attr($api.dom(msgDom,'.bd'),'exp'),
+						gift_name = $api.attr($api.dom(msgDom,'.bd'),'name');
+			}
+			var extra = new Object();
+			extra['nickname'] = param.nickname;
+			extra['avatar'] = param.avatar;
+			extra['msgTime'] = new Date().getTime();
+			extra['mname'] = memberInfo.nickname;
+			extra['mavatar'] = memberInfo.avatar;
+			extra['mid'] = $api.strToJson(memberInfo.id);
+			extra['memberid'] = param.memberid;
+			extra['exp'] = gift_exp;
+			extra['name'] = gift_name;
+			RongCloud2.deleteMessages({
+				messageIds: [parseInt(messageId)],
+				success: function(){
+					switch(type){
+						case 'txt':
+							extra['content'] = msg_content;
+							RongCloud2.sendTextMessage({
+								targetId: param.targetId,
+								text: content,
+								extra: JSON.stringify(extra),
+								prepare: function(ret){
+									var text_mesg = $api.dom('#main > .list-view:last-of-type .text_mesg'),
+									msgId = $api.attr(text_mesg,'data-messageId');
+									var message = ret.result.message;
+									if(messageId != msgId){
+										$api.remove(e.target);
+										T.append('#main','txt',ret.result.message);
+									}else{
+										$api.attr(msgDom, 'data-messageId', message.messageId);	
+										$api.addCls(errDom, 'hidden');
+										$api.removeCls(sendDom, 'hidden');
+									}
+								},
+								success: function(ret){
+//									api.sendEvent({
+//										name: 'setTop',
+//										extra: {
+//											targetId: param.username
+//										}
+//									});
+									scrollToBottom();
+								},
+								error: function(ret){
+//									api.sendEvent({
+//										name: 'setTop',
+//										extra: {
+//											targetId: param.username
+//										}
+//									});
+									scrollToBottom();
+								}
+							});
+						break;
+						case 'img':
+							sentTime = new Date().getTime();
+							extra['msgTime'] = sentTime;
+							var _file = {
+								content: {
+									imagePath: content,
+									extra: JSON.stringify(extra)
+								},
+								sentTime: sentTime
+							};
+							RongCloud2.sendImageMessage({
+								targetId: param.username,
+								file: _file,
+								prepare:function(ret,args){
+									var text_mesg = $api.dom('#main > .list-view:last-of-type .img-mesg'),
+									msgId = $api.attr(text_mesg,'data-messageId');
+									var message = ret.result.message;
+									
+									if(messageId != msgId){
+										$api.remove(e.target);
+										T.append('#main','img',message);
+										scrollToBottom();
+										var img_mesg = $api.dom('#main > .list-view:last-of-type .img-mesg');
+										$api.html(img_mesg, doT.template($api.html($api.dom('[template=pr]')))(sentTime||''));
+										try{api.parseTapmode();}catch(e){}
+									}else{
+										$api.addCls(errDom, 'hidden');
+										$api.attr(msgDom, 'data-messageId', message.messageId);
+										$api.attr(msgDom, 'data-sentTime', sentTime);
+										$api.html(msgDom, doT.template($api.html($api.dom('[template=pr]')))(sentTime||''));
+										try{api.parseTapmode();}catch(e){}
+									}
+								},
+								progress:function(ret,args){
+									$api.text($api.dom('[sentTime="' + sentTime + '"]'), ret.result.progress + '%');
+								},
+								success:function(ret,args){
+//									api.sendEvent({
+//										name: 'setTop',
+//										extra: {
+//											targetId: param.username
+//										}
+//									});
+									var statusDom = $api.dom('[sentTime="' + sentTime + '"]').parentElement;
+									$api.remove(statusDom);
+								},
+								error: function(ret, err, args){
+									Debug.alt('send image error');
+								}
+							});
+							break;
+						case 'gift':
+							extra['msgTime'] = sentTime;
+							extra['type'] = type;
+							var _file = {
+								content: {
+									imagePath: content,
+									extra: JSON.stringify(extra)
+								},
+								sentTime: sentTime
+							};
+							RongCloud2.sendImageMessage({
+								targetId: param.username,
+								file: _file,
+								prepare: function(ret, args){
+									var text_mesg = $api.dom('#main > .list-view:last-of-type .gift_mesg'),
+									msgId = $api.attr(text_mesg,'data-messageId');
+									var message = ret.result.message;
+									if(messageId != msgId){
+										$api.remove(e.target);
+										T.append('#main','gift',message);
+										scrollToBottom();
+									}else{
+										$api.addCls(errDom, 'hidden');
+										$api.attr(msgDom, 'data-messageId', message.messageId);
+										$api.attr(msgDom, 'data-sentTime', sentTime);
+									}
+								},
+								success:function(ret, args){
+//									api.sendEvent({
+//										name: 'setTop',
+//										extra: {
+//											targetId: param.username
+//										}
+//									});
+								},
+								error: function(ret, err, args){
+									Debug.alt('send image error');
+								}
+							})
+							
+						break;
+						case 'voice':
+							var voicePath = content.split('|')[0],
+									duration = content.split('|')[1];
+							extra['isRead'] = 0;
+							RongCloud2.sendVoiceMessage({
+								targetId: param.username,
+								voicePath: voicePath,
+								duration: duration,
+								extra: JSON.stringify(extra),
+								prepare: function(ret){
+									var text_mesg = $api.dom('#main > .list-view:last-of-type .voice'),
+									msgId = $api.attr(text_mesg,'data-messageId');
+									var message = ret.result.message;
+									if(messageId != msgId){
+										$api.remove(e.target);
+										T.append('#main','vc',message);
+										scrollToBottom();
+									}else{
+										$api.attr(msgDom, 'data-messageId', message.messageId);	
+										$api.addCls(errDom, 'hidden');
+										$api.removeCls(sendDom, 'hidden');
+									}
+								},
+								success: function(ret){
+//									api.sendEvent({
+//										name: 'setTop',
+//										extra: {
+//											targetId: param.username
+//										}
+//									});
+									scrollToBottom();
+								},
+								error: function(ret){
+									Debug.alt('send voice error');
+								}
+							});
+						break;
+					}
+				}
+			});
+		}
+		
+		function bindEvent() {
+			/*注册事件，用于消息复制*/
+			touch.on('.mesg', 'hold', function(evt) {
+				var currentTarget = evt.currentTarget,
+					_html = $api.html(currentTarget);
+				Tool.actionSheet({
+					buttons: ['复制消息'],
+					success: function(ret) {
+						switch(ret) {
+							case 1:
+								var imgs = $api.domAll(currentTarget, 'img'),
+									txt = '';
+								if(imgs.length === 0) {
+									txt = currentTarget.textContent;
+								} else {
+									txt = _html.replace(/\<(.*?)\>/gm, function(match) {
+										var emotionArr = match.match(/Expression_\d{1,2}/);
+										return emotionData[emotionArr[0]];
+									});
+								}
+								ClipBoard.set({
+									value: txt
+								});
+								break;
+						}
+					}
+				});
+			});
+		}
+		//发送 相册 图片
+		function sendPic(param, ret) {
+			RongCloud2.sendImageMessage({
+				targetId: param.targetId,
+				files: ret.value.message,
+				prepare: function(ret, args) {
+					if(args && !$api.dom('[data-sentTime="' + args.sentTime + '"]')) {
+						RongCloud2.deleteMessages({
+							messageIds: [parseInt(ret.result.message.messageId)],
+							success: function() {}
+						});
+						return;
+					};
+					var message = ret.result.message,
+						messageId = message.messageId,
+						statusDom = $api.dom('[sentTime="' + args.sentTime + '"]'),
+						messageDom = $api.closest(statusDom, '.message');
+					$api.attr(messageDom, 'data-messageId', messageId);
+				},
+				progress: function(ret, args) {
+					if(args && !$api.dom('[data-sentTime="' + args.sentTime + '"]')) {
+						RongCloud2.deleteMessages({
+							messageIds: [parseInt(ret.result.message.messageId)],
+							success: function() {}
+						});
+						return;
+					};
+					$api.text($api.dom('[sentTime="' + args.sentTime + '"]'), ret.result.progress + '%');
+				},
+				success: function(ret, args) {
+					//					api.sendEvent({
+					//						name: 'setTop',
+					//						extra: {
+					//							targetId: param.username
+					//						}
+					//					});
+					if(args && !$api.dom('[data-sentTime="' + args.sentTime + '"]')) {
+						RongCloud2.deleteMessages({
+							messageIds: [parseInt(ret.result.message.messageId)],
+							success: function() {}
+						});
+						return;
+					};
+					var statusDom = $api.dom('[sentTime="' + args.sentTime + '"]').parentElement;
+					$api.remove(statusDom);
+
+				},
+				error: function(ret, err, args) {
+					Debug.alt('send image error');
+				}
+			});
+		}
+		//发送文本消息
+		function sendText(param, ret, extra) {
+			extra['content'] = ret.value.msg;
+			RongCloud2.sendTextMessage({
+				targetId: param.targetId,
+				text: ret.value.content,
+				extra: JSON.stringify(extra),
+				prepare: function(ret) {
+					T.append('#main', 'txt', ret.result.message);
+				},
+				success: function(ret) {
+					scrollToBottom();
+					//					api.sendEvent({
+					//						name: 'setTop',
+					//						extra: {
+					//							targetId: param.username
+					//						}
+					//					});
+				},
+				error: function(ret) {
+					scrollToBottom();
+					//					api.sendEvent({
+					//						name: 'setTop',
+					//						extra: {
+					//							targetId: param.username
+					//						}
+					//					});
+				}
+			});
+		}
+		apiready = function() {
+			var param = api.pageParam,
+				RongCloudToken = $api.getStorage('RongCloudToken');
+			var memberInfo = $api.getStorage(CONFIG.KEY.MEMBER_INFO);
+			console.log(999)
+			console.log(JSON.stringify(param, null, 2))
+			//清空#main内的html代码
+			$api.html($api.dom('#main'), '');
+
+			//
+			//			touch.on($api.dom('#wrap'), 'touchstart', function(evt) {
+			//				if($api.dom('.tooltip')) $api.remove($api.dom('.tooltip'));
+			//			});
+
+			//注册节点变动事件
+			$api.html($api.dom('#main'), '');
+			$api.addEvt($api.dom('#main'), 'DOMNodeInserted', function(e) {
+				if(e.target.nodeType === 1 && $api.hasCls(e.target, 'list-view')) {
+					touch.on($api.dom(e.target, '.message'), 'hold tap', function(event) {
+						switch(event.type) {
+							case 'hold':
+								var buttons,
+									msgDom = $api.dom(e.target, '.message'),
+									_text = $api.text(msgDom),
+									imgDom = $api.dom(e.target, '.img-mesg'),
+									vcDom = $api.dom(e.target, '.voice'),
+									giftDom = $api.dom(e.target, '.bd'),
+									msgTime = Number($api.attr(msgDom, 'data-sentTime')),
+									messageId = $api.attr(msgDom, 'data-messageId'),
+									sentStatus = $api.attr(msgDom, 'data-sentStatus'),
+									now = new Date().getTime(),
+									time_stamp = Number(now - msgTime);
+								var args = {
+									targetId: param.targetId,
+									messageId: messageId,
+									msgTime: msgTime
+								}
+								if($api.closest(e.target, '.me') && !$api.hasCls($api.dom($api.closest(e.target, '.me'), '.error'), 'hidden')) {
+									if(imgDom || vcDom || giftDom || !_text) {
+										buttons = ['重发', '删除'];
+									} else if(_text) {
+										buttons = ['复制', '重发', '删除'];
+									}
+								} else {
+									if(imgDom || vcDom || giftDom || !_text) {
+										buttons = ['删除'];
+									} else if(_text) {
+										buttons = ['复制', '删除'];
+									}
+								}
+								Tool.actionSheet({
+									buttons: buttons,
+									success: function(ret) {
+										if($api.closest(e.target, '.me') && !$api.hasCls($api.dom($api.closest(e.target, '.me'), '.error'), 'hidden')) {
+											if(imgDom || vcDom || giftDom || !_text) {
+												switch(ret) {
+													case 1:
+														repeat(e, param, memberInfo);
+														break;
+													case 2:
+														deleteMessages(e, messageId);
+														break;
+												}
+											} else if(_text) {
+												switch(ret) {
+													case 1:
+														clipBoard(_text);
+														break;
+													case 2:
+														repeat(e, param, memberInfo);
+														break;
+													case 3:
+														deleteMessages(e, messageId);
+														break;
+												}
+											}
+										} else {
+											if(imgDom || vcDom || giftDom || !_text) {
+												switch(ret) {
+													case 1:
+														deleteMessages(e, messageId);
+														break;
+												}
+											} else if(_text) {
+												switch(ret) {
+													case 1:
+														clipBoard(_text);
+														break;
+													case 2:
+														deleteMessages(e, messageId);
+														break;
+												}
+											}
+										}
+									}
+								});
+								break;
+							case 'tap':
+								if($api.dom(e.target, '.img-mesg')) {
+									Bigpicture(e, param);
+								}
+								break;
+						}
+					});
+				}
+			});
+
+			/*获取历史消息*/
+			RongCloud2.getLatestMessages({
+				targetId: api.pageParam.targetId,
+				count: 10
+			}, function(result) {
+				console.log('getLatestMessages:' + JSON.stringify(result,null,2))
+				RongCloud2.render({
+					message: result,
+					container: '#main',
+					template: 'txt|vc|img|rc|videoAndVoice'
+				});
+				window.scrollTo(0, $api.dom('body').scrollHeight);
+			});
+
+			//监听语音或视频
+			api.addEventListener({
+				name: 'vedioTalk'
+			}, function(ret, err) {
+				api.openWin({
+					name: 'call',
+					url: api.wgtRootDir + '/html/component/call_win.html',
+					pageParam: {
+						tagetInfo: {
+							name: param.targetId
+						},
+						type: 2
+					},
+					bounces: false,
+					slidBackEnabled: false
+				});
+			});
+			api.addEventListener({
+				name: 'voiceTalk'
+			}, function(ret, err) {
+				api.openWin({
+					name: 'call',
+					url: api.wgtRootDir + '/html/component/call_win.html',
+					pageParam: {
+						tagetInfo: {
+							name: param.targetId
+						},
+						type: 1
+					},
+					bounces: false,
+					slidBackEnabled: false
+				});
+			});
+
+			//实时监听新消息
+			api.addEventListener({
+				name: 'newMessage'
+			}, function(ret, err) {
+				var value = ret.value.message;
+				//console.log("newMessage:" + JSON.stringify(value))
+				if(value.targetId == param.targetId) {
+					if(value.content.name == 'videoAndVoice') {
+						value.extra = 'videoAndVoice';
+						RongCloud2.render({
+							message: value,
+							container: '#main',
+							template: 'txt|vc|img|rc|videoAndVoice',
+							type: 'new'
+						});
+						window.scrollTo(0, $api.dom('body').scrollHeight);
+						RongCloud2.setMessageExtra({
+							messageId: value.messageId,
+							value: 'videoAndVoice'
+						}, function(ret, err) {});
+					} else {
+						RongCloud2.render({
+							message: value,
+							container: '#main',
+							template: 'txt|vc|img|rc|videoAndVoice',
+							type: 'new'
+						});
+						window.scrollTo(0, $api.dom('body').scrollHeight);
+					}
+					//					RongCloud.clearMessagesUnreadStatus(param.targetId, function(){
+					//						api.sendEvent({
+					//							name: 'readMessage'
+					//						});
+					//					});
+				}
+			});
+			//监听“我”说话
+			api.addEventListener({
+				name: 'iTalk'
+			}, function(ret, err) {
+				/*ret.value 内部结构
+				 * type 消息类型：文字-txt、语音-vc、图片-img
+				 * content 文字内容
+				 * 
+				 */
+				if(ret && ret.value) {
+					
+					var extra = new Object();
+					extra['nickname'] = param.targetNickname;
+					extra['avatar'] = param.avatar;
+					extra['memberid'] = 8;
+					extra['msgTime'] = new Date().getTime();
+					extra['mname'] = memberInfo.nickname;
+					extra['mavatar'] = memberInfo.avatar;
+					extra['mid'] = memberInfo.id;
+					extra['favorid'] = param.favorid;
+					console.log(ret.value.type)
+					switch(ret.value.type) {
+						case 'txt':
+							sendText(param, ret, extra);
+							//							api.sendEvent({
+							//								name: 'setTop',
+							//								extra: {
+							//									targetId: param.username
+							//								}
+							//							});
+							break;
+						case 'img':
+							if(ret.value.message instanceof Array && ret.value.message.length > 0) {
+								//相册
+								ret.value.message.forEach(function(value, index, arr) {
+									extra['msgTime'] = value.sentTime;
+									value.content.extra = JSON.stringify(extra);
+									console.log(JSON.stringify(value))
+									T.append('#main', 'img', value);
+								});
+								scrollToBottom();
+								sendPic(param, ret);
+							} else {
+								//拍照
+								extra['msgTime'] = ret.value.message.sentTime;
+								ret.value.message.content.extra = JSON.stringify(extra);
+								T.append('#main', 'img', ret.value.message);
+								scrollToBottom();
+								sendImage(param, ret);
+							}
+							break;
+					}
+				}
+			});
+			api.addEventListener({
+				name: 'tap'
+			}, function(ret, err) {
+				var obj = api.require('UIChatBox');
+				obj.closeKeyboard();
+			});
+
+			/*获取以往信息*/
+			api.setRefreshHeaderInfo({
+				visible: true,
+				loadingImg: 'widget://res/icon-refresh.png',
+				bgColor: 'rgba(0,0,0,0)',
+				textColor: '#666',
+				textDown: '查看更多信息...',
+				textUp: '松开查看更多信息...',
+				showTime: false
+			}, function(ret, err) {
+				var oldestMessageId = $api.attr($api.dom('#main .list-view:last-of-type [data-messageId]'), 'data-messageId'),
+					count = $api.domAll('#main > .list-view').length;
+
+				/*请求更早之前的聊天记录*/
+				RongCloud2.getHistoryMessages({
+					targetId: param.targetId,
+					oldestMessageId: oldestMessageId,
+					count: count + 10
+				}, function(result) {
+					api.refreshHeaderLoadDone();
+					//					Debug.alt(JSON.stringify(result));
+					if(result instanceof Array && result.length > count) {
+						RongCloud2.render({
+							message: result.slice(count),
+							container: '#main',
+							template: 'txt|vc|img|rc|videoAndVoice'
+						});
+					} else {
+						api.toast({
+							location: 'top',
+							msg: '已经没有消息了'
+						});
+					}
+				});
+			});
+
+			//监听语音和视频
+			api.addEventListener({
+				name: 'videoAndVoice'
+			}, function(ret, err) {
+				//				RongCloud2.sendCommandMessage({
+				//					targetId:api.pageParam.targetId,
+				//					name:'videoAndVoice',
+				//					data:JSON.stringify({
+				//						type:ret.value.type,
+				//						result:ret.value.result
+				//					}),
+				//					success:function(ct){
+				//						alert($api.jsonToStr(ct));
+				//					}
+				//				});
+				var rong = api.require('rongCloud2');
+				rong.sendCommandNotificationMessage({
+					conversationType: 'PRIVATE',
+					targetId: api.pageParam.targetId,
+					name: 'videoAndVoice',
+					data: JSON.stringify({
+						type: ret.value.type,
+						result: ret.value.result,
+						time: ret.value.time
+					})
+				}, function(rett, err) {
+					if(rett.status == 'prepare') {
+						rett.result.message.extra = 'videoAndVoice';
+						RongCloud2.render({
+							message: rett.result.message,
+							container: '#main',
+							template: 'txt|vc|img|rc|videoAndVoice',
+							type: 'new'
+						});
+						window.scrollTo(0, $api.dom('body').scrollHeight);
+					} else if(rett.status == 'success') {
+						RongCloud2.setMessageExtra({
+							messageId: rett.result.message.messageId,
+							value: 'videoAndVoice'
+						}, function(ret, err) {});
+					} else if(ret.status == 'error')
+						api.toast({
+							msg: err.code
+						});
+				});
+			});
+		}
+
+		function openTheme() {
+			api.openWin({
+				name: 'Favor Details',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					headerTitle: ' ',
+					//						frameParam: {
+					//							tid: tid
+					//						},
+					frameName: 'favor_details',
+					frameUrl: api.wgtRootDir + '/html/inbox/favor_details.html'
+				}
+			});
+		}
+	</script>
+
+</html>

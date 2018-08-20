@@ -1,0 +1,54 @@
+#header {
+	background-color: #33BAB0;
+}
+
+.topbar {
+	border: none;
+}
+.icon-camera,
+.icon-edit,
+.icon-cancel-circle,
+.topbar .back,
+.icon-share {
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	width: 50px;
+	height: 100%;
+	top: 0;
+}
+
+.icon-cancel-circle,
+.topbar .back {
+	left: 0;
+}
+
+.topbar .back {
+	background-size: 9px;
+	background-image: url(../image/back.png);
+}
+.icon-edit,
+.icon-camera,
+.icon-share{
+	right: 0;
+}
+.icon-camera{
+	background-image: url(../image/post/CAMERA.png);
+	background-size: 20px;
+}
+.icon-share {
+	background-image: url(../image/post/111.png);
+	background-size: 25px 7px;
+}
+.icon-edit {
+	background-image: url(../image/more/EDIT.png);
+	background-size: 18px 18px;
+}
+.icon-cancel-circle {
+	background-size: 20px 19px;
+	background-image: url(../image/browse/5.png);
+}
+
+.topbar .title {
+	/*font-size: 18px;*/
+}

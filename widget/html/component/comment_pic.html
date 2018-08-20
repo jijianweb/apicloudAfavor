@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.row{
+				overflow: hidden;
+				margin: 5px 0;
+				height: 210px;
+				padding-top: 10px;
+			}
+			.pic{
+				position: relative;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				width: 90px;
+				height: 90px;
+			}
+			.img-frm,
+			.img {
+				width: 100%;
+				height: 100%;
+			}
+			.close {
+				z-index: 1;
+				position: absolute;
+				top: -7px;
+				right: -8px;
+				font-size: 15px;
+				border-radius: 50%;
+				background-image: url(../../image/zu-2.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 14px 14px;
+				width: 20px;
+				height: 20px;
+			}
+			
+			.add-pic-btn{
+				position: relative;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				width: 90px;
+				height: 90px;
+				border: dashed 1px #CCCCCC;
+				border-radius: 5px;
+				background-image: url(../../image/post/plus1.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 44px 44px;
+			}
+
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="row">
+					<!--<div class="col-4">
+						<div class="pic" imgUrl="" data-status="" data-key="" data-callbackEvent="">
+							<div class="img-frm">
+								<span class="close" style="" onclick="removePic(event, this)" tapmode></span>
+								<div class="img" style="background-image: url(../../image/1-1.png);">
+									<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+										<div class=" flex-1 status"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+					
+					<div id="add-pic-btn" class="col-4">
+						<div class="add-pic-btn " onclick="addPic()">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/template" template="img">
+		<div class="col-4">
+			<div class="pic" imgUrl="{{= it.url}}" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}">
+				<div class="img-frm">
+					<span class="close" style="" onclick="removePic(event, this)" tapmode></span>
+					<div class="img" style="background-image: url({{= it.url}});">
+						<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+							<div class=" flex-1 status"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/upload.js" ></script>
+	<script type="text/javascript">
+		var files = [],
+			isUpload = 'false';
+		var picList = [];
+		//点击删除图片
+		function removePic(event, _this) {
+			event.stopPropagation();
+			var picDom = $api.closest(_this, '.col-4');
+					
+			api.confirm({
+				title: '',
+				msg: 'Delete this photo？',
+				buttons: ['No', 'Yes']
+			}, function(ret, err) {
+				if(ret.buttonIndex == 2) {
+					$api.remove(picDom);
+					getPicList();
+					getUploadedPic();
+				}
+			});
+		}
+		function renderImg(args) {
+			T.before('#add-pic-btn', 'img', args)
+		}
+        //upload按钮
+		function addPic() {
+			Tool.actionSheet({
+				title: '',
+				buttons: ['Camera', 'Choose from album'],
+				success: function(type) {
+					if(type < 3) {
+						if(!/^wifi$/i.test(api.connectionType)) {
+							api.confirm({
+							    title: '',
+								msg: 'The current network environment is：' + api.connectionType + 'Will generate data traffic, whether to continue uploading?',
+								buttons: ['No', 'Yes']
+							}, function(ret, err) {
+								if(ret.buttonIndex == 2) {
+									if(type == 1) {
+										camera();
+									} else {
+										album();
+									}
+								}
+							})
+						} else {
+							if(type == 1) {
+								camera();
+							} else {
+								album();
+							}
+						}
+					}
+				}
+			})
+			
+		}
+		//upload按钮拍照获得一张照片
+        function camera(){
+        	var picDom = $api.domAll('.pic');
+			if(picDom.length < 6) {
+				Tool.getOnePic({
+					sourceType: 'camera',
+					success: function(ret) {
+						if(ret) {
+							var callbackEvent = 'uploadPic' + new Date().getTime(),
+								args = {
+									url: ret.data,
+									callbackEvent: callbackEvent
+								};
+							files.push(args);
+							renderImg(args);
+							if(isUpload == 'false') {
+								Upload.init({
+									files: files,
+									callbackEvent: 'uploaded'
+								});
+								files = [];
+								isUpload = 'true';
+							}
+						}
+					}
+				});
+			} 
+        }
+        //upload按钮从相册获得一张图片
+        function album(){
+        	var picDom = $api.domAll('.pic');
+				max = '';
+			if(picDom.length > 0) {
+				max = 6- parseInt(picDom.length);
+			} else {
+				max = 6;
+			}
+			if(picDom.length < 6) {
+				Tool.getSomePic({
+					max: max,
+					success: function(ret) {
+						if(!ret || parseInt(ret.list.length) == 0) {
+							return;
+						}
+						for(var i = 0; i < ret.list.length; i++) {
+							var args = {
+								url: ret.list[i].path,
+								callbackEvent: 'uploadPic' + new Date().getTime() + i
+							}
+							files.push(args);
+							renderImg(args);
+						}
+						if(isUpload == 'false') {
+							Upload.init({
+								files: files,
+								callbackEvent: 'uploaded'
+							});
+							files = []; //上传图片后重置图片数组
+							isUpload = 'true';
+						}
+					}
+				});
+			}
+        }
+        
+        function getPicList(){
+        	var commentPic = [];
+        	$api.domAll('.pic').forEach(function(v,i){
+        		commentPic.push($api.attr(v,'imgUrl'));
+        	})
+        	api.sendEvent({
+        		name: 'addCommentPic',
+        		extra: {
+        			commentPicList: commentPic
+        		}
+        	})
+        	if(commentPic.length == 0){
+        		setTimeout(api.closeFrame,100);
+        	}
+        }
+        
+        function getUploadedPic(){
+        	var uploadedPic = [];
+        	$api.domAll('[data-status="done"]').forEach(function(v,i){
+        		uploadedPic.push($api.attr(v,'data-key'));
+        	})
+        	api.sendEvent({
+        		name: 'commentPicUploaded',
+        		extra: {
+        			commentPicKeyList: uploadedPic
+        		}
+        	})
+        }
+		
+		apiready = function() {
+			if(api.pageParam.commentPicList){
+				picList = api.pageParam.commentPicList;
+				for(var i = 0; i < api.pageParam.commentPicList.length; i++) {
+					files.push(api.pageParam.commentPicList[i]);
+					renderImg(api.pageParam.commentPicList[i]);
+				}
+				if(isUpload == 'false') {
+					Upload.init({
+						files: files,
+						callbackEvent: 'uploaded'
+					});
+					files = []; //上传图片后重置图片数组
+					isUpload = 'true';
+				}
+			}
+			api.addEventListener({
+				name: 'uploaded'
+			},function(ret,err){
+				getUploadedPic();
+				isUpload = 'false';
+				if(isUpload == 'false' && files.length > 0) {
+					Upload.init({
+						files: files,
+						callbackEvent: 'uploaded'
+					});
+					files = []; //上传图片后重置图片数组
+					isUpload = 'true';
+				}
+			})
+		}
+	</script>
+
+</html>

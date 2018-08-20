@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>借记卡 支付方式</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			#main{
+				border-top: 1px solid #ddd;
+			}
+			.list-view{
+				line-height: 44px;
+				height: 44px;
+				padding: 0 0px 0 10px;
+				border-bottom: 1px solid #ddd;
+			}
+			.icon-plus,
+			.icon-card,
+			.icon-forward{
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 40px;
+			}
+			.icon-card{
+				background-image: url(../../image/post/card-1.png);
+				background-size: auto 14px;
+			}
+			.icon-plus{
+				background-image: url(../../image/post/add.png);
+				background-size: 18px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list-view flex-box hidden" onclick="openDebitDetails()" tapmode>
+					<div class="icon-card"></div>
+					<div class="flex-1">xxxx xxxx xxxx 0908</div>
+					<div class="icon icon-forward"></div>
+				</div>
+				<div class="list-view flex-box hidden" onclick="addDebitCard()" tapmode>
+					<div class="icon-plus"></div>
+					<div class="flex-1" style="font-size: 14px;">Add New Debit Card</div>
+					<div class="icon icon-forward"></div>
+				</div>
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		{{? it instanceof Array && it.length!=0}}
+		  {{~ it:value:index}}
+			   <div class="list-view flex-box" onclick="openCreditDetails({{=value.id}})" tapmode>
+					<div class="icon-card"></div>
+					<div class="flex-1">{{=value.number}}</div>
+					<div class="icon icon-forward"></div>
+			   </div>
+		   {{~}}
+		{{?}}
+		<div class="list-view flex-box" onclick="addCreditCard()" tapmode>
+					<div class="icon-plus"></div>
+					<div class="flex-1" lan="AddNewDebitCard" style="font-size: 14px;">Add New Debit Card</div>
+					<div class="icon icon-forward"></div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+            init();
+		}
+        function init(){
+        	   //下拉刷新
+			Refresh.init({
+				ctrl: 'more',
+				fn: 'getPayments',
+				values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 2
+				},
+				template: 'main',
+				success: function() {
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'more',
+				fn: 'getPayments',
+				values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 2
+				},
+				showError: true,
+			}, function() {
+			})
+        	ajax.get({
+				ctrl: 'more',
+				fn: 'getPayments',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 2
+					}
+				},
+				success: function(ct) {
+		            T.html('#main', 'main', ct);
+		            L.init();
+				}
+
+			})
+        }
+        //添加借记卡
+		function addCreditCard() {
+			Tool.openWin({
+				winName: 'win_back',
+				winUrl: api.wgtRootDir + '/html/window/win_back.html',
+				frameName: 'debit_account',
+				frameUrl: api.wgtRootDir + '/html/browse/debit_account.html',
+				title: LANGUAGE[$api.getStorage('lan')]['DebitAccount']
+			});	
+		}
+        //打开借记卡详情
+		function openCreditDetails(id) {
+			Tool.openWin({
+				winName: 'debit_delect_edit',
+				winUrl: api.wgtRootDir + '/html/window/more/debit_delect_edit.html',
+				frameName: 'compile_debit',
+				frameParam:{
+					pid:id
+				},
+				title: LANGUAGE[$api.getStorage('lan')]['DebitAccount'],
+				frameUrl: api.wgtRootDir + '/html/more/compile_debit.html'
+			});	
+		}
+	</script>
+
+</html>

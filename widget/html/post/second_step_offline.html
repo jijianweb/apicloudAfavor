@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布-第二步-线下</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+
+		<style type="text/css">
+			#main {
+				padding: 30px 18px 0px;
+			}
+
+			#offDate {
+				height: 100%;
+			}
+
+
+			.date,
+			.text {
+				border: 1px solid #C3C9CB;
+				border-radius: 25px;
+				padding: 0px 13px 0px 22px;
+				color: #828B8F;
+				font-size: 14px;
+				width: 100%;
+				height: 44px;
+				line-height: 44px;
+			}
+
+			input[type="text"],
+			input[type="number"],
+			input[type="date"] {
+				width: 100%;
+			}
+
+			.square {
+				background-position: center;
+				background-image: url(../../image/post/xiala.png);
+				background-size: 12px 6px;
+				background-repeat: no-repeat;
+				width: 12px;
+				height: 8px;
+			}
+
+			input[type="date"]::-webkit-calendar-picker-indicator {
+				-webkit-appearance: none!important;
+				appearance: none !important;
+				margin: 0;
+				visibility: hidden;
+				position: relative;
+				opacity: 0 !important;
+				z-index: 998;
+				display: none !important;
+			}
+
+			input[type='date'] {
+				-webkit-appearance: none;
+			}
+
+			.foot {
+				padding: 20px 18px 0px;
+				width: 100%;
+			}
+
+			.save {
+				background-color: #33BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+			}
+
+			.online .sub {
+				border: 2px solid #33BBB1;
+				background-color: #33BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: fixed;
+				width: -webkit-calc(100% - 36px);
+				bottom: 20px;
+			}
+
+			.title {
+				text-align: center;
+				font-size: 14px;
+				color: #858CA0;
+			}
+
+			.t {
+				color: #B8BBBE;
+				font-size: 14px;
+				padding: 0 10px 6px 23px;
+				margin-top:18px;
+			}
+
+			.btn-o {
+				padding: 10px 22px 0px 22px;
+				text-align: center;
+			}
+
+			.btn-as {
+				border-radius: 25px;
+				background-color: white;
+				border: 2px #33BBB1 solid;
+			}
+
+			.not-tilte {
+				color: #32BBB1;
+			}
+
+			.not-tilte,
+			.btn-tilte {
+				font-size: 14px;
+				text-align: center;
+				padding: 10px 0;
+			}
+
+			.btn-tilte-on {
+				border-bottom-right-radius: 25px;
+				border-top-right-radius: 25px;
+				background-color: #32BBB1;
+				color: white;
+			}
+
+			.btn-tilte {
+				border-bottom-left-radius: 25px;
+				border-top-left-radius: 25px;
+				background-color: #32BBB1;
+				color: white;
+			}
+
+			#footer {
+				padding: 0 18px;
+				margin-bottom: 16px;
+			}
+
+			@media (max-height:604px) and (max-width:414px) {
+				/*iphone6s plus*/
+				.t {
+					margin-top: 18px;
+				}
+			}
+			@media (max-height:513px) and (max-width:360px){
+				/*华为荣耀 5x /华为6p 无底部导航*/
+				.t {
+					margin-top: 13px;
+				}
+				#footer {
+					margin-bottom: 10px;
+				}
+			}
+			@media (max-height:456px) and (max-width:360px) {
+				/*华为 6p 有底部虚拟导航栏*/
+				.t {
+					margin-top: 10px;
+				}
+				.text{
+					height: 40px;
+					line-height: 40px;
+				}
+				#footer {
+					margin-bottom: 10px;
+				}
+			}
+			@media (max-height:400px){
+				.save{
+					display: none;
+				}
+			}
+			#address-list{
+				position: absolute;
+				width: 100%;
+				max-height: 200px;
+				background-color: #FFFFFF;
+				border-radius: 8px;
+				border: 1px solid #ddd;
+				left: 0px;
+				top: 0px;
+				overflow-x: hidden;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+			}
+			.addr-item{
+				padding: 10px 10px;
+				line-height: 1.3;
+			}
+			#address-list .addr-item:not(:last-child){
+				border-bottom: 1px solid #ddd;
+			}
+			#mask{
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				/*background-color: red;*/
+				z-index: 1;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="mask" onclick="closeMask(this)" tapmode=""></div>
+			<div id="main">
+				<div class="form ">
+					<div class="title" lan="How_can_this_favor_be_completed">How can this favor be completed?</div>
+					<div class="btn-o">
+						<div class="flex-box flex-center-center btn-as">
+							<div lan="Offline" class="not-tilte btn-tilte  flex-1" onclick="change(this,1)" tapmade>Offline</div>
+							<div lan="Online" class="not-tilte  flex-1" onclick="change(this,2)" tapmade>Online</div>
+						</div>
+					</div>
+					<div class="offline">
+						<div class="t" lan="StreetAddress">Street Address</div>
+						<div class="text" style="position: relative;z-index: 2;">
+							<input type="text" oninput="checkAddr(this)" lan="Please_fill_in_the_address" id="address" placeholder="Please fill in the address" value="" />
+						</div>
+						<div class="text" style="border: none;height: 0px;position: relative;z-index: 2;">
+							<div id="address-list" class="hidden">
+							 	<div class="addr-item">
+							 		9 Chillwood Ct, Markham, ON L3R, Canada
+							 		9 Chillwood Ct, Markham, ON L3R, Canada
+							 	</div>
+							</div>
+						</div>
+						<div class="flex-box">
+							<div class="flex-1">
+								<div class="t" lan="City">City</div>
+								<div class="text flex-box flex-center-center ci" onclick="selectCity()" tapmode="">
+									<input class="flex-1" type="text" tag="" id="city" value="" readonly="readonly" placeholder="" />
+									<span class="square"></span>
+								</div>
+							</div>
+							<div class="flex-1 margin-left10">
+								<div class="t" lan="Province">Province</div>
+								<div class="text flex-box flex-center-center pr" onclick="selectProvince()" tapmode="">
+									<input class="" type="text" tag="" id="province" placeholder="" value="" readonly="readonly" />
+									<span class="square "></span>
+								</div>
+							</div>
+						</div>
+						<div class="flex-box ">
+							<div class="flex-1 ">
+								<div class="t" lan="Country">Country</div>
+								<div class="text flex-box flex-center-center" onclick="selectCounty()" tapmode="">
+									<input class="flex-1 " id="county" name="county" type="text" value="" readonly="readonly" />
+									<span class="square "></span>
+								</div>
+							</div>
+							<div class="flex-1 margin-left10 ">
+								<div class="t" lan="PostalCode">Postal Code</div>
+								<div class="text flex-box flex-center-center ">
+									<input class="flex-1 " type="text" id="code" value="" oninput="postalcodeInput(event,this)" />
+								</div>
+							</div>
+						</div>
+						<div class="t " lan="DueDate">Due Date</div>
+						<div class="date flex-box flex-center-center ">
+							<input class="flex-1" readonly="readonly" type="text" id="offDate" value="" onclick="setTimes()" tapmode="" />
+							<span class="square "></span>
+						</div>
+					</div>
+					<div class="online hidden">
+						<div class="t " lan="DueDate">Due Date</div>
+						<div class="date flex-box flex-center-center ">
+							<input class="flex-1" readonly="readonly" type="text" id="offDate" value="" name="onDate" onclick="setTimes()" tapmode="" />
+							<span class="square "></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="save btn-afavor-1" lan="CONTINUE" onclick="publish()" tapmode="">CONTINUE</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript " src="../../script/api.js "></script>
+	<script type="text/javascript " src="../../script/doT.min.js "></script>
+	<script type="text/javascript " src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/javascript" src="../../script/map.js"></script>
+	<script type="text/template" template="address-list">
+		{{~it :value:index}}
+		 	<div class="addr-item" onclick="selectAddr(this)" lat='{{= value.geometry.location.lat }}' lon='{{= value.geometry.location.lng }}' tapmode="">
+		 		{{= value.formatted_address }}
+		 	</div>
+		{{~}}
+	</script>
+	<script type="text/javascript ">
+		var types = 1;
+		var countyObj = {},
+			provinceObj = {},
+			cityObj = {};
+
+		apiready = function() {
+			console.log(JSON.stringify($api.getStorage('firstStepData')));
+			$api.setStorage('message', {});
+			if(api.screenWidth == 640 && api.screenHeight == 1136) {
+				//iphone5
+				$('.t').css('margin-top', '8px');
+				$('#main').css({
+					'padding-top': '15px'
+				});
+			}
+
+			window.onresize = function() {
+				//				Tool.toast(api.frameWidth + ':' + api.frameHeight);
+			};
+
+			L.init();
+			api.addEventListener({
+				name: 'selectProvince'
+			}, function(ret) {
+				if(provinceObj.id == ret.value.id) return;
+				$api.val($api.dom('#province'), ret.value.city);
+				$api.attr($api.dom('#province'), 'tag', JSON.stringify(ret.value))
+				provinceObj = ret.value;
+				cityObj = {};
+				$api.val($api.dom('#city'), '');
+				$api.attr($api.dom('#city'), 'tag', JSON.stringify({}))
+				if(provinceObj.id == '98' || provinceObj.id == '111') {
+					$api.val($api.dom('#city'), provinceObj.city);
+				}
+			})
+
+			api.addEventListener({
+				name: 'selectCity'
+			}, function(ret) {
+				var city = $api.val($api.dom('#city'), ret.value.cityInfo.city);
+				$api.attr($api.dom('#city'), 'tag', ret.value)
+				cityObj = ret.value.cityInfo;
+			});
+		}
+		var initBodyHeight = document.body.clientHeight; //页面可视高度
+		//			console.log(initBodyHeight)
+		var keyBoardStatus = false; //键盘是否打开
+		function getKeyBoardStatus() {
+			setTimeout(function() {
+				if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+					keyBoardStatus = true;
+					$api.addCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+					keyBoardStatus = false;
+					$api.removeCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				getKeyBoardStatus();
+			}, 100);
+		}
+//		$(function() {
+//			getKeyBoardStatus();
+//		});
+		function postalcodeInput(e, _this) {
+			var _val = $api.val(_this);
+			if(!/^[A-Z0-9]{0,6}$/.test(_val)){
+				if(_val.length > 6){
+					$api.val(_this, _val.slice(0, 6));
+					//将键盘收起
+					setTimeout(function(){
+						_this.blur();
+					}, 400);
+				}else{
+					Tool.toast('Postal code can only type capital letters or Numbers.');
+				}
+			}
+		}
+
+		function selectCounty() {
+			inputBlur(); //将键盘收下来
+			Tool.actionSheet({
+				title: LANGUAGE[$api.getStorage('lan')]['SelectCountry'],
+				buttons: ['USA', 'CANADA'],
+				cancelTitle: LANGUAGE[$api.getStorage('lan')]['Cancel'],
+				success: function(index) {
+					if(index == countyObj.id) return;
+					if(index == 1) {
+						$api.val($api.dom('#county'), 'USA');
+						countyObj = {
+							id: '1',
+							city: 'USA'
+						}
+						type = 1;
+					} else if(index == 2) {
+						$api.val($api.dom('#county'), 'CANADA');
+						countyObj = {
+							id: '2',
+							city: 'CANADA'
+						}
+						type = 2;
+					}
+					provinceObj = {};
+					cityObj = {};
+					$api.val($api.dom('#province'), '');
+					$api.attr($api.dom('#province'), 'tag', JSON.stringify({}))
+					$api.val($api.dom('#city'), '');
+					$api.attr($api.dom('#city'), 'tag', JSON.stringify({}))
+				}
+			})
+		}
+		//打开省份
+		function selectProvince(type) {
+			var county = $api.val($api.dom('#county'));
+			inputBlur(); //将键盘收下来
+			if(county == "") {
+				Tool.toast(LANGUAGE[$api.getStorage('lan')]['Please_choose_the_country_first']);
+			} else {
+				if(county == "USA") {
+					type = 1;
+				} else if(county == "CANADA") {
+					type = 2;
+				}
+				api.openWin({
+					name: 'ProvinceList',
+					url: api.wgtRootDir + '/html/window/post/province_list.html',
+					pageParam: {
+						type: type
+					},
+					delay: 300
+				});
+			}
+		}
+
+		function selectCity() {
+			if(provinceObj.id == '98' || provinceObj.id == '111') {
+				return;
+			}
+			inputBlur(); //将键盘收下来
+			//判断城市是否是空
+			var county = $api.val($api.dom('#county'));
+			var province = $api.val($api.dom('#province'));
+			if(county == "") {
+				Tool.toast(LANGUAGE[$api.getStorage('lan')]['Please_choose_the_country_first']);
+			} else if(county != "" && province == "") {
+				Tool.toast(LANGUAGE[$api.getStorage('lan')]['Please_choose_the_province']);
+			} else {
+				api.openWin({
+					name: 'citys_list',
+					url: api.wgtRootDir + '/html/window/post/citys_list.html',
+					pageParam: {
+						countyid: countyObj.id,
+						province: provinceObj
+					},
+					delay: 300
+				});
+			}
+		}
+
+		//		//选择时间
+		function setTimes(ret) {
+			inputBlur(); //将键盘收下来
+
+			var nows = new Date(),
+				_year = nows.getFullYear(),
+				_month = nows.getMonth() + 1,
+				_day = nows.getDate();
+
+			_month = _month > 9 ? _month : '0' + _month;
+			_day = _day > 9 ? _day : '0' + _day;
+			nows = new Date(_year + '-' + _month + '-' + _day).getTime();
+
+			//				_hours = dateTime.getHours(),
+			//				_minutes = dateTime.getMinutes();
+
+			api.openPicker({                
+					type: 'date',
+					date: 'date',
+					title: 'Select the date'            
+				},
+				function(ret, err) {  
+					if(ret) {
+
+						var value = ret,
+							y = value.year,
+							m = value.month > 9 ? value.month : '0' + value.month,
+							d = value.day > 9 ? value.day : '0' + value.day,
+							time = y + '-' + m + '-' + d,
+							dateTime = new Date(time).getTime();
+						if(dateTime < nows) {
+
+							Tool.toast('Cannot choose the past date.');
+							return
+						} else {
+							$api.val($api.dom('#offDate'), d + '-' + m + '-' + y); 
+							$api.val($api.dom('[name=onDate]'), d + '-' + m + '-' + y);
+						}
+					}             
+				});     
+		}
+
+		var timer,
+			lon, lat;
+		function checkAddr(_this){
+			var addrListDOM = $api.dom('#address-list'),
+				maskDOM = $api.dom('#mask');
+			lon = '';
+			lat = '';
+
+			clearTimeout(timer);
+			timer = setTimeout(function(){
+						var address = $api.val($api.dom('#address'));
+						if(!address){
+							$api.addCls(addrListDOM, 'hidden');
+							$api.addCls(maskDOM, 'hidden');
+							return;
+						}
+						getAddressList({
+							address: address,
+							success: function(results){
+								T.html('#address-list', 'address-list', results);
+								$api.removeCls(addrListDOM, 'hidden');
+								$api.removeCls(maskDOM, 'hidden');
+							}
+						});
+					}, 1000);
+		}
+
+		function closeMask(_this){
+			var addrListDOM = $api.dom('#address-list'),
+				maskDOM = $api.dom('#mask');
+
+			$api.addCls(addrListDOM, 'hidden');
+			$api.addCls(maskDOM, 'hidden');
+		}
+
+		function selectAddr(_this){
+			var addressInputDOM = $api.dom('#address'),
+				addrListDOM = $api.dom('#address-list'),
+				maskDOM = $api.dom('#mask');
+			lat = $api.attr(_this, 'lat'),
+			lon = $api.attr(_this, 'lon');
+			$api.val(addressInputDOM, $api.text(_this));
+			$api.addCls(addrListDOM, 'hidden');
+			$api.addCls(maskDOM, 'hidden');
+		}
+
+		function publish() {
+			var address = $api.val($api.dom('#address'));
+			var city = cityObj.id;
+			var province = provinceObj.id;
+			var county = countyObj.id;
+			var code = $api.val($api.dom('#code'));
+			var offDate = $api.val($api.dom('#offDate'));
+			onDate = $api.val($api.dom('[name=onDate]'));
+			var offDate1;
+			var onDate2;
+			if(types == 1) {
+				var due1 = offDate.substring(0, 2),
+					due2 = offDate.substring(3, 5),
+					due3 = offDate.substring(6, 10)
+				offDate1 = due3 + '-' + due2 + '-' + due1; //转换后的日期
+			} else {
+				var due1 = onDate.substring(0, 2),
+					due2 = onDate.substring(3, 5),
+					due3 = onDate.substring(6, 10)
+				onDate2 = due3 + '-' + due2 + '-' + due1; //转换后的日期
+			}
+			var message = {
+				address: address,
+				city: city,
+				province: province,
+				county: county,
+				code: code,
+				offDate: offDate1,
+				onDate: onDate2,
+				types: types
+			}
+			//			alert(JSON.stringify(message,null,2));
+			if(types == 2) {
+				if($api.val($api.dom('[name=onDate]')) == '') {
+					Tool.toast('Please complete all information.');
+					return;
+				}
+			} else {
+				if(!address) {
+					Tool.toast('Please complete all information');
+					return;
+				}
+				if(code) {
+					if(!/^[A-Z0-9]{6,20}$/.test(code)) {
+						Tool.toast('Postal code can only type capital letters or Numbers.');
+						return;
+					}					
+				}else{
+					Tool.toast('Please complete all information');
+					return;
+				}
+				if(!offDate) {
+					Tool.toast('Please complete all information');
+					return;
+				}
+				if(!county) {
+					Tool.toast('Please complete all information');
+					return;
+				}
+				if(!city) {
+					if(province != '98' && province != '111') {
+						Tool.toast('Please complete all information');
+						return;
+					}
+				}
+				if(!province) {
+					Tool.toast('Please complete all information');
+					return;
+				}
+			}
+
+			if(types == 2) {
+				$api.setStorage('message', message);
+				api.execScript({
+					name: 'publish',
+					script: 'swichPageIndex(2);'
+				});
+			} else {
+				//线下任务，验证地址有效性
+				var provinceName = provinceObj.city,
+					cityName = cityObj.city;
+
+				address += ', ' + cityName + ', ' + provinceName;
+
+				if(lon && lat){
+					message.lon = lon;
+					message.lat = lat;
+
+					$api.setStorage('message', message);
+					api.execScript({
+						name: 'publish',
+						script: 'swichPageIndex(2);'
+					});
+				}else{
+					api.showProgress({
+						title: 'Loading...',
+						text: 'Please wait...'
+					});
+					getAddressList({
+						address: address,
+						success: function(results){
+							api.hideProgress();
+							if(results.length == 1){
+								api.confirm({
+									msg: 'Is this favor at this address: "' + results[0].formatted_address + '"?',
+									buttons: ['Cancel', 'OK']
+								}, function(ret){
+									if(ret.buttonIndex == 2){
+										message.lon = results[0].geometry.location.lng;
+										message.lat = results[0].geometry.location.lat;
+										message.address = results[0].formatted_address;
+										$api.setStorage('message', message);
+										api.execScript({
+											name: 'publish',
+											script: 'swichPageIndex(2);'
+										});
+									}
+								});
+							}else{
+								T.html('#address-list', 'address-list', results);
+								$api.removeCls(addrListDOM, 'hidden');
+								$api.removeCls(maskDOM, 'hidden');
+							}
+						}
+					});
+				}
+			}
+		}
+
+		function change(_this, type) {
+			if(type == 1) {
+				$api.removeCls($api.dom('.btn-tilte-on'), 'btn-tilte-on');
+				$api.addCls(_this, 'btn-tilte');
+				$api.removeCls($api.dom('.offline'), 'hidden');
+				$api.addCls($api.dom('.online'), 'hidden');
+				$api.val($api.dom('#address'), '');
+				$api.val($api.dom('#code'), '');
+				$api.val($api.dom('#offDate'), '');
+				$api.val($api.dom('#city'), '');
+				$api.val($api.dom('#county'), '');
+				$api.val($api.dom('#province'), '');
+				types = 1;
+			} else if(type == 2) {
+				$api.removeCls($api.dom('.btn-tilte'), 'btn-tilte');
+				$api.addCls(_this, 'btn-tilte-on');
+				$api.removeCls($api.dom('.online'), 'hidden');
+				$api.addCls($api.dom('.offline'), 'hidden');
+				$api.val($api.dom('[name=onDate]'), '');
+				$api.css($api.dom('.foot'), 'top:0px;')
+				types = 2;
+			}
+		}
+	</script>
+
+</html>

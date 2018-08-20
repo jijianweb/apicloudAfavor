@@ -1,0 +1,193 @@
+{
+	"citys": [
+		{
+			"id": "3",
+			"fr": "Washington",
+			"city": "Washington"
+		}, {
+			"id": "9",
+			"fr": "Oregon",
+			"city": "Oregon"
+		}, {
+			"id": "13",
+			"fr": "Californie",
+			"city": "California"
+		}, {
+			"id": "74",
+			"fr": "Nevada",
+			"city": "Nevada"
+		}, {
+			"id": "79",
+			"fr": "Idaho",
+			"city": "Idaho"
+		}, {
+			"id": "81",
+			"fr": "Utah",
+			"city": "Utah"
+		}, {
+			"id": "86",
+			"fr": "Arizona",
+			"city": "Arizona"
+		}, {
+			"id": "96",
+			"fr": "Montana",
+			"city": "Montana"
+		}, {
+			"id": "98",
+			"fr": "Wyoming",
+			"city": "Wyoming"
+		}, {
+			"id": "99",
+			"fr": "Colorado",
+			"city": "Colorado"
+		}, {
+			"id": "109",
+			"fr": "Nouveau Mexique",
+			"city": "New Mexico"
+		}, {
+			"id": "111",
+			"fr": "Dakota du Nord",
+			"city": "North Dakota"
+		}, {
+			"id": "112",
+			"fr": "Dakota du Sud",
+			"city": "South Dakota"
+		}, {
+			"id": "114",
+			"fr": "Nebraska",
+			"city": "Nebraska"
+		}, {
+			"id": "117",
+			"fr": "Kansas",
+			"city": "Kansas"
+		}, {
+			"id": "123",
+			"fr": "Oklahoma",
+			"city": "Oklahoma"
+		}, {
+			"id": "127",
+			"fr": "Texas",
+			"city": "Texas"
+		}, {
+			"id": "157",
+			"fr": "New York",
+			"city": "New York"
+		}, {
+			"id": "163",
+			"fr": "Illinois",
+			"city": "Illinois"
+		}, {
+			"id": "172",
+			"fr": "Pennsylvanie",
+			"city": "Pennsylvania"
+		}, {
+			"id": "177",
+			"fr": "Michigan",
+			"city": "Michigan"
+		}, {
+			"id": "185",
+			"fr": "Floride",
+			"city": "Florida"
+		}, {
+			"id": "203",
+			"fr": "Indiana",
+			"city": "Indiana"
+		}, {
+			"id": "208",
+			"fr": "Ohio",
+			"city": "Ohio"
+		}, {
+			"id": "215",
+			"fr": "Tennessee",
+			"city": "Tennessee"
+		}, {
+			"id": "221",
+			"fr": "Maryland",
+			"city": "Maryland"
+		}, {
+			"id": "223",
+			"fr": "Caroline du Nord",
+			"city": "North Carolina"
+		}, {
+			"id": "231",
+			"fr": "Wisconsin",
+			"city": "Wisconsin"
+		}, {
+			"id": "235",
+			"fr": "Massachusetts",
+			"city": "Massachusetts"
+		}, {
+			"id": "241",
+			"fr": "D. C.",
+			"city": "D. C."
+		}, {
+			"id": "243",
+			"fr": "Kentucky",
+			"city": "Kentucky"
+		}, {
+			"id": "246",
+			"fr": "Georgie",
+			"city": "Georgia"
+		}, {
+			"id": "252",
+			"fr": "Missouri",
+			"city": "Missouri"
+		}, {
+			"id": "257",
+			"fr": "Virginie",
+			"city": "Virginia"
+		}, {
+			"id": "267",
+			"fr": "Hawaï",
+			"city": "Hawai'i"
+		}, {
+			"id": "269",
+			"fr": "Minnesota",
+			"city": "Minnesota"
+		}, {
+			"id": "272",
+			"fr": "New Jersey",
+			"city": "New Jersey"
+		}, {
+			"id": "277",
+			"fr": "Alaska",
+			"city": "Alaska"
+		}, {
+			"id": "279",
+			"fr": "Louisiane",
+			"city": "Louisiana"
+		}, {
+			"id": "284",
+			"fr": "Alabama",
+			"city": "Alabama"
+		}, {
+			"id": "289",
+			"fr": "Iowa",
+			"city": "Iowa"
+		}, {
+			"id": "292",
+			"fr": "Arkansas",
+			"city": "Arkansas"
+		}, {
+			"id": "294",
+			"fr": "Mississippi",
+			"city": "Mississippi"
+		}, {
+			"id": "296",
+			"fr": "Rhode Island",
+			"city": "Rhode Island"
+		}, {
+			"id": "298",
+			"fr": "Connecticut",
+			"city": "Connecticut"
+		}, {
+			"id": "304",
+			"fr": "Caroline du Sud",
+			"city": "South Carolina"
+		}, {
+			"id": "307",
+			"fr": "New Hampshire",
+			"city": "New Hampshire"
+		}
+	]
+}

@@ -1,0 +1,43 @@
+{
+	"citys": [{
+		"id": "236",
+		"city": "Boston",
+		"fr": "Boston",
+		"parentid": "235",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "237",
+		"city": "Worcester",
+		"fr": "Worcester",
+		"parentid": "235",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "238",
+		"city": "Springfield",
+		"fr": "Springfield",
+		"parentid": "235",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "239",
+		"city": "Lowell",
+		"fr": "Lowell",
+		"parentid": "235",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "240",
+		"city": "Cambridge",
+		"fr": "Cambridge",
+		"parentid": "235",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}]
+}

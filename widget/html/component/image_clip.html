@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>截图</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style>
+			#main{
+				padding: 0;
+				background-color: black;
+			}
+			canvas{
+				position: absolute;
+				top: 0; 
+				left: 0;
+			}
+			#img{
+				z-index: 1;
+			}
+			#clip{
+				z-index: 2;
+			} 
+			footer{
+				position: fixed;
+				width: 100%;
+				bottom: 0;
+				left: 0;
+				line-height: 70px;
+				z-index: 3;
+				background-color: rgba(36,36,39,0.6);
+			}
+			footer span{
+				font-size: 18px;
+				padding: 0 20px;
+				color: #fff;
+			}
+		</style>
+	</head> 
+
+	<body>
+		<div id="wrap">
+			<div id="main"></div>
+			<footer class="flex-box">
+				<div class="flex-1">
+					<span onclick="api.closeWin()" tapmode="">Cancel </span>
+				</div>
+				<div class="flex-1 text-right">
+					<span onclick="clip()" tapmode="">Choose</span>
+				</div>
+			</footer>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js" ></script>
+	<script type="text/javascript" src="../../script/imageClip.js"></script>
+	<script type="text/javascript">
+		function clip(){
+			api.sendEvent({
+				name: 'clipImage'
+			});
+		}		
+		apiready = function(){
+//			setTimeout(function(){
+				imageClip.init(api.pageParam);
+//			}, 500);
+		}
+	</script>
+
+</html>

@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>component_header</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css"/>
+		<style type="text/css">
+			.ct-icon-angle-left{
+				display: inline-block;
+				position: absolute;
+				width: 30px;
+				height: 100%;
+				line-height: 50px;
+				left: 0;
+				top: 0;
+				color: #B3A69A;
+				text-align: center;
+				font-size: 40px;
+			}
+			.title{
+				color: #B3A69A;
+				/*color: #f2f2f2;*/
+			}
+			.topbar > .flex-1{
+				/*line-height: 50px;*/
+			}
+			.name{
+				color: #B3A69A;
+				padding-left: 2px;
+			}
+			#footer{
+				overflow: hidden;
+				height: 40px;
+				padding: 5px 10px;
+				border-top: 1px solid #ddd;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar text-center" style="background-color: #fff;">
+					<span class="ct-icon-angle-left" onclick="closeWin()" tapmode="" style="font-size: 30px;"></span>
+					<span class="title">
+						对方
+					</span>
+				</div>
+			</div>
+			<div id="main"></div>
+			<div id="footer" class="">
+				
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js" ></script>
+	<script type="text/javascript" src="../../../script/UIChatBox.js" ></script>
+	<script type="text/javascript" src="../../../script/rongCloud2.js" ></script>
+	<script type="text/javascript" src="../../../script/fs.js" ></script>
+
+	<script type="text/javascript">
+		function setTitle(title){
+			$api.text($api.dom('span.title'), title);
+		}
+		function closeWin(){
+			api.sendEvent({
+				name: 'clearMessagesUnreadStatus',
+				extra: {
+					targetId: api.pageParam.targetId
+				}
+			});
+			//获取输入框的值
+			UIChatBox.getValue(function(value) {
+				api.sendEvent({
+					name: 'setTextMessageDraft',
+					extra: {
+						targetId: api.pageParam.targetId,
+						txt: value
+					}
+				});
+			})
+		}
+		function openTalkerDetail(pid){
+			api.openWin({
+				name: 'talkerDetail',
+				url: api.wgtRootDir + '/html/window/win.html',
+				pageParam: {
+					headerTitle: '用户详情',
+					frameName: 'talker_detail',
+					frameUrl: api.wgtRootDir + '/html/mine/talker_detail.html',
+					hasFrameParam: true,
+					frameParam: {
+						pid: pid
+					}
+				},
+				bounces: false
+			});
+		}
+		apiready = function(){
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+					headerPos = $api.offset(header),
+					winParam = api.pageParam,
+					mainPos = $api.offset(main);
+//			$api.attr($api.dom('.ct-icon-user2'), 'onclick', 'openTalkerDetail('+winParam.pid+')');
+			$api.text($api.dom('.title'), winParam.targetNickname||'对方');
+			api.openFrame({
+				name: 'talk_with',
+				url: api.wgtRootDir + '/html/test/talk_with.html',
+				bounces: true,
+				bgColor: '#F2F2F2',
+				pageParam: {
+					targetNickname: winParam.targetNickname,
+//					targetAvatar: winParam.targetAvatar,
+					targetId: winParam.targetId
+				},
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				},
+				reload:true
+			});
+			//打开chatBox
+			UIChatBox.init({
+				talkFrame: 'talk_with'
+			});
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err){
+				closeWin();
+			});
+			
+			/*获取文字消息草稿*/
+			RongCloud2.getTextMessageDraft({
+				targetId: api.pageParam.targetId
+			}, function(ret) {
+				UIChatBox.setValue(ret.result);
+			});
+		}
+	</script>
+</html>

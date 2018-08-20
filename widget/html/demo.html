@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../css/api.css" />
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="pic-box" style="width: 69px;">
+					<div id="scroller" class="" style="width: 69px; transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1); transition-duration: 0ms; transform: translate(0px, 0px) translateZ(0px);">
+						<ul class="no-ul">
+
+							<li style="width: 68px;height: 68px;">
+								<div class="pl" imgurl="" data-status="done" data-key="7E220C1385B34D995CC6BC431FECCF0A.jpg" data-callbackevent="uploadPic15023363258350">
+									<div class="img-frm"><span class="close" style="" onclick="removePic(event, this)" tapmode=""></span>
+										<div class="img" style="background-image: url(assets-library://asset/asset.JPG?id=744069CD-6186-4F8F-AAA3-32BB9E5D3D8D&amp;ext=JPG);"></div>
+									</div>
+								</div>
+							</li>
+							<li style="width: 68px;height: 68px;">
+								<div class="pl" imgurl="" data-status="done" data-key="A7026B10A8F3802A08BD35D94B7C9F12.jpg" data-callbackevent="uploadPic1502336335795">
+									<div class="img-frm"><span class="close" style="" onclick="removePic(event, this)" tapmode=""></span>
+										<div class="img" style="background-image: url(/var/mobile/Containers/Data/Application/0D7D3FEC-9E07-4A72-B51E-E3B3DC151DA9/Library/Caches/APICloud/Cache/getPicture/CB7BA1EB-7F39-426B-B82E-E0C5DC5482AE-277-00000026193E808D.jpg);"></div>
+									</div>
+								</div>
+							</li>
+							<li style="width: 68px;height: 68px;">
+								<div class="pl" imgurl="" data-status="done" data-key="344B5251D00433934E73CD58FD0A4654.jpg" data-callbackevent="uploadPic15023363429110">
+									<div class="img-frm"><span class="close" style="" onclick="removePic(event, this)" tapmode=""></span>
+										<div class="img" style="background-image: url(assets-library://asset/asset.JPG?id=744069CD-6186-4F8F-AAA3-32BB9E5D3D8D&amp;ext=JPG);"></div>
+									</div>
+								</div>
+							</li>
+							<li style="width: 68px;height: 68px;">
+								<div class="pl" imgurl="" data-status="" data-key="" data-callbackevent="uploadPic15023363637490">
+									<div class="img-frm"><span class="close" style="" onclick="removePic(event, this)" tapmode=""></span>
+										<div class="img" style="background-image: url(assets-library://asset/asset.JPG?id=744069CD-6186-4F8F-AAA3-32BB9E5D3D8D&amp;ext=JPG);">
+											<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+												<div class=" flex-1 status"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="add-pic-btn" onclick="askAddPic()" style="height: 83px; background-size: 83px; width: 68px;">
+					<div class=" pl " imgurl="" data-status="" data-key="" data-callbackevent="{{= it.callbackEvent}}">
+						<div class="img-frm">
+							<div class="img">
+								<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+									<div class="photo flex-1 status"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"  charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/offers.js" ></script>
+	<script type="text/javascript">
+	var helper = [
+		5,
+		4,
+		4,
+		3,
+		2,
+		2,
+		2,
+		1,
+		1
+	];
+	 // console.log(helper.substring(0,2))
+var num=0
+for(var i=0; i<helper.length;i++){    
+	  
+//    if(helper.length%2){
+//	  	    console.log(helper.length)
+//	        if(helper[i]+helper[i+1]>=4){
+//	            num+=1;
+//	        }
+//       
+//    }
+}
+//	 console.log(num)
+		var helper = [5, 4, 3, 2, 2, 1, 1, 1, 1];
+		
+		var a = helper.shift();
+		
+//		console.log(helper.length);
+		var row = []; //行数
+		
+		function total(arr){
+			var a = 0;
+			arr.forEach(function(value, index){
+				a += value;
+			});
+			return a;
+		}
+		
+		function make(){
+			var c = [];
+			helper.forEach(function(value, index){
+				if(total(c) >= 2){
+					switch(value){
+						case 5:
+						case 4:
+						case 3:
+						case 2:
+							c.push(value);
+							break;
+					}
+				}
+			});
+		}
+		
+//		function sort(){
+//			var arr = offers.sort(function(a, b){
+//				return -(a.length - b.length);
+//			});
+//			
+////			console.log(JSON.stringify(arr, null, 2));
+//			return arr;
+//		}
+//		var _offers = [],
+//				_obj = {},
+//				singleOffers = [],	//单人报名
+//				arr = sort();	//排序后
+//		arr.forEach(function(value, index){
+//			if(value.length >= 2){
+//				_obj.group = value;
+//				_offers.push(_obj);
+//			}else{
+//				singleOffers.push(value[0]);
+//			}
+//			_obj = {};
+//		});
+////		alert(singleOffers.length)
+////		console.log(JSON.stringify(singleOffers, null, 2));
+//		console.log(JSON.stringify(_offers, null, 2));
+		apiready = function() {
+
+		}
+	</script>
+
+</html>bianli
+

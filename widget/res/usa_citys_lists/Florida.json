@@ -1,0 +1,139 @@
+{
+	"citys": [{
+		"id": "186",
+		"city": "Jacksonville",
+		"fr": "Jacksonville",
+		"parentid": "185",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "187",
+		"city": "Miami",
+		"fr": "Miami",
+		"parentid": "185",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "188",
+		"city": "Tampa",
+		"fr": "Tampa",
+		"parentid": "185",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "189",
+		"city": "St. Petersburg",
+		"fr": "St. Petersburg",
+		"parentid": "185",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "190",
+		"city": "Orlando",
+		"fr": "Orlando",
+		"parentid": "185",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "191",
+		"city": "Hialeah",
+		"fr": "Hialeah",
+		"parentid": "185",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "192",
+		"city": "Fort Lauderdale",
+		"fr": "Fort Lauderdale",
+		"parentid": "185",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "193",
+		"city": "Tallahassee",
+		"fr": "Tallahassee",
+		"parentid": "185",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "194",
+		"city": "Cape Coral",
+		"fr": "Cape Coral",
+		"parentid": "185",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "195",
+		"city": "Pembroke Pines",
+		"fr": "Pembroke Pines",
+		"parentid": "185",
+		"sort": "10",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "196",
+		"city": "Hollywood",
+		"fr": "Hollywood",
+		"parentid": "185",
+		"sort": "11",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "197",
+		"city": "Port St. Lucie",
+		"fr": "Port St. Lucie",
+		"parentid": "185",
+		"sort": "12",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "198",
+		"city": "Coral Springs",
+		"fr": "Coral Springs",
+		"parentid": "185",
+		"sort": "13",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "199",
+		"city": "Gainesville",
+		"fr": "Gainesville",
+		"parentid": "185",
+		"sort": "14",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "200",
+		"city": "Miramar",
+		"fr": "Miramar",
+		"parentid": "185",
+		"sort": "15",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "201",
+		"city": "Clearwater",
+		"fr": "Clearwater",
+		"parentid": "185",
+		"sort": "16",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "202",
+		"city": "Pompano Beach",
+		"fr": "Pompano Beach",
+		"parentid": "185",
+		"sort": "17",
+		"level": "3",
+		"sub": []
+	}]
+}

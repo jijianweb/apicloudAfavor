@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			#main{
+				padding: 0 18px;
+			}
+			ul li {
+				text-align: center;
+				margin: auto 2px;
+			}
+
+			.num {
+				width: 42px;
+				height: 45px;
+				border: 1px solid #C4C4C4;
+				border-radius: 10px;
+				background-color: #F3F3F3;
+			}
+			.relative{
+				overflow: hidden;
+				width: 100%;
+				height: 48px;
+			}
+
+			input {
+				width: 26px;
+				/*line-height: 45px;*/
+				padding-top: 12px;
+				text-align: center;
+			}
+
+			.text {
+				margin: 20px 0;
+				font-size: 14px;
+				text-align: center;
+			}
+
+			.text2 {
+				margin: 20px 0;
+				font-size: 15px;
+				text-align: center;
+			}
+
+			.save {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin: 15px auto;
+			}
+			.input-block{
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="text" lan="Enter_the_6-dight_code">Enter the 6-digit code</div>
+				<ul class="flex-box flex-center-center relative">
+					<div class="input-block hidden">
+						<input type="number" class="input-block" onclick="onFocus(this)" tapmode/>
+					</div>
+					<li class="">
+						<div class="num"><input name="num" autofocus="autofocus" type="tel" maxlength="1" type="text" placeholder="—" oninput="next(event,this,0)" onkeydown="onKeydown(this, event, 0)" /></div>
+					</li>
+					<li class="">
+						<div class="num"><input name="num" type="tel" maxlength="1" type="text" placeholder="—" oninput="next(event,this,1)" onkeydown="onKeydown(this, event, 1)" /></div>
+					</li>
+					<li class="">
+						<div class="num"><input name="num" type="tel" maxlength="1" type="text" placeholder="—" oninput="next(event,this,2)" onkeydown="onKeydown(this, event, 2)" /></div>
+					</li>
+					<li class="">
+						<div class="num"><input name="num" type="tel" maxlength="1" type="text" placeholder="—" oninput="next(event,this,3)" onkeydown="onKeydown(this, event, 3)" /></div>
+					</li>
+					<li class="">
+						<div class="num"><input name="num" type="tel" maxlength="1" type="text" placeholder="—" oninput="next(event,this,4)" onkeydown="onKeydown(this, event, 4)" /></div>
+					</li>
+					<li class="">
+						<div class="num"><input name="num" type="tel" maxlength="1" type="text" placeholder="—" oninput="next(event,this,5)" onkeydown="onKeydown(this, event, 5)" /></div>
+					</li>
+				</ul>
+				<div class="save btn-afavor-1" lan="DONE" onclick="checkCode()" tapmode>DONE</div>
+				<div class="text2">
+					<button class="code" lan="Resend_code" onclick="sendCode()" tapmode>Resend code</button>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+
+	<script type="text/javascript">
+		var param = ''
+		apiready = function() {
+			param = api.pageParam;
+			setTime();
+			L.init();
+		}
+		
+		function onKeydown(_this, e, i){
+			var inputs = $api.domAll('[name=num]'),
+				_val;
+			if(e.keyCode == 8){
+				//删除键
+				_val = $api.val(_this);
+				if(!_val){
+					if(i > 0){
+						$api.val(inputs[i - 1], '');
+						inputs[i-1].focus();
+					}
+				}
+			}
+		}
+		
+		//next
+		function next(e,_this,i){
+			var inputs = $api.domAll('[name=num]');
+			var v = $api.val(_this);
+			if(v == ''){
+				if(i > 0){
+//					inputs[i-1].focus();
+				}
+			}else{
+				if(isNaN(parseInt(v))){
+					$api.val(_this,'');
+				}else{
+					if(i < 5){
+						if(parseInt(v) >= 10 || (v.length == 2 && parseInt(parseInt(v)/10) == 0)){
+							$api.val(inputs[i],parseInt(parseInt(v)/10));
+							if(i <= 4){
+								$api.val(inputs[i+1],parseInt(v)%10);
+								if(i != 4){
+									inputs[i+1].focus();
+								}else{
+									inputs[i].blur();
+								}
+							}
+						}else{
+							inputs[i+1].focus();
+						}
+					}else{
+						if(parseInt(v) >= 10){
+							$api.val(inputs[i],parseInt(parseInt(v)/10));
+						}
+						inputs[5].blur();
+					}
+				}
+			}
+		}
+
+		function onFocus(_this){
+			_this.blur();
+			setTimeout(function(){
+				var inputs = $api.domAll('[name=num]');
+				for(var i = 0; i < inputs.length; i++){
+					if($api.val(inputs[i]) == ''){
+						inputs[i-1 >= 0 ? i-1 : i].focus();
+						return ;
+					}
+				}
+				inputs[5].focus();
+			},100)
+		}
+
+		//验证验证码
+		function checkCode(){
+			var _code = '',
+				_done = false;
+			var nums = $api.domAll('[name=num]');
+			for( var i=0;i<nums.length;i++){
+				_code += $api.val(nums[i]);
+				if((i+1) == nums.length){
+					_done = true;
+				}
+			}
+			if(_code == '' && !_done){
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			inputBlur();
+			if(_done){
+				ajax.get({
+					ctrl: 'Common',
+					fn: 'checkCode',
+					data: {
+						values: {
+							code: _code,
+							type: 3,
+							id: param.sid
+						}
+					},
+					hideLoading: true,
+					success: function(ct) {
+						api.sendEvent({
+							name: 'phone',
+							extra:{
+								code: _code,
+								mobile: param.mobile
+							}
+						})
+					},
+					_404: function(){
+						Tool.toast('Please enter a valid code.');
+					}
+				});
+			}
+		}
+		//点击发送验证码
+		function sendCode(){
+			ajax.get({
+				ctrl: 'Common',
+				fn: 'sendmsg',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						mobile: param.mobile
+					}
+				},
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					param.sid = ct.id;
+					setTime();
+				},
+				_404: function(){
+					Tool.toast('This phone number has been bound.');
+				}
+			});
+		}
+		//计时器
+		function setTime() {
+			var count = 60;
+			var sendMsg = $api.dom('.code');
+			sendMsg.disabled = true;
+
+			var InterValObj = setInterval(function() {
+				if(count > 0) {
+					$api.text(sendMsg, 'Resend code('+(count--) + 's)');
+				}else {
+					clearInterval(InterValObj);
+					sendMsg.disabled = false;
+					$api.text(sendMsg,'Resend code');
+				}
+			},1000);
+		}
+	</script>
+
+</html>

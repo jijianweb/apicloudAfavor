@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<title>消息列表</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<style type="text/css">
+			span.clip{
+				position: absolute;
+				top: 23%;
+				right: 10px;
+			}
+			.ct-icon-arrow-left{
+				display: inline-block;
+				position: absolute;
+				width: 50px;
+				height: 100%;
+				line-height: 50px;
+				left: 0;
+				top: 0;
+				color: #B3A69A;
+			}
+			#main{
+
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header" class="hidden">
+				<div class="topbar">
+					<span class="ct-icon-arrow-left" onclick="api.closeWin()" tapmode="" style="font-size: 30px;"></span>
+	        <span class="title"></span>
+	        <span class="clip btn btn-orange" tapmode="" onclick="imageClip()">使用</span>
+				</div>
+			</div>
+			<div id="main"></div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript">
+		function imageClip(){
+			api.sendEvent({
+				name: 'getAvatarClipImage'
+			});
+		}
+		apiready = function(){
+			/*暂不需翻译*/
+			var header = $api.byId('header');
+					$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+					headerPos = $api.offset(header),
+					mainPos = $api.offset(main);
+			api.openFrame({
+				name: 'image_clip',
+				url: api.wgtRootDir + '/html/component/image_clip.html',
+				pageParam: api.pageParam,
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				}
+			});
+		}
+	</script>
+</html>

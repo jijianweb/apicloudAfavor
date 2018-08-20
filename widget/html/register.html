@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<link rel="stylesheet" href="../css/api.css" />
+		<link rel="stylesheet" href="../css/ct.css" />
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				width: 100%;
+				background-color: #32BBB1;
+			}
+
+			#header {
+				height: 150px;
+				width: 100%;
+			}
+
+			.avatar {
+				margin-top: 30px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				border-radius: 50%;
+			}
+
+			.img1 {
+				width: 36px;
+				height: 36px;
+				/*position: absolute;
+				top: -27px;
+				left: 50%;
+				margin-left: -45px;
+				padding-bottom: 50px;*/
+				background-image: url(../image/photo-camera.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+
+			.img-frm1 {
+				width: 100px;
+				height: 100px;
+				/*position: absolute;
+				top: 63px;
+				text-align: center;
+				left: 50%;
+				margin-left: -18px;*/
+				background-image: url(../image/circle-2.png);
+				background-repeat: no-repeat;
+				background-size: cover;
+				background-position: center;
+			}
+
+			.ct {
+				padding: 0 39px;
+			}
+
+			.name {
+				border-bottom: 1px solid #D0F2F1;
+				padding: 17px 8px 0 0;
+				font-size: 12px;
+			}
+
+			.name input {
+				width: 100%;
+				font-size: 15px;
+				padding: 9px 0px 9px 10px;
+			}
+
+			.down {
+				width: 13px;
+				height: 10px;
+				background-image: url(../image/down-arrow.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				/*position: absolute;*/
+				/*right: 50px;
+				top: 165px;*/
+			}
+
+			.calendar {
+				width: 14px;
+				height: 15px;
+				background-image: url(../image/calendar.png);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: cover;
+				position: absolute;
+				top: 0;
+				right: 0;
+				background-color: #32BBB1;
+			}
+
+			.input {
+				width: 100%;
+			}
+
+			div {
+				color: #fff;
+				/*padding: 0 1px;*/
+			}
+
+			.btn {
+				width: 100%;
+				margin-top: 60px;
+			}
+
+			.register {
+				background-color: #77C8C2;
+				padding: 12px 20px;
+				border-radius: 10px;
+				color: #fff;
+				text-align: center;
+				margin-top: -13px;
+			}
+
+			.copyright {
+				font-size: 11px;
+				text-align: center;
+				color: #fff;
+				bottom: 10px;
+				position: relative;
+				/*margin: 0 10px;*/
+			}
+
+			select {
+				background-color: transparent;
+				border: none;
+				outline: none;
+				-webkit-appearance: none;
+				width: 100%;
+				position: relative;
+				z-index: 999;
+				padding: 9px 0px 9px 9px;
+			}
+
+			input[type=date]::-webkit-calendar-picker-indicator {
+				-webkit-appearance: none!important;
+				-moz-appearance: none !important;
+				appearance: none !important;
+				margin: 0;
+				visibility: hidden;
+				/*width: 100%;*/
+				position: relative;
+				opacity: 0 !important;
+				z-index: 998;
+				display: none !important;
+			}
+
+			input[type=date] {
+				-moz-appearance: textfield;
+				-webkit-appearance: none;
+			}
+			/*input[type=date]::-webkit-datetime-edit {
+				padding: 1px;
+				background: #ccc;
+			}*/
+
+			#data_text {
+				width: 65%;
+				position: absolute;
+				z-index: 2;
+			}
+
+			.pic {
+				position: relative;
+				margin: 0 auto;
+				border-radius: 50%;
+				overflow: hidden;
+				margin-bottom: 10px;
+				width: 90px;
+				height: 90px;
+			}
+
+			.img-frm,
+			.img {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="header flex-box-v flex-v-ce" id="header">
+					<div class="avatar" onclick="uploadAvatar()" tapmode="">
+						<div class="img-frm1 flex-box flex-center-center" imgUrl="" data-status="" data-key="" data-callbackEvent="uploadAvatar">
+							<div class="img1" style="background-color: rgba(50,187,177); border-radius:50%;-webkit-border-radius:50%;font-size: 11px;"></div>
+						</div>
+					</div>
+				</div>
+				<div class="ct">
+					<div class="name flex-box flex-h-ce">
+						<div class="input">
+							<div lan="FIRST_NAME">FIRST NAME</div>
+							<input type="text" name="firstname" id="first-name" value="" style="color: #fff;" />
+						</div>
+					</div>
+					<div class="name flex-box flex-h-ce">
+						<div class="input">
+							<div lan="LAST_NAME">LAST NAME</div>
+							<input type="text" name="lastname" id="last-name" value="" style="color: #fff;" />
+						</div>
+					</div>
+					<div class="name flex-box" style="display:none;">
+						<div class="input">
+							<div lan="GENDER">GENDER</div>
+							<div class="flex-box flex-v-ce">
+								<div class="flex-box flex-1">
+									<!--<input type="text" name="gender" id="gender" value="" style="color: #D0F2F1;" />-->
+									<select class="gender" style="color: #fff;">
+										<option lan="Male">Male</option>
+										<option lan="Female">Female</option>
+									</select>
+								</div>
+								<div class="down"></div>
+							</div>
+						</div>
+					</div>
+					<div class="name flex-box" style="display:none;">
+						<div class="input">
+							<div lan="BIRTHDAY">BIRTHDAY</div>
+							<div class="flex-box flex-v-ce" style="position: relative;">
+								<!--<div class="flex-box flex-1 time" style="position: relative;min-height: 30px;">-->
+								<input id="data_text" readonly="" name="date-1" value="" style="color: #fff;" />
+								<input onchange="isChange()" type="date" name="date" class="date" id="date" value="" style="z-index: 997; color: #fff; min-height: 30px;" />
+								<!--</div>-->
+								<div class="calendar"></div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+				<div class="btn flex-box">
+					<div class="register flex-1" lan="SIGN_UP" tapmode="" onclick="openTheme()">SIGN UP</div>
+				</div>
+			</div>
+			<div id="footer">
+				<div class="copyright flex-center-center">
+					By clicking Sign up you agree to our <span onclick="openProtocol(1)" tapmode="">Terms of Conditions</span> and <span onclick="openProtocol(2)" tapmode="">Privacy Policy</span>.
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/common.js"></script>
+	<script type="text/javascript" src="../script/crypto-js.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script type="text/javascript" src="../script/upload.js"></script>
+	<script type="text/javascript" src="../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../res/language.js" ></script>
+	<script type="text/template" template="img">
+		<div class="pic" imgUrl="{{= it.url}}" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}">
+			<div class="img-frm">
+				<!--<span class="close" style="" onclick="removePic(event, this)" tapmode></span>-->
+				<div class="img" style="background-image: url({{= it.url}});">
+					<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+						<div class=" flex-1 status"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+	<script type="text/template" template="main">
+		<div id="main">
+			<div class="header flex-box-v flex-v-ce" id="header" style="
+			{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+			    margin-bottom: 30px;
+			{{?? api.screenWidth == 640 && api.screenHeight == 1136 }}
+			    height: 100px;
+			{{?}}
+			">
+				<div class="avatar" onclick="uploadAvatar()" tapmode="" style="
+					{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					    margin-top: 0px
+					{{?}}
+					">
+					<div class="img-frm1 flex-box flex-center-center" imgUrl="" data-status="" data-key="" data-callbackEvent="uploadAvatar" style="
+						{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+							width:120px;height:120px;
+						{{?}}
+						">
+						<div class="img1" style="background-color: rgba(50,187,177); border-radius:50%;-webkit-border-radius:50%;font-size: 11px;"></div>
+					</div>
+				</div>
+			</div>
+			<div class="ct">
+				<div class="name flex-box flex-h-ce">
+					<div class="input">
+						<div lan="FIRST_NAME">FIRST NAME</div>
+						<input type="text" name="firstname" id="first-name" value="" style="color: #fff;" />
+					</div>
+				</div>
+				<div class="name flex-box flex-h-ce">
+					<div class="input">
+						<div lan="LAST_NAME">LAST NAME</div>
+						<input type="text" name="lastname" id="last-name" value="" style="color: #fff;" />
+					</div>
+				</div>
+				<div class="name flex-box" style="display:none;">
+					<div class="input">
+						<div lan="GENDER">GENDER</div>
+						<div class="flex-box flex-v-ce">
+							<div class="flex-box flex-1">
+								<!--<input type="text" name="gender" id="gender" value="" style="color: #D0F2F1;" />-->
+								<select class="gender" style="color: #fff;">
+									<option lan="Male">Male</option>
+									<option lan="Female">Female</option>
+								</select>
+							</div>
+							<div class="down"></div>
+						</div>
+					</div>
+				</div>
+				<div class="name flex-box" style="display:none;">
+					<div class="input">
+						<div lan="BIRTHDAY">BIRTHDAY</div>
+						<div class="flex-box flex-v-ce" style="position: relative;">
+							<!--<div class="flex-box flex-1 time" style="position: relative;min-height: 30px;">-->
+							<input id="data_text" readonly="" name="date-1" value="" style="color: #fff;" />
+							<input onchange="isChange()" type="date" name="date" class="date" id="date" value="" style="z-index: 997; color: #fff; min-height: 30px;" />
+							<!--</div>-->
+							<div class="calendar"></div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="btn flex-box" style="
+				{{? api.screenWidth == 1242 && api.screenHeight == 2208 }}
+					margin-top: 50px;
+				{{?? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					margin-top:30px;
+				{{?}}
+				">
+				<div class="register flex-1" lan="SIGN_UP" tapmode="" onclick="openTheme()">SIGN UP</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="copyright flex-center-center" style="
+				{{? api.screenWidth == 640 && api.screenHeight == 1136 }}
+					font-size: 9px;
+				{{?}}
+				">
+				By clicking Sign up you agree to our <span onclick="openProtocol(1)" tapmode>Terms of Conditions</span> and <span onclick="openProtocol(2)" tapmode>Privacy Policy</span>.
+			</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var param = {};
+
+		function isChange() {
+			if($api.val($api.dom('#data_text')) != '') {
+				$api.addCls($api.dom('#data_text'), 'hidden');
+			}
+		}
+
+		function renderImg(args) {
+			T.html('.avatar', 'img', args)
+		}
+		apiready = function() {
+			param = api.pageParam;
+			T.html('#wrap', 'main');
+			if(api.screenWidth == 1242 && api.screenHeight == 2208){
+				$('.name').css({
+					'padding': '17px 8px 10px 0'
+				});
+				$('.name input').css({
+					"padding": "10px 0px 10px 10px"
+				});
+			}
+
+			L.init();
+			//监听头像截图
+			api.addEventListener({
+				name: 'getAvatarClipImage'
+			}, function(ret, err) {
+				if(ret) {
+					var callbackEvent = 'uploadPic' + new Date().getTime(),
+						args = {
+							url: ret.value.url,
+							callbackEvent: callbackEvent
+						};
+					renderImg(args);
+					Upload.init({
+						file: args,
+						callbackEvent: 'uploaded'
+					});
+				}
+			});
+			if(param.type == 1) {
+				$api.css($api.dom('.avatar'), 'background-image:url(' + param.avatar + ')')
+				$api.val($api.dom('[name=firstname]'), param.firstname)
+				$api.val($api.dom('[name=lastname]'), param.lastname)
+			}else if(param.type == 2) {
+				$api.val($api.dom('[name=firstname]'), param.firstname)
+				$api.val($api.dom('[name=lastname]'), param.lastname)
+			}
+
+		}
+		var avatar = '';
+		//上传头像
+		function uploadAvatar() {
+			Tool.actionSheet({
+				buttons: ['Camera', 'Choose from album'],
+				success: function(buttonIndex) {
+					if(buttonIndex < 3) {
+						if(api.systemType == 'ios' && buttonIndex == 1) {
+							Privacy.camera({
+								success: function(ret) {
+									getOnePic(buttonIndex);
+								}
+							});
+							return;
+						}
+						if(api.systemType == 'ios' && buttonIndex == 2) {
+							Privacy.photos({
+								success: function(ret) {
+									getOnePic(buttonIndex);
+								}
+							});
+							return;
+						}
+						getOnePic(buttonIndex);
+					}
+				}
+			})
+		}
+
+		function getOnePic(buttonIndex) {
+			Tool.getOnePic({
+				encodingType: 'jpg',
+				sourceType: buttonIndex === 1 ? 'camera' : 'library',
+				allowEdit: true,
+				success: function(ret) {
+					avatar = ret.data;
+					if('ios' == api.systemType) {
+						//						T.html('.img-frm', 'avatar', ret.data);
+						if(ret) {
+							var callbackEvent = 'uploadPic' + new Date().getTime(),
+								args = {
+									url: ret.data,
+									callbackEvent: callbackEvent
+								};
+							renderImg(args);
+							Upload.init({
+								file: args,
+								callbackEvent: 'uploaded'
+							});
+						}
+					} else {
+						/*若为android系统，则使用screenClip模块进行截图*/
+						if(ret.data) {
+							api.openWin({
+								name: 'imageClip',
+								url: api.wgtRootDir + '/html/window/image_clip.html',
+								pageParam: {
+									imgSrc: ret.data,
+									callbackEvent: 'getAvatarClipImage'
+								}
+							});
+						}
+					}
+				}
+			});
+		}
+		function openProtocol(type){
+			if(parseInt(type) == 1){
+				api.openWin({
+					name: 'protocol',
+					url: api.wgtRootDir + '/html/window/reset_password.html',
+					pageParam: {
+						headerTitle: 'Terms & Conditions',
+						bgColor: '#fff',
+						frameName: 'protocol',
+						frameUrl: api.wgtRootDir + '/html/term_policy.html'
+					},
+					softInputMode: 'auto',
+					bounces: false
+				});
+			}else if(parseInt(type) == 2){
+				api.openWin({
+					name: 'protocol',
+					url: api.wgtRootDir + '/html/window/reset_password.html',
+					pageParam: {
+						headerTitle: 'Privacy Policy',
+						bgColor: '#fff',
+						frameName: 'protocol',
+						frameUrl: api.wgtRootDir + '/html/privacy_policy.html'
+					},
+					softInputMode: 'auto',
+					bounces: false
+				});
+			}
+		}
+		//注册
+		function openTheme() {
+			var firstname = $api.trimAll($api.val($api.dom('[name=firstname]'))),
+				lastname = $api.trimAll($api.val($api.dom('[name=lastname]')));
+				//birthday = $api.trimAll($api.val($api.dom('[name=date]'))),
+				//gender = $api.val($api.dom('.gender'));
+			inputBlur();
+			if(!firstname) {
+				Tool.toast('Please complete your personal profile.');
+				return;
+			}
+			if(!lastname) {
+				Tool.toast('Please complete your personal profile.');
+				return;
+			}
+			//if(!birthday) {
+			//	Tool.toast('Please complete your personal profile.');
+			//	return;
+			//}
+			// console.log(JSON.stringify(param, null, 2))
+			if(param.type == 1) {
+				//Facebook注册
+				ajax.get({
+					ctrl: 'Common',
+					fn: 'threeReg',
+					data: {
+						values: {
+							type: param.type,
+							threeid: param.threeid,
+							email: param.email,
+							avatar: param.avatar,
+							firstname: param.firstname,
+							lastname: param.lastname,
+							//birthday: birthday,
+							//gender: gender
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function(ct) {
+						ajax.get({
+							ctrl: 'Common',
+							fn: 'threeSign',
+							data: {
+								values: {
+									type: param.type,
+									threeid: param.threeid
+								}
+							},
+							showError: true,
+							showProgress: true,
+							hideLoading: true,
+							success: function(ct) {
+								Tool.toast(LANGUAGE[$api.getStorage('lan')]['RegistrationSuccessful']);
+								$api.setStorage(CONFIG.KEY.MEMBER_ID, ct.id);
+								$api.setStorage(CONFIG.KEY.TOKEN, ct.token);
+								$api.setStorage(CONFIG.KEY.MEMBER_INFO, ct);
+								$api.setStorage('logints', new Date().getTime());
+								$api.rmStorage(CONFIG.KEY.FIRST_OPEN);
+								if(!$api.getStorage(CONFIG.KEY.FIRST_OPEN)) {
+									api.openFrame({
+										name: 'launch',
+										url: api.wgtRootDir + '/html/launch.html',
+										bounces: false
+									})
+								} else {
+									setTimeout(function() {
+										Tool.initApp();
+									}, 300)
+								}
+							}
+						})
+					}
+				});
+			} else if(param.type == 2){
+				var avatarKey = $api.attr($api.dom('[data-key]'),'data-key');
+				if(avatarKey == ''){
+					Tool.toast('Please complete your personal profile.');
+					return ;
+				}
+				//谷歌注册
+				ajax.get({
+					ctrl: 'Common',
+					fn: 'threeReg',
+					data: {
+						values: {
+							type: param.type,
+							threeid: param.threeid,
+							email: param.email,
+							avatar: avatarKey,
+							firstname: param.firstname,
+							lastname: param.lastname,
+							//birthday: birthday,
+							//gender: gender
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function(ct) {
+						ajax.get({
+							ctrl: 'Common',
+							fn: 'threeSign',
+							data:{
+								values: {
+									type: param.type,
+									threeid: param.threeid
+								}
+							},
+							showError: true,
+							showProgress: true,
+							hideLoading: true,
+							success: function(ct) {
+								Tool.toast(LANGUAGE[$api.getStorage('lan')]['RegistrationSuccessful']);
+								$api.setStorage(CONFIG.KEY.MEMBER_ID, ct.id);
+								$api.setStorage(CONFIG.KEY.TOKEN, ct.token);
+								$api.setStorage(CONFIG.KEY.MEMBER_INFO, ct);
+								$api.setStorage('logints', new Date().getTime());
+								$api.rmStorage(CONFIG.KEY.FIRST_OPEN);
+								if(!$api.getStorage(CONFIG.KEY.FIRST_OPEN)) {
+									api.openFrame({
+										name: 'launch',
+										url: api.wgtRootDir + '/html/launch.html',
+										bounces: false
+									})
+								} else {
+									setTimeout(function() {
+										Tool.initApp();
+									}, 300)
+								}
+							}
+						})
+					}
+				})
+			}else {
+				var avatarKey = $api.attr($api.dom('[data-key]'),'data-key');
+				if(avatarKey == ''){
+					Tool.toast('Please upload your profile photo');
+					return ;
+				}
+				ajax.get({
+					ctrl: 'Common',
+					fn: 'register',
+					data: {
+						values: {
+							memberid: param.memberid,
+							avatar: avatarKey,
+							firstname: firstname,
+							lastname: lastname,
+							//gender: gender,
+							//birthday: birthday
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function(ct) {
+
+						ajax.get({
+							ctrl: 'Common',
+							fn: 'login',
+							data: {
+								values: {
+									email: param.email,
+									password: param.password,
+								}
+							},
+							showError: true, //是否在出现错误时，输出错误信息
+							showProgress: true,
+							hideLoading: true,
+							success: function(ct) {
+								Tool.toast(LANGUAGE[$api.getStorage('lan')]['RegistrationSuccessful']);
+								$api.setStorage(CONFIG.KEY.MEMBER_ID, ct.id);
+								$api.setStorage(CONFIG.KEY.TOKEN, ct.token);
+								$api.setStorage(CONFIG.KEY.FIRSTNAMEANDLASTNAME, ct.username);
+								$api.setStorage(CONFIG.KEY.MEMBER_INFO, ct);
+								$api.rmStorage(CONFIG.KEY.FIRST_OPEN);
+								$api.setStorage('logints', new Date().getTime());
+								if(!$api.getStorage(CONFIG.KEY.FIRST_OPEN)) {
+									api.openFrame({
+										name: 'launch',
+										url: api.wgtRootDir + '/html/launch.html',
+										bounces: false
+									})
+								} else {
+									setTimeout(function() {
+										Tool.initApp();
+									}, 300)
+								}
+
+							}
+
+						});
+					}
+				})
+			}
+		}
+		var initBodyHeight = document.body.clientHeight; //页面可视高度
+		//			console.log(initBodyHeight)
+		var keyBoardStatus = false; //键盘是否打开
+		function getKeyBoardStatus() {
+			setTimeout(function() {
+				if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false) {
+					keyBoardStatus = true;
+					$api.addCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true) {
+					keyBoardStatus = false;
+					$api.removeCls($api.dom('#footer'), 'hidden');
+					getKeyBoardStatus();
+					return false;
+				}
+				getKeyBoardStatus();
+			}, 100);
+		}
+		$(function() {
+			getKeyBoardStatus();
+		});
+	</script>
+
+</html>

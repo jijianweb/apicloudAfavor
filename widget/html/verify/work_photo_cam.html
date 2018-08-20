@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>工作证明等</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<style type="text/css">
+			html,
+			body,
+			#wrap,
+			#main{
+				background-color: transparent;
+			}
+			#main {
+				/*background-color: #1B1B1B;*/
+			}
+			.avatar {
+				width: 100%;
+				height: 300px;
+				/*background-color: #c0c5c7;*/
+			}
+			.tips,
+			.notice{
+				color: #fff;
+			}
+			.tips {
+				padding-top: 20px;
+			}
+			.notice {
+				padding-top: 5px;
+			}
+			.tools {
+				position: absolute;
+				bottom: 20px;
+				width: 100%;
+			}
+			.tools > div{
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			.pic {
+				background-image: url(../../image/verify/Forma-1.png);
+				width: 29px;
+				height: 25px;
+			}
+			.take{
+				background-image: url(../../image/verify/7.png);
+				width: 59px;
+				height: 58px;
+			}
+			.filp{
+				background-image: url(../../image/post/photo.png);
+				width: 29px;
+				height: 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-ce">
+				<div class="avatar">
+					
+				</div>
+				<div class="tips text-center" lan="Please_make_sure_your_document_is_centered_and_readable">
+					Please make sure your document is centered and readable.
+				</div>
+
+			</div>
+			<div id="footer">
+				<div class="tools flex-box flex-h-ce flex-h-zhu">
+					<div class="flex-1"></div>
+					<div class="pic " onclick="album()" tapmode></div>
+					<div class="flex-1"></div>
+					<div class="take " onclick="takePhoto()" tapmode></div>
+					<div class="flex-1"></div>
+					<div class="flex-1"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		//相册
+		function album(){
+			Tool.getOnePic({
+				success: function(ret){
+					if(ret){
+						if(ret.data){
+							ret.imagePath = ret.data;
+							openUpload(ret)
+						}
+					}
+				}
+			})
+		}
+		//拍照
+		function takePhoto(){
+			var FNPhotograph = api.require('FNPhotograph');
+			var picName = 'pic_'+getMemberIdFromStorage()+'_'+new Date().getTime()+'.png';
+			FNPhotograph.takePhoto({
+			    quality: 'high',
+			    path: 'fs://FNPhotograph/'+picName,
+			    album: false
+			}, function(ret){
+			    if(ret.imagePath){
+			    	openUpload(ret);
+			    }
+			});
+		}
+		function openUpload(ret){
+			api.openWin({
+	    		name: 'upload',
+	    		url: api.wgtRootDir + '/html/window/verify/black_win.html',
+	    		pageParam:{
+	    			headerTitle: api.pageParam.type == 2 ? 'Proof of Work Eligbility' : 'Photo ID',
+	    			frameName: 'upload',
+	    			frameUrl: api.wgtRootDir + '/html/verify/is_upload.html',
+	    			frameParam:{
+	    				imagePath: ret.imagePath,
+	    				type: api.pageParam.type,
+	    			}
+	    		},
+	    		delay: api.systemType == 'ios' ? 0 : 300,
+	    		slidBackEnabled: false
+	    	})
+		}
+		function openlight(){
+			var FNPhotograph = api.require('FNPhotograph');
+			FNPhotograph.getFlashlight(function(ret) {
+			    if (ret.status) {
+			    	var light =  '';
+			        switch(ret.flashlight){
+			        	case 'off':
+			        		light = 'on';
+			        	break;
+			        	case 'on':
+			        		light = 'off';
+			        	break;
+			        }
+			        
+			        api.execScript({
+			        	name: api.winName,
+			        	script: 'setLightIcon("' + light + '")'
+			        });
+//			        if(light == 'on'){
+//			        	Tool.toast('闪光灯已开~')
+//			        }
+					FNPhotograph.setFlashlight({
+					    flashlight: light
+					});
+			    }
+			});
+		}
+		apiready = function(){
+			var frameWidth = api.frameWidth;
+			$api.css($api.dom('.avatar'),'width:'+ frameWidth + 'px');
+			$api.css($api.dom('.avatar'),'height:'+ frameWidth+ 'px');
+			var FNPhotograph = api.require('FNPhotograph');
+			L.init();
+			FNPhotograph.openCameraView({
+			    rect: {
+			       x: 0,
+			       y: 0,
+			       w: frameWidth,
+			       h: frameWidth
+			    },
+			    orientation: 'portrait',
+			    fixedOn: api.frameName,
+			    fixed: true
+			}, function(ret){
+				if(ret.status){
+				}
+			});
+			api.addEventListener({
+				name: 'closeFN'
+			},function(){
+				api.closeWin({
+					name: 'upload'
+				})
+				var FNPhotograph = api.require('FNPhotograph');
+				FNPhotograph.closeCameraView(function(ret) {
+					FNPhotograph.openCameraView({
+					    rect: {
+					       x: 0,
+					       y: 0,
+					       w: frameWidth,
+					       h: frameWidth
+					    },
+					    orientation: 'portrait',
+					    fixedOn: api.frameName,
+					    fixed: true
+					}, function(ret){
+						if(ret.status){
+						}
+					});
+				});
+
+				
+			})
+			api.addEventListener({
+				name: 'pause'
+			},function(ret){
+				var FNPhotograph = api.require('FNPhotograph');
+				FNPhotograph.closeCameraView(
+				function(ret) {
+				});
+			})
+			api.addEventListener({
+				name: 'resume'
+			},function(){
+				var FNPhotograph = api.require('FNPhotograph');
+				FNPhotograph.openCameraView({
+				    rect: {
+				       x: 0,
+				       y: 0,
+				       w: frameWidth,
+				       h: frameWidth
+				    },
+				    orientation: 'portrait',
+				    fixedOn: api.frameName,
+				    fixed: true
+				}, function(ret){
+					if(ret.status){
+					}
+				});
+			})
+		}
+	</script>
+</html>

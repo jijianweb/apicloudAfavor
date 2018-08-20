@@ -1,0 +1,483 @@
+{
+	"citys": [{
+		"id": "14",
+		"city": "Los Angeles",
+		"fr": "Los Angeles",
+		"parentid": "13",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "15",
+		"city": "San Diego",
+		"fr": "San Diego",
+		"parentid": "13",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "16",
+		"city": "San Jose",
+		"fr": "San Jose",
+		"parentid": "13",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "17",
+		"city": "San Francisco",
+		"fr": "San Francisco",
+		"parentid": "13",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "18",
+		"city": "Long Beach",
+		"fr": "Long Beach",
+		"parentid": "13",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "19",
+		"city": "Fresno",
+		"fr": "Fresno",
+		"parentid": "13",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "20",
+		"city": "Sacramento",
+		"fr": "Sacramento",
+		"parentid": "13",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "21",
+		"city": "Oakland",
+		"fr": "Oakland",
+		"parentid": "13",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "22",
+		"city": "Santa Ana",
+		"fr": "Santa Ana",
+		"parentid": "13",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "23",
+		"city": "Anaheim",
+		"fr": "Anaheim",
+		"parentid": "13",
+		"sort": "10",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "24",
+		"city": "Bakersfield",
+		"fr": "Bakersfield",
+		"parentid": "13",
+		"sort": "11",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "25",
+		"city": "Riverside",
+		"fr": "Riverside",
+		"parentid": "13",
+		"sort": "12",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "26",
+		"city": "Stockton",
+		"fr": "Stockton",
+		"parentid": "13",
+		"sort": "13",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "27",
+		"city": "Chula Vista",
+		"fr": "Chula Vista",
+		"parentid": "13",
+		"sort": "14",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "28",
+		"city": "Modesto",
+		"fr": "Modesto",
+		"parentid": "13",
+		"sort": "15",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "29",
+		"city": "Fremont",
+		"fr": "Fremont",
+		"parentid": "13",
+		"sort": "16",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "30",
+		"city": "Glendale",
+		"fr": "Glendale",
+		"parentid": "13",
+		"sort": "17",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "31",
+		"city": "San Bernardino",
+		"fr": "San Bernardino",
+		"parentid": "13",
+		"sort": "18",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "32",
+		"city": "Huntington Beach",
+		"fr": "Huntington Beach",
+		"parentid": "13",
+		"sort": "19",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "33",
+		"city": "Irvine",
+		"fr": "Irvine",
+		"parentid": "13",
+		"sort": "20",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "34",
+		"city": "Oxnard",
+		"fr": "Oxnard",
+		"parentid": "13",
+		"sort": "21",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "35",
+		"city": "Moreno Valley",
+		"fr": "Moreno Valley",
+		"parentid": "13",
+		"sort": "22",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "36",
+		"city": "Ontario",
+		"fr": "Ontario",
+		"parentid": "13",
+		"sort": "23",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "37",
+		"city": "Rancho Cucamonga",
+		"fr": "Rancho Cucamonga",
+		"parentid": "13",
+		"sort": "24",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "38",
+		"city": "Fontana",
+		"fr": "Fontana",
+		"parentid": "13",
+		"sort": "25",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "39",
+		"city": "Santa Clarita",
+		"fr": "Santa Clarita",
+		"parentid": "13",
+		"sort": "26",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "40",
+		"city": "Garden Grove",
+		"fr": "Garden Grove",
+		"parentid": "13",
+		"sort": "27",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "41",
+		"city": "Oceanside",
+		"fr": "Oceanside",
+		"parentid": "13",
+		"sort": "28",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "42",
+		"city": "Pomona",
+		"fr": "Pomona",
+		"parentid": "13",
+		"sort": "29",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "43",
+		"city": "Santa Rosa",
+		"fr": "Santa Rosa",
+		"parentid": "13",
+		"sort": "30",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "44",
+		"city": "Corona",
+		"fr": "Corona",
+		"parentid": "13",
+		"sort": "31",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "45",
+		"city": "Salinas",
+		"fr": "Salinas",
+		"parentid": "13",
+		"sort": "32",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "46",
+		"city": "Pasadena",
+		"fr": "Pasadena",
+		"parentid": "13",
+		"sort": "33",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "47",
+		"city": "Torrance",
+		"fr": "Torrance",
+		"parentid": "13",
+		"sort": "34",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "48",
+		"city": "Lancaster",
+		"fr": "Lancaster",
+		"parentid": "13",
+		"sort": "35",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "49",
+		"city": "Hayward",
+		"fr": "Hayward",
+		"parentid": "13",
+		"sort": "36",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "50",
+		"city": "Palmdale",
+		"fr": "Palmdale",
+		"parentid": "13",
+		"sort": "37",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "51",
+		"city": "Orange",
+		"fr": "Orange",
+		"parentid": "13",
+		"sort": "38",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "52",
+		"city": "Escondido",
+		"fr": "Escondido",
+		"parentid": "13",
+		"sort": "39",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "53",
+		"city": "Fullerton",
+		"fr": "Fullerton",
+		"parentid": "13",
+		"sort": "40",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "54",
+		"city": "Sunnyvale",
+		"fr": "Sunnyvale",
+		"parentid": "13",
+		"sort": "41",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "55",
+		"city": "Elk Grove",
+		"fr": "Elk Grove",
+		"parentid": "13",
+		"sort": "42",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "56",
+		"city": "Thousand Oaks",
+		"fr": "Thousand Oaks",
+		"parentid": "13",
+		"sort": "43",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "57",
+		"city": "Simi Valley",
+		"fr": "Simi Valley",
+		"parentid": "13",
+		"sort": "44",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "58",
+		"city": "Vallejo",
+		"fr": "Vallejo",
+		"parentid": "13",
+		"sort": "45",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "59",
+		"city": "Inglewood",
+		"fr": "Inglewood",
+		"parentid": "13",
+		"sort": "46",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "60",
+		"city": "Visalia",
+		"fr": "Visalia",
+		"parentid": "13",
+		"sort": "47",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "61",
+		"city": "Costa Mesa",
+		"fr": "Costa Mesa",
+		"parentid": "13",
+		"sort": "48",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "62",
+		"city": "Downey",
+		"fr": "Downey",
+		"parentid": "13",
+		"sort": "49",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "63",
+		"city": "Santa Clara",
+		"fr": "Santa Clara",
+		"parentid": "13",
+		"sort": "50",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "64",
+		"city": "West Covina",
+		"fr": "West Covina",
+		"parentid": "13",
+		"sort": "51",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "65",
+		"city": "Roseville",
+		"fr": "Roseville",
+		"parentid": "13",
+		"sort": "52",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "66",
+		"city": "Norwalk",
+		"fr": "Norwalk",
+		"parentid": "13",
+		"sort": "53",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "67",
+		"city": "Fairfield",
+		"fr": "Fairfield",
+		"parentid": "13",
+		"sort": "54",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "68",
+		"city": "Burbank",
+		"fr": "Burbank",
+		"parentid": "13",
+		"sort": "55",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "69",
+		"city": "San Buenaventura",
+		"fr": "San Buenaventura",
+		"parentid": "13",
+		"sort": "56",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "70",
+		"city": "Richmond",
+		"fr": "Richmond",
+		"parentid": "13",
+		"sort": "57",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "71",
+		"city": "Berkeley",
+		"fr": "Berkeley",
+		"parentid": "13",
+		"sort": "58",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "72",
+		"city": "Daly City",
+		"fr": "Daly City",
+		"parentid": "13",
+		"sort": "59",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "73",
+		"city": "Antioch",
+		"fr": "Antioch",
+		"parentid": "13",
+		"sort": "60",
+		"level": "3",
+		"sub": []
+	}]
+}

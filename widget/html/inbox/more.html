@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			body,
+			html,
+			#wrap{
+				background-color: transparent;
+			}
+			#main {
+				padding: 60px 10px 0;
+				background-color: transparent;	
+			}
+			.title-1 {
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				/*word-break: break-all;*/
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				font-size: 14px;
+				margin-bottom: 5px;
+				margin-top: 8px;
+				margin-right: 10px;
+				min-height: 16px;
+			}
+			
+			.text {
+				font-size: 12px;
+				color: #868686;
+				margin-top: 6px;
+				display: -webkit-box!important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+				margin-top: -1px;
+			}
+			
+			.helper {
+				font-size: 11px;
+				color: #868686;
+				display: -webkit-box!important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 1;
+			}
+			
+			.num {
+				color: #3EBBB2;
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+			
+			.img-1 {
+				width: 55px;
+				height: 55px;
+				background-color: #83D3D0;
+				border-radius: 50%;
+				border: 1px solid #CFEEEB;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-image: url(../../image/inbox/photo-3.png);
+				margin: 0 8px 0 -5px
+			}
+			
+			.ic {
+				margin-right: 5px;
+			}
+			
+			.img1{
+				height: 13px;
+			}
+			
+			.money {
+				text-align: center;
+				min-width: 50px;
+			}
+			
+			.task {
+				position: relative;
+				padding: 17px 12px 14px 15px;
+				border-bottom: 1px solid #D4D4D4;
+				height:90px;
+				background-color: #FFFFFF;
+			}
+			
+			.task:last-child{
+				border-bottom-left-radius: 10px;
+				border-bottom-right-radius: 10px;
+				border-bottom: none;
+			}
+			
+			.distance {
+				font-size: 12px;
+				color: #868686;
+			}
+			.collect,
+			.cancel{
+				top: 0;
+				right: -5px;
+				width: 18px;
+				height: 16px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+				position: absolute;
+			}
+			.collect {
+				background-image: url(../../image/browse/heart-line.png);
+			}
+			
+			.cancel {
+				background-image: url(../../image/browse/like-heart.png);
+			}
+			
+			.task_box {
+				height: 113px;
+				border-radius: 10px;
+				/*background-color: #fff;*/
+			}
+			
+			.re {
+				display: none;
+			}
+			
+			.block {
+				display: block;
+			}
+			.price_box{
+				text-align: right;
+			}
+			.love{
+				position: relative;
+				text-align: right;
+				margin-top: 8px;
+				height: 20px;
+			}
+			.text2{
+				font-size: 12px;
+				color: #868686;
+			}
+			.more{
+			    width: 0;
+				height: 0;
+				border-top: 10px solid #3CBBB0;
+				border-right: 5px solid transparent;
+				border-left: 5px solid transparent;
+
+			}
+			
+			.task_box > .task:first-child{
+				position: relative;
+			    background-color: #F3F3F5;
+			    /*padding: 17px 12px 14px 15px;*/
+			    border-radius: 10px;
+			    border-bottom: none;
+			    /*height: 90px;*/
+			    box-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+			    z-index: 3;
+			}
+			.list{
+				position: relative;
+				/*background-color: #fff;*/
+				/*max-height: 100%;*/
+				overflow-y: auto;
+				margin-top: -10px;
+				-webkit-overflow-scrolling: touch;
+			}
+			
+			.list > .task:first-child{
+				padding-top: 27px;
+				height: 100px;
+			}
+			.close{
+				width: 0;
+			    height: 0;
+			    border-right: 5px solid transparent;
+			    border-bottom: 10px solid #3CBBB0;
+			    border-left: 5px solid transparent;
+			}
+		</style>
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v" onclick="closeFrame()" tapmode="">
+				<div class="task_box hidden">
+					<div class="task flex-box flex-h-ce ">
+						<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+						<div class="content flex-1">
+							<div class="info flex-box-v">
+								<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+								<div class="flex-1 flex-box flex-v-ce">
+									<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+									<div class="flex-1 text">271 Veum Circles Suite 672</div>
+								</div>
+								<div class="helper">111</div>
+							</div>
+						</div>
+						<div class="price_box">
+							<div class="love">
+								<div class="collect cancel"></div>
+							</div>
+							<div class="num flex-1 text-right">$214</div>
+							<div class="text2">3km away</div>
+						</div>
+						<div class="flex-box flex-center-center" style="height: 100%; margin-left: 6px; width: 10px;">
+							<div class="close" onclick="closeFrame()" tapmode=""></div>
+						</div>						
+					</div>
+					
+					<div class="list">
+						<div class="task  flex-box flex-h-ce ">
+							<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+							<div class="content flex-1">
+								<div class="info flex-box-v">
+									<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+									<div class="flex-1 flex-box flex-v-ce">
+										<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+										<div class="flex-1 text">271 Veum Circles Suite 672</div>
+									</div>
+									<div class="helper">111</div>
+								</div>
+							</div>
+							<div class="price_box">
+								<div class="love">
+									<div class="collect"></div>
+									<div class="cancel re"></div>
+								</div>
+								<div class="num flex-1 text-right">$214</div>
+								<div class="text2">3km away</div>
+							</div>
+						</div>
+						<div class="task  flex-box flex-h-ce ">
+							<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+							<div class="content flex-1">
+								<div class="info flex-box-v">
+									<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+									<div class="flex-1 flex-box flex-v-ce">
+										<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+										<div class="flex-1 text">271 Veum Circles Suite 672</div>
+									</div>
+									<div class="helper">111</div>
+								</div>
+							</div>
+							<div class="price_box">
+								<div class="love">
+									<div class="collect"></div>
+									<div class="cancel re"></div>
+								</div>
+								<div class="num flex-1 text-right">$214</div>
+								<div class="text2">3km away</div>
+							</div>
+						</div>
+						<div class="task  flex-box flex-h-ce ">
+							<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+							<div class="content flex-1">
+								<div class="info flex-box-v">
+									<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+									<div class="flex-1 flex-box flex-v-ce">
+										<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+										<div class="flex-1 text">271 Veum Circles Suite 672</div>
+									</div>
+									<div class="helper">111</div>
+								</div>
+							</div>
+							<div class="price_box">
+								<div class="love">
+									<div class="collect"></div>
+									<div class="cancel re"></div>
+								</div>
+								<div class="num flex-1 text-right">$214</div>
+								<div class="text2">3km away</div>
+							</div>
+						</div>
+						<div class="task  flex-box flex-h-ce ">
+							<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+							<div class="content flex-1">
+								<div class="info flex-box-v">
+									<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+									<div class="flex-1 flex-box flex-v-ce">
+										<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+										<div class="flex-1 text">271 Veum Circles Suite 672</div>
+									</div>
+									<div class="helper">111</div>
+								</div>
+							</div>
+							<div class="price_box">
+								<div class="love">
+									<div class="collect"></div>
+									<div class="cancel re"></div>
+								</div>
+								<div class="num flex-1 text-right">$214</div>
+								<div class="text2">3km away</div>
+							</div>
+						</div>
+						<div class="task  flex-box flex-h-ce ">
+							<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+							<div class="content flex-1">
+								<div class="info flex-box-v">
+									<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+									<div class="flex-1 flex-box flex-v-ce">
+										<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+										<div class="flex-1 text">271 Veum Circles Suite 672</div>
+									</div>
+									<div class="helper">111</div>
+								</div>
+							</div>
+							<div class="price_box">
+								<div class="love">
+									<div class="collect"></div>
+									<div class="cancel re"></div>
+								</div>
+								<div class="num flex-1 text-right">$214</div>
+								<div class="text2">3km away</div>
+							</div>
+						</div>
+						<div class="task  flex-box flex-h-ce ">
+							<div class="img-1" style="background-image: url();" tapmode="" onclick="openTheme()"></div>
+							<div class="content flex-1">
+								<div class="info flex-box-v">
+									<div class="title-1">Assemble IKEA sofabed and remove cardboard.</div>
+									<div class="flex-1 flex-box flex-v-ce">
+										<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+										<div class="flex-1 text">271 Veum Circles Suite 672</div>
+									</div>
+									<div class="helper">111</div>
+								</div>
+							</div>
+							<div class="price_box">
+								<div class="love">
+									<div class="collect"></div>
+									<div class="cancel re"></div>
+								</div>
+								<div class="num flex-1 text-right">$214</div>
+								<div class="text2">3km away</div>
+							</div>
+						</div>
+						
+						
+						
+					</div>
+						
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/rongCloud2.js" ></script>
+	<script type="text/template" template="main">
+		<div class="task_box flex-1 flex-box-v">
+		{{? it instanceof Array && it.length > 0}} 
+			<div class="task flex-box flex-h-ce">
+				<div class="img-1" style="background-image: url({{= Tool.imageCompressByQiNiu(it[0].avatar, 0, 200, 200)}});"></div>
+				<div class="content flex-1">
+					<div class="info flex-box-v">
+						<div class="title-1">
+							{{= it[0].title}}
+						</div>
+						
+						<div class="flex-1 flex-box flex-v-ce">
+							<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+							<div class="flex-1 text">
+							{{? it[0].location }}	
+								{{= it[0].location}}
+							{{??}}
+								Online
+							{{?}}	
+							</div>
+						</div>
+						<div class="helper">
+							{{? it[0].comments == 0}} 0 comment {{?? it[0].comments == 1}} 1 comment {{??}} {{= it[0].comments}} comments {{?}}, 
+							{{? it[0].offers == 0}} 0 offer {{?? it[0].offers == 1}} 1 offer {{??}} {{= it[0].offers}} offers {{?}}
+						</div>
+					</div>
+				</div>
+				<div class="price_box">
+					<div class="love">
+						<div class="collect {{= it[0].collection == 1 ? 'cancel' : ''}}" onclick="collection(this, {{= it[0].id}}, event)" tapmode=""></div>
+					</div>
+					<div class="num flex-1" tapmode="">{{=it[0].default_currency == 'cad' ? 'C$' : '$'}}{{=it[0].total}}</div>
+					<div class="text2">{{= formatDistance(it[0].distance)}} away</div>
+				</div>
+				<div class="flex-box flex-center-center" style="height: 100%; margin-left: 6px; width: 15px;">
+					<div class="close " onclick="api.closeFrame()" tapmode=""></div>
+				</div>					
+			</div>			
+			<div class="list flex-1">
+			{{~ it:value:index}}
+				{{? index > 0 }}
+				<div class="task flex-box flex-h-ce" tapmode="" onclick="openTheme({{= value.id}}, {{= value.isself}}, event, this)" data-json='{{= JSON.stringify(value) }}'>
+					<div class="img-1" style="background-image: url({{= Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+					<div class="content flex-1">
+						<div class="info flex-box-v">
+							<div class="title-1">
+								{{= value.title}}
+							</div>
+							
+							<div class="flex-1 flex-box flex-v-ce">
+								<div class="ic"><img class="img1" src="../../image/browse/yuan-3.png" /></div>
+								<div class="flex-1 text">
+								{{? value.location }}	
+									{{= value.location}}
+								{{??}}	
+									Online
+								{{?}}	
+								</div>
+							</div>
+							<div class="helper">
+								{{? value.comments == 0}} 0 comment {{?? value.comments == 1}} 1 comment {{??}} {{= value.comments}} comments {{?}}, 
+								{{? value.offers == 0}} 0 offer {{?? value.offers == 1}} 1 offer {{??}} {{= value.offers}} offers {{?}}
+							</div>
+						</div>
+					</div>
+					<div class="price_box">
+						<div class="love">
+							<div class="collect {{= value.collection == 1 ? 'cancel' : ''}}" onclick="collection(this, {{= it[index].id}}, event)" tapmode=""></div>
+						</div>
+						<div class="num flex-1" tapmode="">{{=value.default_currency == 'cad' ? 'C$' : '$'}}{{=value.total}}</div>
+						<div class="text2">{{= formatDistance(value.distance)}} away</div>
+					</div>
+				</div>
+				{{?}}
+			{{~}} 
+			</div>
+		{{?}}
+		</div>
+	</script>
+	<script type="text/javascript">
+		function closeFrame() {
+			api.execScript({
+			    name: 'talk_with',
+			    script: 'closeFrame()'
+			});
+		}
+		
+		function refreshHeart(_this, isCollected){
+			/*
+			 * 刷新talk with 页面的收藏状态
+			 */
+			
+			var firstListItemDOM = $api.dom('.task');
+			if(firstListItemDOM == _this){
+				api.execScript({
+					name: 'talk_with',
+					script: 'refreshHeart(' + (isCollected||0) + ')'
+				});
+			}
+		}
+		
+		function collection(_this, favorid, e, index){
+			/*
+			 * 任务 收藏/取消收藏
+			 */
+			
+			var isCollected = $api.hasCls(_this, 'cancel'),	//判断是否处于已收藏状态
+				fn = isCollected ? 'delCollection' : 'addCollection',
+				loveDOM = $api.closest(_this, '.love'),
+				listItemDOM = $api.closest(_this, '.task');
+				
+			e.stopPropagation();
+			
+			ajax.get({
+				ctrl: 'Browse',
+				fn: fn,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1,
+						favorid: favorid
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					var ct1 = $api.getStorage('detail'),
+						_index;
+					
+					ct1.some(function(value, index){
+						if(value.id == favorid){
+							_index = index;
+							return true;
+						}
+					});
+					
+					if(fn == 'delCollection'){
+						//取消收藏
+						refreshHeart(listItemDOM);
+						$api.removeCls(_this, 'cancel');
+						Tool.toast('Remove from Favorites.');
+						ct1[_index].collection = 0;
+					}else{
+						//收藏
+						refreshHeart(listItemDOM, 1);
+						$api.addCls(_this, 'cancel');
+						Tool.toast('Add to Favorites.');
+						ct1[_index].collection = 1;
+					}
+					$api.setStorage('detail', ct1);
+				}
+			});
+		}		
+		
+		var favorid = '';
+		
+		function openTheme(id, isself, e, _this){
+			//TODO 打开聊天页面
+			e.stopPropagation();
+			var memberInfo = $api.getStorage(CONFIG.KEY.MEMBER_INFO),
+				mid = $api.getStorage(CONFIG.KEY.MEMBER_ID),
+				rong = api.require('rongCloud2'),
+				chatBox = api.require('UIChatBox'),
+				jsonData = JSON.parse($api.attr(_this, 'data-json')),
+				targetId,	//两种情况，群聊：任务id；单聊：对方id
+				nickname,
+				chatIds = [],	//针对群聊类型，所有帮助者的id
+				groupIds = [],	//由帮助者id和发布者id由小到大拼接成的字符串
+				inboxtype,	//区分单聊(2)、群聊(1)任务
+				avatar;	//针对单聊, 对方头像
+			
+			api.execScript({
+				name: 'talk_with',
+				script: 'UIChatBox.close()'
+			});
+			
+			if(jsonData.ongoingby.length > 1) {
+				//群聊
+				nickname = 'Group';
+				targetId = jsonData.id;
+				inboxtype = 1;
+				jsonData.ongoingby.forEach(function(value, index){
+					chatIds.push(value.id);
+					groupIds.push(value.id);
+				});
+				groupIds.push(jsonData.postid);
+				groupIds.sort(function(a, b){
+					return parseInt(a) - parseInt(b);
+				});
+			}else{
+				//单聊
+				if(mid == jsonData.ongoingby[0].id){
+					//当前用户为帮助者
+					targetId = jsonData.postid;	//发布者id
+					avatar = jsonData.avatar;	//发布者头像
+					nickname = jsonData.firstname + "  " + jsonData.lastname;	//发布者的昵称
+				}else{
+					//当前用户为发布者
+//					console.log('当前用户为发布者:' + JSON.stringify(ct.ongoingby));
+					targetId = jsonData.ongoingby[0].id;	//帮助者id
+					nickname = jsonData.ongoingby[0].firstname + "  " + jsonData.ongoingby[0].lastname;	//帮助者昵称
+					avatar = jsonData.ongoingby[0].avatar;	//帮助者头像
+				}
+				inboxtype = 2;
+			}	
+			
+//			return;
+			RongCloud2.joinGroup({
+				isCancel: inboxtype == 1 ? false : true,
+			    groupId: inboxtype == 1 ? groupIds.join('') : '',	//任务id
+			    groupName: 'Group',
+			    success: function(){
+			    	api.openWin({
+						name: 'talk_with',
+						url: api.wgtRootDir + '/html/window/talk_with.html',
+						pageParam: {
+							chatIds: chatIds,	//针对群聊类型，所有帮助者的id
+							groupId: groupIds.join(''),	//群聊id，由帮助者id和发布者id由小到大拼接成的字符串
+							pavatar: jsonData.avatar,	//发布者头像
+							pid: jsonData.postid,	//发布者id
+							pnmae: jsonData.firstname + "  " + jsonData.lastname,	//发布者昵称
+							mavatar: memberInfo.avatar,		//当前用户头像
+							targetId: targetId,	//两种情况，群聊：任务id；单聊：对方id
+							avatar: avatar,	//单聊才有值, 对方头像
+							targetNickname: nickname,	//两种情况，群聊：Group；单聊：对方昵称
+							favorid: jsonData.id,	//任务id
+							type: jsonData.isself,	//当前用户身份,1:帮助者，2:发布者
+							inboxtype: inboxtype	//区分单聊、群聊任务
+						},
+						bounces: false,
+						reload: true,
+						slidBackEnabled: false
+					});
+//					     
+			       	setTimeout(function() {
+				    	api.closeFrame();	
+					},300);			    	
+			    }
+			});
+		}
+		var ct = $api.getStorage('detail');
+		apiready = function(){
+			var wrap = $api.dom('#wrap'),
+				list = [];
+			$api.fixStatusBar(wrap);
+			
+			ct.forEach(function(value, index){
+				if(value.ongoingby.length > 0){
+					list.push(value);
+				}
+			});
+			
+			T.html('#main', 'main',	list);
+			
+//          alert(JSON.stringify(ct,null,2))	     	
+//			console.log(JSON.stringify(ct),null,2)
+//			console.log(JSON.stringify(ct[0].ongoingby.length));
+			
+		}
+	</script>
+</html>

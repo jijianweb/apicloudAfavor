@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>个人主页--帮助者</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.but {
+				width: 47%;
+				height: 35px;
+				border-radius: 25px;
+				background-color: #4DBEB7;
+				font-size: 12PX;
+				line-height: 35PX;
+				color: #FFFFFF;
+				margin: 35px auto 15px auto;
+			}
+			
+			.nav {
+				width: 100%;
+				height: 18px;
+				background-color: #eaebec;
+				text-align: center;
+				color: #828b8f;
+				font-size: 13px;
+			}
+			
+			.button {
+				background-color: #F3F3F3;
+				width: 75%;
+				height: 35px;
+				margin: 15px auto;
+				border-radius: 60px;
+			}
+			
+			.text {
+				color: #909090;
+				font-size: 14px;
+			}
+			
+			.text2 {
+				color: #a0a6a9;
+				font-size: 12px;
+				margin-bottom: 5px;
+			}
+			
+			.cut {
+				width: 55%;
+				height: 35px;
+				border-radius: 25px;
+				background-color: #4DBEB7;
+				color: #F2F2F2;
+				line-height: 35px;
+			}
+			
+			.Reviews {
+				padding-bottom: 5px;
+			}
+			
+			.right {
+				color: #33BAB0;
+			}
+			
+			.img_head {
+				width: 55px;
+				height: 55px;
+				background-color: #B4B8BB;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				margin-left: 15px;
+			}
+			
+			.content {
+				padding: 0 5px 0 10px;
+			}
+			
+			.img {
+				height:20px;
+			}
+			.star_imag{
+				height:20px;
+				width: 20px;
+			}
+			.img4 {
+				height: 17px;
+				padding: 0 3px;
+			}
+			
+			.list-view {
+				border-bottom: 1px solid #E9E9E9;
+				padding-bottom: 10px;
+			}
+			
+			.referrals {
+				padding: 10px 16px;
+				word-wrap: break-word;
+				font-size: 14px;
+				color: #474747;
+				border-bottom: 1px solid #E9E9E9;
+			}
+			
+			.ref {
+				word-wrap: break-word;
+				font-size: 14px;
+				color: #474747;
+			}
+			
+			span {
+				color: #33BAB0;
+			}
+			
+			.title {
+				font-size: 14px;
+				word-break: normal;
+				word-wrap:break-word;
+			}
+			
+			.referrals_img {
+				width:24px;
+				height:24px;
+				margin-right: 15px;
+			}
+			
+			.fred {
+				font-size: 18px;
+				color: #33bab0;
+				margin-top:25px;
+			}
+			
+			.vk {
+				font-size: 13px;
+				color: #474747;
+			}
+			
+			.img3 {
+				height: 18px;
+				margin-right: 5px;
+			}
+			
+			.referrals2 {
+				margin-top: 18px;
+				margin-left: 16px;
+				margin-bottom: 8px;
+				font-size: 14px;
+				color: #474747;
+			}
+			
+			.text4 {
+				color: #474747;
+				font-size: 14px;
+			}
+			
+			.on {
+				color: #474747;
+				font-size: 14px;
+				margin-top: 0px;
+			}
+			.browse-icon{
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size:cover;
+				width:12px;
+				height:16px;
+				background-image: url(../../image/browse/2.png);
+			}
+			
+			.btn-post{
+				color: white;
+				background-color:#4DBEB7;
+				margin: 10px 0 10px;
+				font-size: 12px;
+				padding:10px;
+				border-radius: 25px;
+			}
+			.reh{
+			   height:20px;
+			   width:28px;
+			   margin-left: 5px;
+			}
+			.email{
+				background: #37BDB1;
+				height:22px;
+			    width:29px;
+			    background-image: url(../../image/email.png);
+			    background-position: center;
+			    background-size:32px 22px;
+			    background-repeat: no-repeat;
+			    margin:0 15px 0 1px;
+			}
+			.love {
+				background-image: url(../../image/browse/heart-line.png);
+			}
+			
+			.love,
+			.loved {
+				position: absolute;
+				right: 5px;
+				top: 5px;
+				height: 27px;
+				width: 30px;
+				margin: auto 12px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 17px 16px;
+			}
+			.loved {
+				background-image: url(../../image/browse/heart-bold.png);
+			}
+			/*图片翻转*/
+			.flip-container,
+			.front,
+			.back {
+				width: 100px;
+				height: 100px;
+			}
+			
+			.flipper {
+				position: relative;
+				margin-top: 20px;
+			}
+			
+			.front,
+			.back {
+				background-color: #B8BBBE;
+				background-position: center;
+				background-size: 100px auto ;
+				border-radius: 50%;
+				/*position: absolute;*/
+			}
+			.back {
+				width: 0px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list hidden">
+					<div class="text-center">
+						<div class="love heart ID " onclick="collect()" tapmode></div>
+						<div class="head"></div>
+						<div class="fred">Fred Leitz</div>
+						<div>
+							<img src="../../image/star.png" class="img" />
+							<img src="../../image/star.png" class="img" />
+							<img src="../../image/star.png" class="img" />
+							<img src="../../image/star.png" class="img" />
+							<img src="../../image/browse/star-fu.png" class="img" />
+						</div>
+						<div class="font-size14" style="color: #EBCE57;">
+							(4.6)
+						</div>
+						<div class="flex-box-v flex-center-center">
+							<div class="flex-box">
+								<img src="../../image/inbox/favor-location-icon.png" style="margin-right: 5px;" />
+								<div class="text4">41 Furrom Streer Makham</div>
+							</div>
+							<div class="on">
+								ON L3R 9P1
+							</div>
+							<div class="btn-post">REQUEST A QUOTE</div>
+						</div>
+						
+					</div>
+					<div class="referral">
+						<div class="nav">About</div>
+						<div class="referrals">
+							askhbdkalsdnhaklsjnkcjabnskjnkajsbndkajbskjbckahsbkhabskhxbakshbkahsbaksjnkjasbkkajsnkdjasbnkj
+						</div>
+						<div class="nav">Verifications</div>
+						<div class="referrals">
+							<img src="../../image/browse/phone.png" class="referrals_img "/>
+							<img src="../../image/browse/card.png" class="referrals_img reh"/>
+							<img src="../../image/browse/mail.png" class="referrals_img reh"/>
+							<img src="../../image/more/mage.png" class="referrals_img "/>
+							<img src="../../image/more/id5.png" class="referrals_img " style="height:20px;"/>
+							
+							<img src="../../image/more/phone.png" class="referrals_img"/>
+							<img src="../../image/card.png" class="referrals_img reh"/>
+							<span class="email"></span>
+							<img src="../../image/more/mage2.png" class="referrals_img "/>
+						    <img src="../../image/more/id4.png" class="referrals_img " style="height:20px;"/>
+						</div>
+						<div class="nav">Skills</div>
+						<div class="referrals">
+							asdas,asdas,asdas,asd
+						</div>
+						<div class="nav">Reviews</div>
+						<div class="text-center Reviews">
+							<div class=" button flex-box flex-center-center">
+								<div class="Make text cut" onclick="cut(1)" tapmode>As a Poster</div>
+								<div class="Receive text flex-1 " onclick="cut(2)" tapmode>As a Helper</div>
+							</div>
+						</div>
+					</div>
+					<div class="list-item poster-data">
+						<div class="flex-center-center flex-box">
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+						</div>
+						<div class="flex-center-center flex-box" style="color: #efce4a;">(4.6)</div>
+						<div class="referrals flex-box">
+							<div class="left text flex-1">4 Reviews</div>
+							<div class="right text" onclick="clickc_comment()" tapmode>View all Reviews</div>
+						</div>
+						<div class="list-view">
+							<div class="referrals2">44kcjabnskjnkajsbnd</div>
+							<div class="flex-box">
+								<div class="img_head" style="background-image: url(../../image/inbox/photo-3.png);"></div>
+								<div class="flex-1 flex-box-v content">
+									<div>
+										<img src="../../image/star.png" class="img" />
+										<img src="../../image/star.png" class="img" />
+										<img src="../../image/star.png" class="img" />
+										<img src="../../image/star.png" class="img" />
+									</div>
+									<div class="flex-1">
+										<div class="title"><span>Assemble IKEAsofabed</span> dddemble IKEAsof</div>
+									</div>
+									<div class="money" style="text-align: right;">
+										<div class="text2">5 minutes ago</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="list-item helper-data hidden">
+						<div class="flex-center-center flex-box">
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+							<img src="../../image/star.png" class="img4" />
+						</div>
+						<div class="flex-center-center flex-box" style="color: #efce4a;">(2.6)</div>
+						<div class="referrals flex-box">
+							<div class="left text flex-1">4 Reviews</div>
+							<div class="right text" onclick="clickc_comment()" tapmode>View all Reviews</div>
+						</div>
+						<div class="list-view">
+							<div class="referrals2">44kcjabnskjnkajsbnd</div>
+							<div class="flex-box">
+								<div class="img_head" style="background-image: url(../../image/inbox/photo-3.png);"></div>
+								<div class="flex-1 flex-box-v content">
+									<div>
+										<img src="../../image/star.png" class="img" />
+										<img src="../../image/star.png" class="img" />
+										<img src="../../image/star.png" class="img" />
+										<img src="../../image/star.png" class="img" />
+									</div>
+									<div class="flex-1">
+										<div class="title"><span>Assemble IKEAsofabed</span> dddemble IKEAsof</div>
+									</div>
+									<div class="money" style="text-align: right;">
+										<div class="text2">5 minutes ago</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/area.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="list">
+			<div class="text-center flex-box-v flex-center-center">
+				<div class="{{= it.collection == 0 ? 'love' : 'loved'}} heart ID " onclick="collect()" tapmode></div>
+				<div class="flip-container" >
+					<div class="flipper flex-box-v flex-center-center">
+						<div class="front" {{? it.memberinfo.verifications.id==1}} onclick="pic('.front','.back')" tapmode=""{{?}} tapmode style="background-image:url({{=Tool.imageCompressByQiNiu(it.memberinfo.avatar,0,200,200)}});"></div>
+						{{? it.memberinfo.verifications.id==1}}
+						   <div class="back" onclick="pic('.back','.front')" tapmode style="background-image:url({{=Tool.imageCompressByQiNiu(it.memberinfo.realavatar,0,200,200)}});"></div>
+						{{?}}
+					</div>
+				</div> 
+				<div class="fred">{{=it.memberinfo.firstname}} {{=it.memberinfo.lastname}}</div>
+				
+					
+					
+				<!-- 2018.01.12 隐藏平均分 -->
+				<div class="flex-box flex-h-zhu hidden">
+					{{for(var i=0;i< 5;i++) { }}
+						{{? i<score}}
+							<div class="flex-1" style="padding: 0 2px;"><img src="../../image/star.png" class="star_imag" /></div>
+						{{?}} 
+					{{ } }}
+				</div>
+				{{? score>0}}
+					<div class="hidden" style="color: #EBCE57; font-size: 14px;">
+						({{=score}})
+					</div>
+				{{??}}
+				    <div class="hidden" style="font-size: 14px;">--</div>
+				{{?}}
+				
+				
+				<div class="flex-box-v flex-center-center">
+					<div class="flex-box flex-h-ce">
+						{{? it.memberinfo.street!=null && it.memberinfo.country!=null && it.memberinfo.province!=null && it.memberinfo.city!=null }}	
+						 <div style="width:20px; height: 23px;" class="flex-box-v flex-center-center">
+						  	<div class="browse-icon"></div>
+						  </div>
+						  <div class="text4">
+						  	{{=it.memberinfo.street || ''}} 
+						  	{{=Area.getCityName(it.memberinfo.country,it.memberinfo.province,it.memberinfo.city).city.name || ''}} 
+						  </div>
+						{{?}}
+					</div>
+					<div class="on">
+                        	{{=Area.getCityName(it.memberinfo.country,it.memberinfo.province,it.memberinfo.city).province.name || ''}} {{=it.memberinfo.postalcode || ''}}
+					</div>
+					<div class="btn-post" lan="REQUEST_A_QUOTE" onclick="openPost()" tapmode="">REQUEST A FAVOR</div>
+				</div>
+			</div>
+			<div class="referral">
+				<div class="nav flex-box-v flex-v-zhu" lan="About">About</div>
+				<div class="referrals">
+					{{? it.memberinfo.about==''}}
+						No comments yet.
+					{{??}}
+					   {{=it.memberinfo.about}}
+					{{?}}
+				</div>
+				<div class="nav flex-box-v flex-v-zhu" lan="Verifications">Verifications</div>
+				<div class="referrals">
+					{{? it.verifications !=''}}
+						{{? it.memberinfo.verifications.mobile==0}}
+						    <img src="../../image/post/person_phone.png" class="referrals_img "/>
+						{{??}}
+						    <img src="../../image/post/per_cphone.png" class="referrals_img"/>
+						{{?}}
+						{{? it.memberinfo.verifications.debitcard==0}}
+						   <img src="../../image/browse/card.png" class="referrals_img reh"/>
+						{{??}}
+						   <img src="../../image/post/person_card.png" class="referrals_img reh"/>
+						{{?}}
+						{{? it.memberinfo.verifications.email==0}}
+						   <img src="../../image/browse/mail.png" class="referrals_img reh"/>
+						{{??}}
+						   	<img src="../../image/more/mail_green.png" class="referrals_img reh" style="height:20px;"/>
+						{{?}}
+						{{? it.memberinfo.verifications.member==0}}
+						    <img src="../../image/more/mage.png" class="referrals_img "/>
+						{{??}}
+						   	<img src="../../image/more/mage2.png" class="referrals_img "/>
+						{{?}}
+					    {{? it.memberinfo.verifications.id==0}}
+							<img src="../../image/more/id5.png" class="referrals_img " style="height:20px;"/>
+						{{??}}	
+							<img src="../../image/more/id4.png" class="referrals_img " style="height: 18px;"/>
+						{{?}}	
+					{{?}}
+				</div>
+				<div class="nav flex-box-v flex-v-zhu" lan="Skills">Skills</div>
+				<div class="referrals">
+				    {{? it.memberinfo.skills==''}}
+						 No comments yet.
+					{{??}}
+					    {{=it.memberinfo.skills}}
+					{{?}}
+				</div>
+				<div class="nav flex-box-v flex-v-zhu" lan="Reviews">Reviews</div>
+				<div class="text-center Reviews">
+					<div class=" button flex-box flex-center-center">
+						<div class="Make text cut" lan="AsAPoster" onclick="cut(1)" tapmode>As a Poster</div>
+						<div class="Receive text flex-1 " lan="AsAHelper" onclick="cut(2)" tapmode>As a Helper</div>
+					</div>
+				</div>
+			</div>
+			<div class="list-item helper-data hidden">
+				<div class="flex-box flex-h-zhu">
+					{{for(var i=0;i< 5;i++) { }}
+						{{? i<it.memberinfo.helperstar}}
+							<div class="" style="padding: 0 3px;"><img src="../../image/star.png" class="star_imag" /></div>
+						{{?}} 
+					{{ } }}
+				</div>
+				{{? it.memberinfo.helperstar>0}}
+				<div class="flex-center-center flex-box font-size14" style="color: #EBCE57; font-size: 14px;">
+						({{=it.memberinfo.helperstar}})
+				</div>
+				{{?}}
+				<div class="referrals flex-box">
+					<div class="left text flex-1">
+					    {{? it.helper.total<=1}}
+					  	    {{=it.helper.total}} {{=LANGUAGE[$api.getStorage('lan')]['Reviews']}}
+					    {{??}}
+							{{=it.helper.total}} {{=LANGUAGE[$api.getStorage('lan')]['Reviews']}}
+						{{?}}
+					</div>
+					{{? it.helper.total>3}}
+					   <div class="right text" lan="ViewAllReviews" onclick="clickc_comment()" tapmode>View all Reviews</div>
+					{{??}}
+					   <div class="right text"  lan="ViewAllReviews" >View all Reviews</div>
+					{{?}}
+				</div>
+			 {{? it.helper.list instanceof Array && it.helper.list.length!=0}}
+			   {{~ it.helper.list:value:index}}
+				<div class="list-view">
+					<div class="referrals2">{{=value.title}}</div>
+					<div class="flex-box">
+						<div class="img_head" onclick="openPDetail('{{=value.firstname}}','{{=value.lastname}}',{{=value.memberid}})" tapmode=""   style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+						<div class="flex-1 flex-box-v content">
+							<div>
+								{{for(var i=0;i< 5;i++) { }}
+									{{? i<=value.star}}
+									   <img src="../../image/star.png" class="img4" />
+									{{?}} 
+								{{ } }}
+							</div>
+							<div class="flex-1">
+								<div class="title"><span>{{=value.firstname}} {{=value.lastname}}: </span> "{{=value.message}}"</div>
+							</div>
+							<div class="money" style="text-align: right;">
+								<div class="text2">{{=D.favors2(value.createdtime)}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{~}} 
+			{{??}}
+				<div class="list-item flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+						You haven't received any comments yet.
+				</div>
+			{{?}}
+			</div>
+			<div class="list-item  poster-data">
+				<div class="flex-box flex-h-zhu">
+					{{for(var i=0;i< 5;i++) { }}
+						{{? i<it.memberinfo.favorstar}}
+							<div class="" style="padding: 0 3px;"><img src="../../image/star.png" class="star_imag" /></div>
+						{{?}} 
+					{{ } }}
+				</div>
+				{{? it.memberinfo.favorstar>0}}
+				    <div class="flex-center-center flex-box font-size14" style="color: #EBCE57; font-size: 14px;">({{=it.memberinfo.favorstar}})</div>
+				{{?}}
+				<div class="referrals flex-box">
+					<div class="left text flex-1">
+					  {{? it.poster.total<=1}}
+					   	{{=it.poster.total}} {{=LANGUAGE[$api.getStorage('lan')]['Reviews']}}
+					  {{??}}
+					  	{{=it.poster.total}} {{=LANGUAGE[$api.getStorage('lan')]['Reviews']}}
+					  {{?}}
+					</div>
+					{{? it.poster.total>3}}
+					   <div class="right text" onclick="clickc_comment()" lan="ViewAllReviews" tapmode>View all Reviews</div>
+					{{??}}
+					   <div class="right text" lan="ViewAllReviews" tapmode>View all Reviews</div>
+					{{?}}
+				</div>
+			{{? it.poster.list instanceof Array && it.poster.list.length!=0}} 
+			   {{~ it.poster.list:value:index}}
+				<div class="list-view">
+					<div class="referrals2">{{=value.title}}</div>
+					<div class="flex-box">
+						<div class="img_head" onclick="openPDetail('{{=value.firstname}}','{{=value.lastname}}',{{=value.memberid}})" tapmode=""   style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+						<div class="flex-1 flex-box-v content">
+							<div>
+								{{for(var i=0;i< 5;i++) { }}
+									{{?  i<=value.star}}
+									   <img src="../../image/star.png" class="img4" />
+									{{?}} 
+								{{ } }}
+							</div>
+							<div class="flex-1">
+								<div class="title"><span>{{=value.firstname}} {{=value.lastname}}: </span> "{{=value.message}}"</div>
+							</div>
+							<div class="money" style="text-align: right;">
+								<div class="text2">{{=D.favors2(value.createdtime)}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{{~}} 
+			{{??}}
+			    <div class="list-item flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+						You haven't received any comments yet.
+				</div>
+			{{?}}
+			</div>	
+	</script>
+	<script type="text/javascript">
+		var otherid="";
+		apiready = function() {
+		    otherid=api.pageParam.otherid;
+			init()
+		}
+       function pic(c1,c2){
+			$('.flipper').find(c1).stop().animate({'width': 0}, 150, function() {
+				$(this).hide();
+				$('.flipper').find(c2).stop().show().animate({'width': '100px'}, 150);
+			});
+         } 
+        var type =1;
+		function cut(index) {
+			if(index == 1) {
+				type =1;
+				$api.removeCls($api.dom('.Make'), 'flex-1');
+				$api.addCls($api.dom('.Make'), 'cut');
+				$api.addCls($api.dom('.Receive'), 'flex-1');
+				$api.removeCls($api.dom('.Receive'), 'cut');
+				$api.addCls($api.dom('.helper-data'), 'hidden');
+				$api.removeCls($api.dom('.poster-data'), 'hidden');
+			}
+			if(index == 2) {
+				type=2
+				$api.removeCls($api.dom('.Receive'), 'flex-1');
+				$api.addCls($api.dom('.Receive'), 'cut');
+				$api.addCls($api.dom('.Make'), 'flex-1');
+				$api.removeCls($api.dom('.Make'), 'cut');
+				$api.addCls($api.dom('.poster-data'), 'hidden');
+				$api.removeCls($api.dom('.helper-data'), 'hidden');
+			}
+		}
+        var realAvatar='',
+            avatar='',
+            score=0;
+		function init() {
+			ajax.get({
+			    ctrl: 'more',
+				fn: 'homePage',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type:2,
+						otherid:otherid
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					var favorstar=ct.memberinfo.favorstar,
+					    helperstar=ct.memberinfo.helperstar,
+					    a=parseFloat(favorstar)+parseFloat(helperstar)
+					score=(a/2).toFixed(2)
+					T.html('#main', 'main', ct);
+					realAvatar=ct.memberinfo.realavatar;
+					avatar=ct.memberinfo.avatar
+					L.init();
+				}
+			});
+		}
+
+		function clickc_comment() {
+			api.openWin({
+				name: 'comment',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					frameName: 'comment_list',
+					frameUrl: api.wgtRootDir + '/html/more/comment_list.html',
+					frameParam: {
+						otherid:otherid,
+                        type:2,
+                        styles:type
+					},
+					headerTitle: 'Reviews',
+				},
+				slidBackEnabled: false,
+				reload: true,
+			});
+		}
+		function openPost(){
+			var default_currency=$api.getStorage('default_currency',default_currency)
+			api.openWin({
+				name: 'publish',
+				url: api.wgtRootDir + '/html/window/publish.html',
+				pageParam: {
+					frameName: 'first_step',
+					frameUrl: api.wgtRootDir + '/html/post/first_step.html',
+					frameParam: {
+                       memberid:otherid,
+                       default_currency:default_currency,
+                       ispublic:1
+					},
+					headerTitle: 'Make a Favor',
+				},
+				slidBackEnabled: false,
+				reload: true,
+			});
+		}
+		//收藏功能
+		function collect() {
+			if($api.dom('.love')) {
+				$api.addCls($api.dom('.love'), 'loved');
+				$api.removeCls($api.dom('.love'), 'love');
+				//添加收藏
+				ajax.get({
+					ctrl: 'Browse',
+					fn: 'addCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							memberid: otherid,
+							type:2
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function(ct) {
+						Tool.toast('Add to Favorites.');
+					}
+				});
+			} else {
+				$api.addCls($api.dom('.heart'), 'love');
+				$api.removeCls($api.dom('.heart'), 'loved');
+				//取消收藏
+				ajax.get({
+					ctrl: 'Browse',
+					fn: 'delCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							memberid: otherid,
+							type:2
+						}
+					},
+					showError: true,
+					showProgress: true,
+					hideLoading: true,
+					success: function(ct) {
+						Tool.toast('Remove from Favorites.');
+					}
+				});
+			}
+			api.execScript({
+			    name:'Init',
+			    frameName:'browse_list',
+			    script:'TaskList()'
+			});
+		}
+		 //打开发布者或这帮者的个人详情
+		function openPDetail(firstname, lastname, memberid){
+            Tool.openWin({
+					winName: 'perhelp',
+					title: firstname + " " + lastname,
+					winUrl: api.wgtRootDir + '/html/window/win_back.html',
+					frameName: 'personage_help',
+					frameParam: {
+						otherid: memberid
+					},
+					frameUrl: api.wgtRootDir + '/html/more/'+(memberid==$api.getStorage(CONFIG.KEY.MEMBER_ID) ? 'personal_page' :'personage_help')+'.html'
+			})
+//          setTimeout(function(){
+//          	api.closeWin()
+//          },300)
+		}	
+	</script>
+
+</html>

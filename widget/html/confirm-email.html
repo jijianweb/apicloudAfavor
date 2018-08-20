@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../css/api.css" />
+		<link rel="stylesheet" href="../css/ct.css" />
+		<style type="text/css">
+			html,body{
+				height: 100%;
+				width: 100%;
+				background: #32BBB1;
+			}
+			.word{
+				padding: 49px 40px 60px 40px;
+				color: #CCEFED;
+				font-size: 15px;
+			}
+			.code {
+				border-bottom: 1px solid #D0F2F1;
+				margin: 0px 40px 24px 40px;
+				font-size: 12px;
+			}
+			.code input {
+				width: 100%;
+				font-size: 15px;
+				padding: 10px 5px 3px 5px;
+			}
+			.send{
+				color: #EFFAF9;
+				background-color: #77C8C2;
+				padding: 12px ;
+				border-radius: 10px;
+			}
+			#footer{
+				padding: 0 18px;
+			}
+			.continue{
+				background-color: #77C8C2;
+				border-radius: 10px;
+				text-align: center;
+				color: #EFFAF9;
+				padding: 12px 20px;
+				position: relative;
+				bottom: 40px;
+			}
+			.btn-afavor-1{
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main" class="main">
+				<div class="word" lan="confirmEmailTip">Please enter the verification code we just sent to your email.</div>
+				<div class="code flex-box flex-v-ce">
+					<input type="text" name="postbox" id="identifying-code" value="" style="color: #D0F2F1;" />
+				</div>
+				<div class="resend text-center" style="padding: 0 18px;">
+					<div lan="CONTINUE" class="send btn-afavor-1" tapmode="" onclick="checkCode()">CONTINUE</div>
+				</div>
+			</div>
+
+			<div id="footer">
+				<div class="continue btn-afavor-1" lan="RESEND" tapmode="" onclick="getCode()">RESEND</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js" ></script>
+	<script type="text/javascript" src="../script/common.js" ></script>
+	<script type="text/javascript" src="../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../script/jquery-1.9.1.min.js" ></script>
+	<script type="text/javascript" src="../res/language.js" ></script>
+	<script type="text/javascript">
+		var param = {};
+
+		//获取验证码
+		function getCode(){
+			inputBlur();
+			ajax.get({
+				ctrl: 'Common',
+				fn: 'sendEmail',
+				data: {
+					values: {
+						type: 1,
+						email: param.email
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct){
+					param.cid = ct.id;
+				}
+			})
+		}
+		//验证验证码
+		function checkCode() {
+			var code = $api.trimAll($api.val($api.dom('[name=postbox]')));
+			console.log(JSON.stringify(param,null,2))
+			inputBlur();
+			ajax.get({
+				ctrl: 'Common',
+				fn: 'checkCode',
+				data: {
+					values: {
+						id: param.cid,
+						code: code,
+						type: 1
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct){
+					api.openWin({
+						name: 'register',
+						url: api.wgtRootDir + '/html/window/win_back.html',
+						pageParam: {
+							headerTitle: 'Create Profile',
+							frameParam: {
+							    memberid: ct.memberid,
+							    email: param.email,
+							    password: param.password
+							},
+							bgColor:'#32BBB1',
+							frameName: 'register',
+							frameUrl: api.wgtRootDir + '/html/register.html'
+						},
+						softInputMode: 'auto',
+						bounces: false,
+						delay:api.systemType=='android'?300:0
+					});
+				}
+			});
+		}
+		apiready = function(){
+			param=api.pageParam;
+			L.init();
+			console.log(JSON.stringify(param,null,2))
+		}
+		var initBodyHeight = document.body.clientHeight;//页面可视高度
+//			console.log(initBodyHeight)
+	    var keyBoardStatus = false;//键盘是否打开
+	    function getKeyBoardStatus(){
+	  		setTimeout(function(){
+	        if(initBodyHeight != document.body.clientHeight && keyBoardStatus == false){
+	          keyBoardStatus = true;
+				$api.addCls($api.dom('#footer'), 'hidden');
+	          getKeyBoardStatus();
+	          return false;
+	        }
+	        if(initBodyHeight == document.body.clientHeight && keyBoardStatus == true){
+	          keyBoardStatus = false;
+				$api.removeCls($api.dom('#footer'), 'hidden');
+	          getKeyBoardStatus();
+	          return false;
+	        }
+	        getKeyBoardStatus();
+	      },100);
+	    }
+		$(function() {
+	    	getKeyBoardStatus();
+	    });
+	</script>
+</html>

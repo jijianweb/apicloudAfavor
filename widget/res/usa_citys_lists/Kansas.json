@@ -1,0 +1,43 @@
+{
+	"citys": [{
+		"id": "118",
+		"city": "Wichita",
+		"fr": "Wichita",
+		"parentid": "117",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "119",
+		"city": "Overland Park",
+		"fr": "Overland Park",
+		"parentid": "117",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "120",
+		"city": "Kansas City",
+		"fr": "Kansas City",
+		"parentid": "117",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "121",
+		"city": "Topeka",
+		"fr": "Topeka",
+		"parentid": "117",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "122",
+		"city": "Olathe",
+		"fr": "Olathe",
+		"parentid": "117",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}]
+}

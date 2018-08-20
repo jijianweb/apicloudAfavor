@@ -1,0 +1,78 @@
+[
+	{
+		"name": "Expression_1",
+		"text": "[Smile]"
+	}, {
+		"name": "Expression_2",
+		"text": "[Joyful]"
+	}, {
+		"name": "Expression_3",
+		"text": "[Blank Faces]"
+	}, {
+		"name": "Expression_4",
+		"text": "[Stuck-Out Tongue Faces]"
+	}, {
+		"name": "Expression_5",
+		"text": "[Cold Sweat]"
+	}, {
+		"name": "Expression_6",
+		"text": "[Smiling Face With Sunglasses]"
+	}, {
+		"name": "Expression_7",
+		"text": "[Pirate Face]"
+	}, {
+		"name": "Expression_8",
+		"text": "[Angry]"
+	}, {
+		"name": "Expression_9",
+		"text": "[Crying]"
+	}, {
+		"name": "Expression_10",
+		"text": "[Kissing]"
+	}, {
+		"name": "Expression_11",
+		"text": "[Devil]"
+	}, {
+		"name": "Expression_12",
+		"text": "[Smiling Face With Heart-Shaped Eyes]"
+	}, {
+		"name": "Expression_13",
+		"text": "[Smiling Face With Smiling Eyes]"
+	}, {
+		"name": "Expression_14",
+		"text": "[Sick]"
+	}, {
+		"name": "Expression_15",
+		"text": "[Loudly Crying]"
+	}, {
+		"name": "Expression_16",
+		"text": "[Puke]"
+	}, {
+		"name": "Expression_17",
+		"text": "[Dizzy]"
+	}, {
+		"name": "Expression_18",
+		"text": "[Smirking]"
+	}, {
+		"name": "Expression_19",
+		"text": "[Nerd]"
+	}, {
+		"name": "Expression_20",
+		"text": "[Whistle]"
+	}, {
+		"name": "Expression_21",
+		"text": "[Nauseated]"
+	}, {
+		"name": "Expression_22",
+		"text": "[Grinning]"
+	}, {
+		"name": "Expression_23",
+		"text": "[Grinning Squinting Face]"
+	}, {
+		"name": "Expression_24",
+		"text": "[Winking]"
+	}, {
+		"name": "Expression_25",
+		"text": "[Beaten Face]"
+	}
+]

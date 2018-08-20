@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>分享任务的页面</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.text {
+				margin: 25px 0;
+				font-size: 14px;
+			}
+
+			img {
+				height: 16px;
+				margin-right: 17px;
+			}
+
+			.birth {
+				padding: 12px 0;
+				border-bottom: 1px solid #CCCCCC;
+			}
+
+			.select {
+				margin-left:18px;
+				font-size: 14px;
+			}
+
+			.cancel {
+				border: 1px solid #CFEEEB;
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				padding: 10px 0;
+			}
+			.message,
+			.mail{
+				width: 50px;
+				height:50px;
+				border-radius:10px ;
+				background-color:#667177;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.mail-img{
+				width: 30px;
+				height:20px;
+				border: none;
+				background: white;
+				border-radius:5px ;
+				background-size: 30px 20px;
+				background-image: url(../../image/browse/mail.png);
+			}
+			.mess-img{
+				width: 30px;
+				height:20px;
+				border: none;
+				border-radius:5px ;
+				background-size: 30px 20px;
+				background-image: url(../../image/post/handyman.png);
+			}
+			.back{
+				padding: 10px 18px 15px 18px;
+				background-color:#E5E5E5;
+			}
+			.back-in{
+				border-radius:10px;
+				margin-bottom: 15px;
+				padding:20px;
+				background-color:#F5F5F5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="flex-box birth hidden" onclick="click_friends()" tapmode="">
+					<div class="flex-1 select" lan="ShareWithYourFriends">Share With Your Friends</div>
+					<div class="share-f" >
+						 <img src="../../image/browse/grey.png"/>
+					</div>
+				</div>
+				<div class="flex-box birth hidden" onclick="click_share()" tapmode="">
+					<div class="flex-1 select" lan="ShareWithYourFavouriteHelpers">Share With Your Favourite Helpers</div>
+					<div><img src="../../image/browse/grey.png"/></div>
+				</div>
+				<div class="flex-box birth hidden" onclick="click_relation()" tapmode="">
+					<div class="flex-1 select" lan="Report">Report</div>
+					<div><img src="../../image/browse/grey.png"/></div>
+				</div>
+			</div>
+			<!--<div class="back">
+				<div class="flex-box back-in">
+					<div class="">
+						<div class="message flex-center-center flex-box"><div class="mess-img"></div></div>
+						<div class="font-size12" style="padding-top: 5px;">Message</div>
+					</div>
+                    <div class="flex-box-v flex-center-center margin-left15">
+                    	<div class="mail flex-center-center flex-box"><div class="mail-img"></div></div>
+                    	<div class="font-size12 " style="padding-top: 5px;">Mail</div>
+                    </div>
+				</div>
+				<div class="cancel">CANCEL</div>
+			</div>-->
+		</div>
+
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		{{? api.pageParam.isOpen }}
+			<div class="flex-box birth" onclick="click_friends()" tapmode="">
+				<div class="flex-1 select" lan="ShareWithYourFriends">Share With Your Friends</div>
+				<div class="share-f" >
+					 <img src="../../image/browse/grey.png"/>
+				</div>
+			</div>
+			<div class="flex-box birth" onclick="click_share()" tapmode="">
+				<div class="flex-1 select" lan="ShareWithYourFavouriteHelpers">Share With Your Favourite Helpers</div>
+				<div><img src="../../image/browse/grey.png"/></div>
+			</div>
+		{{?}}		
+				<div class="flex-box birth" onclick="click_relation()" tapmode="">
+					<div class="flex-1 select" lan="Report">Report</div>
+					<div><img src="../../image/browse/grey.png"/></div>
+				</div>		
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			T.html('#main', 'main');
+			L.init();
+		}
+		//打开分享到收藏人的页面
+		function click_share() {
+			api.openWin({
+				name: 'share_favor_win',
+				url: api.wgtRootDir + '/html/window/favor/share_favor_win.html',
+				pageParam: {
+					frameName: 'share_favor',
+					frameUrl: api.wgtRootDir + '/html/my_favors/share_favor.html',
+					frameParam: {
+						favorid: api.pageParam.favorid
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['FavoritesHelpers']
+				},
+				slidBackEnabled: false,
+
+				reload: true,
+			});
+		}
+		//打开联系我们页面
+		function click_relation() {
+			api.openWin({
+				name: 'win_back',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					frameName: 'connection_us',
+					frameUrl: api.wgtRootDir + '/html/more/contact_us.html',
+					frameParam: {},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['ContactUs']
+				},
+				slidBackEnabled: false,
+
+				reload: true,
+			});
+		}
+
+		function click_friends() {
+			var sharedModule = api.require('shareAction'),
+					memberInfo = $api.getStorage(CONFIG.KEY.MEMBER_INFO),
+					shareText = 'Hey! I found an interesting Favor! ' +
+											'"' + api.pageParam.taskTitle + '" Check it out ' +
+											CONFIG.SHARE_URL + '/jump.html?fid=' + api.pageParam.favorid;
+//			alert(api.pageParam.favorid)
+//			alert(JSON.stringify(memberInfo))
+			sharedModule.share({
+			    text: shareText,
+			    type: 'text'
+			});
+		}
+	</script>
+
+</html>

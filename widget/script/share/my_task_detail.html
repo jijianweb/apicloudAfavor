@@ -1,0 +1,1793 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Favor Details</title>
+		<link rel="stylesheet" type="text/css" href="./css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="./css/swiper.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/task_detail.css" />
+		<style type="text/css">
+
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<!-- 任务基本信息 -->
+				<div class="hidden">
+					<div style="padding: 10px 15px;">
+					<div class="flex-box hidden">
+						<div class="flex-1 task-t">I need a logo design for a new child care business.</div>
+						<!-- 编辑任务 -->
+						<div class="pencil flex-h-ce " onclick="edit()" tapmode></div>
+						<div class="love heart" onclick="collect()" tapmode></div>
+					</div>
+					<div class="flex-box" style="margin-top: 15px;">
+						<div class="img"></div>
+						<div class="flex-1" style="margin:10px 0px 0 6px;">
+							<div class="text">Posted by <span style="color: #83D3D0 ;">Lucas Fan</span></div>
+							<div class="flex-box">
+								<div class="text flex-1">16 hours ago</div>
+								<div class="text">3 km away</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- 任务进度条 -->
+					<div class="flex-box flex-h-zhu" style="padding:13px 26px;">
+						<div class="open flex-1"><span class="op">Open</span></div>
+						<div class="completed flex-1"><span class="co">Ongoing</span></div>
+						<div class="completed flex-1"><span class="co">Completed</span></div>
+					</div>
+
+					<!--价格-->
+					<div class="flex-box flex-h-zhu" style="margin:25px 0px">
+						<div class="money">
+							<span class="sp">C$</span>
+							<span style="color: inherit;">256</span>
+						</div>
+					</div>
+
+
+					<div class="mack" lan="Do_it_Now">Do it Now!</div>
+
+					<div class="flex-box " style="margin-top:5px;">
+						<div class="week flex-1 flex-box flex-center-center" style="padding: 0 10px">
+							<span style="color: inherit;" class="number">5</span>&nbsp;workers
+						</div>
+						<div class="flex-2 flex-box dic flex-center-center">
+							<span style="margin-right: 8px;color: #33BBB2;">Difficulty</span>
+							<div class="star-solid "></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+						</div>
+					</div>
+
+					<div class="flex-box " style="margin-top:5px;">
+						<div class="flex-2 quit flex-box flex-center-center" style="background:red;" onclick="helpAccept()" tapmode>
+							<div class="quit-icon flex-3"></div>
+							<div class="flex-3" style="color:white;" lan="Quit">Quit</div>
+						</div>
+						<div class="flex-3 flex-center-center dic-1" lan="Begin" onclick="helpAccept()" tapmode>Begin</div>
+					</div>
+
+					<div class="flex-box" style="margin-top:10px;">
+						<div class="mack" lan="Completed">Completed</div>
+					</div>
+					<div class="flex-box" style="margin-top:10px;">
+						<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+							<div class="ic flex-1"></div>
+							<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+						</div>
+						<div class="flex-3 flex-center-center dic-1" lan="Waiting" style="background-color:#33BBB2;">Waiting</div>
+					</div>
+					<div class="flex-box" style="margin-top:10px;">
+						<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+							<div class="ic flex-1"></div>
+							<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+						</div>
+						<div class="flex-3 flex-center-center dic-2" lan="Ratings" onclick="rating()" tapmode>Ratings</div>
+					</div>
+					<div class="flex-box" style="margin-top:10px;">
+						<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat()" tapmode>
+							<div class="ic flex-1"></div>
+							<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+						</div>
+						<div lan="FavorComplete" class="flex-3 flex-center-center dic-1" onclick="" tapmode>Favor Complete</div>
+					</div>
+					<div class="flex-box flex-h-ce" style="margin-top:9px;">
+						<p class="sing"></p>
+						<p style="padding-left:5px;">tryr5ywu45u5u</p>
+					</div>
+					<div class="flex-box flex-h-ce">
+						<p class="calendar"></p>
+						<p class="flex-1 ter-t">Due Date -28 May 2017</p>
+						<p class="ter" onclick="terminate()" tapmode>Terminate</p>
+					</div>
+				</div><!-- end 任务基本信息 -->
+
+				<!-- 任务详情 -->
+				<div class="title" lan="Favor_Details">Favor Details</div>
+				<div class="margin-bottom10" style="padding: 10px;">
+					Task desc
+				</div>
+				<div style="padding: 10px;" class="pic">
+					<div class="pic-box">
+						<div id="scroller">
+							<ul>
+								<li>
+									<div onclick="openPhotoBrowser()" tapmode="">
+										<div class="img-picture" style="background-image: url();"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div><!-- end 任务详情 -->
+
+				<!-- 地址信息 -->
+				<div class="title margin-top10" lan="Address">Address</div>
+				<div style="text-align:center;font-size:14px; padding: 3px 0;">
+					Marknam Ontario
+				</div>
+				<div class="map"></div>
+				<!-- end 地址信息 -->
+
+				<!-- 帮助者申请列表 -->
+				<div class="title " lan="HelperList">Helper List</div>
+				<div style="padding:10px 6px;">
+					<!--<div class="flex-center-center flex-box-v" style="padding: 15px; text-align: center;" lan="There_is_no_helper">There is no helper.</div>-->
+					<div style="padding:5px;">
+						<div class="flex-box flex-h-ce swiper-container" style="background-color:#ECF9F7;">
+							<div class="flex-1 swiper-button-prev ">
+								<div class="left hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							<div class="swiper-button-next">
+								<div class="right hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div style="padding: 20px 0 10px;">
+										<div class="flex-box" style="padding-bottom: 10px;">
+											<!--<div class="flex-box ">
+										<div class="flex-box-v flex-center-center " style="width: 40px; height:80px;">
+											<div class="header-icon bor-cri" style="background-image:url()"></div>
+											<div class="name text-overflow">Kidj djf</div>
+											<div class="flex-box" style="overflow: visible;">
+											</div>
+											<div class="star-com"></div>
+										</div>
+										<div class="flex-box flex-center-center" style="text-align: center;">
+											<div class="name flex-1">(0.0)</div>
+										</div>
+									</div>
+									<div class="not-border flex-1"></div>-->
+											<div class="flex-box-v flex-center-center flex-1">
+												<div class="flex-box-v flex-center-center" style="">
+													<div class="header-icon" style="background-image:url();"></div>
+													<div class="name text-overflow">Kate dj</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid ">
+														</div>
+														<div class="star-com"></div>
+													</div>
+													<div class="flex-box flex-center-center" style="text-align: center;">
+														<div class="name flex-1">(0.0)</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center">
+													<div class="btn-a btn-assigned  btn-accept  flex-box" data-value=''>
+														<span class="ao accept" style="color: white;">Accept Offer</span>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div><!-- end 帮助者申请列表 -->
+
+				<!-- 帮助者列表 -->
+				<div class="title">Ongoing_by</div>
+				<div style="padding: 10px 8px;">
+					<div class="flex-box ongoing flex-center-center"  onclick="openPersonalDetail()" tepmode>
+						<div class="img"  style="background-image: url();" ></div>
+						<div class="flex-1" style="margin:10px 0px 0 10px;">
+							<div class="text text-left" style="color: #000000;">Lisa White</div>
+							<div class="flex-box flex-h-ce">
+						        <div class="star-solid "></div>
+							    <div class="star "></div> (2.0)
+							</div>
+						</div>
+					</div>
+				</div><!-- end 帮助者列表 -->
+
+				<!-- 评论列表 -->
+				<div class="title" lan="Comments">Comments</div>
+				<div class="flex-box" style="padding: 5px;border-bottom: 1px solid #DEE0E1;">
+					<div class="flex-1 margin-left10 text" style="color:#91989C;"></div>
+					<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;" tapmode="">View All Comments</div>
+				</div>
+				<div id="comments">
+					<div class="flex-box">
+						<div class="flex-box-v flex-center-center" style="width:60px;padding:0 10px 0 30px;">
+							<div class="header-icon" style="background-image: url();"></div>
+						<div class="name">Kate Kali</div>
+						</div>
+						<div class="comment  flex-1	">
+							Comments
+						</div>
+						<div class="flex-box-v">
+							<div class="flex-1 text2 text-right">1h</div>
+							<div class="reply text-right" lan="Reply" id="reply" onclick="reply(this)" tapmode>Reply</div>
+						</div>
+					</div>
+				</div><!-- end 评论列表 -->
+
+				<!--<div class="flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+					You haven't received any comments yet.
+				</div>-->
+				</div>
+			</div>
+		</div>
+	</body>
+	<!-- TODO javascript 引用 -->
+	<script type="text/javascript " src="./script/api.web.js"></script>
+	<script type="text/javascript " src="./script/doT.min.js "></script>
+	<script type="text/javascript" src="script/template.js" ></script>
+	<script type="text/javascript" src="./script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="script/ajax.web.js" ></script>
+	<script type="text/javascript" src="./script/area.js"></script>
+	<script type="text/javascript" src="./script/iscroll.js"></script>
+	<script type="text/javascript" src="./script/swiper.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="./script/touch-0.2.14.min.js"></script>
+	<script type="text/javascript" src="./res/chatBox/emotion_url.js"></script>
+	<script type="text/javascript" src="./script/UIChatBox.js"></script>
+	<script type="text/javascript" src="./script/language.js"></script>
+	<script type="text/javascript" src="script/tool.web.js" ></script>
+	<script type="text/javascript" src="script/D.js" ></script>
+	<script type="text/template" template="main">
+		<!-- 任务基本信息 -->
+		<div style="padding: 10px 15px;">
+			<div class="flex-box ">
+				<div class="flex-1 task-t">{{=it.title}}</div>
+				<!-- 编辑任务 -->
+				{{? it.isself1==2 && it.status==1}}
+				    {{? it.offernum == 0}}
+				    	<div class="pencil flex-h-ce" onclick="edit({{=it.id}},1)" tapmode></div>
+					{{??}}
+				    	<div class="pencil flex-h-ce" onclick="edit({{=it.id}},2)" tapmode></div>
+					{{?}}
+				{{?}}
+				{{? it.isself1 ==1 && it.status==1}}
+				   <div class="{{= it.collection == 0 ? 'love' : 'loved'}} heart" onclick="collect()" tapmode></div>
+		        {{?}}
+			</div>
+			<div class="flex-box" style="margin-top: 15px;">
+				<div class="img" onclick="openPersonalDetail('{{=it.firstname}}','{{=it.lastname}}',{{=it.memberid }},{{=it.isself1}})" style="background-image: url({{= Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div>
+				<div class="flex-1" style="margin:10px 0px 0 6px;">
+					<div class="text">{{= LANGUAGE[$api.getStorage('lan')]['Posted_by'] }} <span style="color: #83D3D0 ;">{{=it.firstname}} {{=it.lastname}}</span></div>
+					<div class="flex-box">
+						<div class="text flex-1">{{=D.favors2(it.createdtime)}}</div>
+						{{? it.type ==1}}
+						    <div class="text">{{=it.distance}}m away</div>
+						{{?}}
+					</div>
+				</div>
+			</div>
+
+			<!-- 任务进度条 -->
+			<div class="flex-box flex-center-center" style="padding:13px 26px;">
+				<div class="open flex-1"><span class="op">Open</span></div>
+				{{?   it.status==1}}
+					<div class="completed flex-1"><span class="co">Ongoing</span></div>
+				    <div class="completed flex-1"><span class="co">Completed</span></div>
+		        {{?? (it.status==2 && it.helpstatus==1) || (it.status==2 && it.helpstatus==0)|| (it.status==3 && it.isself==1) || (it.status==2 &&it.israting1 ==0) || (it.isself1==2 && it.helpstatus==0)}}
+		            <div class="open flex-1"><span class="op">Ongoing</span></div>
+				    <div class="completed flex-1"><span class="co">Completed</span></div>
+		        {{??}}
+		            <div class="open flex-1"><span class="op">Ongoing</span></div>
+					<div class="open flex-1"><span class="op">Completed</span></div>
+		        {{?}}
+			</div>
+
+			<!--价格-->
+			<div class="flex-box flex-center-center" style="margin:25px 0px">
+				<div class="money">
+					<span class="sp ">{{= it.default_currency == 'cad' ? 'C$ ' : '$ '}}</span>
+					<span style="color: inherit;">{{=it.total}}</span>
+				</div>
+			</div>
+			<!--
+				isoffer 当前用户是否申请了工作,0:未申请,1:申请了（0:显示dot it now,1:
+				不显示dot it now,判断isagree,帮助者视觉）
+			-->
+			{{? it.isoffer==0}}
+			     <div class="mack" lan="Do_it_Now" onclick="ApplyHelper({{=it.checkstatus}},{{=it.id}})"tapmode="">Do it Now!</div>
+			{{?}}
+			<!--
+				工作的人数和困难的等级
+			-->
+			<div class="flex-box " style="margin-top:5px;">
+				<div class="week flex-1 flex-box  flex-center-center" style="
+					{{? document.body.clientWidth == 640 }}
+						padding-left: 5px;
+					{{?}}">
+
+					<span style="color: inherit;" class="number">{{=it.workers}}&nbsp;</span>
+					{{? it.workers<=1 }}
+				       {{= LANGUAGE[$api.getStorage('lan')]['worker'] }}
+					{{??}}
+					   {{= LANGUAGE[$api.getStorage('lan')]['workers'] }}
+					{{?}}
+				</div>
+				<div class="flex-2 flex-box dic flex-center-center">
+					<span style="padding-right: 8px;color: #33BBB2;">Difficulty</span>
+					{{? it.level}}
+						{{for(var i=0;i< 5;i++) { }}
+							{{? i< it.level}}
+					            <div class="star-solid "></div>
+					        {{??}}
+							    <div class="star "></div>
+							{{?}}
+					    {{ } }}
+					{{?}}
+				</div>
+			</div>  <!--end 工作的人数和困难的等级-->
+			<!--
+				status:任务状态:0:未支付,1:发布中,2:进行中,3:帮组者完成,4：发布者完成,5:完成并且评价完3和4都是完成
+				isself1=1是帮助者 isself=2是发布者
+				isrefuse 帮助者是否拒绝,0:拒绝,1:同意,2:未操作（0:不显示任何按钮,1:判断israting1,帮助者视觉,2:显示是否接受任务按钮）
+				israting1 帮助者是否完成任务,0:未完成,1:已完成,2:已评价,3:等待（0:显示favor complete,1:显示评价按钮,2:显示completed按钮,帮助者视觉）
+			    isagree 发布者是否同意,0:未同意,1:同意（0:不显示任何按钮,1:判断isrefuse,帮助者视觉
+			    israting 发布者是否评价,0:否,1:是（0:显示是否评价任务按钮,1:显示completed按钮,发布者视觉）
+			    excstatus 是否异常,0:不是,1:是
+			-->
+			{{?  it.isagree==1 && it.isrefuse==2}}
+				<!--发布者同意帮助申请的任务，帮助者的页面显示quite和begin -->
+			    <div class="flex-box " style="margin-top:10px;">
+			    	<!--是否有异常处理状态-->
+					{{? it.status==6 || it.excstatus==1}}
+						<div class="flex-2 quit flex-box flex-center-center" style="background:red;">
+							<div class="quit-icon flex-3"></div>
+							<div class="flex-3" style="color:white;" lan="Quit">Quit</div>
+						</div>
+						<div class="flex-3 flex-center-center dic-1" lan="Begin">Begin</div>
+					{{??}}
+					<div class="flex-2 quit flex-box flex-center-center" style="background:red;" onclick="helpAccept(1,{{=it.id}})" tapmode="">
+						<div class="quit-icon flex-3"></div>
+						<div class="flex-3" style="color:white;" lan="Quit">Quit</div>
+					</div>
+					<div class="flex-3 flex-center-center dic-1" lan="Begin" onclick="helpAccept(2,{{=it.id}})" tapmode="">Begin</div>
+				    {{?}}
+			    </div>
+			{{?}}
+
+      {{? (it.isoffer==1 &&  it.isagree==1 && it.isrefuse==1 && it.israting1==2) || (it.helpstatus==2 && it.israting==1) }}
+            <!--发布者同意帮助完成的任务，帮助者评价完发布者显示completed 和发布者评价完显示completed-->
+				<div class="flex-box" style="margin-top:10px;">
+					<div class="mack" lan="Completed">Completed</div>
+				</div>
+			{{?}}
+
+			{{? it.status==2 ||it.status==3|| it.status==4 || it.status==5}}
+			<!--出去open状态的chat按钮显示-->
+			<div class="flex-box " style="margin-top:10px;">
+				{{? it.israting!=1 && it.israting1!=2}}
+				   	<div class="flex-2 week-1 flex-box flex-center-center" onclick="openCheat({{=it.isself1}})" tapmode>
+						<div class="ic flex-1"></div>
+						<div class="flex-2" style="color:#33BBB2;" lan="Chat">Chat</div>
+			        </div>
+		        {{?}}
+			    {{? it.isoffer==1 && it.isagree==1 && it.isrefuse==1 && it.israting1==3}}
+		        <!--帮助者等待发布者确认完成任务-->
+					<div class="flex-3 flex-center-center dic-1" lan="Waiting" style="background-color:#33BBB2;">Waiting</div>
+			    {{?? it.isoffer==1 &&  it.isagree==1 && it.isrefuse==1 && it.israting1==1}}
+			    <!--帮助者评价帮助者-->
+			    	<div class="flex-3 flex-center-center dic-2" lan="Ratings"
+			    		{{? !(it.status==6 || it.excstatus==1) }}
+			    			onclick="rating({{=it.id}},{{=it.isself1}},{{=it.type}})" tapmode=""
+			    		{{?}}
+			    		>Ratings</div>
+			    {{?}}
+
+			    {{?  it.isoffer==1 && it.isagree==1 && it.isrefuse==1 && it.israting1==0}}
+			    <!--帮助者任务进行中 -->
+				    <!--是否有异常处理状态-->
+				    <div class="flex-3 flex-center-center dic-1" lan="FavorComplete"
+				        {{? it.status!=6 || it.excstatus!=1}}onclick="helpAccept(3,{{=it.id}})" tapmode=""{{?}}>Favor Complete</div>
+				{{?}}
+
+				{{?  it.helpstatus==0}}
+				<!--发布者视角任务进行中-->
+				    <div class="flex-3 flex-center-center dic-1" lan="Ongoing">Ongoing</div>
+				{{??  it.helpstatus==1}}
+				    <!--发布者等待任务完成-->
+				       <div class="flex-3 flex-center-center dic-1" lan="FavorComplete"
+				       	{{? it.status!=6 || it.excstatus!=1}}
+				       	   onclick="perOngoing()" tapmode=""
+				       	{{?}}
+				       	>Favor Complete</div>
+				{{?}}
+
+				{{? it.helpstatus==2 && it.israting==0}}
+				 <!--发布者评价帮助者-->
+					    <div lan="Ratings" class="flex-3 flex-center-center dic-2"
+					    	{{? it.status!=6 || it.excstatus!=1}}
+					    	    onclick="rating({{=it.id}},{{=it.isself1}},{{=it.type}})" tapmode=""
+					    	{{?}}
+					    >Ratings</div>
+				{{?}}
+			</div>
+			{{?}}
+
+			<div class="flex-box flex-h-ce" style="margin-top:9px;">
+				<p class="sing"></p>
+				<p style="padding-left:5px;">
+					{{? it.type==1}}
+					    {{? (it.isself1 ==1 && it.status==2) || (it.isself1 ==1 && it.isagree==1)}}
+					       {{=it.location}}
+					    {{?? it.isself1==2}}
+					 	   {{=it.location}}
+					 	{{?}}
+
+					 	{{=Area.getCityName(it.country,it.province,it.city).city.name}}
+					 	{{=Area.getCityName(it.country,it.province,it.city).province.name}}
+					{{??}}
+						{{= LANGUAGE[$api.getStorage('lan')]['Online'] }}
+					{{?}}
+				</p>
+			</div>
+			<div class="flex-box flex-h-ce">
+					<p class="calendar"></p>
+					<p class="flex-1 {{? it.isdue==1}}ter-t{{?}}">Due Date -{{= Tool.toEngDate(it.duedate,'YMD')}}</p>
+				{{? it.isdue==1}}
+				   <p class="ter" onclick="terminate({{=it.isdue}},{{=it.memberid}})" tapmode>Terminate</p>
+				{{?}}
+			</div>
+		</div><!-- end 任务基本信息 -->
+		<!-- 任务详情 -->
+		<div class="title" lan="Favor_Details">Favor Details</div>
+		<div class="margin-bottom10" style="padding: 10px;">
+			{{=it.details}}
+		</div>
+		{{? it.attachments instanceof Array && it.attachments.length!=0}}
+		<div style="padding: 10px;" class="pic">
+			<div class="pic-box">
+				<div id="scroller">
+					<ul>
+						{{ for(var i=0; i<it.attachments.length; i++) { }}
+							<li>
+								<div onclick="openPhotoBrowser('{{=it.attachments}}','{{=i}}')" tapmode="">
+									<div class="img-picture" style="background-image: url({{=it.attachments[i]}});"></div>
+								</div>
+							</li>
+						{{ } }}
+					</ul>
+				</div>
+			</div>
+		</div><!-- end 任务详情 -->
+	{{?}}
+	{{? it.type==1}}
+		<!-- 地址信息 -->
+			<div class="title margin-top10" lan="Address">Address</div>
+			<div style="text-align:center;font-size:14px; padding: 3px 0;">{{=it.location}}</div>
+			<div class="map"></div>
+		<!-- end 地址信息 -->
+	{{?}}
+
+	{{? it.status==1}}
+			<div class="title margin-top10" lan="HelperList">Helper List</div>
+			<div style="padding:10px 6px;">
+				{{? it.offernum== 0}}
+				    <div class="flex-center-center flex-box-v" style="padding: 15px; text-align: center;" lan="There_is_no_helper">There is no helper.</div>
+				{{??}}
+				    <div style="padding:5px;">
+						<div class="flex-box flex-h-ce swiper-container" style="background-color:#ECF9F7;">
+							<div class="flex-1 swiper-button-prev">
+								<div class="left hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							<div class="swiper-button-next">
+								<div class="right hidden" style="margin-left: 3px;padding-top: 3px;"></div>
+							</div>
+							{{? it.workers==1}}
+							<!--判断单人多人连线-->
+								{{? it.newOffers instanceof Array && it.newOffers.length!=0}}
+								    <div class="swiper-wrapper">
+								      {{~ it.newOffers :value:index}}	<!-- 遍历帮助者列表 页数 -->
+											<div class="swiper-slide">
+												<div style="padding: 20px 10px 10px;">
+													{{~value :v:i }}
+														{{? i % 3 == 0 }}
+														<div class="flex-box" style="padding-bottom: 10px;"><!-- 1行 -->
+															{{ for(var j=0;j<3;j++){ }}
+																{{? it.newOffers[index][j + i] }}
+															       <div class="flex-box-v flex-center-center flex-1">
+																		<div class="flex-box-v flex-center-center" style="">
+																			<div class="header-icon" style="background-image:url({{= Tool.imageCompressByQiNiu(it.newOffers[index][j + i].avatar,0,200,200)}});"></div>
+																			<div class="name text-overflow">{{=it.newOffers[index][j + i].firstname}} {{=it.newOffers[index][j + i].lastname}}</div>
+																			<div class="flex-box" style="overflow: visible;">
+																				{{? it.newOffers[index][j + i].helperstar}}
+																				    {{for(var a=0;a< 5;a++) { }}
+																				    	{{? a < it.newOffers[index][j + i].helperstar}}
+																				            <div class="star-com-solid "></div>
+																				        {{??}}
+																							<div class="star-com"></div>
+																	                    {{?}}
+																	                {{ } }}
+																	            {{?}}
+																			</div>
+																			<div class="flex-box flex-center-center" style="text-align: center;">
+																				<div class="name flex-1">({{=it.newOffers[index][j + i].helperstar}})</div>
+																			</div>
+																		</div>
+																		<!--发布者同意帮助申请按钮-->
+																		{{? it.isself1==2}}
+																		   <!--status 发布者决定状态,:1:申请中,2:同意申请,3:拒绝申请,4:发布者确认完成,5:发布者已经评价-->
+																			<div class="flex-box-v flex-center-center">
+																				{{? it.status==6 || it.excstatus==1}}
+																					<div class="btn-a {{? it.newOffers[index][j + i].status==1 }}btn-accept
+																						{{?? it.newOffers[index][j + i].status==2}}btn-assigned{{??}}btn-back{{?}} flex-box"
+																						data-value='{{=JSON.stringify(it.newOffers[index][j + i])}}'>
+																						<span  class="ao accept flex-1">
+																							{{? it.newOffers[index][j + i].status==2}}
+																								{{= LANGUAGE[$api.getStorage('lan')]['Assigned'] }}
+																							{{??}}
+																								{{= LANGUAGE[$api.getStorage('lan')]['AcceptOffer'] }}
+																							{{?}}
+																						</span>
+																						<span class="btn-close"></span>
+																					</div>
+																				{{??}}
+																					<div class="btn-a
+																						{{? it.newOffers[index][j + i].status==1 && !it.isSelectedOffer}}btn-accept
+																						{{?? it.newOffers[index][j + i].status==2 && it.isSelectedOffer}}btn-assigned
+																						{{?? it.newOffers[index][j + i].status==1 && it.isSelectedOffer}}btn-back{{?}} flex-box"
+																						data-value='{{= JSON.stringify(it.newOffers[index][j + i])}}'
+																						     onclick="accpt(this,{{=it.workers}})" tapmode>
+																						<span  class="ao accept flex-1">
+																									{{? it.newOffers[index][j + i].status==2}}
+																										{{= LANGUAGE[$api.getStorage('lan')]['Assigned'] }}
+																									{{??}}
+																										{{= LANGUAGE[$api.getStorage('lan')]['AcceptOffer'] }}
+																									{{?}}
+																								</span>
+																						<span class="btn-close"></span>
+																					</div>
+																				{{?}}
+																			</div>   <!--end 按钮结尾-->
+																		{{?}}
+																	</div><!-- end 单个申请者节点 -->
+																{{?}}
+															{{ } }}
+														</div><!-- 一行3个节点 -->
+														{{?}}
+
+
+													{{~}}
+												</div>
+											</div>
+									    {{~}}	<!-- end 遍历帮助者列表 -->
+									</div>
+								{{?}}
+							{{?? it.workers>1}}
+							     <div class="swiper-wrapper">
+									<div class="swiper-slide">
+										<!--两人连线-->
+										<div style="padding: 20px 0 10px;">
+											<div class="flex-box" style="padding: 0 5px;">
+												<div class="flex-1">
+													<div class="flex-box" style="padding:0px 20px;">
+														<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+															<div class="header-icon bor-cri"></div>
+															<div class="name">nahsm</div>
+															<div class="flex-box" style="overflow: visible;">
+																<div class="star-com-solid "></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+															</div>
+														</div>
+														<div class="not-border flex-1"></div>
+														<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+															<div class="header-icon bor-cri"></div>
+															<div class="name">nahsm</div>
+															<div class="flex-box" style="overflow: visible;">
+																<div class="star-com-solid "></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+															</div>
+														</div>
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="flex-box" style="padding:3px 20px;">
+														<div class="flex-box-v flex-center-center">
+															<div class="header-icon bor-cri"></div>
+															<div class="name">nahsm</div>
+															<div class="flex-box" style="overflow: visible;">
+																<div class="star-com-solid "></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+																<div class="star-com"></div>
+															</div>
+														</div>
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--两人连线里的单人连线-->
+											<div class="flex-box">
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!--5人连线-->
+									<div class="swiper-slide">
+										<div style="padding: 20px 0 10px;">
+											<!--5人连线-->
+											<div class="flex-box" style="padding:0 20px;">
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+												</div>
+												<div class="not-border flex-1"></div>
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+												</div>
+												<div class="not-border flex-1"></div>
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+
+												</div>
+												<div class="not-border flex-1"></div>
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+												</div>
+												<div class="not-border flex-1"></div>
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+												</div>
+											</div>
+											<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+											</div>
+											<div class="flex-box">
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+  <!--三人连线-->
+									<div class="swiper-slide">
+										<div style="padding: 20px 0 10px;">
+											<div class="flex-box" style="padding:0 20px;">
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+
+												</div>
+												<div class="not-border flex-1"></div>
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+												</div>
+												<div class="not-border flex-1"></div>
+												<div class="flex-box-v flex-center-center" style="width: 40px; height:80px;">
+													<div class="header-icon bor-cri"></div>
+													<div class="name">nahsm</div>
+													<div class="flex-box" style="overflow: visible;">
+														<div class="star-com-solid "></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+														<div class="star-com"></div>
+													</div>
+												</div>
+											</div>
+											<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+											<div class="flex-box">
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+												<div class="flex-box-v flex-center-center flex-1">
+													<div class="not-border flex-1"></div>
+													<div class="flex-box-v flex-center-center">
+														<div class="header-icon "></div>
+														<div class="name">nahsm</div>
+														<div class="flex-box" style="overflow: visible;">
+															<div class="star-com-solid "></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+															<div class="star-com"></div>
+														</div>
+
+													</div>
+													<div class="flex-center-center flex-box-v">
+														<div class="btn-a  btn-accept btn-back btn-assigned flex-box" data-value=''>
+															<span class="ao accept flex-1">Accept Offer</span>
+															<span class="btn-close"></span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							{{?}}
+						</div>
+				    </div>
+				{{?}}
+			</div><!-- end 帮助者申请列表 -->
+	{{?}}
+
+	{{?  it.status>=2}}
+		<!-- 帮助者列表 -->
+		<div class="title" style="margin-top: 10px;">{{= LANGUAGE[$api.getStorage('lan')]['Ongoing_by'] }}</div>
+		{{? it.ongoingby instanceof Array && it.ongoingby.length!=0}}
+			    {{~ it.ongoingby:value:index}}
+					<div style="padding: 10px 8px;">
+						<div class="flex-box ongoing flex-center-center"  onclick="onGoing('{{=value.firstname}}','{{=value.lastname}}',{{=value.id}})" tepmode>
+							<div class="img" style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+							<div class="flex-1" style="margin:10px 0px 0 10px;">
+								<div class="text text-left" style="color: #000000;">{{=value.firstname}} {{=value.lastname}}</div>
+								<div class="flex-box flex-h-ce">
+							        {{for(var i=0;i< 5;i++) { }}
+										{{? i< value.star}}
+											<div class="star-solid "></div>
+								        {{??}}
+								            <div class="star "></div>
+								        {{?}}
+								    {{ } }}
+								    ({{=value.helperstar}})
+								</div>
+							</div>
+						</div>
+					</div><!-- end 帮助者列表 -->
+			    {{~}}
+			{{??}}
+				<div style="padding: 10px 15px;">
+					<div class="flex-box ongoing flex-center-center" lan="There_is_no_relevant_information">
+						There is no relevant information.
+					</div>
+				</div>
+			{{?}}
+	{{?}}
+
+	{{? it.status==1}}
+		<!-- 评论列表 -->
+		<div class="title" lan="Comments">Comments</div>
+		<div class="flex-box" style="padding: 5px;border-bottom: 1px solid #DEE0E1;">
+				<div class="flex-1 margin-left10 text" style="color:#91989C;">
+					{{? it.comments<=1 }}
+						{{=it.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}
+					{{??}}
+						{{=it.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comments'] }}
+					{{?}}
+				</div>
+				{{? it.comments>3}}
+					<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;" onclick="viewAll({{=it.id}})" tapmode="">View All Comments</div>
+				{{??}}
+					<div class="text" lan="ViewAllComments" style="color:#33BAB0;margin-right:10px;">View All Comments</div>
+				{{?}}
+		</div>
+		{{? it.commentlist instanceof Array && it.commentlist.length!=0}}
+		    {{~ it.commentlist:value:index}}
+				<div id="comments">
+					<div class="flex-box">
+						<div class="flex-box-v flex-center-center" style="width:60px;padding:0 10px 0 30px;">
+							<div class="header-icon" style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+						<div class="name">{{=value.firstname}} {{=value.lastname}}</div>
+						</div>
+						<div class="comment  flex-1	">
+							<div>
+								{{=UIChatBox.transToEmotionUrl('./', value.content)}}
+							</div>
+						</div>
+						<div class="flex-box-v">
+							<div class="flex-1 text2 text-right">{{=D.favors(value.createdtime)}}</div>
+							<div class="reply text-right" lan="Reply" id="reply{{= value.id}}" onclick="reply(this,'{{= value.id}}','{{=value.firstname}} {{=value.lastname}}')" tapmode>Reply</div>
+						</div>
+					</div>
+				</div><!-- end 评论列表 -->
+			{{~}}
+		{{??}}
+			<div class="flex-box-v flex-center-center" lan="youHaveNoReceivedAnyCommentsYet">
+				You haven't received any comments yet.
+			</div>
+		{{?}}
+	{{?}}
+	</script>
+	<script type="text/template" template="img">
+		<li style="width: {{= parseInt((api.frameWidth - 36) / 5)}}px;height: {{= parseInt((api.frameWidth - 36) / 5)}}px;">
+			<div class="pl" imgUrl="" data-status="" data-key="" data-callbackEvent="{{= it.callbackEvent}}">
+				<div class="img-frm">
+					<span class="close" style="" onclick="removePic(event, this)" tapmode></span>
+					<div class="img" style="background-image: url({{= it.url}});">
+						<div class="upload-status flex-box " style="background-color: rgba(209,209,209,0.5);font-size: 11px;">
+							<div class=" flex-1 status"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</li>
+	</script>
+    <script type="text/javascript">
+		//任务id
+		var favorid = "";
+		//照片数组
+		var photo = [];
+		//评论id
+		var commentid = '';
+		var types= 0;
+		function sort1(ct){
+			/*
+			 * 针对单人任务对帮助者申请列表数据进行排序
+			 */
+		var _arr = [];
+
+			ct.newOffers = [];
+			ct.offers.forEach(function(value, index, ar){
+				_arr.push(value[0]);
+				if(_arr.length == 6 || !ar[index+1]){
+					ct.newOffers.push(_arr);
+					_arr = [];
+				}
+				if(value[0].status == 2){
+					ct.isSelectedOffer = true;	//是否已经选好帮助者
+				}
+			});
+		}
+		//TODO JQ
+//		$(function(){
+//			var params = Tool.getQueryStringArgs();
+////			console.log(JSON.stringify(params))
+//			$api.setStorage('lan', 'english');
+//			ajax.get({
+//				ctrl: 'Favor',
+//				fn: 'favorDetails',
+//				data: {
+//					values: {
+//						favorid: params.fid, //params.fid, 895
+//						share: 1
+//					}
+//				},
+//				success: function(ret){
+//					T.html('#main', 'main', ret);
+//				}
+//			});
+//		});
+
+//		查看大图
+		function openPhotoBrowser(imge, index) {
+			var imgArr = [],
+				imgsplit = imge.split(',');
+			for(var i = 0; i < imgsplit.length, g = imgsplit[i]; i++) {
+				imgArr.push(g);
+			}
+			Tool.openPhotoBrowser({
+				images: imgArr,
+				activeIndex: index,
+				bgColor: 'rgba(0,0,0, 0.5)',
+				click: function(photoBrowser) {
+					photoBrowser.close();
+				}
+			});
+		}
+		function initSwiper(){
+			//初始化swiper插件
+			var mySwiper = new Swiper('.swiper-container', {
+				prevButton: '.left',
+				nextButton: '.right',
+				onTransitionEnd: function(swiper) {
+					if(swiper.slides.length == 1) {
+						$api.addCls($api.dom('.right'), 'hidden');
+						$api.addCls($api.dom('.left'), 'hidden');
+					}
+					if((swiper.realIndex > 0) && (swiper.realIndex == swiper.slides.length - 1)) {
+						$api.removeCls($api.dom('.left'), 'hidden');
+						$api.addCls($api.dom('.right'), 'hidden');
+					} else if((swiper.realIndex == 0) && swiper.slides.length > 1) {
+						$api.removeCls($api.dom('.right'), 'hidden');
+						$api.addCls($api.dom('.left'), 'hidden');
+					}
+				}
+			});
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'favorDetails',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid
+					}
+				},
+				success: function(ct) {
+					var piclength=ct.attachments.length;
+					T.html('#main', 'main', ct);
+				    if(piclength!=0){
+						iscrollInit();
+					}
+				    var status =ct.status
+				    api.sendEvent({
+					    name: 'sendStatus',
+					    extra: {
+					        status : status
+					    }
+					});
+				    L.init();
+					$api.setStorage('info', ct);
+					var num=ct.type;
+					if(num==1){
+					    openMap({
+							x: ct.x,
+							y: ct.y
+						});
+					}
+//					console.log('任务详情：-----' + JSON.stringify(ct,null, 2))
+					var renderOffers = [];
+					if(ct.offers != 0) {
+
+						sort1(ct);
+//						console.log('组装：-----' + JSON.stringify(ct,null, 2));
+						T.html('#main', 'main', ct);
+						initSwiper();
+//						ct.offers.sort(function(a, b) {
+//							return b.length - a.length
+//						});
+//						var hasLine = [];
+//						for(var i = 0; i < ct.offers.length; i++) {
+//							if(ct.offers[i].length == 1) {
+//								break;
+//							}
+//							hasLine.push(ct.offers[i]);
+//						}
+//						ct.offers.splice(0, hasLine.length);
+//						var noLine = [];
+//						for(var i = 0; i < Math.ceil(ct.offers.length / 5); i++) {
+//							if(!noLine[i]) {
+//								noLine[i] = [];
+//							}
+//							var length = 5 * (i + 1) < ct.offers.length ? 5 * (i + 1) : ct.offers.length;
+//							for(var j = i * 5; j < length; j++) {
+//								ct.offers[j][0].noLine = true;
+//								noLine[i].push(ct.offers[j][0]);
+//							}
+//						}
+//						var o = hasLine.concat(noLine);
+//						var renderOffers = [];
+//						for(var i = 0; i < Math.ceil(o.length / 2); i++) {
+//							if(!renderOffers[i]) {
+//								renderOffers[i] = [];
+//							}
+//							if(o[i * 2]) {
+//								renderOffers[i].push(o[i * 2]);
+//							}
+//							if(o[i * 2 + 1]) {
+//								renderOffers[i].push(o[i * 2 + 1]);
+//							}
+//						}
+					}
+//					ct.renderOffers = renderOffers;
+//					alert(JSON.stringify(ct.offers,null,2))
+//					alert(JSON.stringify(ct.renderOffers,null,2))
+//					var piclength = ct.attachments.length;
+
+
+//					var mySwiper = new Swiper('.swiper-container', {
+//						prevButton: '.left',
+//						nextButton: '.right',
+//						onTransitionEnd: function(swiper) {
+//							if(swiper.slides.length == 1) {
+//								$api.addCls($api.dom('.right'), 'hidden');
+//								$api.addCls($api.dom('.left'), 'hidden');
+//							}
+//							if((swiper.realIndex > 0) && (swiper.realIndex == swiper.slides.length - 1)) {
+//								$api.removeCls($api.dom('.left'), 'hidden');
+//								$api.addCls($api.dom('.right'), 'hidden');
+//							} else if((swiper.realIndex == 0) && swiper.slides.length > 1) {
+//								$api.removeCls($api.dom('.right'), 'hidden');
+//								$api.addCls($api.dom('.left'), 'hidden');
+//							}
+//						}
+//					})
+				}
+			});
+		}
+        //发布者处理工作申请 处理状态,1:取消,2:同意,3:拒绝,4:确认完成
+		function accpt(_this, workers) {
+			var offers = $api.attr(_this, 'data-value');
+			console.log(JSON.parse(offers));
+			//console.log(JSON.stringify(offers,null,2))
+			//	Debug.alt(JSON.parse(offers,null,2));
+			var memberid = [],
+				memberids = [];
+			memberid = JSON.parse(offers);
+			console.log(JSON.stringify(memberid, null, 2)+'00099')
+			if(memberid instanceof Array && memberid.length != 0) {
+				for(var i = 0; i < memberid.length; i++) {
+					memberids.push(memberid[i].id);
+				}
+			} else {
+				memberids = memberid.id;
+			}
+			memberids = memberids.toString();
+			if($api.hasCls(_this, 'btn-back')){
+				return;
+			}
+			if($api.hasCls(_this, 'btn-accept')) {
+				types = 2;
+				$api.addCls(_this, 'btn-assigned');
+				$api.removeCls(_this, 'btn-accept');
+				$api.text($api.dom(_this, '.ao'), 'Assigned');
+				var btnBcak = $api.domAll('.btn-accept');
+				if(workers == memberids) {
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.removeCls(btnBcak[i], 'btn-accept');
+						$api.addCls(btnBcak[i], 'btn-back');
+					}
+				}
+				//单人选着任务
+				if(workers==1){
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.removeCls(btnBcak[i], 'btn-accept');
+						$api.addCls(btnBcak[i], 'btn-back');
+					}
+				}
+
+			} else if($api.hasCls(_this, 'btn-assigned')) {
+				types = 1;
+				$api.removeCls(_this, 'btn-assigned');
+				$api.addCls(_this, 'btn-accept');
+				$api.text($api.dom(_this, '.ao'), 'Accept Offer');
+				var btnBcak = $api.domAll('.btn-back');
+				if(workers == memberids) {
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.addCls(btnBcak[i], 'btn-accept');
+						$api.removeCls(btnBcak[i], 'btn-back');
+					}
+				}
+				//单人选着任务
+				if(workers==1){
+					for(var i = 0; i < btnBcak.length; i++) {
+						$api.addCls(btnBcak[i], 'btn-accept');
+						$api.removeCls(btnBcak[i], 'btn-back');
+					}
+				}
+			}
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'dealOffer',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						memberids: memberids,
+						status: types
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					api.execScript({
+						name: 'Init',
+						frameName: 'my_promulgator',
+						script: 'init()'
+					});
+//						$api.text($api.dom('.dic-1'),'Favor Complete');
+//						setTimeout(function(){
+//							api.execScript({
+//							    name:'Init',
+//							    frameName:'help_person',
+//							    script:'init()'
+//							});
+//						},300)
+
+				},
+				//				_404: function(){
+				//						Tool.toast('该任务最多有1个帮助者');
+				//				}
+			});
+		}
+		//发布者确定帮助者的任务是否完成 处理状态,1:取消,2:同意,3:拒绝,4:确认完成
+        function perOngoing(){
+        	ajax.get({
+				ctrl: 'Favor',
+				fn: 'dealOffer',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid:favorid,
+						status:4
+					}
+				},
+				hideLoading: true,
+				success: function() {
+					init();
+					setTimeout(function(){
+//						api.execScript({
+//						    name:'task_detail',
+//						    frameName:'my_task_detail',
+//						    script:'init()'
+//						});
+						api.execScript({
+						    name:'Init',
+						    frameName:'help_person',
+						    script:'init()'
+						});
+					},300)
+				}
+			});
+        }
+		//帮助处理工作申请 处理状态,处理状态,1:拒绝,2:同意,3:确认完成
+        function helpAccept(type,id){
+        	//memberids=ct.renderOffers;
+    		var status=api.pageParam.stute;
+    		ajax.get({
+				ctrl: 'Favor',
+				fn: 'dealWork',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						status: type
+					}
+				},
+				hideLoading: true,
+				success: function() {
+					init();
+					api.execScript({
+						    name:'Init',
+						    frameName:'my_promulgator',
+						    script:'init()'
+					});
+					if(type==3){
+//						$api.addCls($api.dom('.ctext'),'op')
+//						$api.addCls($api.dom('.oc'),'open')
+						setTimeout(function(){
+							api.execScript({
+								name:'Init',
+								frameName:'help_person',
+								script:'init()'
+							});
+						},300)
+					}
+				}
+			});
+        }
+
+        //发布者编辑任务
+        function edit(id, type) {
+			if(type == 1) {
+				api.openWin({
+					name: 'delete',
+					url: api.wgtRootDir + '/html/window/delete.html',
+					pageParam: {
+						frameName: 'edit_outline',
+						frameUrl: api.wgtRootDir + '/html/my_favors/edit_outline.html',
+						frameParam: {
+							favorid: id
+						},
+						headerTitle: 'Favor Details',
+					},
+					reload: true,
+					slidBackEnabled: false,
+				});
+			} else {
+				api.openWin({
+					name: 'delete',
+					url: api.wgtRootDir + '/html/window/delete.html',
+					pageParam: {
+						frameName: 'edit',
+						frameUrl: api.wgtRootDir + '/html/my_favors/edit.html',
+						frameParam: {
+							favorid: id
+						},
+						headerTitle: 'Favor Details',
+					},
+					reload: true,
+					slidBackEnabled: false,
+				});
+			}
+
+		}
+		//回复评论
+		function reply(_this, cid, name) {
+			if($api.text(_this) == 'Reply') {
+				if(commentid != '') {
+					$api.text($api.dom('#reply' + commentid), 'Reply');
+				}
+				commentid = cid;
+				$api.text($api.dom('#reply' + commentid), 'Cancel');
+			} else {
+				commentid = '';
+				$api.text($api.dom('#reply' + cid), 'Reply');
+			}
+			api.sendEvent({
+				name: 'setReply',
+				extra: {
+					commentid: commentid,
+					name: name
+				}
+			})
+		}
+		//打开评论列表
+		function viewAll(id) {
+			api.openWin({
+				name: 'comment',
+				url: api.wgtRootDir + '/html/window/favor/comment.html',
+				pageParam: {
+					frameName: 'task_comment',
+					frameUrl: api.wgtRootDir + '/html/my_favors/task_comment.html',
+					frameParam: {
+						favorid: id
+					},
+					headerTitle: 'Comments',
+				},
+				softInputMode: 'resize',
+				reload: true,
+				bounces: true,
+				slidBackEnabled: false,
+			});
+		}
+        //打开发布者或这帮者的个人详情
+		function openPersonalDetail(firstname, lastname, memberid,isself1){
+		    if(isself1==2){
+				//发布者
+				Tool.openWin({
+						winName: 'personal_page',
+						title:firstname+" "+lastname,
+						winUrl: api.wgtRootDir + '/html/window/more/personal_page.html',
+						frameName: 'personage_help',
+						frameParam: {},
+						frameUrl: api.wgtRootDir + '/html/more/personal_page.html'
+				})
+			}else{
+				//帮助者
+				Tool.openWin({
+					winName: 'win_back',
+					title: firstname + " " + lastname,
+					winUrl: api.wgtRootDir + '/html/window/win_back.html',
+					frameName: 'personage_help',
+					frameParam: {
+						otherid: memberid
+					},
+					frameUrl: api.wgtRootDir + '/html/more/personage_help.html'
+				})
+			}
+		}
+		//从ongoing里打开任务详情
+		function onGoing(firstname, lastname, memberid){
+			//帮助者
+				Tool.openWin({
+					winName: 'win_back',
+					title: firstname + " " + lastname,
+					winUrl: api.wgtRootDir + '/html/window/win_back.html',
+					frameName: 'personage_help',
+					frameParam: {
+						otherid: memberid
+					},
+					frameUrl: api.wgtRootDir + '/html/more/personage_help.html'
+				})
+		}
+		//发送评论 type=2 ? commentid:''
+		function addComment(content, photo) {
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'addComment',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						type: commentid == '' ? 1 : 2,
+						commentid: commentid,
+						content: content,
+						photo: photo.length > 0 ? photo : ''
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+//					Tool.toast('Successful');
+					commentid = '';
+				}
+			});
+		}
+			//图位置大小
+		function iscrollInit() {
+			var menuDom = $api.dom('.pic #scroller'),
+				liDoms = $api.domAll(menuDom, 'li');
+			width = 0;
+
+			for(var i = 0, len = liDoms.length; i < len, g = liDoms[i]; i++) {
+				width += $api.offset(liDoms[i]).w;
+			}
+			width += 1;
+			$api.css($api.dom('.pic #scroller'), 'width:' + width + 'px');
+			if(liDoms.length == 9) {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + $api.offset(liDoms[0]).w * 5 + 'px;');
+			} else if(liDoms.length > 5) {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + $api.offset(liDoms[0]).w * 4 + 'px;');
+			} else {
+				$api.css($api.dom('.pic>.pic-box'), 'width: ' + width + 'px;');
+			}
+			scroll = new IScroll('.pic>.pic-box', {
+				eventPassthrough: true,
+				scrollX: true,
+				scrollY: false,
+				preventDefault: false,
+				mouseWheel: true
+			});
+			$api.dom('.pic>.pic-box').addEventListener('touchmove', function(e) {
+				e.preventDefault();
+			}, false);
+		}
+		//收藏功能
+		function collect() {
+			if($api.dom('.love')) {
+				$api.addCls($api.dom('.love'), 'loved');
+				$api.removeCls($api.dom('.love'), 'love');
+				//添加收藏
+				ajax.get({
+					ctrl: 'Browse',
+					fn: 'addCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid: favorid,
+							type: 1
+						}
+					},
+					showError: true,
+					showProgress: true,
+					success: function() {
+						Tool.toast('Add collection success.');
+						api.sendEvent({
+							name: 'collect',
+							extra: {
+								fid: favorid,
+								isCollect: true
+							}
+						})
+					}
+				});
+			} else {
+				$api.addCls($api.dom('.heart'), 'love');
+				$api.removeCls($api.dom('.heart'), 'loved');
+				//取消收藏
+				ajax.get({
+					ctrl: 'Browse',
+					fn: 'delCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid: favorid,
+							type: 1
+						}
+					},
+					showError: true,
+					showProgress: true,
+					success: function() {
+						Tool.toast('Remove collection success.');
+						api.sendEvent({
+							name: 'collect',
+							extra: {
+								fid: favorid,
+								isCollect: false
+							}
+						})
+					}
+				});
+			}
+		}
+
+		//接受任务
+		function ApplyHelper(type,id){
+		   var checkstatus=type;
+		   //$checkstatus 是否验证,0:未验证,1:等待验证,2:已经验证
+		    if(checkstatus==0){
+			   	Tool.openWin({
+						winName: 'verify',
+						title: 'As a Helper',
+						winUrl:　 api.wgtRootDir + '/html/window/verify/close_win.html',
+						frameName: 'verify',
+						frameUrl: api.wgtRootDir + '/html/verify/verify.html',
+				})
+		    }else if(checkstatus==1){
+		     	api.openFrame({
+						name:'thank_you',
+						url: api.wgtRootDir + '/html/verify/thank_you.html',
+						bounces:false
+				});
+		    }else if(checkstatus==2){
+		   	    Tool.openWin({
+						winName: 'next_verify',
+						title: 'Finish Registration',
+						winUrl:　 api.wgtRootDir + '/html/window/verify/close_win.html',
+						frameName: 'verify',
+						frameParam:{
+							favorid:id
+						},
+						frameUrl: api.wgtRootDir + '/html/my_favors/check_resgin.html'
+				})
+		    }
+		}
+        //聊天
+		function openCheat(isself1){
+			var memberInfo=$api.getStorage(CONFIG.KEY.MEMBER_INFO);
+			var ct = $api.getStorage('info');
+			var mid = $api.getStorage(CONFIG.KEY.MEMBER_ID);
+			var rong = api.require('rongCloud2');
+			var targetId = '',
+				nickname = '',
+				avatar = '';
+			if(ct.ongoingby.length > 1) {
+				nickname = 'Group';
+				targetId = favorid;
+				inboxtype = 1;
+			}else{
+				if(mid == ct.memberid){
+					targetId = ct.ongoingby[0].id;
+					nickname = ct.ongoingby[0].firstname + "  " + ct.ongoingby[0].lastname;
+					avatar = ct.ongoingby[0].avatar;
+					inboxtype = 2;
+				}else{
+					targetId = ct.memberid;
+					avatar = ct.avatar;
+					nickname = ct.firstname + "  " + ct.lastname;
+					inboxtype = 2;
+				}
+			}
+			var id = favorid.toString();
+			var pname = ct.firstname + " " + ct.lastname;
+			rong.joinGroup({
+			    groupId: id,
+			    groupName: nickname
+			}, function(ret, err) {
+//				Debug.alt(JSON.stringify(ret.status),null,2)
+				if (ret.status == 'success') {
+					api.openWin({
+						name: 'talk_with',
+						url: api.wgtRootDir + '/html/window/talk_with.html',
+						pageParam: {
+							pid: ct.memberid,
+							pnmae: pname,
+//							pfirstname: ct.firstname,
+//							plastname: ct.lastname,
+							mavatar: memberInfo.avatar,
+							targetId: targetId,
+							avatar: avatar,
+							targetNickname: nickname,
+							favorid: favorid,
+							type:isself1,
+							inboxtype: inboxtype
+						},
+						bounces: false,
+						slidBackEnabled: false
+					})
+				}
+
+			})
+		}
+		//打开评价页面
+		function rating(id, isself1,type) {
+			var _url ='/html/more/';
+			if(isself1==2){
+				//从发布者角度打开评价页面评价帮助者
+				_url+='evaluate_post.html';
+			}else if(isself1==1 && type==1){
+				//线下帮助者评价发布者
+				_url+='evaluate_help_offline.html';
+			}else if(isself1==1 &&type==2 ){
+				//线上帮助者评价发布者
+				_url +='evaluate.html';
+			}
+			setTimeout(function(){
+						api.closeWin();
+			},300)
+			api.openWin({
+				name: 'win_back',
+				url: api.wgtRootDir + '/html/window/win_back.html',
+				pageParam: {
+					frameName:'evaluate',
+					frameUrl: api.wgtRootDir + _url,
+					frameParam: {
+                         favorid:favorid,
+                         isself1:isself1
+					},
+					headerTitle: 'Ratings',
+				},
+		    });
+		}
+
+	    //过期处理
+        function terminate(isdue,memberid){
+        	api.openFrame({
+				name: 'terminate',
+				url: api.wgtRootDir + '/html/my_favors/component/terminate.html',
+				bgColor: 'transparent',
+				bounces: false,
+				pageParam: {
+					isdue:isdue,
+				    favorid:favorid,
+				    memberid :memberid
+				},
+				softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+			});
+        }
+
+	    apiready = function() {
+			favorid = api.pageParam.favorid;
+			init();
+			//关闭键盘
+			touch.on('#main', 'touchstart swipeing', function(event) {
+				api.sendEvent({
+					name: 'closeKey'
+				});
+			});
+
+			//发表评论
+			api.addEventListener({
+				name: 'postComment'
+			}, function(ret) {
+				addComment(ret.value.content, ret.value.photo);
+			});
+			$api.css($api.dom('.pic'), 'height: ' + parseInt((api.frameWidth - 36) / 5 + 15) + 'px;');
+		}
+	</script>
+
+</html>

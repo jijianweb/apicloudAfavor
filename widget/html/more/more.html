@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>更多</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.head-portrait {
+				width: 68px;
+				height: 68px;
+				border-radius: 50%;
+				margin-right: 10px;
+				background: #B4B8BA;
+				background-repeat: no-repeat;
+				background-size: cover;
+			}
+			
+			.info-right {
+				margin: auto 0;
+				background-position: right;
+				background-size: cover;
+				width: 10px;
+				height: 15px;
+				background-repeat: no-repeat;
+				background-image: url(../../image/browse/grey.png);
+			}
+			
+			.name-tips {
+				font-size: 14px;
+				margin-top: 4px;
+			}
+			
+			.money {
+				font-size: 17px;
+				color: #80CBC6;
+			}
+			
+			.notice {
+				padding: 20px 10px;
+				border-bottom: 1px solid #D9D9D9;
+			}
+			
+			.inform {
+				background-color: #31BAB0;
+				text-align: center;
+				border-radius: 25px;
+				margin-right: 10px;
+				height: 40px;
+				line-height: 24px;
+			}
+			
+			.lucre {
+				background-color: #31BAB0;
+				text-align: center;
+				border-radius: 25px;
+			}
+			
+			.revenue {
+				color: #FFFFFF;
+				font-size: 14px;
+			}
+			
+			.info {
+				height: 100px;
+				border-bottom: 1px solid #D9D9D9;
+				padding: 15px 18px;
+			}
+			
+			.list {
+				height: 40px;
+				line-height: 40px;
+				padding: 0 18px;
+				border-bottom: 1px solid #D9D9D9;
+			}
+			/* 兼容iphone6 Plus */
+			
+			@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2) {
+				.list {
+					height: 45px;
+					line-height: 45px;
+					padding: 0 18px;
+					border-bottom: 1px solid #D9D9D9;
+				}
+				.info {
+					height: 110px;
+					border-bottom: 1px solid #D9D9D9;
+					padding: 20px 18px;
+				}
+			}
+			
+			.icon {
+				margin-right: 15px;
+				vertical-align: middle;
+				width: 20px
+			}
+			
+			.img {
+				height: 20px;
+				margin-right: 5px;
+			}
+			
+			.name {
+				color: #474747;
+			}
+			
+			.nas {
+				background: #D30D33;
+				border-radius: 50%;
+				width: 23px;
+				height: 23px;
+				font-size: 12px;
+				color: #FFFFFF;
+				margin: 0px 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+                <!--
+				<div class="info flex-box flex-h-ce" onclick="openPersonalPage()" tapmode>
+					<div class="head-portrait"></div>
+					<div class="flex-box-v flex-1">
+						<div class="name">
+							Lucas Fan
+						</div>
+						<div class="flex-box">
+							<div class="name-tips flex-1">
+								Avaliable Funds -- <span class="money">$112</span>
+							</div>
+							<div class="info-right"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="notice flex-box ">
+					<div class="inform flex-box flex-1 flex-center-center" onclick="openNotifications()" tapmode>
+						<div class=""><img src="../../image/more/BELL.png" class="img" /></div>
+						<div class="revenue">Notifications</div>
+						<div class="nas flex-box-v flex-h-zhu">99</div>
+					</div>
+
+					<div class="inform flex-box flex-1 flex-center-center" onclick="click_revenue()" tapmode>
+						<div><img src="../../image/more/3.png" class="img" /></div>
+						<div class="revenue">Revenue</div>
+					</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce" onclick="click_ratings()" tapmode>
+					<div><img src="../../image/star1.png" / class="ratings icon"></div>
+					<div class="name">Ratings</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce" onclick="openFavorites()" tapmode>
+					<div><img src="../../image/heart.png" class="favorites icon" /></div>
+					<div class="name">Favorites</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce" onclick="openPaymentMethod()" tapmode>
+					<div><img src="../../image/card-.png" class="payment-method icon" /></div>
+					<div class="name">Payment Method</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce" onclick="openSetting()" tapmode>
+					<div><img src="../../image/setting.png" class="settings icon" /></div>
+					<div class="name">Settings</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce">
+					<div><img src="../../image/friends.png" class="invite-friends icon" /></div>
+					<div class="name">Invite Friends</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce" onclick="openTermsPolicy()" tapmode>
+					<div><img src="../../image/terms.png" class=" icon" style="width: 17px;"/></div>
+					<div class="name">Terms & Policy</div>
+				</div>
+
+				<div class="list flex-box flex-v-ce" onclick="openContactUs()" tapmode>
+					<div><img src="../../image/chat.png" class="contact-us icon" /></div>
+					<div class="name">Contact us</div>
+				</div>
+
+				<div class="list flex-box flex-h-ce" onclick="logout()" tapmode>
+					<div><img src="../../image/off.png" class="log-out icon" /></div>
+					<div class="name" >Log out</div>
+				</div>
+-->
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../script/fs.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/javascript" src="../../script/ajpush.js" ></script>
+	<script type="text/template" template="main">
+		<div class="info flex-box flex-h-ce" onclick="openPersonalPage('{{=it.firstname}}','{{=it.lastname}}')" tapmode>
+			<div class="head-portrait" style="background-image: url({{=Tool.imageCompressByQiNiu(it.avatar,0,200,200)}});"></div>
+			<div class="flex-box-v flex-1 ">
+				<div class="name">
+					{{=it.firstname}} {{=it.lastname}}
+				</div>
+				<div class="flex-box">
+					<div class="name-tips flex-1">
+						<span lan="AvaliableFunds">Avaliable Funds</span>-- <span class="money">{{=it.currency == 'cad' ? 'C$' : '$'}} {{=it.balance }}</span>
+					</div>
+					<div class="info-right"></div>
+				</div>
+			</div>
+		</div>
+		<div class="notice flex-box">
+			<div class="inform flex-box flex-1 flex-center-center" onclick="openNotifications()" tapmode>
+				<div class="margin-left10"><img src="../../image/more/BELL.png" class="img" /></div>
+				<div class="revenue btn-afavor-font-size" lan="Notifications">Notifications</div>
+				{{? it.remind ==0}} 
+					{{? parseInt(it.notice) <= 99 }} 
+						<div class="nas flex-box-v flex-h-zhu {{= parseInt(it.notice) > 0 ? '' : 'hidden' }}">
+							{{=parseInt(it.notice)}}
+						</div>
+					{{?? parseInt(it.notice)>99}}
+						<div class="nas flex-box-v flex-h-zhu">
+							99+
+						</div>
+					{{?}} 
+				{{?}}
+			</div>
+		<div class="inform flex-box flex-1 flex-center-center" onclick="click_revenue()" tapmode>
+			<div><img src="../../image/more/3.png" class="img" /></div>
+			<div class="revenue btn-afavor-font-size" lan="Revenue">Revenue</div>
+		</div>
+		</div>
+		<div class="list flex-box flex-v-ce" onclick="click_ratings()" tapmode>
+			<div><img src="../../image/star1.png" / class=" icon"></div>
+			<div class="name btn-afavor-font-size" lan="Ratings">Ratings</div>
+		</div>
+
+		<div class="list flex-box flex-v-ce" onclick="openFavorites({{=it.favorid}})" tapmode>
+			<div><img src="../../image/heart.png" class=" icon" /></div>
+			<div class="name btn-afavor-font-size" lan="Favorites">Favorites</div>
+		</div>
+
+		<div class="list flex-box flex-v-ce" onclick="openPaymentMethod()" tapmode>
+			<div><img src="../../image/card-.png" class=" icon" /></div>
+			<div class="name btn-afavor-font-size" lan="PaymentMethod">Payment Method</div>
+		</div>
+
+		<div class="list flex-box flex-v-ce" onclick="openSetting({{=it.remind}},'{{=it.currency}}',{{=it.language}})" tapmode>
+			<div><img src="../../image/setting.png" class="icon" /></div>
+			<div class="name btn-afavor-font-size" lan="Settings">Settings</div>
+		</div>
+
+		<div class="list flex-box flex-v-ce" onclick="inviteFriends()" tapmode>
+			<div><img src="../../image/friends.png" class=" icon" /></div>
+			<div class="name btn-afavor-font-size" lan="InviteFriends">Invite Friends</div>
+		</div>
+
+		<div class="list flex-box flex-v-ce" onclick="openTermsPolicy()" tapmode>
+			<div><img src="../../image/terms.png" class="icon" style="width: 17px;" /></div>
+			<div class="name btn-afavor-font-size" lan="TermsPolicy">Terms & Policy</div>
+		</div>
+
+		<div class="list flex-box flex-v-ce" onclick="openContactUs()" tapmode>
+			<div><img src="../../image/chat.png" class=" icon" /></div>
+			<div class="name btn-afavor-font-size" lan="ContactUs">Contact us</div>
+		</div>
+
+		<div class="list flex-box flex-h-ce" onclick="logout()" tapmode>
+			<div><img src="../../image/off.png" class=" icon" /></div>
+			<div class="name btn-afavor-font-size" lan="LogOut">Log out</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var ltype = 0,
+			lantype = 0;
+		apiready = function() {
+			init();
+			api.addEventListener({
+				name: 'editMemberInfo'
+			}, function() {
+				init();
+			})
+			api.addEventListener({
+				name: 'getNewMsg'
+			}, function() {
+				init();
+			})
+			api.addEventListener({
+				name: 'language'
+			}, function(ret) {
+				ltype = 1;
+				var meml = ret.value.languagetype;
+				if(meml == 1) {
+					$api.text($api.dom('#language'), 'ENGLISH')
+					lantype = 1
+				} else {
+					$api.text($api.dom('#language'), 'French')
+					lantype = 2
+				}
+			});
+			
+			//清空消息条数
+			api.addEventListener({
+				name: 'clearNoticeNum'
+			}, function(ret){
+				var _dom = $api.dom('.nas');
+				$api.addCls(_dom, 'hidden');
+				
+				//将未读消息同步到极光
+				JPush.setBadge(0);
+				
+				$api.setStorage('systemUnreadCount', 0);
+				api.execScript({
+					name: 'Init',
+					script: 'setBadge()'
+				});				
+			});
+			
+			//更新消息条数
+			api.addEventListener({
+				name: 'updateNoticeNum'
+			}, function(ret){
+				updateNoticeNum();
+			});
+		}
+		
+		function updateNoticeNum(){
+			ajax.get({
+				ctrl: 'more',
+				fn: 'index',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					var _dom = $api.dom('.nas'),
+						notice = parseInt(ct.notice);
+						
+					$api.setStorage('systemUnreadCount', notice);
+					
+					//将未读消息同步到极光
+					JPush.setBadge(notice);
+					
+					api.execScript({
+						name: 'Init',
+						script: 'setBadge()'
+					});
+					
+					if(notice > 0){
+						$api.removeCls(_dom, 'hidden');
+						if(notice <= 99){
+							$api.text(_dom, notice);
+						}else{
+							$api.text(_dom, '99+');
+						}
+					}else{
+						$api.addCls(_dom, 'hidden');
+					}
+					
+				}
+			});
+		}
+
+		function init() {
+			ajax.get({
+				ctrl: 'more',
+				fn: 'index',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				hideLoading: true,
+				success: function(ct) {
+					$api.setStorage('systemUnreadCount', ct.notice);
+					
+					//将未读消息同步到极光
+					JPush.setBadge(ct.notice, function(){
+						api.execScript({
+							name: 'Init',
+							script: 'setBadge()'
+						});
+					});
+					
+					T.html('#main', 'main', ct);
+					L.init();
+				}
+			});
+		}
+		//退出登录
+		function logout() {
+			api.openFrame({
+				name: 'logout',
+				url: api.wgtRootDir + '/html/more/logout.html',
+				bgColor: 'transparent',
+				bounces: false,
+				pageParam: {},
+				softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+			});
+		}
+
+		function openPersonalPage(firstname, lastname) {
+			Tool.openWin({
+				winName: 'PersonalPage',
+				winUrl: api.wgtRootDir + '/html/window/more/personal_page.html',
+				frameName: 'personal_page',
+				frameParam: {
+					firstname: firstname,
+					lastname: lastname
+				},
+				title: firstname + ' ' + lastname,
+				frameUrl: api.wgtRootDir + '/html/more/personal_page.html'
+			});
+		}
+
+		function openContactUs() {
+			Tool.openWin({
+				winName: 'ContactUs',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: LANGUAGE[$api.getStorage('lan')]['ContactUs'],
+				frameName: 'contact_us',
+				frameUrl: api.wgtRootDir + '/html/more/contact_us.html'
+			});
+		}
+
+		function openTermsPolicy() {
+			Tool.openWin({
+				winName: 'TermsPolicy',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: LANGUAGE[$api.getStorage('lan')]['TermsPolicy'],
+				frameName: 'terms_policy',
+				frameUrl: api.wgtRootDir + '/html/more/term_policy.html'
+			});
+		}
+
+		function openSetting(remind, currencys, language) {
+			//1是英语，2是法语
+			Tool.openWin({
+				winName: 'Setting',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: LANGUAGE[$api.getStorage('lan')]['Settings'],
+				frameName: 'setting',
+				frameParam: {
+					reminds: remind,
+					currency: currencys,
+					language: ltype == 1 ? lantype : language
+				},
+				frameUrl: api.wgtRootDir + '/html/more/setting.html'
+			});
+
+		}
+
+		function click_ratings() {
+			api.openWin({
+				name: 'ratings',
+				url: api.wgtRootDir + '/html/window/more/ratings.html',
+				pageParam: {
+					frameName: 'ratings_poster',
+					frameUrl: api.wgtRootDir + '/html/more/ratings_poster.html',
+					frameParam: {},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['Ratings'],
+				},
+				slidBackEnabled: false,
+				reload: true,
+			});
+		}
+
+		function openPaymentMethod() {
+			//frameGroup 结构
+			api.openWin({
+				name: 'PaymentMethod', //
+				url: api.wgtRootDir + '/html/window/more/payment_method.html'
+			});
+		}
+
+		function openFavorites(favorid) {
+			//frameGroup 结构
+			api.openWin({
+				name: 'Favorites',
+				url: api.wgtRootDir + '/html/window/more/favorites.html',
+				pageParam: {
+					frameName: 'income_all',
+					frameUrl: api.wgtRootDir + '/html/more/favorites_helpers.html',
+					frameParam: {
+						favorid: favorid,
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['Favorites'],
+				},
+				slidBackEnabled: false,
+				reload: true,
+			});
+		}
+
+		function openNotifications() {
+			Tool.openWin({
+				winName: 'Notifications',
+				winUrl: api.wgtRootDir + '/html/window/more/notifications.html',
+				title: LANGUAGE[$api.getStorage('lan')]['Notifications'],
+				slidBackEnabled: false,
+				frameName: 'notifications',
+				frameUrl: api.wgtRootDir + '/html/more/notifications.html'
+			});
+		}
+
+		function click_revenue() {
+			api.openWin({
+				name: 'income_win',
+				url: api.wgtRootDir + '/html/window/more/income_win.html',
+				pageParam: {
+					frameName: 'income_all',
+					frameUrl: api.wgtRootDir + '/html/more/income_all.html',
+					frameParam: {
+
+					},
+					headerTitle: LANGUAGE[$api.getStorage('lan')]['Revenue'],
+				},
+				slidBackEnabled: false,
+
+				reload: true,
+			});
+		}
+
+		function inviteFriends() {
+			var sharedModule = api.require('shareAction');
+			sharedModule.share({
+				text: 'Hey! I found an interesting app. Join us now! APP Download Link: https://www.baidu.com',
+				type: 'text'
+			});
+		}
+	</script>
+
+</html>

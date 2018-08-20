@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>任务过期处理</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<style type="text/css">
+		html,
+			body,
+			#main {
+				filter: alpha(opacity=0.4);
+				background-color: rgba(193, 193, 193, 0.4);
+				text-shadow: 1px 1px 1px #F0F0F0;
+			}
+			
+			#main {
+				padding: 0 18px;
+			}
+			
+			.bg {
+				position: absolute;
+				background-color: rgba(193, 193, 193, 0.4);
+				width: 100%;
+				height: 100%;
+			}
+			
+			.al {
+				background-color: white;
+			}
+			
+			.yes {
+				color: #31BAB0;
+				padding: 15px 20px 15px 14px;
+				border-left: 1px solid #D7D7D7;
+			}
+			
+			.unber {
+				border-top: 1px solid #D7D7D7;
+			}
+			
+			.no {
+				padding: 15px 15px 15px 0px;
+			}
+			
+			.up {
+				padding: 25px 20px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="bg">
+				<div class="cover filter_bg"></div>
+			</div>
+			<div id="main" class="flex-box-v flex-h-ce flex-h-zhu">
+				<div class="al">
+					<div class="up">
+						<div lan="Are_you_sure_to_end_this_favor">
+							Are you sure to end this favor?
+						</div>
+					</div>
+					<div class="flex-box unber">
+						<div class="flex-1 text-center margin-left10 no" lan="No" onclick="removeTask(1)" tapmode>No</div>
+						<div lan="Yes" class="flex-1 yes text-center" onclick="removeTask(2)" tapmode>Yes</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		var isdue="",
+		    memberid="",
+		    postdue,
+		    favorid="";
+		apiready = function() {
+			isdue= api.pageParam.isdue;
+			favorid=api.pageParam.favorid;
+			memberid = api.pageParam.memberid;
+			postdue = api.pageParam.postdue;
+//			L.init();
+//		    alert(isdue+" , "+memberid);
+		}
+
+		function removeTask(type) {
+			if(type == 1) {
+				api.closeFrame({
+					name: 'terminate'
+				});
+			} else if(type == 2) {
+				var favorid = api.pageParam.favorid;
+				if(api.pageParam.ispay == 1){
+					//任务已支付
+					api.openWin({
+						name: 'win_back',
+						url: api.wgtRootDir + '/html/window/win_back.html',
+						pageParam: {
+							frameName:'evaluate_post',
+							frameUrl: api.wgtRootDir + '/html/more/evaluate_post.html',
+							frameParam: {
+	                             favorid:favorid,
+	                             ispay: api.pageParam.ispay,
+	                             memberid :memberid,
+	                             postdue: api.pageParam.postdue,
+	                             isself1:2,
+	                             isdue:isdue
+							},
+							headerTitle: 'Ratings',
+						},
+				    });
+				}else{
+					//任务未支付
+					if(isdue==1 && postdue==1){
+						//后续选择重新发布该任务，或删除该任务
+						api.openFrame({
+							name: 'repost',
+							url: api.wgtRootDir + '/html/my_favors/component/repost.html',
+							bgColor: 'transparent',
+							bounces: false,
+							pageParam: {
+							    favorid:favorid
+							},
+							softInputBarEnabled: false, //隐藏iOS键盘上方的工具条
+						});						
+					}
+					
+					setTimeout(function(){
+						api.closeFrame();
+					}, 300);
+				}
+			}
+	    }
+	</script>
+
+</html>

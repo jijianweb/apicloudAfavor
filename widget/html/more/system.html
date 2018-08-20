@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>个人主页--帮助者</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.list {
+				padding: 30px 20px 0;
+			}
+			
+			.img_head {
+				background-color: #FFFFFF;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-image: url(../../image/more/nacticelogo.png);
+			}
+			
+			.text {
+				margin-top: 30px;
+				text-align: left;
+				text-indent:25px;
+				word-break: normal;
+				word-wrap:break-word;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="hidden list flex-center-center flex-box-v ">
+					<div class="img_head btn-afavor-system"></div>
+					<div class="text">
+					REQUEST A QUOTE
+					REQUEST A QUOTEREQUEST A QUOTEREQUEST A QUOTEREQUEST 
+					A QUOTEREQUEST A QUOTEREQUEST A QUOTEREQUEST A QUOTE
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/area.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/jquery.lazyload.min.js" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js"></script>
+	<script type="text/template" template="main">
+		<div class="list flex-center-center flex-box-v">
+			<div class="img_head btn-afavor-system"></div>
+			<div class="text"> {{=it.content}}</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			
+			var val = {
+				content: api.pageParam.content
+			}
+			T.html('#main', 'main', val);
+		}
+	</script>
+
+</html>

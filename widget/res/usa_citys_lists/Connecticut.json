@@ -1,0 +1,43 @@
+{
+	"citys": [{
+		"id": "299",
+		"city": "Bridgeport",
+		"fr": "Bridgeport",
+		"parentid": "298",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "300",
+		"city": "Hartford",
+		"fr": "Hartford",
+		"parentid": "298",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "301",
+		"city": "New Haven",
+		"fr": "New Haven",
+		"parentid": "298",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "302",
+		"city": "Stamford",
+		"fr": "Stamford",
+		"parentid": "298",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "303",
+		"city": "Waterbury",
+		"fr": "Waterbury",
+		"parentid": "298",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}]
+}

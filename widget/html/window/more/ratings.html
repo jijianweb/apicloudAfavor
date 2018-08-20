@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" href="../../../css/win.css" />
+		<style type="text/css">
+			#header {
+				height: auto!important;
+			}
+			
+			.group {
+				padding: 20px 20px 11px;
+				background-color: #fff;
+			}
+			
+			.tabbar,
+			.tabbar>div {
+				border-radius: 25px;
+			}
+			
+			.tabbar {
+				height: 37px;
+				line-height: 37px;
+				overflow: hidden;
+			}
+			
+			.not-tilte {
+				color: #b4b8bb;
+				text-align: center;
+				font-size: 14px;
+				background-color: #F2F2F2;
+			}
+			
+			.btn-tilte {
+				color: #FFFFFF;
+				text-align: center;
+				font-size: 14px;
+				background-color: #32BBB1;
+			}
+			
+			.tabbar .score {
+				background-color: transparent;
+				color: #EFCD4A;
+				font-size: 48px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar">
+					<span class="back" onclick="api.closeWin()" tapmode=""></span>
+					<span class="title text-overflow" lan="Ratings" style="max-width: 200px;">
+						Ratings
+					</span>
+				</div>
+				<div class="group">
+					<div class="tabbar flex-box">
+						<div class="not-tilte np btn-tilte  flex-1" lan="AsAPoster2" onclick="openRat(this)" tapmode>As a Poster</div>
+						<div class="flex-1 score">0.0</div>
+						<div class="not-tilte nt flex-1" onclick="openRat(this)" lan="AsAHelper2" tapmode>As a Helper</div>
+					</div>
+				</div>
+			</div>
+			<div id="main">
+			</div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../../res/language.js"></script>
+	<script type="text/javascript">
+		apiready = function() {
+			L.init();
+			api.addEventListener({
+				name: 'ratings'
+			}, function(ret) {
+				console.log(JSON.stringify(ret, null, 2))
+				$api.text($api.dom('.score'), ret.value.star);
+				$api.setStorage('ratings', ret.value.star)
+			})
+			api.addEventListener({
+				name: 'hratings'
+			}, function(ret) {
+				console.log(JSON.stringify(ret, null, 2))
+				$api.setStorage('hratings', ret.value.star)
+			})
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			//          api.execScript({
+			//				frameName: 'ratings_poster',
+			//				script: 'init(' + type + ')'
+			//			});
+			api.openFrameGroup({
+				name: 'ratingsGroup',
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				},
+				frames: [{
+					name: 'ratings_poster',
+					url: api.wgtRootDir + '/html/more/ratings_poster.html',
+					bounces: true
+				}, {
+					name: 'ratings_helper',
+					url: api.wgtRootDir + '/html/more/ratings_helper.html',
+					bounces: true
+				}],
+				index: api.pageParam.frameGroupIndex
+			}, function(ret, err) {
+				if(ret.index + 1 == 2) {
+					$api.removeCls($api.dom('.np'), 'btn-tilte');
+					$api.addCls($api.dom('.nt'), 'btn-tilte');
+				} else if(ret.index + 1 == 1) {
+					$api.removeCls($api.dom('.nt'), 'btn-tilte');
+					$api.addCls($api.dom('.np'), 'btn-tilte');
+				}
+			});
+		}
+
+		function openRat(_this) {
+			var type = 0;
+			var star;
+			if($api.hasCls(_this, 'np')) {
+				$api.addCls($api.dom('.np'), 'btn-tilte');
+				$api.removeCls($api.dom('.nt'), 'btn-tilte');
+				 star=$api.getStorage('ratings')
+				$api.text($api.dom('.score'),star);
+				type = 0;
+			} else {
+				$api.removeCls($api.dom('.np'), 'btn-tilte');
+				$api.addCls($api.dom('.nt'), 'btn-tilte');
+				star=$api.getStorage('hratings');
+				$api.text($api.dom('.score'),star);
+				type = 1;
+			}
+			api.setFrameGroupIndex({
+				name: 'ratingsGroup',
+				index: type
+			});
+		}
+	</script>
+
+</html>

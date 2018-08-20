@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>通知 </title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			.list {
+				border-bottom: 1px solid #E9E9E9;
+				font-size: 14px;
+				position: relative;
+				background-color: #fff;
+			}
+			
+			.title {
+				height: 40px;
+				line-height: 20px;
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: normal;
+	            word-wrap:break-word;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+			}
+			
+			.text {
+				font-size: 10px;
+				color: #868686;
+			}
+			
+			.content {
+				padding: 0 5px 0 10px;
+			}
+			
+			.img {
+				width: 64px;
+				height: 64px;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			span {
+				color: #83D3D0;
+			}
+			
+			.money {
+				padding-top: 10px;
+				text-align: right;
+			}
+			.font-weight{
+				font-weight: bold;
+			}
+			.slide{
+				padding: 15px 18px 10px 18px;
+				position: relative;
+				z-index: 2;
+				right: 0;
+				width: 100%;
+				background-color: #fff;
+				transition: right .2s ease-out;
+				-webkit-transition: right .2s ease-out;
+			}
+			.delete-btn{
+				position: absolute;
+				right: 0;
+				top: 0;
+				height: 100%;
+				width: 80px;
+				z-index: 1;
+				color: #fff;
+				background-color: red;
+				font-size: 16px;
+			}
+			.slide.right-80{
+				right: 80px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list hidden">
+					<div class="slide ">
+						<div class="flex-box flex-h-ce">
+					   	    <div class="img" style="background-image:url(../../image/more/nacticelogo.png);" data-content="" onclick="openSystems(this)" tapmode=""></div>
+						    <div class="flex-1 flex-box-v content" onclick="openSystems(this)" data-statu=""  data-content="" tapmode="">
+								<div class="flex-1">
+									<div class="title">
+										<span>Notice</span>and removeAssemble IKEAsofabed and removeAssemble IKEAsofabed and remove
+									</div>
+								</div>
+							</div>
+					    </div>
+						<div class="money">
+							<div class="text">5 minutes ago</div>
+						</div>
+					</div>
+					<div class="delete-btn flex-box flex-center-center">
+						Delete
+					</div>
+				</div>
+				<div class="list hidden ">
+					<div class="list-item flex-box flex-h-ce">
+						<div class="img"></div>
+						<div class="flex-1 flex-box-v content">
+							<div class="flex-1">
+								<div class="title"><span>Assemble IKEAsofabed</span> and removeAssemble IKEAsofabed and removeAssemble IKEAsofabed and remove</div>
+							</div>
+							<div class="money">
+								<div class="text">5 minutes ago</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript" src="../../script/touch-0.2.14.min.js" ></script>
+	<script type="text/template" template="main">
+		<!--isself=0或者favorstatus=6-->
+	{{? it instanceof Array && it.length!=0}} 
+		{{~ it:value:index}}
+		    {{? /11|12|13|14/.test(value.type) }}
+			    <div class="list flex-box flex-h-ce {{? value.isread==0}}font-weight{{?}}" data-content="{{= encodeURIComponent(value.content)}}"
+			    	onclick="openSystems(this,{{=value.id}})" tapmode="">
+			    	<div class="slide flex-box flex-h-ce">
+			    		<div class="img" style="background-image:url(../../image/more/nacticelogo.png);"></div>
+					    <div class="flex-1 flex-box-v content" >
+							<div class="flex-1" style="{{? api.frameWidth>300}}width:250px;{{?}}">
+								<div class="title">
+									<span>Notice</span> {{=value.content}}
+								</div>
+							</div>
+							<div class="money">
+								<div class="text">{{=D.favors2(value.createdtime)}}</div>
+							</div>
+						</div>
+			    	</div>
+				   	<div class="delete-btn flex-box flex-center-center" onclick="deleteMesg(this, event, {{= value.id }})" tapmode="">
+						Delete
+					</div>
+				</div>
+			{{??}}
+			    <div class="list flex-box flex-h-ce {{? value.isread==0}}font-weight{{?}}"
+			    	 onclick="clickc_inform(this,{{=value.type}},{{=value.favorid}},{{=value.memberid}},{{=value.isself}},{{=value.favorstatus}},{{=value.id}})" 
+				    	tapmode>
+				    <div class="slide flex-box flex-h-ce">
+				    	<div class="img" style="background-image:url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});"></div>
+					    <div class="flex-1 flex-box-v content">
+							<div class="flex-1">
+								<div class="title">
+									<span>{{=value.firstname}} {{=value.lastname}}</span> {{=value.content}}
+								</div>
+							</div>
+							<div class="money">
+								<div class="text">{{=D.favors2(value.createdtime)}}</div>
+							</div>
+						</div>
+				    </div>	
+				    <div class="delete-btn flex-box flex-center-center" onclick="deleteMesg(this, event, {{= value.id }})" tapmode="">
+						Delete
+					</div>
+				</div>
+			{{?}}
+			
+		{{~}}
+	{{??}}
+		<div class="null flex-box">
+			<div class="flex-1" lan="You_have_no_received_any_notifications_yet">
+				You haven’t received any notifications yet.
+			</div>
+		</div>
+	{{?}}
+	</script>
+	<script type="text/template" template="empty">
+		<div class="null flex-box">
+			<div class="flex-1" lan="You_have_no_received_any_notifications_yet">
+				You haven’t received any notifications yet.
+			</div>
+		</div>		
+	</script>
+	<script type="text/javascript">
+		function clearAll(){
+			api.confirm({
+				msg: 'Are you sure to clear all notification？',
+				buttons: ['No', 'Yes']
+			}, function(ret){
+				if(ret.buttonIndex == 2){
+					ajax.get({
+						ctrl: 'more',
+						fn: 'delAllNotice',
+						showProgress: true,
+						hideLoading: true,
+						data: {
+							values: {
+								id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+								token: $api.getStorage(CONFIG.KEY.TOKEN)
+							}
+						},
+						success: function(ct) {
+							$('.list').remove();
+							T.html('#main', 'empty');
+							
+							api.sendEvent({
+								name: 'clearNoticeNum'
+							});
+						}
+					});		
+				}
+			});
+		}
+		
+		function deleteMesg(_this, e, mid){
+			/*
+			 * 删除单条消息
+			 */
+			var flag = $api.text(_this);
+			e.stopPropagation();
+			
+			if(/Delete/.test(flag)){
+				$api.text(_this, 'Confirm');
+				return;
+			}
+//			alert('del');return;
+			ajax.get({
+				ctrl: 'more',
+				fn: 'delNotice',
+				hideLoading: true,
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						nid: mid
+					}
+				},
+				success: function(ct) {
+					var _dom = $api.closest(_this, '.list'),
+						domLength
+						;
+					$api.remove(_dom);
+					domLength = $api.domAll('.list').length;
+					
+					api.sendEvent({
+						name: 'updateNoticeNum'
+					});
+					
+					if(domLength == 0){
+						init();
+					}
+				}
+			});			
+		}
+		
+		function touchEvent(){
+			$api.addEvt($api.dom('#main'), 'DOMNodeInserted', function(e){
+				if(e.target.nodeType == 1 && $api.hasCls(e.target, 'list')){
+					touch.on(e.target, 'touchstart touchend swipeleft swiperight', function(evt){
+						var	activeItem = $api.dom('.slide.right-80'),
+							_dom = $api.dom(e.target, '.slide');
+//	Tool.toast(Math.abs(evt.distanceY));
+							
+							switch(evt.type){
+								case 'swipeleft':
+									if(Math.abs(evt.distanceY) < 40){
+										if(activeItem && activeItem != _dom){
+											$api.removeCls(activeItem, 'right-80');
+											$api.text($api.dom(e.target, '.delete-btn'), 'Delete');
+										}
+										$api.addCls(_dom, 'right-80');
+									}
+									break;
+								case 'swiperight':
+									if(Math.abs(evt.distanceY) < 40){
+										$api.removeCls(_dom, 'right-80');
+										$api.text($api.dom(e.target, '.delete-btn'), 'Delete');
+									}
+									break;
+								case 'touchstart':
+//									api.setFrameAttr({
+//										name: api.frameName,
+//										bounces: false
+//									});
+									break;
+								case 'touchend':
+//									api.setFrameAttr({
+//										name: api.frameName,
+//										bounces: true
+//									});
+									break;
+							}
+							
+					});
+				};
+			});
+		}
+		
+		apiready = function() {
+			init();
+			touchEvent();
+			//下拉刷新
+			Refresh.init({
+				ctrl: 'more',
+				fn: 'getNotice',
+				values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+				},
+				template: 'main',
+				field: 'list',
+				container:'#main',
+				success: function(ct) {
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+			//加载更多
+			LoadMore.init({
+				ctrl: 'more',
+				fn: 'getNotice',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN)
+				},
+				showError: true,
+				template: 'main',
+				field: 'list',
+				container:'#main',
+				success:function() {
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+		        }
+				
+			})
+
+		}
+
+		function refresh() {
+			api.refreshHeaderLoading();
+		}
+
+		function setNotice(id) {
+			/*
+			 * 将消息标记为已读
+			 */
+			ajax.get({
+				ctrl: 'more',
+				fn: 'setNotice',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						nid:id
+					}
+				},
+				hideLoading: true,
+				success: function() {
+					api.sendEvent({
+						name: 'updateNoticeNum'
+					});
+					try {
+						api.refreshHeaderLoadDone();
+					} catch(e) {
+						//TODO handle the exception
+					}
+				}
+			});
+		}
+		/*
+		 * 通知类型,1:分享任务通知,2:发布者接受申请通知,3:帮助者拒绝任务通知,4:发布者修改任务通知
+		 * ,5:单独任务通知,6:帮助者确认完成,7:超时通知,8:发布者任务完成,9:帮助者评分通知,10发布者评分通知,
+		 * 11系统通知,12系统自动通知,13系统全体通知
+		 * favorstatus 任务状态:0:未支付,1:发布中,2:进行中,3:帮组者完成,4：发布者完成,5:完成并且评价完,6:已取消
+		 * */
+		function clickc_inform(_this,type, favorid, memberid, isself,favorstatus,id) {
+			//判断是否是帮助者分享isself 当前用户身份,1:帮助者，2:发布者
+//			alert('favorstatus:'+favorstatus+',isself:'+isself)
+			if(favorstatus==6 || isself==0 &&favorstatus!=1 ){
+				if($api.hasCls(_this,'list')){
+	            	$api.removeCls(_this,'font-weight');
+	            }
+				 setNotice(id);
+			}else{
+				var _url='/html/window/';
+				if($api.hasCls(_this,'list')){
+	            	$api.removeCls(_this,'font-weight');
+	            }
+				if(favorstatus==1){
+					_url += 'share.html';
+				}else{
+					_url +='share_normal.html';
+				}
+				api.openWin({
+					name: 'task_detail',
+					url: api.wgtRootDir + _url,
+					pageParam: {
+						frameName: 'my_help_online',
+						frameUrl: api.wgtRootDir + '/html/my_favors/my_task_detail.html',
+						frameParam: {
+							favorid: favorid
+						},
+						headerTitle: 'Favor Details',
+					},
+					reload: true
+			    });
+			    setNotice(id);
+			}
+		}
+		
+        function openSystems(_this,id){
+        	var content = decodeURIComponent($api.attr(_this, 'data-content'));
+//      		content = jsonData.content;
+            if($api.hasCls(_this,'list')){
+            	$api.removeCls(_this,'font-weight');
+            }
+        	api.openWin({
+				name: 'system',
+				url: api.wgtRootDir + '/html/window/more/system_win.html',
+				pageParam: {
+					frameName: 'my_help_online',
+					frameUrl: api.wgtRootDir + '/html/more/system.html',
+					frameParam: {
+						content:content
+					},
+					headerTitle: 'Notifications',
+			},
+			hideLoading: true,
+				reload: true
+			});
+			setNotice(id);
+		}
+        
+		function init() {
+			ajax.get({
+				ctrl: 'more',
+				fn: 'getNotice',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN)
+					}
+				},
+				success: function(ct) {
+					T.html('#main', 'main', ct.list);
+					$('div.img').lazyload({
+						effect: "fadeIn"
+					});
+					L.init();
+				}
+			});
+		}
+	</script>
+
+</html>

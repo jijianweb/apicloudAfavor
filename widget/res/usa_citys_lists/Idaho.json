@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "80",
+		"city": "Boise",
+		"fr": "Boise",
+		"parentid": "79",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

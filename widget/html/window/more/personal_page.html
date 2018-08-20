@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<title>发布者的个人主页Win</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" href="../../../css/win.css" />
+		<style type="text/css">
+			
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="closeWin()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="icon-edit" onclick='openEdit()' tapmode></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div lan="Loading" class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script src="../../../script/doT.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+        //验证是否编辑完成
+        function closeWin(){
+        	api.closeWin();
+        }
+		//打开修改页面
+		function openEdit(){
+			Tool.openWin({
+				winName: 'peredit',
+				winUrl: api.wgtRootDir + '/html/window/more/personal_edit.html',
+				frameName: 'personal_page_edit',
+				title: LANGUAGE[$api.getStorage('lan')]['EditProfile'],
+				frameUrl: api.wgtRootDir + '/html/more/personal_page_edit.html'
+			});
+		}
+
+		apiready = function() {
+			var  firstname=api.pageParam.frameParam.firstname,
+                 lastname=api.pageParam.frameParam.lastname
+			var header = $api.dom('#header');
+			$api.fixStatusBar(header);
+			
+			L.init();
+			Tool.openFrame({
+				frameName: api.pageParam.frameName,
+				frameUrl: api.pageParam.frameUrl,
+				frameParam: api.pageParam.frameParam
+			});
+			
+			api.addEventListener({
+				name: 'editMemberInfo'
+			},function(ret,err){
+				if(ret.value.name){
+					$api.html($api.dom('.title'), ret.value.name);
+				}
+			})
+			
+			$api.html($api.dom('.title'), firstname +" "+ lastname || '');
+		}
+	</script>
+
+</html>

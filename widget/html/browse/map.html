@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+		<style type="text/css">
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="main">
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js" ></script>
+	<script type="text/javascript" src="../../script/common.js" ></script>
+	<script type="text/javascript" src="../../script/browse.js" ></script>
+	<script type="text/javascript" src="../../script/map.js" ></script>
+	<script type="text/javascript">
+		var lon = $api.getStorage(CONFIG.KEY.LON),
+			lat = $api.getStorage(CONFIG.KEY.LAT),
+			values = {
+				id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+				token: $api.getStorage(CONFIG.KEY.TOKEN),
+				page: 1,
+				pagesize: 100,
+//				country: '',
+//				province: '',
+//				city: '',
+				x: lon,
+				y: lat
+			},
+			datas=[];
+
+		function getCurrentLocationInfo(cb){
+			/*
+			 * 获取当前位置信息
+			 */
+
+			var currentLocationInfo = $api.getStorage('currentLocationInfo'),
+				cityInfo,
+				provinceInfo;
+			
+			if(currentLocationInfo){
+				cityInfo = currentLocationInfo.cityInfo,
+				provinceInfo = currentLocationInfo.provinceInfo;
+				values.country = provinceInfo.country;
+				values.province = provinceInfo.id;
+				values.city = cityInfo.id;
+
+				//获取当前已切换好的城市
+				var address = cityInfo.city + ', ' + provinceInfo.city;
+				getCoordsFromName({
+					address: address,
+					success: function(location){
+						cb({
+							lon: location.lng,
+					        lat: location.lat
+						});
+					}
+				});
+			}else{
+				//获取用户当前位置坐标
+				cb({
+					lon: $api.getStorage(CONFIG.KEY.LON),
+			        lat: $api.getStorage(CONFIG.KEY.LAT)
+				});
+			}
+		}
+		
+		var activeMapIconId = '';	//记录当前被点击的大头针id
+		var iosMapIcon = 'widget://image/browse/map_icon.png',
+			androidMapIcon = 'widget://image/browse/didian.png',
+			iosMapIconActive = 'widget://image/browse/map_icon_active.png',
+			androidMapIconActive = 'widget://image/browse/map_icon_active@2x.png';		
+		apiready = function(){
+			var GoogleMap = api.require('googleMap'),
+					privacy;
+
+			if(api.systemType == 'ios'){
+				privacy = api.require('privacy');
+				privacy.location(function(ret, err) {
+
+				});
+			}
+			getCurrentLocationInfo(function(location){
+//				alert(JSON.stringify(location))
+				GoogleMap.open({
+				    rect: {
+				        x: 0,
+				        y: 0,
+				        w: 'auto',
+				        h: api.frameHeight
+				    },
+				    showUserLocation: true,
+				    zoomLevel: 11,
+				    center: {
+				        lon: location.lon,
+				        lat: location.lat
+				    },
+				    fixedOn: api.frameName,
+				    fixed: true
+				}, function(ret) {
+	//				Debug.alt(JSON.stringify(ret,null,2))
+				    if (ret.status) {
+				    	//设置地图是否显示定位按钮
+//				    	GoogleMap.setLocationButton({
+//						    locationButton: true
+//						});
+						
+						GoogleMap.addEventListener({
+						    name: 'viewChange'
+						}, function(ret) {
+						    if (ret.status) {
+						    	var maxZoom = 13;
+//						    	Tool.toast(ret.zoom);
+						    	if(ret.zoom > maxZoom){
+									GoogleMap.setZoomLevel({
+										animation: false,
+									    level: maxZoom
+									});						    		
+						    	}
+						    }
+						});						
+						
+			    		//获取任务列表数据
+			    		TaskList();
+				    }
+
+						//监听地图的点击事件，关闭气泡
+						GoogleMap.addEventListener({
+							name: 'click'
+						}, function(ret){
+					    	if(activeMapIconId){
+								GoogleMap.setAnnotationIcon({
+								    id: activeMapIconId,
+							       	icon : api.systemType == 'android' ? androidMapIcon : iosMapIcon
+								});				    		
+					    	}							
+							api.closeFrame({
+								name: 'map_bubble'
+							});
+						});
+				});
+			});
+
+			//用户切换城市
+			api.addEventListener({
+				name: 'changeLocation'
+			}, function(ret){
+				var cityInfo = ret.value.cityInfo,
+					provinceInfo = ret.value.provinceInfo,
+					address = cityInfo.city + ', ' + provinceInfo.city;
+//				alert(JSON.stringify(ret))
+				getCoordsFromName({
+					address: address,
+					success: function(location){
+						var GoogleMap = api.require('googleMap');
+						GoogleMap.setCenter({
+						    coords: {
+								lon: location.lng,
+						        lat: location.lat
+						    },
+						    animation: false
+						});
+
+						values.country = provinceInfo.country;
+						values.province = provinceInfo.id;
+						values.city = cityInfo.id;
+						TaskList();
+					}
+				});
+			});
+
+
+			//
+			api.addEventListener({
+				name: 'getUserLocation'
+			}, function(ret){
+				var lon = $api.getStorage(CONFIG.KEY.LON),
+					lat = $api.getStorage(CONFIG.KEY.LAT);
+				values.x = lon;
+				values.y = lat;
+				GoogleMap.setCenter({
+				    coords: {
+				        lon: lon,
+				        lat: lat
+				    },
+				    animation: false
+				});
+				TaskList();
+			});
+		}
+	</script>
+</html>

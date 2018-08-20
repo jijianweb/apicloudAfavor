@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<widget id="A6942966800450" version="0.0.1">
+  <name>AFAVOR</name>
+  <description>Example For APICloud.</description>
+  <author email="developer@apicloud.com" href="http://www.apicloud.com">Developer</author>
+  <content src="index.html"/>
+  <preference name="appBackground" value="rgba(0,0,0,0.0)"/>
+  <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
+  <preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
+  <preference name="customRefreshHeader" value="UIPullRefreshDrop"/>
+  <preference name="hScrollBarEnabled" value="true"/>
+  <preference name="vScrollBarEnabled" value="true"/>
+  <preference name="autoLaunch" value="true"/>
+  <preference name="fullScreen" value="false"/>
+  <preference name="autoUpdate" value="true"/>
+  <preference name="smartUpdate" value="true"/>
+  <preference name="debug" value="false"/>
+  <preference name="statusBarAppearance" value="true"/>
+  <preference name="softInputBarEnabled" value="false"/>
+  <preference name="urlScheme" value="afavor"/>
+  <preference name="querySchemes" value="fb,fbapi,fb-messenger-api,fbauth2,fbshareextension"/>
+  <meta-data name="com.google.android.geo.API_KEY" value="AIzaSyCIYFAWh3ZvS7rDe_iyAvMZsPLyYqpTTPg"/>
+  <meta-data name="com.facebook.sdk.ApplicationId" value="fb624012144614608"/>
+  <permission name="readPhoneState"/>
+  <permission name="camera"/>
+  <permission name="record"/>
+  <permission name="location"/>
+  <permission name="fileSystem"/>
+  <permission name="internet"/>
+  <permission name="bootCompleted"/>
+  <permission name="hardware"/>
+  <access origin="*"/>
+  <feature name="googleMap">
+    <param name="ios_api_key" value="AIzaSyA3u24-scR3BaEpcuDgvrsCqzB6xDjyyd8"/>
+  </feature>
+  <feature name="ajpush">
+    <param name="app_key" value="4081a0d1cbc6e8b27d3d1601"/>
+    <param name="channel" value="10010"/>
+  </feature>
+  <feature name="facebook">
+    <param name="urlScheme" value="fb624012144614608"/>
+    <param name="appId" value="624012144614608"/>
+  </feature>
+  <feature name="google">
+    <param name="urlScheme" value="com.googleusercontent.apps.981033627728-sh3f02d08kratq7mb84s6othgu2dvvp0"/>
+    <param name="ios_clientID" value="981033627728-sh3f02d08kratq7mb84s6othgu2dvvp0.apps.googleusercontent.com"/>
+    <param name="android_clientID" value="981033627728-3orltr3beq5nuoqna4o90khrdfk1bkm8.apps.googleusercontent.com"/>
+  </feature>
+  <feature name="BugId">
+    <param name="android_id" value="a7471296f2"/>
+    <param name="ios_id" value="ab7a535111"/>
+  </feature>
+  <feature name="stripePay">
+    <param name="publishableKey" value="pk_live_1a0hbO6QqBqo7apbuHdOAmEU"/>
+    <param name="accentColor" value="#1E90FF"/>
+    <param name="appleMerchantIdentifier" value="merchant.com.afavor.fan888"/>
+  </feature>
+  <feature name="rongCloud2">
+    <param name="appKey" value="y745wfm8yr9wv"/>
+  </feature>
+  <intent-filter>
+      <action name="android.intent.action.VIEW"/>
+      <category name="android.intent.category.DEFAULT"/>
+      <data scheme="rong" host="com.afavor.fan888" pathPrefix="/conversation/"/>
+  </intent-filter>
+</widget>

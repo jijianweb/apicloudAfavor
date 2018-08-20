@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "97",
+		"city": "Billings",
+		"fr": "Billings",
+		"parentid": "96",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

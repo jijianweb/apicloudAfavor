@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>退出编辑</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<style type="text/css">
+			html,
+			body,
+			#main {
+				filter: alpha(opacity=0.4);
+				background-color: rgba(193, 193, 193, 0.4);
+				text-shadow: 1px 1px 1px #F0F0F0;
+			}
+			
+			#main {
+				padding: 0 18px;
+			}
+			
+			.bg {
+				position: absolute;
+				background-color: rgba(193, 193, 193, 0.4;
+				);
+				width: 100%;
+				height: 100%;
+			}
+			
+			.al {
+				background-color: white;
+			}
+			
+			.yes {
+				color: #31BAB0;
+				padding: 15px 20px 15px 14px;
+				border-left: 1px solid #D7D7D7;
+			}
+			
+			.unber {
+				border-top: 1px solid #D7D7D7;
+			}
+			
+			.no {
+				padding: 15px 15px 15px 0px;
+			}
+			
+			.up {
+				padding: 25px 15px;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div class="bg">
+				<div class="cover filter_bg"></div>
+			</div>
+			<div id="main" class="flex-box-v flex-h-ce flex-h-zhu">
+				<div class="al">
+					<div class="up">
+						<div lan="The_contents_have_not_been_saved">The contents have not been saved.</div>
+						<div lan="are_you_sure_to_exit">Are you sure to exit?</div>
+					</div>
+					<div class="flex-box unber">
+						<div lan="No" class="flex-1 text-center margin-left10 no" onclick="logout(1)" tapmode>No</div>
+						<div lan="Yes" class="flex-1 yes text-center" onclick="logout(2)" tapmode>Yes</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../script/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			L.init();
+		}
+
+		function logout(type) {
+			var editType=api.pageParam.editType;
+			if(type == 1) {
+				api.closeFrame({
+					name: 'exit'
+				});
+			} else if(type == 2) {
+				if(editType==0){
+					//关闭个人编辑的页面
+					setTimeout(function(){
+						api.closeToWin({
+							name: 'Init'
+						});
+					},300)
+				}else{
+					//关闭任务编辑的页面
+					setTimeout(function(){
+						api.closeToWin({
+							name: 'Init'
+						});
+					},300)
+				}
+			}
+		}
+	</script>
+
+</html>

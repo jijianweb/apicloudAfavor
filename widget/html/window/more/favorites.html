@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" href="../../../css/win.css" />
+		<style type="text/css">
+			#header {
+				height: auto!important;
+			}
+			
+			.group {
+				padding: 21px 44px 10px;
+				background-color: #fff;
+			}
+			
+			.tabbar,
+			.tabbar>div {
+				border-radius: 25px;
+				background-color: #F2F2F2;
+			}
+			.tabbar {
+				height: 37px;
+				line-height: 37px;
+				overflow: hidden;
+			}
+			
+			.tabbar>div {
+				color: #b4b8bb;
+				text-align: center;
+				font-size: 14px;
+			}
+			
+			.tabbar>div.active {
+				color: #fff;
+				background-color: #33BAB0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="api.closeWin()" tapmode=""></span>
+					<span class="title text-overflow" lan="Favorites" style="max-width: 200px;">Favorites</span>
+				</div>
+				<div class="group">
+					<div class="tabbar flex-box">
+						<div class="a flex-1 active" lan="Favors" onclick="pick(this)" tapmode>Favors</div>
+						<div class="b flex-1"  lan="Helpers" onclick="pick(this)" tapmode>Helpers</div>
+					</div>
+				</div>
+			</div>
+			<div id="main"></div>
+
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript" src="../../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			
+			L.init();
+			
+			api.openFrameGroup({
+				name: 'favoritesGroup',
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				},
+				preload: 0,
+				frames: [{
+					name: 'favorites_favors',
+					url: api.wgtRootDir + '/html/more/favorites_favors.html',
+					bounces: true
+				}, {
+					name: 'favorites_helpers',
+					url: api.wgtRootDir + '/html/more/favorites_helpers.html',
+					bounces: true
+				}],
+				index: 0
+			}, function(ret, err) {
+				var _dom = $api.dom('.group .active');
+				$api.removeCls(_dom, 'active');
+				_dom = $api.dom('.group .tabbar>div:nth-child(' + (ret.index + 1) + ')');
+				$api.addCls(_dom, 'active');
+			});
+			
+		}
+		function pick(_this){
+			var type=0;
+			if($api.hasCls(_this,'a')){
+				$api.addCls(_this,'active');
+				$api.removeCls($api.dom('.b'),'active');
+				type;
+			}else{
+				$api.addCls(_this,'active');
+				$api.removeCls($api.dom('.a'),'active');
+				type=1;
+			}
+			api.setFrameGroupIndex({
+					name: 'favoritesGroup',
+					index: type
+			});
+		}
+	</script>
+
+</html>

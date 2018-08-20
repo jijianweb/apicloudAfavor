@@ -1,0 +1,35 @@
+{
+	"citys": [{
+		"id": "82",
+		"city": "Salt Lake City",
+		"fr": "Salt Lake City",
+		"parentid": "81",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "83",
+		"city": "West Valley",
+		"fr": "West Valley",
+		"parentid": "81",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "84",
+		"city": "Provo",
+		"fr": "Provo",
+		"parentid": "81",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "85",
+		"city": "West Jordan",
+		"fr": "West Jordan",
+		"parentid": "81",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}]
+}

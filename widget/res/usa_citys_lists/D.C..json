@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "242",
+		"city": "Washington",
+		"fr": "Washington",
+		"parentid": "241",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

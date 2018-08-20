@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+		<title>Make a Payment</title>
+		<link rel="stylesheet" type="text/css" href="../../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../../css/win.css" />
+		<style type="text/css">
+            #header .tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				background-color: #32BBB1;	
+				height: 90%;
+			}
+			#header .topbar{
+				line-height: 53px;
+			}
+			.topbar .back{
+				background-image: url(../../../image/browse/5.png);
+				background-size: 24px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header" class="header">
+				<div class="topbar" style="">
+					<span class="back" onclick="api.closeWin()" tapmode=""></span>
+					<span class="title text-overflow">
+						Make a Payment
+					</span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../../script/api.js"></script>
+	<script type="text/javascript" src="../../../script/common.js"></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title);
+		}
+
+		function close_win(winname) {
+			api.closeWin();
+		}
+
+		apiready = function() {
+			/*暂不需翻译*/
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+
+			api.openFrame({
+				name: 'make_a_payment',
+				url: api.wgtRootDir + '/html/post/make_a_payment.html',
+				pageParam: api.pageParam,
+				rect: {
+					x: 0,
+					y: headerPos.h,
+					w: 'auto',
+					h: mainPos.h
+				}
+			});
+
+		}
+	</script>
+
+</html>

@@ -1,0 +1,11 @@
+{
+	"citys": [{
+		"id": "405",
+		"city": "Yellowknife",
+		"fr": "Yellowknife",
+		"parentid": "404",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}]
+}

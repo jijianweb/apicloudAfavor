@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>收藏-收藏任务 </title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			.list-item {
+				border-bottom: 1px solid #E9E9E9;
+				padding: 17px 12px 20px 15px;
+				height: 90px;
+			}
+			
+			.title {
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: normal;
+				word-wrap:break-word;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+				font-size: 16px;
+				margin-bottom: 5px;
+				margin-top: 8px;
+				margin-right: 10px;
+				min-height: 32px;
+			}
+			
+			.text {
+				font-size:12px;
+				color: #868686;
+				float:right;
+			}
+			.tet{
+				display: -webkit-box !important;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				word-break: break-all;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp:1;
+			}
+			.content {
+				padding: 0 5px 0 10px;
+			}
+			
+			.num {
+				color: #3EBBB2;
+				font-size:26px;
+				margin-top:10px;
+				padding-right: 10px;
+			}
+			
+			.img-frm,
+			.img {
+				width: 52px;
+				height: 52px;
+				background-color: #B4B8BB;
+				border-radius: 50%;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size:cover;
+			}
+			
+			.ic {
+				width: 10px;
+				height: 10px;
+				background-image: url(../../image/inbox/favor-location-icon.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+				margin-right: 5px;
+			}
+			
+			.money {
+			  text-align: left;
+			}
+			
+			.red {
+				color: red;
+			}
+			
+			.img_love {
+				height: 14px;
+				float: right;
+			}
+			
+			.button {
+				background-color: #F3F3F3;
+				width: 75%;
+				height: 37px;
+				margin: 15px auto;
+				border-radius: 60px;
+			}
+			
+			.text1 {
+				color: #909090;
+				font-size: 14px;
+			}
+			
+			.loved {
+				float: right;
+				margin-left:40px;
+				margin-top: 10px;
+				background-image: url(../../image/browse/heart-bold.png);
+				width:25px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-size:17px 16px;
+				background-position: center;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list hidden">
+					<div class="list-item flex-box flex-h-ce">
+						<div class="img"></div>
+						<div class="flex-1 flex-box content">
+							<div class="flex-1 flex-box-v">
+								<div class="title">Assemblie IKEAsofabed and removeAssemble IKEAsofabed and removeAssemble IKEAsofabed and remove</div>
+								<div class="flex-1 flex-box flex-h-ce">
+									<div class="ic"></div>
+									<div class="flex-1 text tet">271wewewewewewewewewewewewewewewewewewewewewewewewe Veum circle suite 146</div>
+								</div>
+								<div class="text" style="padding-top: 2px;">17 Comments, 8 Offers</div>
+							</div>
+							
+							<div class="money ">
+								<div class="loved " onclick="collect()" tapmode></div>
+								<div class="num ">$11</div>
+								<div class="text">Due-30 May 2017</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/template" template="main">
+		  {{? it instanceof Array && it.length!=0}} 
+		        {{~ it:value:index}}
+		        <div class="list" id="favor-{{=value.favorid}}">
+						<div class="list-item flex-box flex-h-ce">
+									<div class="img" style="background-image: url({{=Tool.imageCompressByQiNiu(value.avatar,0,200,200)}});" onclick="openOpenTask({{=value.isshow}},{{=value.status}},{{=value.favorid}})" tapmode></div>
+								    <div class="flex-1 flex-box content" >
+										<div class="flex-1 flex-box-v" onclick="openOpenTask({{=value.isshow}},{{=value.status}},{{=value.favorid}})" tapmode>
+											<div class="title">{{=value.title}}</div>
+											<div class="flex-1 flex-box flex-h-ce">
+												<div class="ic"></div>
+												<div class="flex-1 text  tet">
+													{{? value.favortype==2}}
+													     {{= LANGUAGE[$api.getStorage('lan')]['Online'] }}
+													{{?? value.favortype==1}}
+													    {{? value.isshow ==0}}
+													       {{=Area.getCityName(value.country,value.province,value.city).city.name}}
+													       {{=Area.getCityName(value.country,value.province,value.city).province.name}}
+													    {{??}}
+													       {{=value.location}} 
+													       {{=Area.getCityName(value.country,value.province,value.city).city.name}}
+													       {{=Area.getCityName(value.country,value.province,value.city).province.name}}
+													    {{?}}
+													{{?}}
+												</div>
+											</div>
+											<div class="text" style="padding-top: 2px;" onclick="openOpenTask({{=value.isshow}},{{=value.status}},{{=value.favorid}})" tapmode>
+												{{? value.comments==0}}
+													0 {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}
+												{{?? value.comments==1}}
+													1 {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}
+												{{??}}
+													{{= value.comments}} {{= LANGUAGE[$api.getStorage('lan')]['Comment'] }}
+												{{?}},
+												
+												{{? value.offers==0}}
+													0 {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }}
+												{{?? value.offers==1}}
+													1 {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }}
+												{{??}}
+													{{= value.offers}} {{= LANGUAGE[$api.getStorage('lan')]['Offer'] }}
+												{{?}}
+											</div>
+										</div>
+								<div class="money"> 
+									<div class="loved " onclick="collect(this,{{=value.favorid}})" tapmode></div>
+									<div class="num">{{=it.default_currency == 'cad' ? 'C$' : '$'}}{{=value.total}}</div>
+									<div class="text"  onclick="openOpenTask({{=value.isshow}},{{=value.status}},{{=value.favorid}})" tapmode>{{? value.favortype==2}}{{=value.distance}}{{?}}</div>
+								</div>
+						</div>
+					</div>
+		        </div>
+		  {{~}}
+		{{??}}
+			<div class="null flex-box">
+				<div class="flex-1" lan="You_have_no_favorite_favor">
+				    You have no favorite favor.
+				</div>
+			</div>
+		{{?}}
+	</script>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/area.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript">
+		apiready = function() {
+            init();
+                 	//下拉刷新
+			Refresh.init({
+				container: '#main',
+				ctrl: 'More',
+				fn: 'getFavorites',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: 1
+				},
+				template: 'main',
+				container: '#main',
+				field: 'list',
+				success: function(ct) {
+					$('div.head_img').lazyload({
+						effect: "fadeIn"
+					});
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'More',
+				fn: 'getFavorites',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: 1
+				},
+				showError: true,
+				template: 'main',
+				field: 'list',
+				container:'#main',
+			}, function(ct, page) {
+				$('div.head_img').slice((page - 1) * 10).lazyload({
+					effect: "fadeIn"
+				});
+			})
+		}
+
+		
+		function collect(_this,favorid) {
+			//取消收藏	
+			if($api.dom('.loved')) {
+                ajax.get({
+					ctrl: 'Browse',
+					fn: 'delCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							favorid: favorid,
+							type: 1
+						}
+					},
+					showError: true,
+					showProgress: false,
+					hideLoading: true,
+					success: function() {
+						var favor=$api.dom('#favor-'+favorid)
+						$api.remove(favor);
+						Tool.toast('Remove from Favorites.')
+					}
+			    });
+			}
+			api.execScript({
+			    name:'Init',
+			    frameName:'browse_list',
+			    script:'TaskList()'
+			});
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'More',
+				fn: 'getFavorites',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 1
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					T.html('#main', 'main', ct.list);
+					L.init();
+				}
+			});
+		}
+		function openOpenTask(isshow,status,favorid){
+			var _url='';
+			if(status==1){
+				_url= '/html/window/share.html'
+			}else{
+				_url= '/html/window/share_normal.html'
+			}
+			api.openWin({
+				name: 'task_detail',
+				url: api.wgtRootDir + _url,
+				pageParam: {
+					frameName: 'my_task_detail',
+					frameUrl: api.wgtRootDir + '/html/my_favors/my_task_detail.html',
+					frameParam: {
+                        favorid:favorid,
+                        isshow:isshow
+					},
+					headerTitle: 'Favor Details',
+				},
+				reload: true,
+				slidBackEnabled: false,
+			});
+		}
+	</script>
+
+</html>

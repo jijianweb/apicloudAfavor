@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>收藏帮助者</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/api.css" />
+		<style type="text/css">
+			.list {
+				margin: 5px 18px;
+				padding: 15px;
+				border-radius: 10px;
+				background-color: #EFF9F8;
+			}
+			
+			.head-portrait {
+				width: 55px;
+				height: 55px;
+				border-radius: 50%;
+				background-color:#B4B8BB;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+				margin-right: 10px;
+			}
+			
+			.star {
+				width: 22px;
+				height: 22px;
+				margin-right: 5px;
+				background-image: url(../../image/star.png);
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+			
+			.img {
+				height: 14px;
+				float: right;
+			}
+			
+			.name {
+				font-size: 13px;
+				margin-bottom: 3px;
+			}
+			
+			.loved {
+				background-image: url(../../image/browse/heart-bold.png);
+				width: 17px;
+				height: 20px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="list flex-box flex-h-ce hidden">
+					<div class="head-portrait"></div>
+					<div class="flex-box-v flex-1">
+						<div class="name">John Smith w</div>
+						<div class="point flex-box flex-v-ce">
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="star"></div>
+							<div class="name">(5.0)</div>
+						</div>
+					</div>
+					<div class="loved heart" onclick="collect()" tapmode></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery.lazyload.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+       {{? it instanceof Array && it.length!=0}} 
+		   {{~ it:value:index}}
+		        <div class="list flex-box flex-h-ce" onclick="openPersonalPage('{{=value.firstname}}','{{=value.lastname}}',{{=value.memberid}})" tepmode>
+					<div class="head-portrait" style="background-image: url({{=Tool.imageCompressByQiNiu(value.realavatar,0,200,200)}});"></div>
+					<div class="flex-box-v flex-1">
+						<div class="name">{{=value.firstname}} {{=value.lastname}}</div>
+						<div class="point flex-box flex-v-ce">
+							{{? value.helperstar>=0}} 
+								{{for(var i=0;i<5;i++) { }} 
+								    {{? i< value.helperstar}} 
+								     		<div class="star"></div>
+								    {{?}}
+								{{ } }}
+							{{?}}
+							<div class="name">({{=value.helperstar}})</div>
+						</div>
+					</div>
+					<div class="loved heart" onclick="collect(this,{{=value.memberid}})" tapmode></div>
+				</div>
+       	    {{~}}
+		{{??}}
+			<div class="null flex-box">
+				<div class="flex-1" lan="You_have_no_favorite_helper">
+					You have no favorite helper.
+				</div>
+			</div>
+		{{?}}
+	</script>
+	<script type="text/javascript">
+		apiready = function() {
+			init();
+			//下拉刷新
+			Refresh.init({
+				container: '#main',
+				ctrl: 'More',
+				fn: 'getFavorites',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: 2
+				},
+				template: 'main',
+				container: '#main',
+				field: 'list',
+				success: function(ct) {
+					$('div.head_img').lazyload({
+						effect: "fadeIn"
+					});
+					L.init();
+				}
+			});
+
+			//加载更多
+			LoadMore.init({
+				ctrl: 'More',
+				fn: 'getFavorites',
+				values: {
+					id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+					token: $api.getStorage(CONFIG.KEY.TOKEN),
+					type: 2
+				},
+				showError: true,
+				template: 'main',
+				field: 'list',
+				container:'#main',
+			}, function(ct, page) {
+				$('div.head_img').slice((page - 1) * 10).lazyload({
+					effect: "fadeIn"
+				});
+			})
+		}
+
+		function collect(_this,memberid) {
+			//取消收藏	
+			if($api.dom('.loved')) {
+                ajax.get({
+					ctrl: 'Browse',
+					fn: 'delCollection',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							memberid: memberid,
+							type: 2
+						}
+					},
+					showError: true,
+					showProgress:false,
+					hideLoading: true,
+					success: function() {
+						Tool.toast('Remove from Favorites.')
+						init();
+					}
+			    });
+			}
+		}
+	    function openPersonalPage(firstname,lastname,memberid) {
+	    	Tool.openWin({
+					winName: 'win_back',
+					title: firstname + " " + lastname,
+					winUrl: api.wgtRootDir + '/html/window/win_back.html',
+					frameName: 'personage_help',
+					frameParam: {
+						otherid: memberid
+					},
+					frameUrl: api.wgtRootDir + '/html/more/personage_help.html'
+			})
+		}
+		function init() {
+			ajax.get({
+				ctrl: 'More',
+				fn: 'getFavorites',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						type: 2
+					}
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function(ct) {
+					T.html('#main', 'main', ct.list);
+				}
+			});
+		}
+	</script>
+
+</html>

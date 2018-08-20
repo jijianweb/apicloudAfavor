@@ -1,0 +1,75 @@
+{
+	"citys": [{
+		"id": "258",
+		"city": "Virginia Beach",
+		"fr": "Virginia Beach",
+		"parentid": "257",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "259",
+		"city": "Norfolk",
+		"fr": "Norfolk",
+		"parentid": "257",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "260",
+		"city": "Arlington",
+		"fr": "Arlington",
+		"parentid": "257",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "261",
+		"city": "Chesapeake",
+		"fr": "Chesapeake",
+		"parentid": "257",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "262",
+		"city": "Newport News",
+		"fr": "Newport News",
+		"parentid": "257",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "263",
+		"city": "Richmond",
+		"fr": "Richmond",
+		"parentid": "257",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "264",
+		"city": "Hampton",
+		"fr": "Hampton",
+		"parentid": "257",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "265",
+		"city": "Alexandria",
+		"fr": "Alexandria",
+		"parentid": "257",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "266",
+		"city": "Portsmouth",
+		"fr": "Portsmouth",
+		"parentid": "257",
+		"sort": "9",
+		"level": "3",
+		"sub": []
+	}]
+}

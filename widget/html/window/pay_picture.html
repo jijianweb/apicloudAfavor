@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>发布的添加信用卡</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/win.css" />
+		<style type="text/css">
+			#header,
+			.tit_icon {
+				top: 1px;
+				color: white;
+				font-size: 14px;
+				background-color: #32BBB1;
+			}
+			
+			/*.back,
+			.share {
+				background-repeat: no-repeat;
+				background-position: center;
+				display: inline-block;
+				position: absolute!important;
+			}
+			*/
+			.cam {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: 22px 19px;
+				display: inline-block;
+				top: 21px;
+				background-image: url(../../image/post/CAMERA.png)
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<div class="topbar">
+					<span class="back" onclick="close_win()" tapmode=""></span>
+					<span class="title text-overflow" style="max-width: 200px;"></span>
+					<span class="tit_icon cam" onclick="picutre()" tapmode=""></span>
+				</div>
+			</div>
+			<div id="main">
+				<div class="null">
+					<div class="small_font text-center">Loading...</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script src="../../script/aui-slide.js" type="text/javascript"></script>
+	<script type="text/javascript">
+		function setTitle(title) {
+			$api.text($api.dom('span.title'), title)
+		}
+		/*
+		  status:true                 //操作成功状态值
+		    cardNum:                    //卡号
+		    expiryMonth:                //过期日期的月
+		    expiryYear:                 //过期日期的年
+		    cvv:                        //cvv号
+		 */
+		function close_win() {
+			api.closeWin();
+		}
+
+		function picutre() {
+			var cardReader = api.require('cardReader');
+			cardReader.open(function(ret, err) {
+				if(ret.status) {
+					api.sendEvent({
+						name: 'cardReader',
+						extra: {
+							cardNum: ret.cardNum,                //卡号
+						    expiryMonth: parseInt(ret.expiryMonth) < 10 ? '0'+parseInt(ret.expiryMonth) : ret.expiryMonth,       //过期日期的月
+						    expirtyYear: ret.expirtyYear,             //过期日期的年
+						    cvv: ret.cvv                      //cvv号
+						}
+					})
+				} else {
+				}
+			});
+		}
+		apiready = function() {
+			/*暂不需翻译*/
+			var header = $api.byId('header');
+			$api.fixStatusBar(header);
+			var main = $api.byId('main'),
+				headerPos = $api.offset(header),
+				winParam = api.pageParam,
+				mainPos = $api.offset(main);
+			api.addEventListener({
+				name: 'keyback'
+			}, function(ret, err) {
+				if(api.pageParam.frameName == 'black_list') {
+					api.sendEvent({
+						name: 'unblack'
+					});
+				} else {
+					api.closeWin();
+				}
+			});
+
+			if(typeof winParam.frameParam != "undefined") {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					pageParam: winParam.frameParam,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			} else {
+				api.openFrame({
+					name: winParam.frameName,
+					url: winParam.frameUrl,
+					bounces: winParam.bounces || false,
+					rect: {
+						x: 0,
+						y: headerPos.h,
+						w: 'auto',
+						h: mainPos.h
+					},
+					bgColor: winParam.bgColor || '#fff',
+					reload: true
+				});
+			}
+			$api.html($api.dom(header, '.title'), winParam.headerTitle || '');
+		}
+	</script>
+
+</html>

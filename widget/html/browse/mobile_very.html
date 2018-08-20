@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>手机号码</title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main{
+				padding: 0 18px;
+			}
+			body {
+				background-color: #fff;
+			}
+			
+			.text {
+				color: #858B8B;
+				font-size: 14px;
+				padding: 0px 0px  9px 22px;
+			}
+			
+			.prefix{
+				line-height: 44px;
+				padding: 0 0 0 20px;
+			}
+			input[type="tel"] {
+				outline: none;
+				resize: none;
+				border: none;
+				border-radius: 25px;
+				height: 44px;
+				padding-left: 5px;
+				width: 100%;
+			}
+			.form-control{
+				padding-right: 20px;
+			}
+			.input {
+				border: 1px solid #CCCCCC;
+				border-radius: 25px;
+				width: 100%;
+				margin: 0 auto;
+			}
+			
+			.save {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				margin: 15px auto;
+			}
+			
+			.tt {
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+				<div class="flex-box-v " style="margin-top: 30px">
+					<div class="text" lan="MobileNumber">Mobile Number</div>
+					<div class="input flex-box">
+						<div class="prefix">+1</div>
+						<div class="form-control flex-1">
+							<input class="tt" type="tel" name="tel" placeholder="(123)-456-7890" />
+						</div>
+					</div>
+					<div class="save btn-afavor-1" lan="SEND_CODE" onclick="sendCode()" tapmode="">SEND CODE</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script src="../../script/doT.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../script/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/template" template="main">
+		<div class="flex-box-v " style="margin-top: 30px">
+			<div class="text">Mobile Number</div>
+			<div class="input flex-box">
+				<div class="prefix">+1</div>
+				<div class="form-control flex-1">
+					<input class="tt" type="tel" name="tel" placeholder="(123)-456-7890" value="{{=it.mobile || ''}}"/>
+				</div>
+			</div>
+			<div class="save btn-afavor-1" onclick="sendCode()" tapmode="">SEND CODE</div>
+		</div>
+	</script>
+	<script type="text/javascript">
+		var favorid = "";
+		apiready = function() {
+			init();
+			favorid = api.pageParam.favorid
+		}
+
+		function init() {
+//			ajax.get({
+//				ctrl: 'Favor',
+//				fn: 'getReg',
+//				data: {
+//					values: {
+//						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+//						token: $api.getStorage(CONFIG.KEY.TOKEN),
+//						favorid: favorid
+//					}
+//				},
+//				showError: true,
+//				showProgress: true,
+//				hideLoading: true,
+//				success: function(ct) {
+//					T.html('#main', 'main', ct);
+//				}
+//			});
+			T.html('#main', 'main', api.pageParam);
+			L.init();
+		}
+		var is_send = false
+		//点击发送验证码
+		function sendCode() {
+			var mobile = $api.val($api.dom('[name=tel]'));
+			if(!mobile) {
+				Tool.toast('Please complete all information.');
+				return;
+			}
+			if(!is_send) {
+				is_send = true;
+				ajax.get({
+					ctrl: 'Common',
+					fn: 'sendmsg',
+					data: {
+						values: {
+							id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+							token: $api.getStorage(CONFIG.KEY.TOKEN),
+							mobile: mobile
+						}
+					},
+					showProgress: true,
+					hideLoading: true,
+					success: function(ct) {
+						is_send = false;
+						click_verification(ct.id, mobile);
+					},
+					_404: function() {
+						is_send = false;
+						Tool.toast('This phone number has been bound.');
+					}
+				});
+			}
+		}
+		//打开验证码输入
+		function click_verification(sid, mobile) {
+			Tool.openWin({
+				winName: 'MobileVery_2',
+				winUrl: api.wgtRootDir + '/html/window/win.html',
+				title: '+' + $api.val($api.dom('[name=tel]')),
+				frameName: 'mobile_very_2',
+				frameUrl: api.wgtRootDir + '/html/browse/mobile_very_2.html',
+				frameParam: {
+					sid: sid,
+					mobile: mobile
+				}
+			});
+		}
+	</script>
+
+</html>

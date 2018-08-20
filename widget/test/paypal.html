@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="../css/ct.css" />
+		<style type="text/css">
+			button:not(:first-child) {
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main" class="flex-box-v flex-h-zhu">
+				<button class="btn btn-info btn-lg" onclick="pay()" tapmode="">
+					支付
+				</button>
+
+				<button class="btn btn-info btn-lg" onclick="payPal()" tapmode="">调用paypal</button>
+
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript" src="../script/doT.min.js"></script>
+	<script type="text/javascript" src="../script/common.js"></script>
+	<script type="text/javascript">
+		var credits = "",
+			four = "",
+			types = 0;
+		apiready = function() {
+			credits = $api.getStorage('thirdStepData');
+			four = $api.getStorage('four');
+			console.log(JSON.stringify($api.getStorage('thirdStepData'), null, 2));
+		}
+
+		function pay() {
+			var paypal = api.require('paypal');
+			paypal.pay({
+					currency: 'USD',
+					price: '36.06',
+					description: 'APICloud 短袖T恤',
+					mode: 'sandbox'
+				}, function(ret) {
+					if(ret) {
+						alert(23);
+					};
+
+				})
+		}
+
+		function payPal() {
+				var paypal = api.require('paypal');
+				paypal.pay({
+					currency: credits.currency ==1 ? 'CAD':'USD',
+					price: four.mtype == 1 ? four.remuneration : four.hcash,
+					description: four.title,
+					mode: 'sandbox'
+				}, function(ret) {
+					if(ret) {
+						api.alert({ msg: JSON.stringify(ret) });
+					}
+				});
+		}
+	</script>
+
+</html>

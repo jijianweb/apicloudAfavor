@@ -1,0 +1,35 @@
+{
+	"citys": [{
+		"id": "173",
+		"city": "Philadelphia",
+		"fr": "Philadelphie",
+		"parentid": "172",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "174",
+		"city": "Pittsburgh",
+		"fr": "Pittsburgh",
+		"parentid": "172",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "175",
+		"city": "Allentown",
+		"fr": "Allentown",
+		"parentid": "172",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "176",
+		"city": "Erie",
+		"fr": "Erie",
+		"parentid": "172",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}]
+}

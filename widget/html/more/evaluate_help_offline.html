@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+		<meta name="format-detection" content="telephone=no">
+		<title>我的任务-进行中的任务-帮助者评价发布者的线下任务 </title>
+		<link rel="stylesheet" type="text/css" href="../../css/ct.css" />
+		<style type="text/css">
+			#main{
+				padding: 20px 15px;
+			}
+			
+			.evl {
+				padding: 0px 27px;
+			}
+			
+			.l1 {
+				margin-top: 10px;
+			}
+			
+			.title {
+				text-align: center;
+				color: #A9ADB0;
+				padding-bottom:8px;
+			}
+			.area {
+				border: 1px solid #D3D4D5;
+				background-color: #F3F3F3;
+				border-radius: 8px;
+				width: 100%;
+				margin-top: 22px;
+				padding: 15px;
+			}
+			
+			textarea{
+				outline: none;
+				resize: none;
+				width: 100%;
+			}
+			
+			.star {
+				background-image: url(../../image/post/wujiaoxig.png);
+				background-repeat: no-repeat;
+				background-position: center;
+			}
+			
+			[data-score='5'] .star-1,
+			[data-score='5'] .star-2,
+			[data-score='5'] .star-3,
+			[data-score='5'] .star-4,
+			[data-score='5'] .star-5,
+			[data-score='4'] .star-1,
+			[data-score='4'] .star-2,
+			[data-score='4'] .star-3,
+			[data-score='4'] .star-4,
+			[data-score='3'] .star-1,
+			[data-score='3'] .star-2,
+			[data-score='3'] .star-3,
+			[data-score='2'] .star-1,
+			[data-score='2'] .star-2,
+			[data-score='1'] .star-1 {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+			
+			[data-pun='5'] .star-p1,
+			[data-pun='5'] .star-p2,
+			[data-pun='5'] .star-p3,
+			[data-pun='5'] .star-p4,
+			[data-pun='5'] .star-p5,
+			[data-pun='4'] .star-p1,
+			[data-pun='4'] .star-p2,
+			[data-pun='4'] .star-p3,
+			[data-pun='4'] .star-p4,
+			[data-pun='3'] .star-p1,
+			[data-pun='3'] .star-p2,
+			[data-pun='3'] .star-p3,
+			[data-pun='2'] .star-p1,
+			[data-pun='2'] .star-p2,
+			[data-pun='1'] .star-p1 {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+			
+			[data-ability='5'] .star-a1,
+			[data-ability='5'] .star-a2,
+			[data-ability='5'] .star-a3,
+			[data-ability='5'] .star-a4,
+			[data-ability='5'] .star-a5,
+			[data-ability='4'] .star-a1,
+			[data-ability='4'] .star-a2,
+			[data-ability='4'] .star-a3,
+			[data-ability='4'] .star-a4,
+			[data-ability='3'] .star-a1,
+			[data-ability='3'] .star-a2,
+			[data-ability='3'] .star-a3,
+			[data-ability='2'] .star-a1,
+			[data-ability='2'] .star-a2,
+			[data-ability='1'] .star-a1 {
+				background-repeat: no-repeat;
+				background-position: center;
+				background-image: url(../../image/star.png);
+			}
+			
+			.foot{
+            	padding:0px 18px 0px;
+            	width:100%;
+            }
+			.sub {
+				background-color: #32BBB1;
+				border-radius: 25px;
+				text-align: center;
+				color: white;
+				position: relative;
+				bottom: 16px;
+			}
+			/*华为按钮调整*/
+			@media (max-height:400px){
+				.save{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="wrap">
+			<div id="main">
+
+				<div class="evl">
+					<div class="l1">
+						<div lan="WorkEnvironment" class="title">Work Environment</div>
+						<div class="flex-box margin-bottom10 flex-center-center" data-score=''>
+							<div class="star star-1 btn-afavor-star" onclick="judge(1)" tapmode></div>
+							<div class="star star-2 btn-afavor-star" onclick="judge(2)" tapmode></div>
+							<div class="star star-3 btn-afavor-star" onclick="judge(3)" tapmode></div>
+							<div class="star star-4 btn-afavor-star" onclick="judge(4)" tapmode></div>
+							<div class="star star-5 btn-afavor-star" onclick="judge(5)" tapmode></div>
+						</div>
+					</div>
+					<div class="l1">
+						<div class="title" lan="Attitude">Attitude</div>
+						<div class="flex-box margin-bottom10 flex-center-center" data-ability="">
+							<div class="star star-a1 btn-afavor-star" onclick="ability(1)" tapmode></div>
+							<div class="star star-a2 btn-afavor-star" onclick="ability(2)" tapmode></div>
+							<div class="star star-a3 btn-afavor-star" onclick="ability(3)" tapmode></div>
+							<div class="star star-a4 btn-afavor-star" onclick="ability(4)" tapmode></div>
+							<div class="star star-a5 btn-afavor-star" onclick="ability(5)" tapmode></div>
+						</div>
+					</div>					
+					<div class="l1">
+						<div class="title" lan="WouldRecommend">Would Recommend</div>
+						<div class="flex-box margin-bottom10 flex-center-center" data-pun=''>
+							<div class="star star-p1 btn-afavor-star" onclick="punctuality(1)" tapmode></div>
+							<div class="star star-p2 btn-afavor-star" onclick="punctuality(2)" tapmode></div>
+							<div class="star star-p3 btn-afavor-star" onclick="punctuality(3)" tapmode></div>
+							<div class="star star-p4 btn-afavor-star" onclick="punctuality(4)" tapmode></div>
+							<div class="star star-p5 btn-afavor-star" onclick="punctuality(5)" tapmode></div>
+						</div>
+					</div>
+
+				</div>
+				<!--点击弹出键盘输入评价。-->
+				<div class="area flex-center-center btn-afavor-area">
+					<textarea lan="Leave_A_Comment" type="text" id="comment" placeholder="Leave a comment... " rows="8" name="context"></textarea>
+				</div>
+			</div>
+            <div class="foot" id="footer">
+		    	<div class="sub btn-afavor-1" onclick="sub()" tapmode="">SUBMIT</div>
+		    </div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../script/api.js"></script>
+	<script type="text/javascript" src="../../script/doT.min.js"></script>
+	<script type="text/javascript" src="../../script/common.js"></script>
+	<script type="text/javascript" src="../../res/language.js" ></script>
+	<script type="text/javascript" src="../../script/jquery-1.9.1.min.js"  charset="utf-8"></script>
+	<script type="text/javascript">
+		var favorid = "";
+		var isself1 = "";
+		var memberid = "";
+		apiready = function() {
+			L.init();
+			favorid = api.pageParam.favorid;
+			isself1 = api.pageParam.isself1;
+			//			memberid =api.pageParam.memberids;
+		}
+       
+		function judge(score) {
+			$api.attr($api.dom('[data-score]'), 'data-score', score);
+		}
+
+		function punctuality(pun) {
+			$api.attr($api.dom('[data-pun]'), 'data-pun', pun);
+		}
+
+		function ability(ability) {
+			$api.attr($api.dom('[data-ability]'), 'data-ability', ability);
+		}
+
+		function sub() {
+			var message = $api.val($api.dom('#comment')),
+				environment = $api.attr($api.dom('[data-score]'), 'data-score'),
+				difficulty = $api.attr($api.dom('[data-pun]'), 'data-pun'),
+				attitude = $api.attr($api.dom('[data-ability]'), 'data-ability');
+//			if(!message) {
+//				Tool.toast('Please complete all information.');
+//				return;
+//			}
+			if(!environment) {
+				Tool.toast('Please complete the grading of environment.');
+				return;
+			}
+			if(!difficulty) {
+				Tool.toast('Please complete the grading of difficulty.');
+				return;
+			}
+			if(!attitude) {
+				Tool.toast('Please complete the grading of attitude.');
+				return;
+			}
+			ajax.get({
+				ctrl: 'Favor',
+				fn: 'addRating',
+				data: {
+					values: {
+						id: $api.getStorage(CONFIG.KEY.MEMBER_ID),
+						token: $api.getStorage(CONFIG.KEY.TOKEN),
+						favorid: favorid,
+						message: message,
+						environment: environment,
+						difficulty: difficulty,
+						attitude: attitude,
+						type: isself1,
+						isdel:1
+					}
+				},
+				_404: function(){
+					//不能重复评价
+				},
+				showError: true,
+				showProgress: true,
+				hideLoading: true,
+				success: function() {
+					Tool.toast('Evaluate successful');
+					api.execScript({
+					    name:'task_detail',
+					    frameName:'my_task_detail',
+					    script:'init()'
+					});
+					
+					api.sendEvent({
+						name: 'closeChatEntrance',	//关闭对应的聊天入口
+						extra: {
+							favorId: favorid
+						}
+					});
+					
+					setTimeout(function() {
+						api.closeToWin({
+							name: 'Init'
+						});
+					}, 400)
+				}
+			});
+		}
+	</script>
+
+</html>

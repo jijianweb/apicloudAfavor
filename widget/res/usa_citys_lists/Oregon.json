@@ -1,0 +1,29 @@
+{
+	"citys": [
+		{
+			"id": "10",
+			"city": "Portland",
+			"fr": "Portland",
+			"parentid": "9",
+			"sort": "1",
+			"level": "3",
+			"sub": []
+		}, {
+			"id": "11",
+			"city": "Salem",
+			"fr": "Salem",
+			"parentid": "9",
+			"sort": "2",
+			"level": "3",
+			"sub": []
+		}, {
+			"id": "12",
+			"city": "Eugene",
+			"fr": "Eugene",
+			"parentid": "9",
+			"sort": "3",
+			"level": "3",
+			"sub": []
+		}
+	]
+}

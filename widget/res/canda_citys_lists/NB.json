@@ -1,0 +1,67 @@
+{
+	"citys": [{
+		"id": "392",
+		"city": "Bathurst",
+		"fr": "Bathurst",
+		"parentid": "391",
+		"sort": "1",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "393",
+		"city": "Campbellton",
+		"fr": "Campbellton",
+		"parentid": "391",
+		"sort": "2",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "394",
+		"city": "Dieppe",
+		"fr": "Dieppe",
+		"parentid": "391",
+		"sort": "3",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "395",
+		"city": "Edmundston",
+		"fr": "Edmundston",
+		"parentid": "391",
+		"sort": "4",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "396",
+		"city": "Fredericton",
+		"fr": "Fredericton",
+		"parentid": "391",
+		"sort": "5",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "397",
+		"city": "Miramichi",
+		"fr": "Miramichi",
+		"parentid": "391",
+		"sort": "6",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "398",
+		"city": "Moncton",
+		"fr": "Moncton",
+		"parentid": "391",
+		"sort": "7",
+		"level": "3",
+		"sub": []
+	}, {
+		"id": "399",
+		"city": "Saint John",
+		"fr": "Saint Jean",
+		"parentid": "391",
+		"sort": "8",
+		"level": "3",
+		"sub": []
+	}]
+}
