@@ -348,7 +348,7 @@
 					font-size: 9px;
 				{{?}}
 				">
-				By clicking Sign up you agree to our <span onclick="openProtocol(1)" tapmode>Terms of Conditions</span> and <span onclick="openProtocol(2)" tapmode>Privacy Policy</span>.
+				By clicking Sign up you agree to our <span onclick="openProtocol(1)">Terms of Conditions</span> and <span onclick="openProtocol(2)">Privacy Policy</span>.
 			</div>
 		</div>
 	</script>
@@ -470,35 +470,42 @@
 				}
 			});
 		}
-		function openProtocol(type){
-			if(parseInt(type) == 1){
-				api.openWin({
-					name: 'protocol',
-					url: api.wgtRootDir + '/html/window/reset_password.html',
-					pageParam: {
-						headerTitle: 'Terms & Conditions',
-						bgColor: '#fff',
-						frameName: 'protocol',
-						frameUrl: api.wgtRootDir + '/html/term_policy.html'
-					},
-					softInputMode: 'auto',
-					bounces: false
-				});
-			}else if(parseInt(type) == 2){
-				api.openWin({
-					name: 'protocol',
-					url: api.wgtRootDir + '/html/window/reset_password.html',
-					pageParam: {
-						headerTitle: 'Privacy Policy',
-						bgColor: '#fff',
-						frameName: 'protocol',
-						frameUrl: api.wgtRootDir + '/html/privacy_policy.html'
-					},
-					softInputMode: 'auto',
-					bounces: false
-				});
-			}
-		}
+        function openProtocol(type){
+    		// Tool.toast(api.wgtRootDir + '/html/window/reset_password.html');
+    		Tool.openWin({
+    			winName: 'protocol',
+    			winUrl: api.wgtRootDir + '/html/window/reset_password.html',
+    			frameName: parseInt(type) == 1 ? 'Terms & Conditions' : 'Privacy Policy',
+    			frameUrl: api.wgtRootDir + '/html/more/' + (parseInt(type) == 1 ? 'terms_conditions.html' : 'privacy_policy.html')
+    		});
+    		// if(parseInt(type) == 1){
+    		// 	api.openWin({
+    		// 		name: 'Terms & Conditions',
+    		// 		url: api.wgtRootDir + '/html/more/terms_conditions.html',
+    		// 		// pageParam: {
+    		// 		// 	headerTitle: 'Terms & Conditions',
+    		// 		// 	bgColor: '#fff',
+    		// 		// 	frameName: 'protocol',
+    		// 		// 	frameUrl: api.wgtRootDir + '/html/more/term_policy.html'
+    		// 		// },
+    		// 		bgColor: '#fff',
+    		// 		delay: api.systemType == 'android' ? 300 : 0
+    		// 	});
+    		// }else if(parseInt(type) == 2){
+    		// 	api.openWin({
+    		// 		name: 'Privacy Policy',
+    		// 		url: api.wgtRootDir + '/html/more/privacy_policy.html',
+    		// 		// pageParam: {
+    		// 		// 	headerTitle: 'Privacy Policy',
+    		// 		// 	bgColor: '#fff',
+    		// 		// 	frameName: 'protocol',
+    		// 		// 	frameUrl: api.wgtRootDir + '/html/more/privacy_policy.html'
+    		// 		// },
+    		// 		bgColor: '#fff',
+    		// 		delay: api.systemType == 'android' ? 300 : 0
+    		// 	});
+    		// }
+    	}
 		//注册
 		function openTheme() {
 			var firstname = $api.trimAll($api.val($api.dom('[name=firstname]'))),
